@@ -8,7 +8,7 @@
 
 ## About This Repository
 
-This repository documents my SQL learning journey from foundational concepts to advanced analytical problem solving.
+This repository documents my SQL applying journey  from foundational concepts to advanced analytical problem solving.
 
 The goal is to develop production-ready SQL skills used by Data Analysts and Data Scientists.
 
