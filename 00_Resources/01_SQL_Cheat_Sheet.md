@@ -109,8 +109,7 @@ WITH department_count AS
 SELECT *
 FROM department_count;
 ```
-⸻
-
+----------------
 Window Function Template
 ```
 SELECT
@@ -119,7 +118,7 @@ SELECT
  OVER(ORDER BY emp_id)
 FROM employees;
 ```
-⸻
+----------------
 
 Interview Golden Rules
 
