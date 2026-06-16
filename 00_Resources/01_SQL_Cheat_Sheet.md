@@ -10,7 +10,7 @@ SQL Execution Order
 6. ORDER BY
 7. LIMIT
 
-⸻
+----------------
 
 WHERE vs HAVING
 
@@ -31,7 +31,7 @@ FROM employees
 GROUP BY dept_id
 HAVING COUNT(*) > 1;
 
-⸻
+----------------
 
 INNER JOIN
 
@@ -42,7 +42,7 @@ FROM employees e
 INNER JOIN departments d
 ON e.dept_id = d.dept_id;
 
-⸻
+----------------
 
 LEFT JOIN
 
@@ -53,7 +53,7 @@ FROM employees e
 LEFT JOIN departments d
 ON e.dept_id = d.dept_id;
 
-⸻
+----------------
 
 Subquery Rules
 
@@ -74,8 +74,7 @@ WHERE dept_id IN
  FROM departments
 )
 
-⸻
-
+----------------
 NULL Rules
 
 Wrong:
@@ -86,7 +85,7 @@ Correct:
 
 WHERE manager_id IS NULL
 
-⸻
+----------------
 
 CASE WHEN
 
@@ -95,8 +94,7 @@ CASE
  WHEN dept_id = 2 THEN 'Engineering'
  ELSE 'Marketing'
 END
-
-⸻
+----------------
 
 CTE Template
 
