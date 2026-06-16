@@ -14,7 +14,7 @@ High Priority
 
 These topics appear frequently in Data Analyst interviews.
 
-⸻
+-----------------------------------------------------------------
 
 Frequently Asked Questions
 
@@ -25,16 +25,14 @@ Answer:
 WHERE filters rows before aggregation.
 
 HAVING filters groups after aggregation.
-
-⸻
-
+-----------------------------------------------------------------
 What is the difference between INNER JOIN and LEFT JOIN?
 
 INNER JOIN returns only matching rows.
 
 LEFT JOIN returns all rows from the left table and matching rows from the right table.
 
-⸻
+-----------------------------------------------------------------
 
 What is a Self Join?
 
@@ -43,13 +41,13 @@ A Self Join is a join where a table is joined with itself.
 Common use case:
 Employee → Manager hierarchy.
 
-⸻
+-----------------------------------------------------------------
 
 What is a CTE?
 
 A Common Table Expression (CTE) is a temporary result set that improves query readability and organization.
 
-⸻
+-----------------------------------------------------------------
 
 What is the difference between RANK() and DENSE_RANK()?
 
@@ -61,8 +59,7 @@ DENSE_RANK():
 
 1, 2, 2, 3
 
-⸻
-
+-----------------------------------------------------------------
 SQL Interview Checklist
 
 Before applying for internships, ensure you can:
@@ -79,7 +76,7 @@ Before applying for internships, ensure you can:
 * Use LEAD()
 * Use LAG()
 
-⸻
+-----------------------------------------------------------------
 
 Common Mistakes
 
@@ -91,7 +88,7 @@ Correct:
 
 HAVING COUNT(*) > 2
 
-⸻
+-----------------------------------------------------------------
 
 Mistake:
 
@@ -101,7 +98,7 @@ Correct:
 
 manager_id IS NULL
 
-⸻
+-----------------------------------------------------------------
 
 Final Advice
 
