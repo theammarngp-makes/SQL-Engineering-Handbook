@@ -81,23 +81,23 @@ Before applying for internships, ensure you can:
 Common Mistakes
 
 Mistake:
-
+```
 WHERE COUNT(*) > 2
-
+```
 Correct:
-
+```
 HAVING COUNT(*) > 2
-
+```
 -----------------------------------------------------------------
 
 Mistake:
-
+```
 manager_id = NULL
-
+```
 Correct:
-
+```
 manager_id IS NULL
-
+```
 -----------------------------------------------------------------
 
 Final Advice
