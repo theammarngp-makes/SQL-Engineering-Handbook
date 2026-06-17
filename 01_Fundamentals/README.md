@@ -9,9 +9,8 @@ This section covers the core SQL concepts required before learning joins, aggreg
 | 1 | SELECT |
 | 2 | WHERE |
 | 3 | ORDER BY |
-| 4 | DISTINCT |
-| 5 | LIMIT |
-| 6 | ALIAS |
+| 4 | LIMIT |
+| 5 | ALIAS |
 
 ---
 
