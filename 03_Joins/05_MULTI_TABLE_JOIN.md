@@ -4,7 +4,7 @@
 
 A Multi-Table Join combines data from more than two tables.
 
-This is extremely common in analytics projects.
+This is one of the most important SQL skills because real-world databases are usually normalized into multiple related tables.
 
 ---
 
@@ -20,49 +20,67 @@ locations
 
 ---
 
-## Business Question
+## Tables
 
-Show each employee, their department, and their city.
+### employes
+
+| Column |
+|----------|
+| emp_id |
+| emp_name |
+| dept_id |
+| manager_id |
+
+### departments
+
+| Column |
+|----------|
+| dept_id |
+| dept_name |
+| location_id |
+
+### locations
+
+| Column |
+|----------|
+| location_id |
+| city |
+| country |
 
 ---
 
-## Example
+## Concepts Practiced
 
-```sql
-SELECT
-e.emp_name,
-d.dept_name,
-l.city
-FROM employes e
-JOIN departments d
-ON e.dept_id = d.dept_id
-JOIN locations l
-ON d.location_id = l.location_id;
-```
+- Multi-table JOIN
+- Filtering with WHERE
+- Aggregation with GROUP BY
+- Counting records
+- Foreign Key Relationships
 
 ---
 
 ## Business Applications
 
-- Employee location reporting
-- Workforce distribution
-- City-wise analytics
-- Department performance analysis
+- Employee reporting
+- Department analysis
+- Location analytics
+- Workforce planning
+- Organizational reporting
 
 ---
 
 ## Interview Tip
 
-Most real-world SQL work involves joining 3–6 tables, not just two.
+Many SQL interview questions involve joining 3 or more tables.
 
-Learning multi-table joins is critical for Data Analyst roles.
+A strong understanding of relationships between tables is essential for Data Analyst roles.
 
 ---
 
 ## Practice Questions
 
-1. Show employee, department, and city.
-2. Count employees by city.
-3. Count employees by department and city.
-4. Find departments located in Nagpur.
-5. Find employees working in Pune.
+1. Show each employee with department and city.
+2. Show employees working in Pune.
+3. Count employees in each city.
+4. Count employees in each department.
+5. Show departments located in Nagpur.
