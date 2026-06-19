@@ -2,15 +2,15 @@
 
 ## Overview
 
-A subquery is a query written inside another query.
+Subqueries are queries nested inside another SQL query.
 
-Subqueries allow us to solve complex business questions by breaking them into smaller logical steps.
+They help solve complex business problems by breaking them into smaller logical steps.
 
 ---
 
 ## Topics Covered
 
-### Single Row Subqueries
+### 1. Single Row Subqueries
 
 Returns exactly one value.
 
@@ -18,7 +18,7 @@ Examples:
 - Average employee id
 - Engineering city lookup
 
-### Multi Row Subqueries
+### 2. Multi Row Subqueries
 
 Returns multiple values.
 
@@ -26,68 +26,64 @@ Examples:
 - IN
 - NOT IN
 
-### Aggregate Subqueries
+### 3. Aggregate Subqueries
 
 Uses aggregate functions inside subqueries.
 
 Examples:
+- AVG()
 - MIN()
 - MAX()
-- AVG()
 - COUNT()
 
-### Business Logic Subqueries
+### 4. Business Logic Subqueries
 
-Real-world analytical questions involving multiple tables.
+Combines multiple tables and business conditions.
 
-### Manager Analysis
+### 5. Manager Analysis
 
-Hierarchy and reporting structure analysis.
+Analyzing hierarchy and reporting structures.
 
 ---
 
 ## Skills Developed
 
-- Analytical Thinking
 - Dynamic Filtering
-- Nested Query Logic
+- Nested Logic
 - Aggregate Analysis
-- Business Problem Solving
+- Business Thinking
+- Analytical Problem Solving
+
+---
+
+## Real World Applications
+
+- Employee Analytics
+- Department Reporting
+- Workforce Planning
+- Customer Segmentation
+- Revenue Analysis
 
 ---
 
 ## Interview Importance
 
-Subqueries are among the most frequently asked SQL interview topics.
+Subqueries are one of the most frequently asked SQL interview topics.
 
-Understanding when to use a subquery instead of a JOIN is a key skill for Data Analysts.
+A Data Analyst should know:
 
----
-
-## Common Patterns
-
-### Scalar Subquery
-
-Returns one value.
-
-### Multi Row Subquery
-
-Returns multiple values.
-
-### Correlated Subquery
-
-Runs once for each row.
-
-### Nested Subquery
-
-Subquery inside another subquery.
+- When to use a Subquery
+- When to use a JOIN
+- When to use a CTE
 
 ---
 
-## Real Business Applications
+## Schema Used
 
-- Employee Analytics
-- Workforce Planning
-- Customer Segmentation
-- Revenue Analysis
-- Department Reporting
+employes
+    │
+    ▼
+departments
+    │
+    ▼
+locations
