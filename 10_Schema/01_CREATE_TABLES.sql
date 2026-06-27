@@ -4,7 +4,8 @@ CREATE TABLE employes (
     emp_id INT PRIMARY KEY,
     emp_name VARCHAR(50),
     dept_id INT,
-    manager_id INT
+    manager_id INT,
+    hire_date  DATE  NOT NULL
 );
 
 CREATE TABLE departments (
