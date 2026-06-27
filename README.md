@@ -51,7 +51,7 @@ Unlike tutorial blogs, this is a **structured handbook with 100+ real-world SQL 
 ✅ JOINS (Inner, Left, Right, Full, Cross)
 ✅ Subqueries & Common Table Expressions
 ✅ CASE When Statements
-✅ Window Functions (ROW_NUMBER, RANK, LAG/LEAD, Running Totals)
+🔄 Window Functions (ROW_NUMBER, RANK, LAG/LEAD, Running Totals)
 🔄 Query Optimization & Performance Tuning
 🔄 Advanced Business Analytics
 ```
@@ -86,9 +86,9 @@ employees → departments → locations
 
 | Table | Columns |
 |-------|---------|
-| **employees** | emp_id, emp_name, dept_id, manager_id, salary, hire_date |
+| **employees** | emp_id, emp_name, dept_id, manager_id, hire_date |
 | **departments** | dept_id, dept_name, location_id |
-| **locations** | location_id, city, country |
+| **locations** | location_id, city |
 
 ---
 
