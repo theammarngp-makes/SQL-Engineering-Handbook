@@ -1,0 +1,129 @@
+name: ✨ Feature Request
+description: Suggest a new SQL topic, example, or learning resource
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # ✨ Feature Request
+        
+        Help us improve the SQL Engineering Handbook! We'd love to hear your suggestions.
+        
+  - type: textarea
+    id: problem
+    attributes:
+      label: "🎯 Problem Statement"
+      description: "Describe the problem or gap you've identified"
+      placeholder: "Currently, the handbook doesn't cover [topic]. This is important for beginners because..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: "💡 Proposed Solution"
+      description: "How should this feature work?"
+      placeholder: |
+        Add a new section covering:
+        - [Concept 1]
+        - [Concept 2]
+        With real-world examples and interview questions
+    validations:
+      required: true
+      
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "🔄 Alternative Approaches"
+      description: "Are there other ways to solve this?"
+      placeholder: "Alternative 1: ... | Alternative 2: ..."
+      
+  - type: dropdown
+    id: sql_topic
+    attributes:
+      label: "📚 SQL Topic Category"
+      description: "Which SQL topic does this relate to?"
+      options:
+        - "Fundamentals (SELECT, WHERE, ORDER BY, etc.)"
+        - "Aggregations (GROUP BY, aggregate functions)"
+        - "JOINs (Inner, Left, Right, Full, Cross)"
+        - "Subqueries & Correlated Subqueries"
+        - "Common Table Expressions (CTEs)"
+        - "CASE Statements & Conditional Logic"
+        - "Window Functions (ROW_NUMBER, RANK, LAG/LEAD)"
+        - "Query Optimization & Performance Tuning"
+        - "Advanced Analytics (CLV, Cohort, Retention)"
+        - "Database Design & Schema Optimization"
+        - "Transactions & Data Integrity"
+        - "Other/Cross-cutting"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: "📊 Difficulty Level"
+      description: "What skill level is this targeting?"
+      options:
+        - "🟢 Beginner (No SQL experience needed)"
+        - "🟡 Intermediate (Knows fundamentals and JOINs)"
+        - "🔴 Advanced (Knows window functions and optimization)"
+        - "📈 All Levels (Progressive complexity)"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: educational_value
+    attributes:
+      label: "📖 Educational Value"
+      description: "Why is this important to learn?"
+      options:
+        - "🎯 Critical for data analyst interviews"
+        - "💼 Commonly used in real-world analytics"
+        - "🚀 Helps advance SQL mastery"
+        - "📊 Required for specific business use cases"
+        - "🧠 Conceptually important foundation"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: example_use_case
+    attributes:
+      label: "🏢 Real-World Use Case"
+      description: "Can you provide a concrete example of when this would be used?"
+      placeholder: "Ex: A company needs to calculate customer lifetime value (CLV) for retention marketing..."
+      
+  - type: textarea
+    id: sample_query
+    attributes:
+      label: "💻 Sample SQL Query (Optional)"
+      description: "If applicable, provide a sample query showing what you envision"
+      placeholder: "SELECT ... FROM ... WHERE ..."
+      render: sql
+      
+  - type: textarea
+    id: learning_resources
+    attributes:
+      label: "📚 Reference Resources"
+      description: "Links to external resources, documentation, or articles"
+      placeholder: "https://example.com/learn-this-topic"
+      
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "📝 Additional Context"
+      description: "Anything else we should know?"
+      placeholder: "This is related to issue #X | This would complement the existing section on..."
+      
+  - type: checkboxes
+    id: contribution_interest
+    attributes:
+      label: "🤝 Can You Contribute?"
+      description: "Would you be interested in helping with this feature?"
+      options:
+        - label: "I'm interested in contributing this feature"
+          required: false
+        - label: "I'd like to help review/test this feature"
+          required: false

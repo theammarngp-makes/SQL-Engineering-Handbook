@@ -1,0 +1,140 @@
+name: 📖 Documentation Improvement
+description: Report issues with explanations, clarity, or missing content
+title: "[DOCS] "
+labels: ["documentation", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 📖 Documentation Improvement
+        
+        Help us make the handbook clearer and more helpful for learners!
+        
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: "🔍 Issue Type"
+      description: "What kind of documentation issue is this?"
+      options:
+        - "❌ Broken or outdated link"
+        - "🤔 Unclear or confusing explanation"
+        - "✏️ Typo or grammar error"
+        - "📝 Missing code example"
+        - "🎯 Missing explanation or context"
+        - "🔗 Inconsistent formatting or structure"
+        - "📚 Missing related resources or references"
+        - "🐛 Incorrect SQL syntax or logic in explanation"
+        - "📊 Misleading or incorrect diagram/table"
+        - "🎓 Missing learning objectives or difficulty indicator"
+    validations:
+      required: true
+      
+  - type: input
+    id: file_affected
+    attributes:
+      label: "📁 File Path or Section"
+      description: "Which file or section needs improvement?"
+      placeholder: "Ex: 03_Joins/inner_join_examples.sql or Section 02_Aggregations/README.md"
+    validations:
+      required: true
+      
+  - type: input
+    id: line_numbers
+    attributes:
+      label: "📍 Line Numbers (Optional)"
+      description: "If applicable, specify line numbers where the issue is"
+      placeholder: "Lines 42-58 or Section heading 'Intermediate Concepts'"
+      
+  - type: textarea
+    id: current_content
+    attributes:
+      label: "📋 Current Content"
+      description: "Copy the problematic text or code here"
+      placeholder: "Paste the exact text/code that needs improvement"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: "⚠️ What's the Problem?"
+      description: "Explain what's unclear, incorrect, or missing"
+      placeholder: |
+        The explanation is confusing because...
+        The code example doesn't work because...
+        This section is missing... 
+        The link is broken because..."
+      
+    validations:
+      required: true
+      
+  - type: textarea
+    id: suggested_improvement
+    attributes:
+      label: "✅ Suggested Improvement"
+      description: "What should the text, code, or explanation be?"
+      placeholder: "The explanation should be... | The code should be... | We should add..."
+      
+  - type: dropdown
+    id: grammar_check
+    attributes:
+      label: "✏️ Grammar & Language"
+      description: "Is this a grammar/language issue?"
+      options:
+        - "No grammar issues"
+        - "Yes, there's a grammar/spelling error"
+        - "Unclear wording/phrasing"
+        - "Inconsistent terminology"
+      
+  - type: checkboxes
+    id: broken_links
+    attributes:
+      label: "🔗 Broken Links"
+      description: "If reporting a broken link:"
+      options:
+        - label: "I've verified the link is broken"
+          required: false
+        - label: "I found a better replacement link"
+          required: false
+          
+  - type: input
+    id: replacement_link
+    attributes:
+      label: "🔗 Replacement Link (Optional)"
+      description: "If you found a better resource, provide the URL"
+      placeholder: "https://..."
+      
+  - type: textarea
+    id: code_example_improvement
+    attributes:
+      label: "💻 Improved Code Example (Optional)"
+      description: "If suggesting a better code example, provide it here"
+      placeholder: "SELECT ... FROM ... WHERE ..."
+      render: sql
+      
+  - type: textarea
+    id: learning_impact
+    attributes:
+      label: "🎓 Impact on Learning"
+      description: "How does this issue affect learners?"
+      placeholder: "This confuses beginners because... | This prevents learners from understanding... | This would help because..."
+      
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "📝 Additional Context"
+      description: "Any other information?"
+      placeholder: "This relates to issue #X | This affects the learning path for... | I found similar issues in..."
+      
+  - type: dropdown
+    id: fix_contribution
+    attributes:
+      label: "🤝 Can You Help Fix This?"
+      description: "Are you interested in contributing this fix?"
+      options:
+        - "No, just reporting"
+        - "Yes, I can submit a fix"
+        - "Maybe, with guidance"
+    validations:
+      required: true

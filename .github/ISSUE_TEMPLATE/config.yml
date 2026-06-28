@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Question or Discussion
+    url: https://github.com/theammarngp-makes/SQL-Engineering-Handbook/discussions
+    about: Ask questions or start discussions about SQL concepts
+  - name: 📚 Learning Resources
+    url: https://github.com/theammarngp-makes/SQL-Engineering-Handbook#🚀-how-to-use-this-repository
+    about: Browse the handbook structure and learning paths
+  - name: 🔗 Report Security Issue
+    url: https://github.com/theammarngp-makes/SQL-Engineering-Handbook/security/advisories
+    about: Please report security vulnerabilities responsibly

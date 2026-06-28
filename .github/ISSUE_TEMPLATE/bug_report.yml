@@ -1,0 +1,158 @@
+name: 🐛 Bug Report
+description: Report an error in SQL examples, explanations, or schemas
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! 🙏
+        
+        Please provide detailed information to help us identify and fix the issue quickly.
+        
+  - type: textarea
+    id: description
+    attributes:
+      label: "📝 Description"
+      description: "A clear and concise description of what the bug is"
+      placeholder: "Ex. The query in section 03_Joins produces incorrect results when..."
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "🔴 Severity Level"
+      description: "How critical is this bug?"
+      options:
+        - "🔴 Critical (Query crashes or produces wrong results)"
+        - "🟠 High (Query works but has significant issues)"
+        - "🟡 Medium (Minor logic error or misleading explanation)"
+        - "🟢 Low (Typo or formatting issue)"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: sql_engine
+    attributes:
+      label: "🗄️ SQL Engine"
+      description: "Which database system?"
+      options:
+        - "MySQL"
+        - "PostgreSQL"
+        - "SQLite"
+        - "SQL Server"
+        - "Other (please specify)"
+        - "Not specific to engine"
+    validations:
+      required: true
+      
+  - type: input
+    id: sql_version
+    attributes:
+      label: "📌 SQL Version"
+      description: "Ex: MySQL 8.0.34 or PostgreSQL 15.2"
+      placeholder: "MySQL 8.0+ / PostgreSQL 14+"
+      
+  - type: input
+    id: os
+    attributes:
+      label: "💻 Operating System"
+      description: "Where you encountered the bug (Windows, macOS, Linux, etc.)"
+      placeholder: "Ex: Windows 11, macOS Sonoma, Ubuntu 22.04"
+      
+  - type: input
+    id: client_tool
+    attributes:
+      label: "🛠️ SQL Client Tool"
+      description: "Which tool were you using? (MySQL Workbench, DBeaver, pgAdmin, etc.)"
+      placeholder: "Ex: MySQL Workbench 8.0, DBeaver 23.0, VS Code"
+      
+  - type: input
+    id: branch_or_file
+    attributes:
+      label: "🌳 Repository Branch/File"
+      description: "Which file or section contains the bug?"
+      placeholder: "Ex: 03_Joins/inner_join_examples.sql or main branch"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: "🔍 Steps to Reproduce"
+      description: "Exact steps to reproduce the bug"
+      placeholder: |
+        1. Open file: XX_Topic/file.sql
+        2. Execute query starting at line X
+        3. See error/unexpected result
+        4. Expected behavior should be..."
+      value: "1. \n2. \n3. \n"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: "✅ Expected Behavior"
+      description: "What should happen?"
+      placeholder: "The query should return X rows with Y columns showing..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: "❌ Actual Behavior"
+      description: "What actually happened?"
+      placeholder: "The query returns Z rows with incorrect values..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: error_message
+    attributes:
+      label: "⚠️ Error Message/Output"
+      description: "Paste error messages, query output, or screenshots"
+      placeholder: "Paste the complete error or output here"
+      render: sql
+      
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "📸 Screenshots or Recordings"
+      description: "Optional: Add screenshots, screencasts, or database output"
+      placeholder: "Paste images, links to recordings, or sample output here"
+      
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "📋 Additional Context"
+      description: "Any other information relevant to the bug?"
+      placeholder: "Ex: This affects the learning path because... | This is used in interview prep section..."
+      
+  - type: dropdown
+    id: fix_willingness
+    attributes:
+      label: "🤝 Willing to Submit a Fix?"
+      description: "Can you help fix this bug?"
+      options:
+        - "No, I'm reporting only"
+        - "Yes, I can submit a fix"
+        - "Maybe, with guidance"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: before_submitting
+    attributes:
+      label: "✨ Before Submitting"
+      description: "Please ensure:"
+      options:
+        - label: "I have checked if this bug was already reported"
+          required: true
+        - label: "I have verified the bug is reproducible with the given steps"
+          required: true
+        - label: "I am using the latest version of the repository"
+          required: false
