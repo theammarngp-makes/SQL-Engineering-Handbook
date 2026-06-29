@@ -22,7 +22,7 @@
 - [Business Applications](#-business-applications)
 - [Best Practices](#-best-practices)
 - [Prerequisites](#-prerequisites)
-- [How to Use This Module](#-how-to-use-this-module)
+- [How to Use This Module](how-to-use-this-module)
 - [Next Section](#-next-section)
 ---
  
@@ -66,7 +66,7 @@ Each .md file explains the *concept, syntax, and reasoning, while the paired .sq
  
 ## 📂 Folder Structure
  
-
+```
 02_Aggregations/
 │
 ├── README.md
@@ -82,7 +82,7 @@ Each .md file explains the *concept, syntax, and reasoning, while the paired .sq
 ├── 05_GROUP_BY.sql
 ├── 06_HAVING.md
 └── 06_HAVING.sql
-
+```
  
 ---
  
@@ -90,14 +90,14 @@ Each .md file explains the *concept, syntax, and reasoning, while the paired .sq
  
 Work through the single-value aggregates first, then layer on grouping:
  
-
+```
 1. COUNT()      → how many rows are there?
 2. SUM()        → what's the total?
 3. AVG()        → what's the typical value?
 4. MIN() / MAX() → what are the extremes?
 5. GROUP BY     → how do these answers change per category?
 6. HAVING       → which of those categories actually matter?
-
+```
  
 ---
  
