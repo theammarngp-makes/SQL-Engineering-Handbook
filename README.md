@@ -1,4 +1,10 @@
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:0f172a,100:2563eb&text=SQL%20Engineering%20Handbook&fontSize=45&fontColor=ffffff&animation=fadeIn"/>
+</p>
+
+<p align="center">
+
+  <img src="assets/banners/readme-banner.png" alt="SQL Engineering Handbook Banner" width="100%">
+
+</p>
 
 # SQL Engineering Handbook
 
@@ -19,6 +25,7 @@
 
 * [ What This Repository Is](#-what-this-repository-is)
 * [ What You'll Learn](#-what-youll-learn)
+* [ SQL-Engineering-Roadmap](SQL-Engineering-Roadmap)
 * [ Repository Structure](#️-repository-structure)
 * [ Custom Database Schema](#️-custom-database-schema)
 * [ How to Use This Repository](#-how-to-use-this-repository)
@@ -31,8 +38,11 @@
 * [ Progress Tracker](#-progress-tracker)
 * [ Contributing](#-contributing)
 * [ License](#-license)
-* [ Author](#-author)
+* [ Author](author)
 * [ Support](#-support)
+  
+--- 
+
 ## 🎯 What This Repository Is
 
 **SQL Engineering Handbook** is a **production-ready learning resource** for aspiring and practicing Data Analysts who need mastery over SQL—from foundational SELECT statements to advanced window functions and business analytics.
@@ -48,7 +58,6 @@ Unlike tutorial blogs, this is a **structured handbook with 100+ real-world SQL 
 **Perfect for:** Data Analyst interviews, portfolio building, SQL upskilling, or as a desk reference during work.
 
 ---
-
 ## 📚 What You'll Learn
 
 ### Beginner → Intermediate → Advanced Skills
@@ -60,8 +69,8 @@ Unlike tutorial blogs, this is a **structured handbook with 100+ real-world SQL 
 | **Advanced** | Window Functions, Recursive CTEs, Query Optimization, Views |
 | **Analytics** | Customer Segmentation, Revenue Analysis, CLV, Retention, Cohort Analysis |
 
+The roadmap below shows the recommended learning order from SQL fundamentals to production-grade analytics engineering.
 ### Coverage
-
 ```
 ✅ SQL Fundamentals (5 topics)
 ✅ Aggregations & Grouping (6 topics)
@@ -72,8 +81,13 @@ Unlike tutorial blogs, this is a **structured handbook with 100+ real-world SQL 
 🔄 Query Optimization & Performance Tuning
 🔄 Advanced Business Analytics
 ```
-
 ---
+# 📚 SQL Engineering Roadmap
+
+![Roadmap](assets/diagrams/sql-roadmap.png)
+
+The roadmap below shows the recommended learning order from SQL fundamentals to production-grade analytics engineering.
+
 
 ## 🏗️ Repository Structure
 
@@ -299,4 +313,5 @@ Your support helps this resource reach more people!
 
 <img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:0f172a,100:2563eb"/>
 
+⭐ If this project helped you, please consider starring the repository.
 **Happy SQL learning! 🚀**
