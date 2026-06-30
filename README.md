@@ -25,7 +25,7 @@
 
 * [ What This Repository Is](#-what-this-repository-is)
 * [ What You'll Learn](#-what-youll-learn)
-* [ SQL-Engineering-Roadmap](SQL-Engineering-Roadmap)
+* [ SQL-Engineering-Roadmap](#-SQL-Engineering-Roadmap)
 * [ Repository Structure](#️-repository-structure)
 * [ Custom Database Schema](#️-custom-database-schema)
 * [ How to Use This Repository](#-how-to-use-this-repository)
@@ -38,7 +38,7 @@
 * [ Progress Tracker](#-progress-tracker)
 * [ Contributing](#-contributing)
 * [ License](#-license)
-* [ Author](author)
+* [ Author](#-author)
 * [ Support](#-support)
   
 --- 
