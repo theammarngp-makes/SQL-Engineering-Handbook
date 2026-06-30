@@ -15,7 +15,24 @@
 </p>
 
 ---
+##  Table of Contents
 
+* [ What This Repository Is](#-what-this-repository-is)
+* [ What You'll Learn](#-what-youll-learn)
+* [ Repository Structure](#️-repository-structure)
+* [ Custom Database Schema](#️-custom-database-schema)
+* [ How to Use This Repository](#-how-to-use-this-repository)
+* [ What Makes This Different](#-what-makes-this-different)
+* [ Learning Path](#-learning-path)
+* [ Sample Queries](#-sample-queries)
+* [ Tech Stack](#️-tech-stack)
+* [ How to Get the Most Out of This](#-how-to-get-the-most-out-of-this)
+* [ Real-World Applications](#-real-world-applications)
+* [ Progress Tracker](#-progress-tracker)
+* [ Contributing](#-contributing)
+* [ License](#-license)
+* [ Author](#-author)
+* [ Support](#-support)
 ## 🎯 What This Repository Is
 
 **SQL Engineering Handbook** is a **production-ready learning resource** for aspiring and practicing Data Analysts who need mastery over SQL—from foundational SELECT statements to advanced window functions and business analytics.
