@@ -17,28 +17,28 @@ The SQL Engineering Handbook is a **production-ready learning resource** for asp
 ### Phase 1: Foundation (COMPLETE)
 - ✅ **Module 1: Fundamentals** (5 topics) - Basic SQL queries
   - SELECT, WHERE, ORDER BY, LIMIT, ALIAS
-  - ~20 examples with explanations
+  - examples 
   
 - ✅ **Module 2: Aggregations** (6 topics) - Data summarization
   - COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING
-  - ~25 examples with real-world business context
+  - examples 
   
-- ✅ **Module 3: Joins** (5 join types) - Multi-table queries
+- ✅ **Module 3: Joins** ( join types) - Multi-table queries
   - INNER, LEFT, RIGHT, FULL OUTER, CROSS
-  - ~30 examples with join diagrams and explanations
+  -  examples with join
 
 ### Phase 2: Intermediate (COMPLETE)
-- ✅ **Module 4: Subqueries** (5 patterns) - Nested query logic
-  - Scalar, Inline Views, Correlated, EXISTS, IN
-  - ~25 examples with performance considerations
+- ✅ **Module 4: Subqueries** (patterns) - simple,
+- complex subqueries with examples
+
   
-- ✅ **Module 5: CASE WHEN** (5 patterns) - Conditional logic
-  - Simple CASE, Searched CASE, Nested CASE
-  - ~20 examples for segmentation and transformations
+- ✅ **Module 5: CASE WHEN** (patterns) - Conditional logic
+  - Simple CASE, Complex CASE , buisness 
+  - examples
   
-- ✅ **Module 6: CTEs** (5 patterns) - Query organization
-  - Basic, Multiple CTEs, Recursive CTEs
-  - ~20 examples with readability comparisons
+- ✅ **Module 6: CTEs** ( patterns) - Query organization
+  - Basic, Multiple CTEs, JOIN CTEs , 
+  - Buisness Related examples
 
 ### Phase 3: Advanced (IN PROGRESS)
 - 🔄 **Module 7: Window Functions** (6 topics) - Analytical queries
@@ -55,7 +55,7 @@ The SQL Engineering Handbook is a **production-ready learning resource** for asp
 
 **Deliverables:**
 - ✅ Complete all 6 window function topics
-- ✅ Add 25+ real-world analytics examples
+- ✅ Add real-world analytics examples
 - ✅ Include performance tuning tips
 - ✅ Interview question bank for window functions
 - ✅ Practice challenges and solutions
@@ -73,7 +73,7 @@ The SQL Engineering Handbook is a **production-ready learning resource** for asp
   - Query refactoring patterns
   - Common performance pitfalls
   - Benchmark techniques
-  - ~20 before/after optimization examples
+  - before/after optimization examples
 
 **Focus Areas:**
 - Index selection and impact
