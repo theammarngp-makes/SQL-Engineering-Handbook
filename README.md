@@ -1,208 +1,315 @@
-</p>
-
 <p align="center">
-
   <img src="assets/banners/readme-banner.png" alt="SQL Engineering Handbook Banner" width="100%">
-
 </p>
 
-# SQL Engineering Handbook
+<h1 align="center">SQL Engineering Handbook</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=25&duration=3000&pause=1000&center=true&vCenter=true&width=900&lines=SQL+Engineering+Handbook;Advanced+SQL+for+Data+Analytics;Complete+Learning+Guide" />
+  <b>A production-style SQL curriculum — from your first SELECT to analytics engineering, interview prep, and real business case studies.</b>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/SQL-MySQL-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Data-Analytics-success?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Level-Beginner%20to%20Advanced-orange?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"/>
-  <img src="https://img.shields.io/github/stars/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=22&duration=3000&pause=1000&center=true&vCenter=true&width=850&lines=21+Structured+SQL+Modules;Real+Datasets+%2B+Projects+%2B+Interview+Prep;Built+in+Public%2C+Documented+Like+Production+Code" alt="Typing SVG" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&color=2563eb" />
+  <img src="https://img.shields.io/github/forks/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&color=2563eb" />
+  <img src="https://img.shields.io/github/last-commit/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&color=0f172a" />
+  <img src="https://img.shields.io/badge/status-actively--building-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/modules-9%20of%2021%20complete-2563eb?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
+</p>
+
+<p align="center">
+  <a href="#who-this-is-for">Who It's For</a> ·
+  <a href="#what-makes-it-different">Why Different</a> ·
+  <a href="#learning-roadmap">Roadmap</a> ·
+  <a href="#repository-structure">Structure</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#documentation-hub">Docs</a> ·
+  <a href="#contributing">Contributing</a> ·
+  <a href="#faq">FAQ</a>
 </p>
 
 ---
-##  Table of Contents
 
-* [ What This Repository Is](#-what-this-repository-is)
-* [ What You'll Learn](#-what-youll-learn)
-* [ SQL-Engineering-Roadmap](#-SQL-Engineering-Roadmap)
-* [ Repository Structure](#️-repository-structure)
-* [ Custom Database Schema](#️-custom-database-schema)
-* [ How to Use This Repository](#-how-to-use-this-repository)
-* [ What Makes This Different](#-what-makes-this-different)
-* [ Learning Path](#-learning-path)
-* [ Sample Queries](#-sample-queries)
-* [ Tech Stack](#️-tech-stack)
-* [ How to Get the Most Out of This](#-how-to-get-the-most-out-of-this)
-* [ Real-World Applications](#-real-world-applications)
-* [ Progress Tracker](#-progress-tracker)
-* [ Contributing](#-contributing)
-* [ License](#-license)
-* [ Author](#-author)
-* [ Support](#-support)
-  
---- 
+## Who This Is For
 
-## 🎯 What This Repository Is
+If you're an aspiring or practicing **Data Analyst** or **Analytics Engineer** who wants a structured path from SQL fundamentals to real business analytics — not another disconnected list of `.sql` files — this handbook is built for you.
 
-**SQL Engineering Handbook** is a **production-ready learning resource** for aspiring and practicing Data Analysts who need mastery over SQL—from foundational SELECT statements to advanced window functions and business analytics.
-
-Unlike tutorial blogs, this is a **structured handbook with 100+ real-world SQL queries**, each documented with:
-- ✅ Business problem & context
-- ✅ Step-by-step SQL solution
-- ✅ Performance considerations
-- ✅ Common mistakes & how to avoid them
-- ✅ Interview tips & follow-up questions
-- ✅ Practice challenges
-
-**Perfect for:** Data Analyst interviews, portfolio building, SQL upskilling, or as a desk reference during work.
-
----
-## 📚 What You'll Learn
-
-### Beginner → Intermediate → Advanced Skills
-
-| Level | Topics |
-|-------|--------|
-| **Beginner** | SELECT, WHERE, ORDER BY, DISTINCT, LIMIT, ALIAS |
-| **Intermediate** | GROUP BY, HAVING, CASE statements, JOINS, Subqueries, CTEs |
-| **Advanced** | Window Functions, Recursive CTEs, Query Optimization, Views |
-| **Analytics** | Customer Segmentation, Revenue Analysis, CLV, Retention, Cohort Analysis |
-
-The roadmap below shows the recommended learning order from SQL fundamentals to production-grade analytics engineering.
-### Coverage
-```
-✅ SQL Fundamentals (5 topics)
-✅ Aggregations & Grouping (6 topics)
-✅ JOINS (Inner, Left, Right, Full, Cross)
-✅ Subqueries & Common Table Expressions
-✅ CASE When Statements
-🔄 Window Functions (ROW_NUMBER, RANK, LAG/LEAD, Running Totals)
-🔄 Query Optimization & Performance Tuning
-🔄 Advanced Business Analytics
-```
----
-# 📚 SQL Engineering Roadmap
-
-![Roadmap](assets/diagrams/sql-roadmap.png)
-
-The roadmap below shows the recommended learning order from SQL fundamentals to production-grade analytics engineering.
-
-
-## 🏗️ Repository Structure
-
-```
-00_Resources/          Links to SQL tools, documentation, best practices
-01_Fundamentals/       Core SQL queries (SELECT, WHERE, ORDER BY, etc.)
-02_Aggregations/       GROUP BY, aggregate functions, HAVING clauses
-03_Joins/              JOIN types with real-world use cases
-04_Subqueries/         Scalar, inline, correlated subqueries
-05_CASE_WHEN/          Conditional logic & data transformations
-06_CTEs/               Common Table Expressions & recursion
-07_Window_Functions/   Advanced analytical functions
-08_Interview_Questions/50+ real interview prep questions
-09_Business_Case_Studies/ End-to-end analytics projects
-10_Schema/             Custom database schema & sample data
-```
+> **Honest status:** Modules **00–09** (Foundations → Date Functions) are complete and stable today. Modules **10–20**, plus `datasets/`, `projects/`, `exercises/`, and `cheatsheets/`, are actively being built module by module. Live status always lives in [`ROADMAP.md`](ROADMAP.md) — this README won't claim more than what's actually shipped.
 
 ---
 
-## 🗂️ Custom Database Schema
+## What Makes It Different
 
-All queries use a **production-like database schema** (employees, departments, locations) so you practice on realistic data relationships:
-
-```
-employees → departments → locations
-```
-
-| Table | Columns |
-|-------|---------|
-| **employees** | emp_id, emp_name, dept_id, manager_id, hire_date |
-| **departments** | dept_id, dept_name, location_id |
-| **locations** | location_id, city |
+| | Typical SQL repo | SQL Engineering Handbook |
+|---|---|---|
+| 🗄️ Data | One generic sample table | Real-world-style datasets across HR, e-commerce, sales, finance, healthcare |
+| 📖 Context | Bare query, no explanation | Business problem stated before every solution |
+| ⚠️ Failure modes | Rarely documented | Common mistakes called out per pattern |
+| 🎯 Interview angle | Absent | Dedicated interview-prep module + question bank |
+| 📅 Progress | Static snapshot | Public roadmap, versioned via [`CHANGELOG.md`](CHANGELOG.md) |
+| 🤝 Contribution | Solo repo | Structured community process via [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 
 ---
 
-## 🚀 How to Use This Repository
+## Feature Highlights
 
-### Option 1: Learn Sequentially
-Start with **Fundamentals** and progress through advanced topics:
+<table>
+<tr>
+<td width="33%" valign="top">
+
+### 🏗️ Production SQL
+Every completed module follows one format: **business context → SQL solution → explanation → common mistakes → interview follow-ups → practice challenge.**
+
+</td>
+<td width="33%" valign="top">
+
+### 📊 Real Datasets
+Practice is built around real-world-style datasets (HR, e-commerce, sales, finance, healthcare) instead of one toy table, so the SQL transfers directly to a job.
+
+</td>
+<td width="33%" valign="top">
+
+### 🎯 Interview Ready
+`17_SQL_INTERVIEW_QUESTIONS/` and `exercises/interview/` target the questions that come up most. Until they ship, `08_WINDOW_BUSINESS_CASES/` is the closest match.
+
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top">
+
+### 🧠 Analytics Engineering
+Modules progress from syntax → analytical SQL (windows, CTEs) → engineering concerns (views, indexes, query optimization).
+
+</td>
+<td width="33%" valign="top">
+
+### 🧪 Exercises & Projects
+`exercises/` (beginner → interview) and `projects/` (HR analytics, e-commerce, pizza sales, Olist, NagpurLens) turn concepts into a portfolio.
+
+</td>
+<td width="33%" valign="top">
+
+### 📚 Documentation Quality
+Architecture, style guide, roadmap, and changelog are first-class files — not afterthoughts — so the repo stays maintainable as it grows.
+
+</td>
+</tr>
+</table>
+
+---
+
+## Learning Roadmap
+
+```mermaid
+flowchart LR
+    subgraph Foundations
+    A[00 Sample Database] --> B[01 Fundamentals]
+    B --> C[02 Aggregations]
+    C --> D[03 Joins]
+    end
+    subgraph Core_SQL[Core SQL]
+    D --> E[04 CASE WHEN]
+    E --> F[05 Subqueries]
+    F --> G[06 CTEs]
+    end
+    subgraph Analytical_SQL[Analytical SQL]
+    G --> H[07 Window Functions]
+    H --> I[08 Window Business Cases]
+    I --> J[09 Date Functions]
+    end
+    subgraph Engineering_SQL[Engineering SQL]
+    J --> K[10-13 Strings, Nulls, Advanced Aggs, Set Ops]
+    K --> L[14-16 Views, Indexes, Query Optimization]
+    end
+    subgraph Career_Ready[Career Ready]
+    L --> M[17 Interview Questions]
+    M --> N[18 Business Case Studies]
+    N --> O[19 Projects]
+    O --> P[20 Cheatsheet]
+    end
 ```
-01_Fundamentals → 02_Aggregations → 03_Joins → ... → 09_Business_Case_Studies
+
+<details>
+<summary><b>Full module-by-module status</b></summary>
+<br>
+
+| # | Module | Status |
+|---|---|---|
+| 00 | Sample Database | ✅ Complete |
+| 01 | Fundamentals | ✅ Complete |
+| 02 | Aggregations | ✅ Complete |
+| 03 | Joins | ✅ Complete |
+| 04 | CASE WHEN | ✅ Complete |
+| 05 | Subqueries | ✅ Complete |
+| 06 | CTEs | ✅ Complete |
+| 07 | Window Functions | ✅ Complete |
+| 08 | Window Function Business Cases | ✅ Complete |
+| 09 | Date Functions | ✅ Complete |
+| 10 | String Functions | 🔄 In Progress |
+| 11 | NULL Handling & Data Cleaning | 🔄 In Progress |
+| 12 | Advanced Aggregations | 🔄 In Progress |
+| 13 | Set Operators | 🔄 In Progress |
+| 14 | Views | 🔄 In Progress |
+| 15 | Indexes | 🔄 In Progress |
+| 16 | Query Optimization | 🔄 In Progress |
+| 17 | SQL Interview Questions | 🔄 In Progress |
+| 18 | SQL Business Case Studies | 🔄 In Progress |
+| 19 | SQL Projects | 🔄 In Progress |
+| 20 | SQL Cheatsheet | 🔄 In Progress |
+
+**Legend:** ✅ Complete &nbsp;·&nbsp; 🔄 In Progress &nbsp;·&nbsp; 📋 Planned
+
+Live tracking always in [`ROADMAP.md`](ROADMAP.md).
+</details>
+
+---
+
+## Repository Structure
+
+```text
+SQL-Engineering-Handbook/
+│
+├── README.md                          You are here
+├── ROADMAP.md                         Live module-by-module progress
+├── CHANGELOG.md                       Version history
+├── ARCHITECTURE.md                    Why the repo is organized this way
+├── STYLE_GUIDE.md                     Format every module/query follows
+├── CONTRIBUTING.md                    How to contribute
+├── CODE_OF_CONDUCT.md                 Community standards
+├── SECURITY.md                        How to report security concerns
+├── FAQ.md                             Common questions
+├── LICENSE                            MIT
+│
+├── .github/                           Issue/PR templates, CI workflows, CODEOWNERS
+│   ├── ISSUE_TEMPLATE/
+│   ├── workflows/
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── CODEOWNERS
+│
+├── assets/                            Banners, diagrams, screenshots, logos
+│   ├── banners/
+│   ├── diagrams/
+│   ├── screenshots/
+│   ├── logos/
+│   └── gifs/
+│
+├── datasets/                          Real-world practice datasets
+│   ├── employee_management/
+│   ├── ecommerce/
+│   ├── sales/
+│   ├── finance/
+│   ├── healthcare/
+│   └── nagpurlens/
+│
+├── resources/                         Curated external learning material
+│   ├── books.md
+│   ├── blogs.md
+│   ├── documentation.md
+│   ├── youtube.md
+│   └── interview-resources.md
+│
+├── cheatsheets/                        Quick-reference syntax guides
+│   ├── joins/
+│   ├── ctes/
+│   ├── windows/
+│   ├── dates/
+│   ├── strings/
+│   └── aggregation/
+│
+├── exercises/                          Practice problems by difficulty
+│   ├── beginner/
+│   ├── intermediate/
+│   ├── advanced/
+│   └── interview/
+│
+├── projects/                           End-to-end portfolio projects
+│   ├── hr-analytics/
+│   ├── ecommerce/
+│   ├── pizza-sales/
+│   ├── olist/
+│   └── nagpurlens/
+│
+├── 00_SAMPLE_DATABASE/                 ✅ Practice schema + seed data
+├── 01_FUNDAMENTALS/                    ✅ SELECT, WHERE, ORDER BY, LIMIT
+├── 02_AGGREGATIONS/                    ✅ GROUP BY, HAVING, aggregate functions
+├── 03_JOINS/                           ✅ Inner, Left, Right, Full, Cross
+├── 04_CASE_WHEN/                       ✅ Conditional logic & transforms
+├── 05_SUBQUERIES/                      ✅ Scalar, inline, correlated
+├── 06_CTEs/                            ✅ Common Table Expressions & recursion
+├── 07_WINDOW_FUNCTIONS/                ✅ ROW_NUMBER, RANK, LAG/LEAD
+├── 08_WINDOW_BUSINESS_CASES/           ✅ Applied window function scenarios
+├── 09_DATE_FUNCTIONS/                  ✅ Date arithmetic, formatting, ranges
+├── 10_STRING_FUNCTIONS/                🔄 In progress
+├── 11_NULL_HANDLING_AND_DATA_CLEANING/ 🔄 In progress
+├── 12_ADVANCED_AGGREGATIONS/           🔄 In progress
+├── 13_SET_OPERATORS/                   🔄 In progress
+├── 14_VIEWS/                           🔄 In progress
+├── 15_INDEXES/                         🔄 In progress
+├── 16_QUERY_OPTIMIZATION/              🔄 In progress
+├── 17_SQL_INTERVIEW_QUESTIONS/         🔄 In progress
+├── 18_SQL_BUSINESS_CASE_STUDIES/       🔄 In progress
+├── 19_SQL_PROJECTS/                    🔄 In progress
+└── 20_SQL_CHEATSHEET/                  🔄 In progress
 ```
 
-### Option 2: Topic-Based Deep Dive
-Jump to specific topics based on your needs:
-- Preparing for interviews? → `08_Interview_Questions/`
-- Want to master Window Functions? → `07_Window_Functions/`
-- Building an analytics portfolio? → `09_Business_Case_Studies/`
-
-### Option 3: Use as a Desk Reference
-Bookmark this repo and search for SQL patterns you need on the job.
+Every numbered module is self-contained: read its own README, run its queries against the relevant dataset, then attempt the practice challenge at the end. See [`ARCHITECTURE.md`](ARCHITECTURE.md) for the reasoning behind this layout.
 
 ---
 
-## 💡 What Makes This Different
+## Quick Start
 
-Every file includes:
-1. **Business Context** - Why you'd write this query in the real world
-2. **SQL Solution** - Production-ready, optimized code
-3. **Explanation** - What each part does and why
-4. **Common Mistakes** - What NOT to do and why it fails
-5. **Interview Tips** - Follow-up questions you might get asked
-6. **Practice Questions** - Test your understanding
+```bash
+# 1. Clone the repository
+git clone https://github.com/theammarngp-makes/SQL-Engineering-Handbook.git
+cd SQL-Engineering-Handbook
 
-This is **not just code snippets**—it's a complete learning system.
+# 2. Load a practice dataset (start with the core sample database)
+mysql -u root -p < 00_SAMPLE_DATABASE/schema.sql
 
----
+# 3. Start with Fundamentals, or jump to any completed module
+cd 01_FUNDAMENTALS
+```
 
-## 🎓 Learning Path
-
-### Week 1-2: Foundations
-- Master SELECT, WHERE, ORDER BY
-- Understand filtering and sorting
-- Practice with simple queries
-
-### Week 3-4: Aggregation & Grouping
-- Learn GROUP BY and aggregate functions
-- Handle complex filtering with HAVING
-- Build reporting queries
-
-### Week 5-6: Joins & Relationships
-- Inner, Left, Right, Full joins
-- Solve multi-table problems
-- Understand data relationships
-
-### Week 7-8: Advanced Queries
-- Subqueries and CTEs
-- Window functions for analytics
-- Query optimization
-
-### Week 9-10: Real-World Analytics
-- Customer segmentation
-- Revenue analysis
-- Business intelligence queries
+**Database:** MySQL 8.0+. Queries are ANSI-standard where possible, with MySQL-specific notes called out — most run on PostgreSQL with minor syntax changes.
 
 ---
 
-## 🔍 Sample Queries
+## Learning Tracks
 
-### Find Top Performing Departments (Intermediate)
+<details>
+<summary><b>📘 Sequential learner</b> — go module by module</summary>
+<br>
+
+Work straight through `00_SAMPLE_DATABASE` → `09_DATE_FUNCTIONS` (currently complete), then continue into `10`–`20` as they release. No prior SQL knowledge assumed.
+</details>
+
+<details>
+<summary><b>🎯 Interview sprint</b> — targeted prep</summary>
+<br>
+
+Once live, `17_SQL_INTERVIEW_QUESTIONS/` and `exercises/interview/` will be the fastest path. Until then, `07_WINDOW_FUNCTIONS/` and `08_WINDOW_BUSINESS_CASES/` cover the most commonly tested interview topic.
+</details>
+
+<details>
+<summary><b>📚 Desk reference</b> — search when you need a pattern</summary>
+<br>
+
+Bookmark the repo and jump directly to the numbered module matching the syntax you need on the job.
+</details>
+
+---
+
+## Sample Query
+
+**Salary ranking with window functions** *(from `07_WINDOW_FUNCTIONS/`)*
+
 ```sql
-SELECT 
-    dept_name,
-    AVG(salary) AS avg_salary,
-    COUNT(*) AS emp_count
-FROM employees e
-JOIN departments d ON e.dept_id = d.dept_id
-GROUP BY dept_name
-HAVING COUNT(*) > 5
-ORDER BY avg_salary DESC;
-```
-
-### Customer Ranking with Window Functions (Advanced)
-```sql
-SELECT 
+SELECT
     emp_id,
     emp_name,
     salary,
@@ -211,107 +318,79 @@ SELECT
 FROM employees;
 ```
 
-Browse the repo for **100+ more examples** with detailed explanations.
+Every completed module follows this format: business context → SQL solution → explanation → common mistakes → interview follow-ups → practice challenge.
 
 ---
 
-## 🛠️ Tech Stack
+## Documentation Hub
 
-- **Database:** MySQL 8.0+
-- **Language:** SQL (ANSI-standard with MySQL-specific features)
-- **Tools:** Any SQL IDE (MySQL Workbench, DBeaver, SQLiteOnline, etc.)
+| Doc | Purpose |
+|---|---|
+| [`ROADMAP.md`](ROADMAP.md) | Live module-by-module progress and what's next |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | How the repo, datasets, and modules are structured and why |
+| [`STYLE_GUIDE.md`](STYLE_GUIDE.md) | Format every module and query follows |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history of the handbook |
+| [`FAQ.md`](FAQ.md) | Common questions about setup and usage |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute |
+| [`SECURITY.md`](SECURITY.md) | How to report security concerns |
+| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community standards |
 
----
-
-## 📖 How to Get the Most Out of This
-
-1. **Clone or Fork** this repository
-2. **Set up a local MySQL database** (or use SQLiteOnline for no setup)
-3. **Load the schema** from `10_Schema/`
-4. **Pick a topic** and read the queries
-5. **Run the queries** in your SQL IDE
-6. **Modify and experiment** - change WHERE clauses, add new columns, etc.
-7. **Practice the challenge questions** at the end of each section
+**GitHub features:** [Issues](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/issues) for bugs and requests · [Discussions](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/discussions) for questions about a specific query or module.
 
 ---
 
-## ⭐ Real-World Applications
+## Contributing
 
-This handbook prepares you for:
+This project is being built module by module, and contributions are genuinely welcome — new queries, dataset additions, exercises, corrections, or documentation improvements.
 
-- **Data Analyst Interviews** - Master the top 50 SQL questions asked in real interviews
-- **Portfolio Projects** - Build end-to-end analytics projects
-- **Day-to-Day Work** - Reference patterns for common analytics queries
-- **Career Growth** - Progress from junior analyst to SQL expert
-- **Business Intelligence** - Create KPI dashboards and reports
-
----
-
-## 📊 Progress Tracker
-
-| Topic | Status | Practice Difficulty |
-|-------|--------|---------------------|
-| Fundamentals | ✅ Complete | Easy |
-| Aggregations | ✅ Complete | Easy-Medium |
-| Joins | ✅ Complete | Medium |
-| Subqueries | ✅ Complete | Medium |
-| CTEs | ✅ Complete | Medium-Hard |
-| Window Functions | 🔄 In Progress | Hard |
-| Query Optimization | 🔄 In Progress | Hard |
-| Business Analytics | 🔄 In Progress | Hard |
-
----
-
-## 🤝 Contributing
-
-Found a bug? Have a better SQL solution? Want to add interview questions?
-
-**Contributions are welcome!** Please:
 1. Fork the repository
-2. Create a branch for your feature
-3. Add clear documentation and explanations
-4. Submit a pull request
+2. Create a feature branch
+3. Follow the format in [`STYLE_GUIDE.md`](STYLE_GUIDE.md)
+4. Open a pull request using the template in [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
+
+Full standards live in [`CONTRIBUTING.md`](CONTRIBUTING.md). Please review the [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) before participating.
+
+- 🐛 Found a bug? [Open an issue](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/issues)
+- 💬 Question about a query? Start a [Discussion](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/discussions)
+- 🔐 Security concern? See [`SECURITY.md`](SECURITY.md)
 
 ---
 
-## 📝 License
+## FAQ
 
-This project is licensed under the **MIT License** - see the LICENSE file for details.
+**Is this finished?**
+No — and it says so on purpose. Modules 00–09 are complete and stable. 10–20, plus datasets, exercises, projects, and cheatsheets, are actively being built. Check [`ROADMAP.md`](ROADMAP.md) for live status.
 
----
+**Do I need MySQL specifically?**
+Queries are ANSI-standard where possible, with MySQL-specific notes called out. Most run on PostgreSQL with minor syntax changes.
 
-## 👨‍💻 Author
+**Is this beginner-friendly?**
+Yes — start at `01_FUNDAMENTALS/`. It assumes no prior SQL knowledge.
 
-**Mohammad Ammar**  
-Aspiring Data Analyst | SQL Enthusiast | Data Storyteller
+**Can I use this for interview prep only?**
+That's the goal of `17_SQL_INTERVIEW_QUESTIONS/` and `exercises/interview/` once live; until then, `08_WINDOW_BUSINESS_CASES/` is the closest match.
 
-- 🔗 [LinkedIn](https://linkedin.com/in/theammarngp)
-- 🐙 [GitHub](https://github.com/theammarngp-makes)
-- 💼 Building a portfolio of SQL & analytics projects
-
----
-
-## 🙏 Support
-
-If this handbook helped you:
-- ⭐ **Star this repository** to show support
-- 🔗 **Share with aspiring data analysts** on LinkedIn, Reddit, or Twitter
-- 💬 **Leave feedback** in the discussions tab
-- 📢 **Mention it in your blog** or portfolio
-
-Your support helps this resource reach more people!
+More in [`FAQ.md`](FAQ.md).
 
 ---
 
-## 📞 Questions or Feedback?
+## License
 
-- Open an issue for bugs or suggestions
-- Start a discussion for questions about specific queries
-- Tag me [@theammarngp-makes](https://github.com/theammarngp-makes) if you use this in your portfolio
+Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 
 ---
+
+## Author
+
+**Mohammad Ammar**
+Aspiring Data Analyst · SQL Enthusiast · Data Storyteller
+
+[LinkedIn](https://linkedin.com/in/theammarngp) · [GitHub](https://github.com/theammarngp-makes)
+
+---
+
+<p align="center">
+  This handbook is built in public and updated regularly. If it's useful to you, starring the repo helps more learners find it — and following along tracks its progress from here to a full 21-module release.
+</p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:0f172a,100:2563eb"/>
-
-⭐ If this project helped you, please consider starring the repository.
-**Happy SQL learning! 🚀**
