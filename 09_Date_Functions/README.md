@@ -315,11 +315,11 @@ Fluency here is one of the fastest ways to distinguish a candidate who has "lear
 
 ## Module Navigation
 
-| Previous | Current | Next |
-|---|---|---|
-<<<<<<< HEAD
-| [← Module 08:Window_Business_Cases](../08_Window_Business_Cases/README.md) | **Module 09: Date Functions** | [Module 10:String_Functions →](../10_String_Functions/README.md) |
-=======
+| Previous                | Current                        | Next |
+|----------------------------------------------------------------------------|------------------------------|------------------------------------------------------------------|
+
+| [← Module 08:Window_Business_Cases](../08_Window_Business_Cases/README.md) |**Module 09: Date Functions**| [Module 10:String_Functions →](../10_String_Functions/README.md) |
+
 
 
 *Part of the [SQL Engineering Handbook](../README.md) — a production-grade curriculum for engineering SQL the way real companies use it.*
