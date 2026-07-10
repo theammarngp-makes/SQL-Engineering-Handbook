@@ -150,7 +150,7 @@ flowchart LR
 | 07 | Window Functions | ✅ Complete |
 | 08 | Window Function Business Cases | ✅ Complete |
 | 09 | Date Functions | ✅ Complete |
-| 10 | String Functions | 🔄 In Progress |
+| 10 | String Functions | ✅ In Progress |
 | 11 | NULL Handling & Data Cleaning | 🔄 In Progress |
 | 12 | Advanced Aggregations | 🔄 In Progress |
 | 13 | Set Operators | 🔄 In Progress |
