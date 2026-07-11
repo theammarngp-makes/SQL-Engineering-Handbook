@@ -152,8 +152,8 @@ flowchart LR
 | 09 | Date Functions | ✅ Complete |
 | 10 | String Functions | ✅ Complete |
 | 11 | NULL Handling & Data Cleaning | ✅️ Complete |
-| 12 | Advanced Aggregations | 🔄 In Progress |
-| 13 | Set Operators | 🔄 In Progress |
+| 12 | Advanced Aggregations | ✅️ Complete |
+| 13 | Set Operators | ✅️ Complete |
 | 14 | Views | 🔄 In Progress |
 | 15 | Indexes | 🔄 In Progress |
 | 16 | Query Optimization | 🔄 In Progress |
