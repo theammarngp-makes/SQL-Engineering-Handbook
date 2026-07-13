@@ -124,6 +124,8 @@ FROM employes
 WHERE manager_id = NULL;
 ```
 
+`= NULL` never matches anything, even rows where `manager_id` genuinely is `NULL` — `NULL` is not a value you can compare with `=`, it represents the absence of a value.
+
 ### Correct
 
 ```sql
@@ -142,6 +144,8 @@ FROM employes
 WHERE COUNT(*) > 1
 GROUP BY dept_id;
 ```
+
+`WHERE` cannot use aggregate functions because it executes before `GROUP BY` produces any groups to aggregate.
 
 ### Correct
 
@@ -184,13 +188,15 @@ Remember:
 
 ### Intermediate
 
-4. Find employees whose manager is Sahil.
-5. Find employees not working in Engineering.
+4. Find employees whose manager is Sahil. (Hint: first find Sahil's `emp_id`, then filter `manager_id` against it — this can be done with a subquery.)
+5. Find employees not working in department 1.
 
-### Advanced
+### Advanced — Challenge (requires JOIN, covered in `04_Joins`)
 
 6. Find employees working in departments located in Nagpur.
 7. Find employees whose department belongs to India.
+
+> Questions 6 and 7 need the `departments` table (see README.md → Datasets) joined to `employes`, which this module doesn't cover yet. Attempt them after completing the joins module, then come back and revisit — it's a useful way to confirm the concept actually stuck.
 
 ---
 
