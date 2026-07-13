@@ -1,6 +1,6 @@
 <div align="center">
 
-# Module 02 · Advanced Aggregations
+# Module 12 · Advanced Aggregations
 
 ### Engineering-grade GROUP BY, conditional aggregation, ROLLUP/CUBE, and executive-level SQL reporting
 
@@ -125,7 +125,7 @@ If any of these feel shaky, complete **Module 01** before starting here — this
 ## Folder Structure
 
 ```
-02_ADVANCED_AGGREGATIONS/
+12_ADVANCED_AGGREGATIONS/
 │
 ├── README.md                              → You are here
 │
@@ -389,7 +389,7 @@ Basic aggregation answers one question about one group. This module builds the s
 
 | | |
 |---|---|
-| ⬅️ **Previous Module** | [`01_...` — Module 01](../01_SQL_FUNDAMENTALS/README.md) *(confirm exact folder name)* |
+| ⬅️ **Previous Module** | [`11_NULL_HANDLING_AND_DATA_CLEANING`](/11_NULL_HANDLING_AND_DATA_CLEANING/README.md) |
 | ⬆️ **Handbook Home** | [SQL Engineering Handbook](../README.md) |
-| ➡️ **Next Module** | [`03_...` — Module 03](../03_.../README.md) *(confirm exact folder name)* |
+| ➡️ **Next Module** | [`13_SET_OPERATORS`](/13_SET_OPERATORS/README.md) |
 
