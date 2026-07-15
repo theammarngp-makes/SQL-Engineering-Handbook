@@ -1,0 +1,50 @@
+<svg viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .raw { fill: #fdf0e8; stroke: #b7591f; stroke-width: 2; rx: 8; }
+    .stg { fill: #f5f7fa; stroke: #2b3a55; stroke-width: 2; rx: 8; }
+    .rpt { fill: #eaf1ff; stroke: #2b6cb0; stroke-width: 2; rx: 8; }
+    .bi { fill: #eafaf0; stroke: #2f855a; stroke-width: 2; rx: 8; }
+    .title { font-size: 13px; font-weight: bold; fill: #1a202c; }
+    .small { font-size: 10px; fill: #4a5568; }
+    .arrow { stroke: #2b3a55; stroke-width: 1.6; marker-end: url(#ah3); fill: none; }
+    .layerlabel { font-size: 11px; fill: #718096; font-style: italic; }
+  </style>
+  <defs>
+    <marker id="ah3" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 9 3, 0 6" fill="#2b3a55" />
+    </marker>
+  </defs>
+
+  <text x="20" y="25" class="layerlabel">Layer 1 — Raw</text>
+  <rect x="20" y="35" width="160" height="50" class="raw" />
+  <text x="100" y="65" text-anchor="middle" class="title" font-size="12">saas_subscriptions</text>
+
+  <rect x="20" y="100" width="160" height="50" class="raw" />
+  <text x="100" y="130" text-anchor="middle" class="title" font-size="12">saas_customers</text>
+
+  <path d="M180 60 H260" class="arrow" />
+  <path d="M180 125 C220 125, 220 70, 260 65" class="arrow" />
+
+  <text x="270" y="25" class="layerlabel">Layer 2 — Staging</text>
+  <rect x="270" y="45" width="200" height="55" class="stg" />
+  <text x="370" y="77" text-anchor="middle" class="title">vw_stg_subscriptions</text>
+
+  <path d="M470 60 H560" class="arrow" />
+  <path d="M470 85 C520 85, 520 200, 560 210" class="arrow" />
+
+  <text x="560" y="25" class="layerlabel">Layer 3 — Reporting</text>
+  <rect x="560" y="40" width="200" height="55" class="rpt" />
+  <text x="660" y="62" text-anchor="middle" class="title" font-size="12">vw_mrr_by_month</text>
+  <text x="660" y="80" text-anchor="middle" class="small">Finance rule</text>
+
+  <rect x="560" y="185" width="200" height="55" class="rpt" />
+  <text x="660" y="207" text-anchor="middle" class="title" font-size="12">vw_churn_cohort</text>
+  <text x="660" y="225" text-anchor="middle" class="small">Product rule</text>
+
+  <path d="M660 95 V300" class="arrow" />
+  <path d="M660 240 V300" class="arrow" />
+
+  <text x="560" y="290" class="layerlabel">Layer 4 — BI Tool</text>
+  <rect x="560" y="300" width="200" height="30" class="bi" />
+  <text x="660" y="320" text-anchor="middle" class="title" font-size="12">Dashboard / BI</text>
+</svg>
