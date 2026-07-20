@@ -144,8 +144,8 @@ flowchart LR
 | 01 | Fundamentals | ✅ Complete |
 | 02 | Aggregations | ✅ Complete |
 | 03 | Joins | ✅ Complete |
-| 04 | CASE WHEN | ✅ Complete |
-| 05 | Subqueries | ✅ Complete |
+| 04 | Subqueries | ✅ Complete |
+| 05 | CASE WHEN | ✅ Complete |
 | 06 | CTEs | ✅ Complete |
 | 07 | Window Functions | ✅ Complete |
 | 08 | Window Function Business Cases | ✅ Complete |
