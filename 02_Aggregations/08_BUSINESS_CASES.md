@@ -90,7 +90,7 @@ Real reporting work is rarely a single aggregate function in isolation — it's 
 
 ## Further Reading
 
-- [Module 05 — Subqueries](../05_SUBQUERIES) *(needed for cross-group comparisons like Practice Challenge 3)*
+- [Module 05 — Subqueries](../04_Subqueries) *(needed for cross-group comparisons like Practice Challenge 3)*
 - [Module 12 — Advanced Aggregations](../12_ADVANCED_AGGREGATIONS) *(ROLLUP, CUBE, GROUPING SETS — the natural next step after this module)*
 
 ---
