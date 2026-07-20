@@ -153,11 +153,11 @@ Beginner → Intermediate (Files 01–06: Beginner. Files 07–08: Intermediate,
 
 ## Previous Module
 
-[◀ Module 01 — Fundamentals](../01_FUNDAMENTALS)
+[◀ Module 01 — Fundamentals](../01_Fundamentals)
 
 ## Next Module
 
-[Module 03 — Joins ▶](../03_JOINS)
+[Module 03 — Joins ▶](../03_Joins)
 
 *(Also see [Module 12 — Advanced Aggregations](../12_ADVANCED_AGGREGATIONS) for `ROLLUP`, `CUBE`, and `GROUPING SETS`, which build directly on the `GROUP BY`/`HAVING` foundation from this module, and [Module 11 — NULL Handling and Data Cleaning](../11_NULL_HANDLING_AND_DATA_CLEANING) for a deeper treatment of `NULL` beyond the aggregate-specific behavior covered here.)*
 
