@@ -380,13 +380,23 @@ Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 
 ---
 
-## Author
+## ✍️ About the Author
+ 
+<table>
+<tr>
+<td width="90"><img src="https://avatars.githubusercontent.com/u/224389032?v=4" width="70" style="border-radius:50%"/></td>
+<td>
+<b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analytics Engineer, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineering-Handbook">SQL Engineering Handbook</a> (20+ modules). Based in Nagpur, India.
+</td>
+</tr>
+</table>
 
-**Mohammad Ammar**
-Aspiring Data Analyst · SQL Enthusiast · Data Storyteller
-
-[LinkedIn](https://linkedin.com/in/theammarngp) · [GitHub](https://github.com/theammarngp-makes)
-
+[![Website](https://img.shields.io/badge/Website-theammarngp--makes.github.io-2563EB?style=for-the-badge&logo=googlechrome&logoColor=white)](https://theammarngp-makes.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-mohammad--ammar--ngp-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammad-ammar-ngp/)
+[![X](https://img.shields.io/badge/X-@theammarngp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/theammarngp)
+[![Gmail](https://img.shields.io/badge/Email-theammarngp@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:theammarngp@gmail.com)
+ 
+---
 ---
 
 <p align="center">
