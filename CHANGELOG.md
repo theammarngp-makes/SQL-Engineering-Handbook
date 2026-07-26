@@ -7,66 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [Unreleased] - 2026-07-26
 
 ### Added
 
-#### Module 8 — Window Function Business Cases
-- Comprehensive business case studies using window functions
-- Banking and finance case studies demonstrating practical applications
-- Real-world scenarios with ROW_NUMBER(), RANK(), DENSE_RANK()
-- README documentation for window function business cases
+- Advanced Aggregations module with business-case examples and expanded Aggregations content. (Jul 20, 2026)
+- Views module. (Jul 15, 2026)
+- Set Operators module. (Jul 14, 2026)
+- String Functions module and status updated to "Complete". (Jul 10, 2026)
+- NULL Handling and Data Cleaning module. (Jul 11, 2026)
+- Complete Date Functions module and module README. (Jul 08, 2026)
+- Window Functions materials and business cases:
+  - Comprehensive Window Functions README and learning objectives. (Jul 03, 2026)
+  - ROW_NUMBER, RANK, and DENSE_RANK examples and SQL files. (Jul 03–07, 2026)
+  - PARTITION BY documentation and advanced window-function lessons. (Jul 04, 2026)
+  - Banking & finance business-case studies for window functions. (Jul 06–07, 2026)
+- GitHub Actions workflows and repository infrastructure files (linting, templates). (Jul 08, 2026)
 
-#### Module 9 — Date Functions
-- Complete Date Functions module with comprehensive lessons
-- Date arithmetic, formatting, and manipulation
-- Business applications of date functions
-- Time-based analysis and reporting
-- README documentation with learning objectives and skills development
+### Changed
 
-#### Documentation and Configuration
-- ARCHITECTURE.md: Repository design and organizational rationale
-- STYLE_GUIDE.md: Comprehensive formatting and documentation standards
-- SUPPORT.md: Help resources and troubleshooting guide
-- FAQ.md: Frequently asked questions with comprehensive Q&A
-- Enhanced SECURITY.md with detailed security guidelines
-- README improvements with images, badges, and enhanced presentation
+- Revised README across multiple commits for improved presentation, banners, images, badges, and navigation. (Jun 30 – Jul 23, 2026)
+- Reorganized repository structure and module numbering for clarity; renamed files where necessary. (Jul 10–13, 2026)
+- DATABASE_SCHEMA.md revised for clarity and improved table descriptions. (Jul 05, 2026)
+- ROADMAP.md refined with clearer examples and release planning. (Jul 03, 2026)
 
-#### Window Functions Enhancements
-- 01_ROW_NUMBER.md: Introduction to row numbering
-- 01_ROW_NUMBER.sql: SQL examples for ROW_NUMBER() function
-- 02_RANK.md: Understanding rank functions
-- 02_RANK.sql: SQL examples for RANK() function
-- 03_DENSE_RANK.md: Dense ranking concept documentation
-- 03_DENSE_RANK.sql: DENSE_RANK() implementation examples
-- 04_PARTITION_BY.md: PARTITION BY clause explanation
-- Advanced window function lessons and patterns
-- Window function README with learning objectives and best practices
+### Removed
 
-#### Repository Infrastructure
-- GitHub Actions workflows (markdown linting)
-- CODEOWNERS file for repository management
-- Markdown linting configuration (.markdownlint.json)
-- Issue and pull request templates
-- Pull request template with comprehensive checklists
-- Contributor health documentation
+- Deleted obsolete directories and files: Resources (multiple files like Resources/x.md), X-Schema directory, and 09_Business_Case_Studies. (Jul 10–26, 2026)
+- Cleaned up branding/assets: removed .DS_Store files and adjusted assets as needed. (Jun 30 – Jul 12, 2026)
 
-#### CTE Module Enhancements
-- 01_Basic_CTEs.sql: Introduction to Common Table Expressions
-- 02_Multiple_CTEs.sql: Multiple CTE examples
-- 03_CTE_Joins.sql: CTEs combined with joins
-- Business case studies using CTEs
-- CTE aggregation queries for workforce analysis
-- README documentation with learning objectives
+### Fixed
 
-#### Assets and Branding
-- Project logo and branding assets
-- README banner images
+- Fixed typos and link references (e.g., PARTITON → PARTITION; Module 05 link fix). (Jul 04, Jul 20, 2026)
 
-#### Data and Schema Improvements
-- New employee, department, and location records
-- DATABASE_SCHEMA.md revisions for clarity and consistency
-- Sample data enhancements
+### Documentation
+
+- Added ARCHITECTURE.md and STYLE_GUIDE.md to document repo architecture and standards. (Jul 08, 2026)
+- Created SUPPORT.md and FAQ.md to help contributors and users. (Jul 03, 2026)
+- Created CHANGELOG.md (initial) and updated it with recent additions. (Jul 03, 2026)
+- Added CODEOWNERS, markdownlint config, PR/issue templates, and contributor guidance. (Jul 08, 2026)
 
 ---
 
