@@ -1,0 +1,38 @@
+<svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="780" height="260" fill="#ffffff"/>
+  <text x="390" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">MULTI-TABLE JOIN CHAIN</text>
+  <text x="390" y="54" text-anchor="middle" font-size="13" fill="#555">each join mirrors an actual foreign-key relationship</text>
+
+  <rect x="40" y="100" width="160" height="70" rx="10" fill="#d6ffe3" stroke="#2e9e5b" stroke-width="2"/>
+  <text x="120" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1a2e">locations</text>
+  <text x="120" y="150" text-anchor="middle" font-size="10" fill="#555">location_id (PK)</text>
+
+  <rect x="310" y="100" width="160" height="70" rx="10" fill="#ffe3d6" stroke="#d8763b" stroke-width="2"/>
+  <text x="390" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1a2e">departments</text>
+  <text x="390" y="150" text-anchor="middle" font-size="10" fill="#555">dept_id (PK) · location_id (FK)</text>
+
+  <rect x="580" y="100" width="160" height="70" rx="10" fill="#dbe9ff" stroke="#3b6fd8" stroke-width="2"/>
+  <text x="660" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1a2e">employees</text>
+  <text x="660" y="150" text-anchor="middle" font-size="10" fill="#555">emp_id (PK) · dept_id (FK)</text>
+
+  <!-- arrows -->
+  <line x1="200" y1="135" x2="305" y2="135" stroke="#333" stroke-width="1.5" marker-end="url(#arrowM)"/>
+  <text x="252" y="122" text-anchor="middle" font-size="10" fill="#333">1 : many</text>
+
+  <line x1="470" y1="135" x2="575" y2="135" stroke="#333" stroke-width="1.5" marker-end="url(#arrowM)"/>
+  <text x="522" y="122" text-anchor="middle" font-size="10" fill="#333">1 : many</text>
+
+  <!-- self-loop on employees for manager_id -->
+  <path d="M 720,100 C 760,80 760,60 700,60 C 660,60 650,80 660,98" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arrowM)"/>
+  <text x="710" y="48" text-anchor="middle" font-size="10" fill="#555">manager_id (self-FK)</text>
+
+  <defs>
+    <marker id="arrowM" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <text x="390" y="210" text-anchor="middle" font-size="12" fill="#333">FROM employees e</text>
+  <text x="390" y="228" text-anchor="middle" font-size="12" fill="#333">INNER JOIN departments d ON e.dept_id = d.dept_id</text>
+  <text x="390" y="246" text-anchor="middle" font-size="12" fill="#333">INNER JOIN locations l ON d.location_id = l.location_id</text>
+</svg>

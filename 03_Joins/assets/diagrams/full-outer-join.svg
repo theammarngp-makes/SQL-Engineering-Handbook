@@ -1,0 +1,14 @@
+<svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="500" height="320" fill="#ffffff"/>
+  <text x="250" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">FULL OUTER JOIN</text>
+  <text x="250" y="52" text-anchor="middle" font-size="13" fill="#555">everything from both tables, matched or not</text>
+
+  <circle cx="220" cy="180" r="95" fill="#8fbf6b" stroke="#3b6fd8" stroke-width="2"/>
+  <circle cx="320" cy="180" r="95" fill="#8fbf6b" stroke="#d8763b" stroke-width="2" opacity="0.9"/>
+
+  <text x="160" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="#0d2b0d">employees</text>
+  <text x="380" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="#0d2b0d">departments</text>
+
+  <line x1="270" y1="290" x2="270" y2="255" stroke="#333" stroke-width="1"/>
+  <text x="270" y="310" text-anchor="middle" font-size="12" fill="#333">Both circles fully shaded — nothing on either side is dropped.</text>
+</svg>

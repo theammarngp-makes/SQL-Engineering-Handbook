@@ -1,0 +1,37 @@
+<svg viewBox="0 0 820 320" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="820" height="320" fill="#ffffff"/>
+  <text x="410" y="26" text-anchor="middle" font-size="15" font-weight="600" fill="#24292e">
+    "Give Me the First 3 Rows" — Four Engines, Four Keywords
+  </text>
+
+  <g font-size="12" font-weight="700" fill="#ffffff">
+    <rect x="30" y="55" width="150" height="30" rx="6" fill="#2f6feb"/>
+    <text x="105" y="75" text-anchor="middle">MySQL</text>
+    <rect x="30" y="130" width="150" height="30" rx="6" fill="#2f6feb"/>
+    <text x="105" y="150" text-anchor="middle">PostgreSQL</text>
+    <rect x="30" y="205" width="150" height="30" rx="6" fill="#e8622c"/>
+    <text x="105" y="225" text-anchor="middle">SQL Server</text>
+    <rect x="30" y="255" width="150" height="30" rx="6" fill="#6f42c1"/>
+    <text x="105" y="275" text-anchor="middle">Oracle 12c+</text>
+  </g>
+
+  <g font-size="12" font-family="Consolas, monospace" fill="#24292e">
+    <rect x="200" y="55" width="590" height="30" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="212" y="75">ORDER BY emp_id LIMIT 3;</text>
+
+    <rect x="200" y="130" width="590" height="30" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="212" y="150">ORDER BY emp_id LIMIT 3;</text>
+
+    <rect x="200" y="205" width="590" height="30" fill="#fff5e6" stroke="#e8622c"/>
+    <text x="212" y="225">SELECT TOP 3 * FROM employes ORDER BY emp_id;</text>
+
+    <rect x="200" y="255" width="590" height="30" fill="#f5eefc" stroke="#6f42c1"/>
+    <text x="212" y="275">ORDER BY emp_id FETCH FIRST 3 ROWS ONLY;</text>
+  </g>
+
+  <text x="410" y="105" text-anchor="middle" font-size="11" fill="#586069">same clause, same keyword — LIMIT is not ANSI standard, just widely copied</text>
+
+  <text x="410" y="305" text-anchor="middle" font-size="12" fill="#586069">
+    Portable ANSI form (Postgres/SQL Server/Oracle, not MySQL): OFFSET n ROWS FETCH NEXT m ROWS ONLY
+  </text>
+</svg>

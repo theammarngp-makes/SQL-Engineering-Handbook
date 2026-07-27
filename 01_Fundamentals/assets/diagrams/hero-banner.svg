@@ -1,0 +1,58 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2f6feb"/>
+      <stop offset="50%" stop-color="#6f42c1"/>
+      <stop offset="100%" stop-color="#e8622c"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="300" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accent)"/>
+  <rect x="0" y="294" width="1200" height="6" fill="url(#accent)"/>
+
+  <!-- faded background keyword decoration -->
+  <g fill="#ffffff" opacity="0.045" font-size="42" font-weight="700" font-family="Consolas, monospace">
+    <text x="740" y="90">SELECT</text>
+    <text x="820" y="150">WHERE</text>
+    <text x="900" y="210">ORDER BY</text>
+    <text x="760" y="270">LIMIT · ALIAS</text>
+  </g>
+
+  <!-- module number watermark -->
+  <text x="1080" y="220" font-size="180" font-weight="800" fill="#ffffff" opacity="0.06">01</text>
+
+  <!-- database glyph -->
+  <g transform="translate(60,100)">
+    <ellipse cx="40" cy="12" rx="40" ry="14" fill="#2f6feb"/>
+    <path d="M0,12 L0,88 A40,14 0 0,0 80,88 L80,12" fill="#2f6feb" opacity="0.85"/>
+    <ellipse cx="40" cy="40" rx="40" ry="14" fill="none" stroke="#0d1117" stroke-width="2" opacity="0.4"/>
+    <ellipse cx="40" cy="65" rx="40" ry="14" fill="none" stroke="#0d1117" stroke-width="2" opacity="0.4"/>
+  </g>
+
+  <text x="180" y="130" font-size="34" font-weight="700" fill="#ffffff">Module 01 · Fundamentals</text>
+  <text x="180" y="165" font-size="17" fill="#8b949e">SQL Engineering Handbook — the logical execution order, from first query to first join</text>
+
+  <g font-size="13" font-weight="600" fill="#ffffff">
+    <rect x="180" y="190" width="86"  height="30" rx="15" fill="#2f6feb"/>
+    <text x="223" y="210" text-anchor="middle">SELECT</text>
+
+    <rect x="276" y="190" width="80"  height="30" rx="15" fill="#2f6feb"/>
+    <text x="316" y="210" text-anchor="middle">WHERE</text>
+
+    <rect x="366" y="190" width="100" height="30" rx="15" fill="#22863a"/>
+    <text x="416" y="210" text-anchor="middle">ORDER BY</text>
+
+    <rect x="476" y="190" width="76"  height="30" rx="15" fill="#e8622c"/>
+    <text x="514" y="210" text-anchor="middle">LIMIT</text>
+
+    <rect x="562" y="190" width="80"  height="30" rx="15" fill="#6f42c1"/>
+    <text x="602" y="210" text-anchor="middle">ALIAS</text>
+  </g>
+
+  <text x="180" y="250" font-size="12" fill="#586069">4 engines compared · 3 diagrams · glossary · FAQ · interview prep</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="300" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    Module 01 — Fundamentals Roadmap
+  </text>
+
+  <g font-size="13" font-weight="600" fill="#24292e">
+    <circle cx="90"  cy="110" r="42" fill="#e9f0ff" stroke="#2f6feb" stroke-width="2"/>
+    <text x="90" y="106" text-anchor="middle" fill="#2f6feb">SELECT</text>
+    <text x="90" y="124" text-anchor="middle" font-size="10" font-weight="400" fill="#586069">which columns?</text>
+
+    <circle cx="255" cy="110" r="42" fill="#e9f0ff" stroke="#2f6feb" stroke-width="2"/>
+    <text x="255" y="106" text-anchor="middle" fill="#2f6feb">WHERE</text>
+    <text x="255" y="124" text-anchor="middle" font-size="10" font-weight="400" fill="#586069">which rows?</text>
+
+    <circle cx="420" cy="110" r="42" fill="#eef6ec" stroke="#22863a" stroke-width="2"/>
+    <text x="420" y="102" text-anchor="middle" fill="#22863a" font-size="11">ORDER</text>
+    <text x="420" y="116" text-anchor="middle" fill="#22863a" font-size="11">BY</text>
+    <text x="420" y="132" text-anchor="middle" font-size="10" font-weight="400" fill="#586069">what order?</text>
+
+    <circle cx="585" cy="110" r="42" fill="#fff5e6" stroke="#e8622c" stroke-width="2"/>
+    <text x="585" y="106" text-anchor="middle" fill="#e8622c">LIMIT</text>
+    <text x="585" y="124" text-anchor="middle" font-size="10" font-weight="400" fill="#586069">how many?</text>
+
+    <circle cx="750" cy="110" r="42" fill="#f5eefc" stroke="#6f42c1" stroke-width="2"/>
+    <text x="750" y="106" text-anchor="middle" fill="#6f42c1">ALIAS</text>
+    <text x="750" y="124" text-anchor="middle" font-size="10" font-weight="400" fill="#586069">how readable?</text>
+  </g>
+
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow3)" fill="none">
+    <line x1="132" y1="110" x2="211" y2="110"/>
+    <line x1="297" y1="110" x2="376" y2="110"/>
+    <line x1="462" y1="110" x2="541" y2="110"/>
+    <line x1="627" y1="110" x2="706" y2="110"/>
+  </g>
+
+  <text x="450" y="200" text-anchor="middle" font-size="12" fill="#586069">
+    Each stage answers one question a real query has to answer, in the order a working query needs them.
+  </text>
+  <text x="450" y="222" text-anchor="middle" font-size="12" fill="#586069">
+    Aggregations, joins, subqueries, and window functions (Modules 02–07) are all built on top of this path.
+  </text>
+
+  <rect x="250" y="250" width="400" height="34" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="450" y="272" text-anchor="middle" font-size="12" fill="#24292e">
+    Next: 02_Aggregations → COUNT · SUM · AVG · GROUP BY · HAVING
+  </text>
+</svg>

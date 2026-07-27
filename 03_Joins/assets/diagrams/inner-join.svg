@@ -1,0 +1,26 @@
+<svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="500" height="320" fill="#ffffff"/>
+  <text x="250" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">INNER JOIN</text>
+  <text x="250" y="52" text-anchor="middle" font-size="13" fill="#555">rows kept: match exists in both tables</text>
+
+  <defs>
+    <clipPath id="intersectionClip">
+      <circle cx="220" cy="180" r="95"/>
+    </clipPath>
+  </defs>
+
+  <circle cx="220" cy="180" r="95" fill="#dbe9ff" stroke="#3b6fd8" stroke-width="2"/>
+  <circle cx="320" cy="180" r="95" fill="#ffe3d6" stroke="#d8763b" stroke-width="2" opacity="0.9"/>
+
+  <circle cx="320" cy="180" r="95" fill="#8fbf6b" clip-path="url(#intersectionClip)" opacity="0.85"/>
+
+  <circle cx="220" cy="180" r="95" fill="none" stroke="#3b6fd8" stroke-width="2"/>
+  <circle cx="320" cy="180" r="95" fill="none" stroke="#d8763b" stroke-width="2"/>
+
+  <text x="160" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="#1a1a2e">employees</text>
+  <text x="380" y="180" text-anchor="middle" font-size="15" font-weight="600" fill="#1a1a2e">departments</text>
+  <text x="270" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">MATCH</text>
+
+  <line x1="270" y1="290" x2="270" y2="255" stroke="#333" stroke-width="1"/>
+  <text x="270" y="310" text-anchor="middle" font-size="12" fill="#333">Only the shaded overlap is returned.</text>
+</svg>

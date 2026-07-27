@@ -1,0 +1,54 @@
+<svg viewBox="0 0 820 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="820" height="260" fill="#ffffff"/>
+  <text x="410" y="26" text-anchor="middle" font-size="15" font-weight="600" fill="#24292e">
+    Default NULL Position in ORDER BY ... ASC, by Engine
+  </text>
+
+  <!-- 4 engine rows, each a strip showing NULL then values or values then NULL -->
+  <g font-size="12" font-weight="600" fill="#24292e">
+    <text x="30" y="65">PostgreSQL</text>
+    <text x="30" y="105">Oracle</text>
+    <text x="30" y="145">MySQL</text>
+    <text x="30" y="185">SQL Server</text>
+  </g>
+
+  <!-- PostgreSQL: values then NULL last -->
+  <g>
+    <rect x="150" y="50" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="180" y="67" text-anchor="middle" font-size="11">2</text>
+    <rect x="212" y="50" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="242" y="67" text-anchor="middle" font-size="11">5</text>
+    <rect x="274" y="50" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="304" y="67" text-anchor="middle" font-size="11">9</text>
+    <rect x="336" y="50" width="60" height="26" fill="#fff5e6" stroke="#e8622c"/><text x="366" y="67" text-anchor="middle" font-size="11" fill="#9a6700">NULL</text>
+    <text x="420" y="67" font-size="11" fill="#586069">NULLs LAST (default)</text>
+  </g>
+
+  <!-- Oracle: values then NULL last -->
+  <g>
+    <rect x="150" y="90" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="180" y="107" text-anchor="middle" font-size="11">2</text>
+    <rect x="212" y="90" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="242" y="107" text-anchor="middle" font-size="11">5</text>
+    <rect x="274" y="90" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="304" y="107" text-anchor="middle" font-size="11">9</text>
+    <rect x="336" y="90" width="60" height="26" fill="#fff5e6" stroke="#e8622c"/><text x="366" y="107" text-anchor="middle" font-size="11" fill="#9a6700">NULL</text>
+    <text x="420" y="107" font-size="11" fill="#586069">NULLs LAST (default)</text>
+  </g>
+
+  <!-- MySQL: NULL first -->
+  <g>
+    <rect x="150" y="130" width="60" height="26" fill="#fff5e6" stroke="#e8622c"/><text x="180" y="147" text-anchor="middle" font-size="11" fill="#9a6700">NULL</text>
+    <rect x="212" y="130" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="242" y="147" text-anchor="middle" font-size="11">2</text>
+    <rect x="274" y="130" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="304" y="147" text-anchor="middle" font-size="11">5</text>
+    <rect x="336" y="130" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="366" y="147" text-anchor="middle" font-size="11">9</text>
+    <text x="420" y="147" font-size="11" fill="#586069">NULLs FIRST (default)</text>
+  </g>
+
+  <!-- SQL Server: NULL first -->
+  <g>
+    <rect x="150" y="170" width="60" height="26" fill="#fff5e6" stroke="#e8622c"/><text x="180" y="187" text-anchor="middle" font-size="11" fill="#9a6700">NULL</text>
+    <rect x="212" y="170" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="242" y="187" text-anchor="middle" font-size="11">2</text>
+    <rect x="274" y="170" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="304" y="187" text-anchor="middle" font-size="11">5</text>
+    <rect x="336" y="170" width="60" height="26" fill="#eef6ec" stroke="#22863a"/><text x="366" y="187" text-anchor="middle" font-size="11">9</text>
+    <text x="420" y="187" font-size="11" fill="#586069">NULLs FIRST (default)</text>
+  </g>
+
+  <text x="410" y="230" text-anchor="middle" font-size="12" fill="#586069">
+    Same query, same data, four different result orders. Use NULLS LAST / NULLS FIRST explicitly when it matters.
+  </text>
+</svg>

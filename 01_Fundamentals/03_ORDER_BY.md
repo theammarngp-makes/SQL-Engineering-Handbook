@@ -61,6 +61,52 @@ ORDER BY emp_name DESC;
 
 ---
 
+## Visual Explanation
+
+`ORDER BY` runs near the *end* of logical execution order — after `SELECT` has already chosen the output columns, and right before `LIMIT` cuts the result down.
+
+![Logical execution order, ORDER BY stage highlighted](./assets/diagrams/execution-order-flow.svg)
+
+```mermaid
+flowchart LR
+    A[SELECT: columns projected] --> B[ORDER BY: rows sorted]
+    B --> C[LIMIT: rows cut]
+    style B fill:#22863a,color:#ffffff
+```
+
+---
+
+## Dialect Differences
+
+### Where do `NULL`s sort?
+
+This is the single most portability-breaking behavior in `ORDER BY`, and this module's own dataset has `NULL` values in `manager_id` — sorting by `manager_id` will actually surface this difference, not just describe it hypothetically.
+
+![Default NULL sort position differs by engine](./assets/diagrams/nulls-sort-order.svg)
+
+| Engine | Default position of `NULL` in `ASC` order |
+|---|---|
+| PostgreSQL | Last |
+| Oracle | Last |
+| MySQL | First |
+| SQL Server | First |
+
+Make it explicit instead of relying on the default:
+
+```sql
+-- PostgreSQL / Oracle — supported directly
+SELECT *
+FROM employes
+ORDER BY manager_id ASC NULLS LAST;
+
+-- MySQL / SQL Server — no NULLS LAST keyword; force it with a CASE
+SELECT *
+FROM employes
+ORDER BY (manager_id IS NULL), manager_id ASC;
+```
+
+---
+
 ## Sample Data
 
 | emp_id | emp_name | dept_id |
@@ -220,6 +266,13 @@ LIMIT 3;
 
 ---
 
+## Edge Cases
+
+- **Sorting by a column not in `SELECT`** — `SELECT emp_name FROM employes ORDER BY dept_id;` is valid in most engines even though `dept_id` isn't in the output, because `ORDER BY` has access to the full row, not just the projected columns. Some engines restrict this when `DISTINCT` is also used, since deduplication happens before a column not in the output could be used to sort.
+- **Sorting `NULL`s** — see [Dialect Differences](#dialect-differences) above; don't assume a default without checking your engine if the sort order of `NULL`s matters to the result.
+
+---
+
 ## Execution Order
 
 SQL executes queries in this order:
@@ -279,3 +332,11 @@ ORDER BY emp_id DESC;
 - LIMIT
 - GROUP BY
 - HAVING
+
+---
+
+## Further Reading
+
+- [`GLOSSARY.md`](./GLOSSARY.md) — "collation" and "deterministic" definitions
+- [`FAQ.md`](./FAQ.md) — "why does my query return rows in a different order every time?"
+- [`INTERVIEW_PREP.md`](./INTERVIEW_PREP.md) — see "Does `ORDER BY` put `NULL`s first or last?"

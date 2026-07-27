@@ -1,0 +1,59 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">Join Algorithms Compared</text>
+  <text x="450" y="54" text-anchor="middle" font-size="13" fill="#555">the physical strategy the optimizer chooses to execute a logical JOIN</text>
+
+  <!-- Lane 1: Nested Loop -->
+  <g>
+    <rect x="30" y="90" width="260" height="270" rx="10" fill="#dbe9ff" stroke="#3b6fd8" stroke-width="2"/>
+    <text x="160" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1a1a2e">Nested Loop</text>
+    <circle cx="80" cy="150" r="6" fill="#3b6fd8"/>
+    <circle cx="80" cy="170" r="6" fill="#3b6fd8"/>
+    <circle cx="80" cy="190" r="6" fill="#3b6fd8"/>
+    <path d="M95,150 Q180,150 240,150" stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+    <path d="M95,170 Q180,170 240,170" stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+    <path d="M95,190 Q180,190 240,190" stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+    <text x="160" y="225" text-anchor="middle" font-size="12">for each outer row,</text>
+    <text x="160" y="241" text-anchor="middle" font-size="12">look up matches in inner table</text>
+    <text x="160" y="270" text-anchor="middle" font-size="12" font-weight="600">Best when:</text>
+    <text x="160" y="288" text-anchor="middle" font-size="11">small table, or indexed</text>
+    <text x="160" y="303" text-anchor="middle" font-size="11">join key on inner side</text>
+    <text x="160" y="330" text-anchor="middle" font-size="12" font-weight="600">O(n·log m) indexed</text>
+    <text x="160" y="346" text-anchor="middle" font-size="12" font-weight="600">O(n·m) unindexed</text>
+  </g>
+
+  <!-- Lane 2: Hash Join -->
+  <g>
+    <rect x="320" y="90" width="260" height="270" rx="10" fill="#ffe3d6" stroke="#d8763b" stroke-width="2"/>
+    <text x="450" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1a1a2e">Hash Join</text>
+    <rect x="400" y="145" width="100" height="55" rx="6" fill="#fff" stroke="#d8763b" stroke-width="1.5"/>
+    <text x="450" y="177" text-anchor="middle" font-size="11">hash table</text>
+    <text x="450" y="191" text-anchor="middle" font-size="11">(smaller side)</text>
+    <text x="450" y="225" text-anchor="middle" font-size="12">probe once per row</text>
+    <text x="450" y="241" text-anchor="middle" font-size="12">of the larger side</text>
+    <text x="450" y="270" text-anchor="middle" font-size="12" font-weight="600">Best when:</text>
+    <text x="450" y="288" text-anchor="middle" font-size="11">large, unsorted tables,</text>
+    <text x="450" y="303" text-anchor="middle" font-size="11">equality predicate, no index</text>
+    <text x="450" y="330" text-anchor="middle" font-size="12" font-weight="600">O(n + m)</text>
+  </g>
+
+  <!-- Lane 3: Merge Join -->
+  <g>
+    <rect x="610" y="90" width="260" height="270" rx="10" fill="#d6ffe3" stroke="#2e9e5b" stroke-width="2"/>
+    <text x="740" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1a1a2e">Merge Join</text>
+    <path d="M660,155 L680,175 L700,155" stroke="#2e9e5b" stroke-width="2" fill="none"/>
+    <path d="M780,155 L800,175 L820,155" stroke="#2e9e5b" stroke-width="2" fill="none"/>
+    <text x="740" y="200" text-anchor="middle" font-size="12">two sorted inputs,</text>
+    <text x="740" y="216" text-anchor="middle" font-size="12">walked in lockstep</text>
+    <text x="740" y="270" text-anchor="middle" font-size="12" font-weight="600">Best when:</text>
+    <text x="740" y="288" text-anchor="middle" font-size="11">both sides already sorted</text>
+    <text x="740" y="303" text-anchor="middle" font-size="11">(often via an index)</text>
+    <text x="740" y="330" text-anchor="middle" font-size="12" font-weight="600">O(n + m) if pre-sorted</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

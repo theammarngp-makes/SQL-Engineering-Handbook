@@ -18,6 +18,39 @@ WHERE condition;
 
 ---
 
+## Visual Explanation
+
+`WHERE` filters *rows* using a **predicate** — a condition that resolves to `TRUE`, `FALSE`, or `UNKNOWN` for each row. Only rows where the predicate is `TRUE` survive. `NULL` comparisons resolve to `UNKNOWN`, not `FALSE`, which is why `= NULL` silently matches nothing — see [Common Mistakes](#common-mistakes) below.
+
+![WHERE keeps TRUE rows, drops FALSE and UNKNOWN rows](./assets/diagrams/predicate-truth-values.svg)
+
+![Logical execution order, WHERE stage highlighted](./assets/diagrams/execution-order-flow.svg)
+
+```mermaid
+flowchart LR
+    A[FROM: all rows loaded] --> B{WHERE: predicate per row}
+    B -->|TRUE| C[row kept]
+    B -->|FALSE or UNKNOWN| D[row dropped]
+    style B fill:#2f6feb,color:#ffffff
+```
+
+---
+
+## Dialect Differences
+
+Standard comparisons (`=`, `<>`, `IS NULL`, `IS NOT NULL`, `AND`/`OR`) behave identically across MySQL, PostgreSQL, SQL Server, and Oracle. Where engines diverge is **null-safe equality** — comparing two columns that might both be `NULL` and treating `NULL = NULL` as a match:
+
+| Engine | Null-safe equality operator |
+|---|---|
+| MySQL | `<=>` (e.g. `a <=> b`) |
+| PostgreSQL | `IS NOT DISTINCT FROM` (e.g. `a IS NOT DISTINCT FROM b`) |
+| SQL Server | No dedicated operator — requires `(a = b OR (a IS NULL AND b IS NULL))` |
+| Oracle | `DECODE(a, b, 1, 0) = 1` or the same `OR`-based pattern as SQL Server |
+
+`IS NOT DISTINCT FROM` (PostgreSQL) is the closest to an ANSI-standard pattern, though not universally implemented.
+
+---
+
 ## Schema Used
 
 ### employes
@@ -158,6 +191,13 @@ HAVING COUNT(*) > 1;
 
 ---
 
+## Edge Cases
+
+- **`NOT IN` with a `NULL` in the list** — `WHERE dept_id NOT IN (1, NULL)` returns **zero rows**, even for departments that are clearly not `1`. Once any value in a `NOT IN` list is `NULL`, the whole predicate evaluates to `UNKNOWN` for every row. Prefer `NOT EXISTS` (covered in the subqueries module) whenever the list comes from a subquery that might contain `NULL`.
+- **String comparisons and collation** — `WHERE emp_name = 'ammar'` may or may not match `'Ammar'` depending on the column's collation setting, which is a database configuration choice, not a SQL-language rule. Don't assume case sensitivity behavior transfers between environments.
+
+---
+
 ## Interview Tip
 
 A very common SQL interview question:
@@ -207,3 +247,11 @@ Remember:
 - HAVING
 - INNER JOIN
 - Subqueries
+
+---
+
+## Further Reading
+
+- [`GLOSSARY.md`](./GLOSSARY.md) — definitions of "predicate" and other terms used above
+- [`FAQ.md`](./FAQ.md) — recurring questions
+- [`INTERVIEW_PREP.md`](./INTERVIEW_PREP.md) — see "`= NULL` vs `IS NULL`" and "`WHERE` vs `HAVING`"

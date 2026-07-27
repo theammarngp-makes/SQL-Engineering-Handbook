@@ -1,0 +1,60 @@
+<svg viewBox="0 0 820 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="820" height="260" fill="#ffffff"/>
+  <text x="410" y="26" text-anchor="middle" font-size="15" font-weight="600" fill="#24292e">SELECT Chooses Columns, Not Rows</text>
+
+  <!-- source table -->
+  <text x="150" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="#586069">employes (full table)</text>
+  <g font-size="11" fill="#24292e">
+    <rect x="40"  y="65" width="220" height="26" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="55" y="82" font-weight="700">emp_id</text>
+    <text x="115" y="82" font-weight="700">emp_name</text>
+    <text x="195" y="82" font-weight="700">dept_id</text>
+
+    <rect x="40" y="91" width="220" height="26" fill="#ffffff" stroke="#d0d7de"/>
+    <text x="55" y="108">1</text><text x="115" y="108">Ammar</text><text x="195" y="108">1</text>
+
+    <rect x="40" y="117" width="220" height="26" fill="#ffffff" stroke="#d0d7de"/>
+    <text x="55" y="134">2</text><text x="115" y="134">Riya</text><text x="195" y="134">2</text>
+
+    <rect x="40" y="143" width="220" height="26" fill="#ffffff" stroke="#d0d7de"/>
+    <text x="55" y="160">3</text><text x="115" y="160">Sahil</text><text x="195" y="160">1</text>
+  </g>
+
+  <!-- query -->
+  <rect x="310" y="90" width="200" height="80" rx="8" fill="#0d1117"/>
+  <text x="410" y="118" text-anchor="middle" font-size="12" fill="#e8622c" font-family="Consolas, monospace">SELECT emp_name</text>
+  <text x="410" y="136" text-anchor="middle" font-size="12" fill="#2f6feb" font-family="Consolas, monospace">FROM employes;</text>
+  <text x="410" y="65" text-anchor="middle" font-size="11" fill="#586069">projects →</text>
+
+  <!-- arrow -->
+  <path d="M 270 128 L 305 128" stroke="#586069" stroke-width="2" marker-end="url(#a2)" fill="none"/>
+  <path d="M 515 128 L 555 128" stroke="#586069" stroke-width="2" marker-end="url(#a2)" fill="none"/>
+  <defs>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+
+  <!-- result -->
+  <text x="640" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="#22863a">result (1 column, all rows)</text>
+  <g font-size="11" fill="#24292e">
+    <rect x="565" y="65" width="150" height="26" fill="#eef6ec" stroke="#22863a"/>
+    <text x="580" y="82" font-weight="700">emp_name</text>
+
+    <rect x="565" y="91" width="150" height="26" fill="#ffffff" stroke="#22863a"/>
+    <text x="580" y="108">Ammar</text>
+
+    <rect x="565" y="117" width="150" height="26" fill="#ffffff" stroke="#22863a"/>
+    <text x="580" y="134">Riya</text>
+
+    <rect x="565" y="143" width="150" height="26" fill="#ffffff" stroke="#22863a"/>
+    <text x="580" y="160">Sahil</text>
+  </g>
+
+  <text x="410" y="210" text-anchor="middle" font-size="12" fill="#586069">
+    All 3 rows survive — SELECT never removes rows. Only emp_id and dept_id are dropped from view.
+  </text>
+  <text x="410" y="230" text-anchor="middle" font-size="12" fill="#586069">
+    Removing rows is WHERE's job — see 02_WHERE.md
+  </text>
+</svg>

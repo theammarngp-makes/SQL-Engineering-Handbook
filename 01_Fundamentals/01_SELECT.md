@@ -29,6 +29,41 @@ FROM table_name;
 
 ---
 
+## Visual Explanation
+
+`SELECT` is a **projection** — it decides which *columns* survive into the output. It doesn't touch which rows appear; that's `WHERE`'s job (see [`02_WHERE.md`](./02_WHERE.md)). This distinction — projection vs. selection — is easy to blur because SQL's `SELECT` keyword actually performs projection, not "selection" in the relational-algebra sense.
+
+![SELECT projects columns, not rows](./assets/diagrams/select-projection.svg)
+
+![Query lifecycle: written query to result set](./assets/diagrams/query-lifecycle.svg)
+
+```mermaid
+flowchart LR
+    A[FROM: table loaded] --> B[WHERE: rows filtered]
+    B --> C[SELECT: columns projected]
+    C --> D[ORDER BY / LIMIT]
+    style C fill:#e8622c,color:#ffffff
+```
+
+`SELECT` sits in the *middle* of logical execution order, not first — see [Execution Order](#execution-order) below and the full diagram in [`assets/diagrams/execution-order-flow.svg`](./assets/diagrams/execution-order-flow.svg).
+
+---
+
+## Dialect Differences
+
+`SELECT` itself is identical across every major engine. What differs is how each engine treats **unquoted identifiers** (table/column names):
+
+| Engine | Unquoted identifier case handling |
+|---|---|
+| MySQL | Preserves case as written; case-sensitivity of matching depends on the OS filesystem for table names |
+| PostgreSQL | Folds unquoted identifiers to **lowercase** |
+| SQL Server | Preserves case as written; matching is case-insensitive by default collation |
+| Oracle | Folds unquoted identifiers to **UPPERCASE** |
+
+This is why `SELECT EMP_NAME FROM EMPLOYES;` and `select emp_name from employes;` can both work in one engine and behave differently in another. Quoting an identifier (`"emp_name"`, `` `emp_name` ``) preserves exact case everywhere — see [`05_ALIAS.md`](./05_ALIAS.md) for quoting syntax per engine.
+
+---
+
 ## Schema Used
 
 ### employes
@@ -161,6 +196,13 @@ FROM employes;
 
 ---
 
+## Edge Cases
+
+- **Querying a table with zero rows** — `SELECT * FROM employes;` on an empty table returns a valid, empty result set (0 rows), not an error. Contrast with querying a table that doesn't exist at all, which *is* an error (`relation "x" does not exist` / `Table 'x' doesn't exist` depending on engine).
+- **Duplicate column names in output** — `SELECT emp_name, emp_name FROM employes;` is valid; the same column appears twice in the output, which is rarely useful but not blocked by the parser. This is one reason `SELECT *` combined with a `JOIN` on tables sharing a column name (e.g. both tables having an `id`) produces ambiguous, easy-to-misread output — see [`05_ALIAS.md`](./05_ALIAS.md).
+
+---
+
 ## Interview Tip
 
 `SELECT` determines which columns appear in the final output — but it executes logically **after** `FROM`, `WHERE`, `GROUP BY`, and `HAVING`. Interviewers frequently test this by asking why you can't reference a `SELECT` alias inside a `WHERE` clause in the same query. The answer: because `WHERE` runs before `SELECT` is evaluated.
@@ -192,3 +234,11 @@ FROM employes;
 - ORDER BY
 - LIMIT
 - ALIAS
+
+---
+
+## Further Reading
+
+- [`GLOSSARY.md`](./GLOSSARY.md) — definitions of "projection," "logical execution order," and other terms used above
+- [`FAQ.md`](./FAQ.md) — recurring questions, including `SELECT *` and case sensitivity
+- [`INTERVIEW_PREP.md`](./INTERVIEW_PREP.md) — consolidated interview question bank for this module

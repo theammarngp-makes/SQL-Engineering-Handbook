@@ -1,21 +1,45 @@
-# 01 — SQL Fundamentals
+<a id="top"></a>
 
-> **Module 1 of the SQL Engineering Handbook**
-> The foundation every advanced SQL concept — aggregations, joins, subqueries, window functions, and CTEs — is built on top of.
+<p align="center">
+  <img src="./assets/diagrams/hero-banner.svg" alt="Module 01 — SQL Fundamentals" width="100%">
+</p>
 
-[![Level](https://img.shields.io/badge/Level-Beginner-brightgreen)]()
-[![Estimated Time](https://img.shields.io/badge/Time-2--3%20hrs-blue)]()
-[![Topics](https://img.shields.io/badge/Topics-5-orange)]()
-[![Status](https://img.shields.io/badge/Status-Complete-success)]()
+<h1 align="center">01 — SQL Fundamentals</h1>
+
+<p align="center">
+  <b>Module 1 of the SQL Engineering Handbook</b><br>
+  The foundation every advanced SQL concept — aggregations, joins, subqueries, window functions, and CTEs — is built on top of.
+</p>
+
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/Level-Beginner-brightgreen" alt="Level: Beginner"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Time-2--3%20hrs-blue" alt="Estimated time: 2-3 hours"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Topics-5-orange" alt="5 topics"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Engines-MySQL%20%7C%20PostgreSQL%20%7C%20SQL%20Server%20%7C%20Oracle-2f6feb" alt="4 engines covered"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Status-Complete-success" alt="Status: Complete"></a>
+  <a href="../CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-6f42c1" alt="PRs welcome"></a>
+</p>
+
+<p align="center">
+  <a href="#-quick-start">Quick Start</a> ·
+  <a href="#-topics-covered">Topics</a> ·
+  <a href="#-dialect-coverage">Dialects</a> ·
+  <a href="#-reference-files">Glossary / FAQ / Interview Prep</a> ·
+  <a href="../02_Aggregations">Next Module →</a>
+</p>
 
 ---
 
 ## 📑 Table of Contents
 
+- [Quick Start](#-quick-start)
 - [Overview](#-overview)
+- [Visual Explanation](#-visual-explanation)
 - [Learning Objectives](#-learning-objectives)
 - [Datasets Used in This Module](#-datasets-used-in-this-module)
 - [Topics Covered](#-topics-covered)
+- [Dialect Coverage](#-dialect-coverage)
+- [Reference Files](#-reference-files)
 - [Folder Structure](#-folder-structure)
 - [Recommended Learning Order](#-recommended-learning-order)
 - [Skills Developed](#-skills-developed)
@@ -24,6 +48,26 @@
 - [Prerequisites](#-prerequisites)
 - [How to Use This Module](#-how-to-use-this-module)
 - [Next Section](#-next-section)
+
+---
+
+## ⚡ Quick Start
+
+New here? Three ways in, pick whichever fits how you learn:
+
+```bash
+# 1. Set up the shared dataset (any of these engines work)
+psql -f ../00_Schema/01_CREATE_TABLES.sql
+psql -f ../00_Schema/02_INSERT_DATA.sql
+```
+
+| I want to... | Go to |
+|---|---|
+| Learn topic by topic, in order | Start with [`01_SELECT.md`](./01_SELECT.md) |
+| See the whole module as one picture first | [Visual Explanation](#-visual-explanation) below |
+| Look up a term I don't recognize | [`GLOSSARY.md`](./GLOSSARY.md) |
+| Cram before an interview | [`INTERVIEW_PREP.md`](./INTERVIEW_PREP.md) |
+| Write SQL for SQL Server or Oracle, not MySQL/Postgres | [Dialect Coverage](#-dialect-coverage) below |
 
 ---
 
@@ -36,6 +80,20 @@ SELECT → WHERE → ORDER BY → LIMIT
 ```
 
 Every advanced topic in this handbook — aggregations, joins, subqueries, window functions, and CTEs — is a layer built on top of these fundamentals. Mastering this module first means every subsequent module will click faster.
+
+---
+
+## 🗺 Visual Explanation
+
+![Module 01 roadmap: SELECT, WHERE, ORDER BY, LIMIT, ALIAS](./assets/diagrams/module-roadmap.svg)
+
+Every topic in this module is a stage in the same underlying process — a written query becoming a result set:
+
+![Query lifecycle: written query, parser, optimizer, execution engine, result set](./assets/diagrams/query-lifecycle.svg)
+
+...and within that Execution Engine stage, clauses run in a fixed logical order that does **not** match the order you type them in. This single diagram is referenced from every topic file in this module instead of being redrawn five times:
+
+![Logical execution order: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT](./assets/diagrams/execution-order-flow.svg)
 
 ---
 
@@ -91,6 +149,8 @@ Every file in this module queries the same two tables so examples stay consisten
 
 > Questions that need both tables together (e.g. "employees in departments located in Nagpur") require a `JOIN`, which is covered in `04_Joins`. Where this module's practice questions reach that far, they're flagged as **challenge / forward-reference** problems — attempt them once you've completed the joins module.
 
+> **Note on schema simplification:** the tables above are a deliberately small subset of the handbook's canonical schema in [`00_Schema`](../00_Schema) (50 rows across 10 departments and 5 locations), flattened here to 5 rows and a single `departments` table with `city`/`country` columns instead of a separate `locations` table joined by `location_id`. This keeps the *entire* result set of any example small enough to read at a glance while you're learning what each individual clause does in isolation. Once you reach `03_Joins`, you'll work with the full canonical schema — the flattened version here is not the one used for joins, and isn't meant to be a physical migration path to it.
+
 ---
 
 ## 📖 Topics Covered
@@ -107,12 +167,45 @@ Each `.md` file explains the **concept, syntax, and reasoning**, while the paire
 
 ---
 
+## 🌐 Dialect Coverage
+
+Every topic file in this module includes a **Dialect Differences** section comparing MySQL, PostgreSQL, SQL Server, and Oracle. Most of `SELECT`/`WHERE`/`ORDER BY`/`ALIAS` is portable as written — `LIMIT` is the exception and the highest-value comparison in the module:
+
+| Topic | What varies by engine |
+|---|---|
+| SELECT | Unquoted identifier case-folding (preserved / lowercased / uppercased) |
+| WHERE | Null-safe equality operator (`<=>` / `IS NOT DISTINCT FROM` / no dedicated operator) |
+| ORDER BY | Default `NULL` sort position (first vs. last) |
+| LIMIT | Entirely different keyword: `LIMIT` / `TOP` + `OFFSET...FETCH` / `ROWNUM` + `FETCH FIRST` |
+| ALIAS | Whether `AS` is permitted before a table alias; identifier quoting character |
+
+---
+
+## 📚 Reference Files
+
+Beyond the five topic files, this module includes three cross-cutting references:
+
+| File | Purpose |
+|---|---|
+| [`GLOSSARY.md`](./GLOSSARY.md) | Terms used across topic files (predicate, projection, collation, dialect...), defined once |
+| [`FAQ.md`](./FAQ.md) | Recurring beginner questions that don't belong to one specific topic |
+| [`INTERVIEW_PREP.md`](./INTERVIEW_PREP.md) | Every topic file's "Interview Tip" consolidated into one pre-interview review sheet, with likely follow-up questions |
+
+---
+
 ## 📂 Folder Structure
+
+<details>
+<summary>Click to expand — 20 files, all one flat level deep</summary>
 
 ```
 01_Fundamentals/
 │
 ├── README.md
+├── GLOSSARY.md
+├── FAQ.md
+├── INTERVIEW_PREP.md
+│
 ├── 01_SELECT.md
 ├── 01_SELECT.sql
 ├── 02_WHERE.md
@@ -122,8 +215,24 @@ Each `.md` file explains the **concept, syntax, and reasoning**, while the paire
 ├── 04_LIMIT.md
 ├── 04_LIMIT.sql
 ├── 05_ALIAS.md
-└── 05_ALIAS.sql
+├── 05_ALIAS.sql
+│
+└── assets/
+    ├── README.md
+    ├── SVG_SPECIFICATION.md
+    └── diagrams/
+        ├── hero-banner.svg
+        ├── module-roadmap.svg
+        ├── query-lifecycle.svg
+        ├── execution-order-flow.svg
+        ├── select-projection.svg
+        ├── predicate-truth-values.svg
+        ├── nulls-sort-order.svg
+        ├── limit-dialect-comparison.svg
+        └── alias-scope-timeline.svg
 ```
+
+</details>
 
 ---
 
@@ -193,6 +302,7 @@ These fundamentals are used daily by:
 3. Open the matching `.sql` file and run the examples against that data.
 4. Modify the queries — change conditions, columns, and sort orders — to see how behavior changes.
 5. Move to the next topic only once you're comfortable explaining the current one out loud.
+6. On SQL Server or Oracle instead? Each topic file's **Dialect Differences** section gives the equivalent syntax — this matters most for `04_LIMIT.md`, since `LIMIT` itself doesn't exist on either engine.
 
 > ⏱ **Estimated time:** 2–3 hours for the lessons and examples, plus additional time for hands-on practice.
 
@@ -206,6 +316,24 @@ Once you've completed this module, continue to:
 
 ---
 
+## 🙌 Found a Mistake or Have a Better Example?
+
+This handbook is open source and improves through contributions. Before opening a PR against this module:
+
+- Check [`../STYLE_GUIDE.md`](../STYLE_GUIDE.md) for formatting conventions this module already follows
+- Check [`../CONTRIBUTING.md`](../CONTRIBUTING.md) for the PR process
+- Small fixes (typos, broken links, a clearer example) are always welcome without prior discussion; larger structural changes are easier to land if opened as an issue first
+
+---
+
+<table align="center">
+<tr>
+<td align="center">⬅️<br><b>Previous</b><br><sub>None — this is the first module</sub></td>
+<td align="center">🏠<br><b><a href="../">Handbook Home</a></b><br><sub>All modules</sub></td>
+<td align="center">➡️<br><b><a href="../02_Aggregations">Next</a></b><br><sub>02_Aggregations</sub></td>
+</tr>
+</table>
+
 <p align="center">
-  <i>Part of the <a href="../">SQL Engineering Handbook</a></i>
+  <sub>Part of the <a href="../">SQL Engineering Handbook</a> · <a href="#top">Back to top ↑</a></sub>
 </p>

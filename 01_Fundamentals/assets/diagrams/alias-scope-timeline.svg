@@ -1,0 +1,28 @@
+<svg viewBox="0 0 820 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="820" height="200" fill="#ffffff"/>
+  <text x="410" y="26" text-anchor="middle" font-size="15" font-weight="600" fill="#24292e">
+    An Alias Only Exists After SELECT Creates It
+  </text>
+
+  <line x1="60" y1="100" x2="760" y2="100" stroke="#d0d7de" stroke-width="2"/>
+
+  <g font-size="12" font-weight="700" fill="#ffffff">
+    <circle cx="120" cy="100" r="34" fill="#2f6feb"/>
+    <text x="120" y="105" text-anchor="middle">WHERE</text>
+
+    <circle cx="400" cy="100" r="34" fill="#6f42c1"/>
+    <text x="400" y="105" text-anchor="middle">SELECT</text>
+
+    <circle cx="680" cy="100" r="34" fill="#22863a"/>
+    <text x="680" y="97" text-anchor="middle" font-size="11">ORDER</text>
+    <text x="680" y="111" text-anchor="middle" font-size="11">BY</text>
+  </g>
+
+  <text x="120" y="155" text-anchor="middle" font-size="11" fill="#cf222e">alias does NOT exist yet</text>
+  <text x="400" y="155" text-anchor="middle" font-size="11" fill="#22863a">alias created here</text>
+  <text x="680" y="155" text-anchor="middle" font-size="11" fill="#22863a">alias exists, usable</text>
+
+  <text x="410" y="185" text-anchor="middle" font-size="12" fill="#586069">
+    "column alias not found" errors in WHERE are a timing bug, not a syntax bug.
+  </text>
+</svg>

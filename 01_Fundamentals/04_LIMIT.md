@@ -24,6 +24,49 @@ LIMIT 5 OFFSET 10;
 
 ---
 
+## Visual Explanation
+
+`LIMIT` is the last stage of logical execution order — everything else has already run by the time it truncates the result set.
+
+![Logical execution order, LIMIT stage highlighted](./assets/diagrams/execution-order-flow.svg)
+
+```mermaid
+flowchart LR
+    A[ORDER BY: rows sorted] --> B[LIMIT: keep first N]
+    B --> C[Result Set]
+    style B fill:#e8622c,color:#ffffff
+```
+
+---
+
+## Dialect Differences
+
+`LIMIT` is the **least portable clause covered in this entire module** — it's a MySQL/PostgreSQL extension, not part of the ANSI SQL standard. Writing pagination logic that needs to run on more than one engine means knowing all four of these:
+
+![Same clause, four different keywords across engines](./assets/diagrams/limit-dialect-comparison.svg)
+
+| Engine | "First 3 rows" | "Skip 2, take 3" (pagination) |
+|---|---|---|
+| MySQL | `LIMIT 3` | `LIMIT 3 OFFSET 2` |
+| PostgreSQL | `LIMIT 3` | `LIMIT 3 OFFSET 2` |
+| SQL Server | `SELECT TOP 3 * FROM employes ORDER BY emp_id;` | `ORDER BY emp_id OFFSET 2 ROWS FETCH NEXT 3 ROWS ONLY` |
+| Oracle (12c+) | `FETCH FIRST 3 ROWS ONLY` | `OFFSET 2 ROWS FETCH NEXT 3 ROWS ONLY` |
+| Oracle (legacy, pre-12c) | `WHERE ROWNUM <= 3` | Nested subquery with `ROWNUM` — no direct `OFFSET` equivalent |
+
+The **ANSI-standard, portable form** — supported by PostgreSQL, SQL Server, and modern Oracle, though not by MySQL — is:
+
+```sql
+SELECT *
+FROM employes
+ORDER BY emp_id
+OFFSET 2 ROWS
+FETCH NEXT 3 ROWS ONLY;
+```
+
+If a query needs to run unmodified across engines, this is the form to reach for instead of `LIMIT`.
+
+---
+
 ## Schema Used
 
 ### employes
@@ -159,6 +202,14 @@ LIMIT 3;
 
 ---
 
+## Edge Cases
+
+- **`LIMIT` larger than the table** — `LIMIT 1000` against a 5-row table returns all 5 rows silently; it's not an error to ask for more rows than exist.
+- **`LIMIT 0`** — returns zero rows, but the query still runs (useful in application code to validate query syntax/columns without transferring data).
+- **`OFFSET` past the end of the data** — `LIMIT 3 OFFSET 100` against a 5-row table returns an empty result set, not an error.
+
+---
+
 ## Interview Tip
 
 Interviewers often ask: *"Write a query to find the 2nd highest salary."* The naive answer reaches for `LIMIT 1 OFFSET 1` after sorting descending — which works, but breaks silently on duplicate values (two employees tied for highest salary push the "2nd highest" down incorrectly). Knowing when `LIMIT`/`OFFSET` is the right tool versus when you need `DENSE_RANK()` (covered in the window functions module) is what separates a syntax-level answer from an engineering-level one.
@@ -190,3 +241,11 @@ Interviewers often ask: *"Write a query to find the 2nd highest salary."* The na
 - ORDER BY
 - WHERE
 - OFFSET
+
+---
+
+## Further Reading
+
+- [`GLOSSARY.md`](./GLOSSARY.md) — "deterministic," "pagination," "ANSI SQL" definitions
+- [`FAQ.md`](./FAQ.md) — "do I need `ORDER BY` before I can use `LIMIT`?"
+- [`INTERVIEW_PREP.md`](./INTERVIEW_PREP.md) — see "Is `LIMIT` part of the ANSI SQL standard?" and "2nd highest salary"

@@ -1,0 +1,48 @@
+<svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="560" height="380" fill="#ffffff"/>
+  <text x="280" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">CROSS JOIN</text>
+  <text x="280" y="54" text-anchor="middle" font-size="13" fill="#555">every row paired with every row — no predicate, no exceptions</text>
+
+  <!-- column headers: departments -->
+  <text x="280" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="#d8763b">departments (6)</text>
+  <g font-size="10" fill="#d8763b">
+    <text x="180" y="98" text-anchor="middle">Eng</text>
+    <text x="240" y="98" text-anchor="middle">Sales</text>
+    <text x="300" y="98" text-anchor="middle">HR</text>
+    <text x="360" y="98" text-anchor="middle">Fin</text>
+    <text x="420" y="98" text-anchor="middle">Mktg</text>
+    <text x="480" y="98" text-anchor="middle">Legal</text>
+  </g>
+
+  <!-- row headers: employees (abbreviated to 6 for space) -->
+  <g font-size="10" fill="#3b6fd8" text-anchor="end">
+    <text x="140" y="118">Sahil</text>
+    <text x="140" y="140">Ammar</text>
+    <text x="140" y="162">Riya</text>
+    <text x="140" y="184">Neha</text>
+    <text x="140" y="206">Karan</text>
+    <text x="140" y="228">...(10 total)</text>
+  </g>
+  <text x="70" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#3b6fd8" transform="rotate(-90 70 170)">employees (10)</text>
+
+  <!-- grid of fully-shaded cells: 6 cols x 5 visible rows -->
+  <g fill="#8fbf6b" stroke="#5c9a3f" stroke-width="0.5">
+    <!-- generate 6x5 grid programmatically via repeated rects -->
+    <!-- row 1 -->
+    <rect x="160" y="108" width="40" height="18"/><rect x="220" y="108" width="40" height="18"/><rect x="280" y="108" width="40" height="18"/><rect x="340" y="108" width="40" height="18"/><rect x="400" y="108" width="40" height="18"/><rect x="460" y="108" width="40" height="18"/>
+    <!-- row 2 -->
+    <rect x="160" y="130" width="40" height="18"/><rect x="220" y="130" width="40" height="18"/><rect x="280" y="130" width="40" height="18"/><rect x="340" y="130" width="40" height="18"/><rect x="400" y="130" width="40" height="18"/><rect x="460" y="130" width="40" height="18"/>
+    <!-- row 3 -->
+    <rect x="160" y="152" width="40" height="18"/><rect x="220" y="152" width="40" height="18"/><rect x="280" y="152" width="40" height="18"/><rect x="340" y="152" width="40" height="18"/><rect x="400" y="152" width="40" height="18"/><rect x="460" y="152" width="40" height="18"/>
+    <!-- row 4 -->
+    <rect x="160" y="174" width="40" height="18"/><rect x="220" y="174" width="40" height="18"/><rect x="280" y="174" width="40" height="18"/><rect x="340" y="174" width="40" height="18"/><rect x="400" y="174" width="40" height="18"/><rect x="460" y="174" width="40" height="18"/>
+    <!-- row 5 -->
+    <rect x="160" y="196" width="40" height="18"/><rect x="220" y="196" width="40" height="18"/><rect x="280" y="196" width="40" height="18"/><rect x="340" y="196" width="40" height="18"/><rect x="400" y="196" width="40" height="18"/><rect x="460" y="196" width="40" height="18"/>
+  </g>
+  <text x="280" y="245" text-anchor="middle" font-size="11" fill="#555">... continues for all 10 employees ...</text>
+
+  <rect x="160" y="260" width="360" height="1" fill="#ccc"/>
+  <text x="280" y="290" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1a2e">10 employees × 6 departments = 60 rows</text>
+  <text x="280" y="312" text-anchor="middle" font-size="12" fill="#555">Every cell is shaded — no matching logic, no ON clause.</text>
+  <text x="280" y="332" text-anchor="middle" font-size="12" fill="#555">Row count is purely multiplicative: rows(A) × rows(B).</text>
+</svg>

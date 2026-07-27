@@ -1,0 +1,43 @@
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="260" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">Logical Query Processing Order</text>
+  <text x="450" y="52" text-anchor="middle" font-size="13" fill="#555">the order clauses are logically evaluated in — not necessarily physical execution order</text>
+
+  <g font-size="13" font-weight="600" fill="#1a1a2e">
+    <!-- boxes -->
+    <rect x="20"  y="100" width="110" height="60" rx="8" fill="#dbe9ff" stroke="#3b6fd8" stroke-width="2"/>
+    <text x="75" y="135" text-anchor="middle">FROM</text>
+
+    <rect x="160" y="100" width="150" height="60" rx="8" fill="#ffe3d6" stroke="#d8763b" stroke-width="2"/>
+    <text x="235" y="128" text-anchor="middle">JOIN / ON</text>
+    <text x="235" y="146" text-anchor="middle" font-size="11" font-weight="400">unmatched rows resolved here</text>
+
+    <rect x="340" y="100" width="110" height="60" rx="8" fill="#f5e0ff" stroke="#8b3bd8" stroke-width="2"/>
+    <text x="395" y="135" text-anchor="middle">WHERE</text>
+
+    <rect x="480" y="100" width="130" height="60" rx="8" fill="#fff6c9" stroke="#c8a71b" stroke-width="2"/>
+    <text x="545" y="128" text-anchor="middle">GROUP BY</text>
+    <text x="545" y="146" text-anchor="middle" font-size="11" font-weight="400">/ HAVING</text>
+
+    <rect x="640" y="100" width="110" height="60" rx="8" fill="#d6ffe3" stroke="#2e9e5b" stroke-width="2"/>
+    <text x="695" y="135" text-anchor="middle">SELECT</text>
+
+    <rect x="780" y="100" width="110" height="60" rx="8" fill="#ffd6e0" stroke="#d83b6f" stroke-width="2"/>
+    <text x="835" y="128" text-anchor="middle">ORDER BY</text>
+    <text x="835" y="146" text-anchor="middle" font-size="11" font-weight="400">/ LIMIT</text>
+
+    <!-- arrows -->
+    <polygon points="130,130 158,130 158,124 168,132 158,140 158,134 130,134" fill="#333"/>
+    <polygon points="310,130 338,130 338,124 348,132 338,140 338,134 310,134" fill="#333"/>
+    <polygon points="450,130 478,130 478,124 488,132 478,140 478,134 450,134" fill="#333"/>
+    <polygon points="610,130 638,130 638,124 648,132 638,140 638,134 610,134" fill="#333"/>
+    <polygon points="750,130 778,130 778,124 788,132 778,140 778,134 750,134" fill="#333"/>
+  </g>
+
+  <text x="450" y="210" text-anchor="middle" font-size="12" fill="#333">
+    A filter on the joined table in WHERE runs AFTER unmatched rows are already resolved —
+  </text>
+  <text x="450" y="228" text-anchor="middle" font-size="12" fill="#333">
+    this is why WHERE can silently collapse an outer join back into an inner join.
+  </text>
+</svg>

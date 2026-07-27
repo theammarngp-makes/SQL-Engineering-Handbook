@@ -1,0 +1,66 @@
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="260" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    Logical Execution Order of a SQL Query
+  </text>
+  <text x="450" y="48" text-anchor="middle" font-size="12" fill="#586069">
+    The order clauses are written is not the order the engine evaluates them
+  </text>
+
+  <!-- Stage boxes -->
+  <g font-size="13" font-weight="600" fill="#ffffff">
+    <rect x="20"  y="90" width="108" height="56" rx="8" fill="#2f6feb"/>
+    <text x="74"  y="113" text-anchor="middle">FROM</text>
+    <text x="74"  y="130" text-anchor="middle" font-size="10" font-weight="400">tables loaded</text>
+
+    <rect x="160" y="90" width="108" height="56" rx="8" fill="#2f6feb"/>
+    <text x="214" y="113" text-anchor="middle">WHERE</text>
+    <text x="214" y="130" text-anchor="middle" font-size="10" font-weight="400">rows filtered</text>
+
+    <rect x="300" y="90" width="108" height="56" rx="8" fill="#6f42c1"/>
+    <text x="354" y="113" text-anchor="middle">GROUP BY</text>
+    <text x="354" y="130" text-anchor="middle" font-size="10" font-weight="400">rows grouped</text>
+
+    <rect x="440" y="90" width="108" height="56" rx="8" fill="#6f42c1"/>
+    <text x="494" y="113" text-anchor="middle">HAVING</text>
+    <text x="494" y="130" text-anchor="middle" font-size="10" font-weight="400">groups filtered</text>
+
+    <rect x="580" y="90" width="108" height="56" rx="8" fill="#e8622c"/>
+    <text x="634" y="113" text-anchor="middle">SELECT</text>
+    <text x="634" y="130" text-anchor="middle" font-size="10" font-weight="400">columns chosen</text>
+
+    <rect x="720" y="90" width="75" height="56" rx="8" fill="#22863a"/>
+    <text x="757" y="113" text-anchor="middle" font-size="12">ORDER BY</text>
+    <text x="757" y="130" text-anchor="middle" font-size="9" font-weight="400">rows sorted</text>
+
+    <rect x="805" y="90" width="75" height="56" rx="8" fill="#22863a"/>
+    <text x="842" y="113" text-anchor="middle">LIMIT</text>
+    <text x="842" y="130" text-anchor="middle" font-size="10" font-weight="400">rows cut</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="128" y1="118" x2="158" y2="118"/>
+    <line x1="268" y1="118" x2="298" y2="118"/>
+    <line x1="408" y1="118" x2="438" y2="118"/>
+    <line x1="548" y1="118" x2="578" y2="118"/>
+    <line x1="688" y1="118" x2="718" y2="118"/>
+    <line x1="795" y1="118" x2="803" y2="118"/>
+  </g>
+
+  <!-- Module 01 highlight band -->
+  <rect x="160" y="175" width="720" height="34" rx="6" fill="#fff5e6" stroke="#e8622c" stroke-width="1"/>
+  <text x="520" y="197" text-anchor="middle" font-size="12" fill="#7a4a1e">
+    Module 01 covers: WHERE · SELECT · ORDER BY · LIMIT — highlighted stages above
+  </text>
+
+  <text x="450" y="240" text-anchor="middle" font-size="11" fill="#586069">
+    Writing order: SELECT → FROM → WHERE → ORDER BY → LIMIT · Execution order: as shown left to right
+  </text>
+</svg>
