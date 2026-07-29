@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banners/readme-banner.png" alt="SQL Engineering Handbook Banner" width="100%">
+  <img src="assets/cover/cover.png" alt="SQL Engineering Handbook Banner" width="100%">
 </p>
 
 <h1 align="center">SQL Engineering Handbook</h1>
