@@ -1,0 +1,19 @@
+# 1. FORCE SQL DETECTION
+*.sql linguist-language=SQL
+**.sql linguist-language=SQL
+*.sql linguist-detectable=true
+**.sql linguist-detectable=true
+
+# 2. PREVENT GITHUB FROM MISTAKING SQL FOR DOCUMENTATION
+*.sql linguist-documentation=false
+**.sql linguist-documentation=false
+indexes/**/*.sql linguist-documentation=false
+
+# 3. KEEP MARKDOWN HIDDEN FROM LANGUAGE STATS
+*.md linguist-documentation=true
+**.md linguist-documentation=true
+
+# 4. BALANCE PYTHON AND SQL (OPTIONAL ADVANCED RULE)
+# If Python still dominates because of huge scripts, you can stop 
+# specific large Python files from counting toward the byte percentage:
+# path/to/huge_script.py linguist-detectable=false
