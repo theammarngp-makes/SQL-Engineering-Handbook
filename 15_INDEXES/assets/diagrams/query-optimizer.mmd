@@ -1,0 +1,9 @@
+```mermaid
+flowchart TD
+    A[Query parsed] --> B[Consult table/index statistics]
+    B --> C[Estimate cost per candidate access path]
+    C --> D[Full scan<br/>cost ≈ rows × scan_cost]
+    C --> E[Index seek<br/>cost ≈ log rows + matches × lookup_cost]
+    D --> F[Pick lowest-cost estimate]
+    E --> F
+```

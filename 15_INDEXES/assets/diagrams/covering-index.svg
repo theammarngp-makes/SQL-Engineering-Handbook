@@ -1,0 +1,60 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .panel-title{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="460" fill="#FAFAF7"/>
+  <rect width="900" height="460" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,444 L34,444 M16,444 L16,426"/>
+    <path d="M884,444 L866,444 M884,444 L884,426"/>
+  </g>
+  <text x="40" y="46" class="title">Covering Index — Index-Only Scan</text>
+  <text x="40" y="66" class="cap">05 — Covering Indexes · SELECT order_id, order_date, status WHERE customer_id = X</text>
+
+  <!-- LEFT: non-covering -->
+  <rect x="40" y="96" width="390" height="320" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="60" y="126" class="panel-title" fill="#C2410C">NON-COVERING</text>
+  <text x="60" y="146" class="label" fill="#6B7280">Extra: Using where</text>
+
+  <rect x="70" y="180" width="140" height="44" fill="#FDECE3" stroke="#C2410C" stroke-width="1.5"/>
+  <text x="86" y="207" class="label">idx(customer_id)</text>
+  <path d="M210,202 L300,202" stroke="#C2410C" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <text x="220" y="195" class="label" fill="#C2410C" font-size="11">2nd lookup</text>
+  <rect x="300" y="180" width="110" height="44" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="316" y="207" class="label">table row</text>
+
+  <text x="70" y="270" class="label">1. seek index for customer_id</text>
+  <text x="70" y="294" class="label">2. get primary key from leaf</text>
+  <text x="70" y="318" class="label">3. look up full row in table</text>
+  <rect x="70" y="345" width="330" height="46" fill="#FDECE3" stroke="#C2410C"/>
+  <text x="86" y="373" class="label" fill="#C2410C">2 I/O operations per matching row</text>
+
+  <!-- RIGHT: covering -->
+  <rect x="470" y="96" width="390" height="320" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="490" y="126" class="panel-title" fill="#147D7A">COVERING</text>
+  <text x="490" y="146" class="label" fill="#6B7280">Extra: Using index</text>
+
+  <rect x="500" y="180" width="330" height="44" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="516" y="207" class="label">idx(customer_id, order_date, status)</text>
+
+  <text x="500" y="270" class="label">1. seek index for customer_id</text>
+  <text x="500" y="294" class="label">2. order_id, order_date, status all</text>
+  <text x="516" y="314" class="label">already present at the leaf — done</text>
+  <rect x="500" y="345" width="330" height="46" fill="#EAF6F5" stroke="#147D7A"/>
+  <text x="516" y="373" class="label" fill="#147D7A">1 I/O operation per matching row</text>
+
+  <text x="40" y="420" class="cap">order_id is covered "for free" — InnoDB secondary index leaves always store the primary key value.</text>
+</svg>

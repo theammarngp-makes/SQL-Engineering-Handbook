@@ -1,0 +1,65 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">Indexing Decision Workflow</text>
+  <text x="40" y="66" class="cap">06 — Indexing Strategies · workload type decides the index budget before any single query does</text>
+
+  <!-- start -->
+  <rect x="360" y="96" width="180" height="46" rx="6" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="450" y="124" class="label" text-anchor="middle">Is this table OLTP</text>
+  <text x="450" y="138" class="label" text-anchor="middle" font-size="10" fill="#6B7280">(high write) or OLAP?</text>
+
+  <path d="M450,142 L450,170" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <path d="M420,150 L220,190" stroke="#1A1F2B" stroke-width="1.5" fill="none"/>
+  <path d="M480,150 L680,190" stroke="#1A1F2B" stroke-width="1.5" fill="none"/>
+  <text x="280" y="175" class="label" fill="#147D7A">OLTP</text>
+  <text x="620" y="175" class="label" fill="#C2410C">OLAP / warehouse</text>
+
+  <!-- OLTP branch -->
+  <rect x="110" y="190" width="240" height="60" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="230" y="214" class="label" text-anchor="middle">Enumerate actual, observed</text>
+  <text x="230" y="232" class="label" text-anchor="middle">query patterns — not</text>
+  <text x="230" y="248" class="label" text-anchor="middle">hypothetical ones</text>
+
+  <path d="M230,250 L230,278" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <rect x="110" y="278" width="240" height="70" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="230" y="302" class="label" text-anchor="middle">Index the minimum set</text>
+  <text x="230" y="320" class="label" text-anchor="middle">covering highest-frequency</text>
+  <text x="230" y="338" class="label" text-anchor="middle">queries + required constraints</text>
+
+  <!-- OLAP branch -->
+  <rect x="550" y="190" width="240" height="60" fill="#FDF6E9" stroke="#C2410C" stroke-width="1.5"/>
+  <text x="670" y="214" class="label" text-anchor="middle">Identify star-schema shape:</text>
+  <text x="670" y="232" class="label" text-anchor="middle">fact table foreign keys +</text>
+  <text x="670" y="248" class="label" text-anchor="middle">dimension surrogate keys</text>
+
+  <path d="M670,250 L670,278" stroke="#C2410C" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <rect x="550" y="278" width="240" height="70" fill="#FDF6E9" stroke="#C2410C" stroke-width="1.5"/>
+  <text x="670" y="302" class="label" text-anchor="middle">Index dimension FKs broadly</text>
+  <text x="670" y="320" class="label" text-anchor="middle">+ covering indexes for known,</text>
+  <text x="670" y="338" class="label" text-anchor="middle">recurring report queries</text>
+
+  <path d="M230,348 L230,376" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <path d="M670,348 L670,376" stroke="#C2410C" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <rect x="110" y="376" width="680" height="50" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="450" y="406" class="label" text-anchor="middle">Revisit periodically — table character can shift as production traffic drifts</text>
+</svg>

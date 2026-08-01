@@ -1,0 +1,55 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">Reading an Execution Plan</text>
+  <text x="40" y="66" class="cap">08 — EXPLAIN &amp; Execution Plans · orders JOIN customers WHERE status = 'completed'</text>
+
+  <!-- top: join node -->
+  <rect x="330" y="96" width="240" height="64" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="450" y="118" class="label" text-anchor="middle" font-weight="700">Nested Loop Join</text>
+  <text x="450" y="136" class="label" text-anchor="middle">est. rows: 40</text>
+  <text x="450" y="152" class="label" text-anchor="middle" fill="#C2410C">actual rows: 8,200 ⚠</text>
+
+  <path d="M400,160 L230,206" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <path d="M500,160 L670,206" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- outer: orders index scan -->
+  <rect x="110" y="206" width="240" height="70" fill="#FDECE3" stroke="#C2410C" stroke-width="1.5"/>
+  <text x="230" y="228" class="label" text-anchor="middle" font-weight="700">Index Scan: orders.status</text>
+  <text x="230" y="246" class="label" text-anchor="middle">est. rows: 40</text>
+  <text x="230" y="264" class="label" text-anchor="middle" fill="#C2410C">actual rows: 8,200 ⚠</text>
+
+  <!-- inner: customers pk lookup, looped -->
+  <rect x="550" y="206" width="240" height="70" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="670" y="228" class="label" text-anchor="middle" font-weight="700">PK Lookup: customers.id</text>
+  <text x="670" y="246" class="label" text-anchor="middle">est. rows: 1 / loop</text>
+  <text x="670" y="264" class="label" text-anchor="middle">loops: 8,200</text>
+
+  <rect x="90" y="310" width="720" height="120" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="110" y="336" class="label" font-weight="700">Diagnosis</text>
+  <text x="110" y="360" class="label">Estimated 40 rows, actual 8,200 — a 200x gap. Statistics for</text>
+  <text x="110" y="380" class="label">orders.status are likely stale after a recent data shift.</text>
+  <text x="110" y="400" class="label">Each of those 8,200 outer rows re-triggers the inner PK lookup —</text>
+  <text x="110" y="420" class="label">cheap per loop, expensive multiplied 8,200 times over.</text>
+
+  <text x="40" y="455" class="cap">First move: ANALYZE TABLE orders — then re-run EXPLAIN ANALYZE and compare the gap again.</text>
+</svg>

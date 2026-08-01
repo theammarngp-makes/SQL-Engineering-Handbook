@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#22303F" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2DD4C7"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:44px;fill:#F5F3EC;}
+    .subtitle{font-family:'IBM Plex Mono',Consolas,monospace;font-size:16px;fill:#9FB2C4;}
+    .tag{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#2DD4C7;letter-spacing:2px;}
+    .node{fill:#0F1B26;stroke:#2DD4C7;stroke-width:1.5;}
+    .leaf{fill:#12303030;}
+  </style>
+  <rect width="1200" height="300" fill="#0B1420"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+
+  <!-- faint B+Tree silhouette, right side -->
+  <g opacity="0.9">
+    <rect x="960" y="60" width="70" height="30" class="node"/>
+    <line x1="995" y1="60" x2="995" y2="90" stroke="#2DD4C7"/>
+    <path d="M980,90 L920,140 M1010,90 L1070,140" stroke="#2DD4C7" stroke-width="1.5" fill="none"/>
+    <rect x="890" y="140" width="60" height="26" class="node"/>
+    <rect x="1040" y="140" width="60" height="26" class="node"/>
+    <path d="M905,166 L860,210 M935,166 L960,210 M1055,166 L1030,210 M1085,166 L1120,210" stroke="#2DD4C7" stroke-width="1.5" fill="none"/>
+    <rect x="830" y="210" width="56" height="24" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <rect x="932" y="210" width="56" height="24" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <rect x="1002" y="210" width="56" height="24" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <rect x="1094" y="210" width="56" height="24" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <path d="M886,222 L932,222 M988,222 L1002,222 M1058,222 L1094,222" stroke="#2DD4C7" stroke-width="1.5" marker-end="url(#arrow-teal)" fill="none"/>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#3A4A5A" stroke-width="1.5">
+    <path d="M24,24 L46,24 M24,24 L24,46"/>
+    <path d="M1176,24 L1154,24 M1176,24 L1176,46"/>
+    <path d="M24,276 L46,276 M24,276 L24,254"/>
+    <path d="M1176,276 L1154,276 M1176,276 L1176,254"/>
+  </g>
+
+  <text x="60" y="90" class="tag">SQL ENGINEERING HANDBOOK · MODULE 15</text>
+  <text x="60" y="150" class="title">Indexes</text>
+  <text x="60" y="184" class="subtitle">From "SQL that works" to SQL that performs at scale.</text>
+  <text x="60" y="210" class="subtitle">B-Trees · Composite &amp; Covering Indexes · EXPLAIN · Optimizer Internals</text>
+</svg>

@@ -1,0 +1,5 @@
+```mermaid
+flowchart TD
+    A["Nested Loop Join<br/>est. rows: 40 · actual rows: 8,200 ⚠"] --> B["Index Scan: orders.status<br/>est. rows: 40 · actual rows: 8,200 ⚠"]
+    A --> C["PK Lookup: customers.id<br/>est. rows: 1/loop · loops: 8,200"]
+```

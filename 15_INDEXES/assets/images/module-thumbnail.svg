@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2DD4C7"/>
+    </marker>
+  </defs>
+  <rect width="200" height="200" rx="20" fill="#0B1420"/>
+  <rect x="80" y="30" width="40" height="22" fill="#0F1B26" stroke="#2DD4C7" stroke-width="2"/>
+  <path d="M92,52 L64,86 M108,52 L136,86" stroke="#2DD4C7" stroke-width="2" fill="none"/>
+  <rect x="46" y="86" width="36" height="20" fill="#0F1B26" stroke="#2DD4C7" stroke-width="2"/>
+  <rect x="118" y="86" width="36" height="20" fill="#0F1B26" stroke="#2DD4C7" stroke-width="2"/>
+  <path d="M56,106 L40,140 M72,106 L84,140 M128,106 L116,140 M144,106 L160,140" stroke="#2DD4C7" stroke-width="2" fill="none"/>
+  <rect x="26" y="140" width="30" height="18" fill="#123A38" stroke="#2DD4C7" stroke-width="2"/>
+  <rect x="70" y="140" width="30" height="18" fill="#123A38" stroke="#2DD4C7" stroke-width="2"/>
+  <rect x="100" y="140" width="30" height="18" fill="#123A38" stroke="#2DD4C7" stroke-width="2"/>
+  <rect x="144" y="140" width="30" height="18" fill="#123A38" stroke="#2DD4C7" stroke-width="2"/>
+  <path d="M56,149 L70,149 M100,149 L100,149 M130,149 L144,149" stroke="#2DD4C7" stroke-width="2" marker-end="url(#arrow-t)" fill="none"/>
+</svg>

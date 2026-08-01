@@ -1,0 +1,70 @@
+<svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:14px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="440" fill="#FAFAF7"/>
+  <rect width="900" height="440" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,424 L34,424 M16,424 L16,406"/>
+    <path d="M884,424 L866,424 M884,424 L884,406"/>
+  </g>
+  <text x="40" y="46" class="title">Leftmost Prefix Rule</text>
+  <text x="40" y="66" class="cap">03 — Composite Indexes · INDEX(customer_id, order_date, status)</text>
+
+  <g font-family="IBM Plex Mono, Consolas, monospace" font-size="14">
+    <!-- rows: check, query, note -->
+    <g>
+      <circle cx="80" cy="120" r="14" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+      <text x="80" y="125" text-anchor="middle" fill="#147D7A" font-weight="700">✓</text>
+      <text x="120" y="126" fill="#1A1F2B">WHERE customer_id = X</text>
+      <text x="560" y="126" fill="#6B7280" font-size="12">uses column 1</text>
+    </g>
+    <g>
+      <circle cx="80" cy="164" r="14" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+      <text x="80" y="169" text-anchor="middle" fill="#147D7A" font-weight="700">✓</text>
+      <text x="120" y="170" fill="#1A1F2B">WHERE customer_id = X AND order_date = Y</text>
+      <text x="560" y="170" fill="#6B7280" font-size="12">uses columns 1–2</text>
+    </g>
+    <g>
+      <circle cx="80" cy="208" r="14" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+      <text x="80" y="213" text-anchor="middle" fill="#147D7A" font-weight="700">✓</text>
+      <text x="120" y="214" fill="#1A1F2B">WHERE customer_id = X AND order_date = Y AND status = Z</text>
+      <text x="560" y="214" fill="#6B7280" font-size="12">uses all 3 columns</text>
+    </g>
+    <g>
+      <circle cx="80" cy="256" r="14" fill="#FDECE3" stroke="#C2410C" stroke-width="2"/>
+      <text x="80" y="261" text-anchor="middle" fill="#C2410C" font-weight="700">✗</text>
+      <text x="120" y="262" fill="#1A1F2B">WHERE order_date = Y</text>
+      <text x="560" y="262" fill="#6B7280" font-size="12">skips column 1</text>
+    </g>
+    <g>
+      <circle cx="80" cy="300" r="14" fill="#FDECE3" stroke="#C2410C" stroke-width="2"/>
+      <text x="80" y="305" text-anchor="middle" fill="#C2410C" font-weight="700">✗</text>
+      <text x="120" y="306" fill="#1A1F2B">WHERE status = Z</text>
+      <text x="560" y="306" fill="#6B7280" font-size="12">skips columns 1–2</text>
+    </g>
+    <g>
+      <circle cx="80" cy="344" r="14" fill="#FDECE3" stroke="#C2410C" stroke-width="2"/>
+      <text x="80" y="349" text-anchor="middle" fill="#C2410C" font-weight="700">✗</text>
+      <text x="120" y="350" fill="#1A1F2B">WHERE order_date = Y AND status = Z</text>
+      <text x="560" y="350" fill="#6B7280" font-size="12">skips column 1</text>
+    </g>
+  </g>
+  <rect x="40" y="96" width="820" height="272" fill="none" stroke="#D4CFC2"/>
+  <line x1="40" y1="140" x2="860" y2="140" stroke="#EFEBE0"/>
+  <line x1="40" y1="184" x2="860" y2="184" stroke="#EFEBE0"/>
+  <line x1="40" y1="228" x2="860" y2="228" stroke="#EFEBE0"/>
+  <line x1="40" y1="278" x2="860" y2="278" stroke="#EFEBE0"/>
+  <line x1="40" y1="322" x2="860" y2="322" stroke="#EFEBE0"/>
+
+  <text x="40" y="400" class="cap">A composite index is only searchable starting from its leftmost column — skip it, and the index can't be used at all.</text>
+</svg>

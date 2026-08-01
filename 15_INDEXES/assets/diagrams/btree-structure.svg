@@ -1,0 +1,105 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">B+Tree Structure</text>
+  <text x="40" y="66" class="cap">02 — B-Tree Indexes · internal nodes navigate, leaf nodes hold data and are linked</text>
+
+  <!-- root -->
+  <rect x="390" y="100" width="120" height="40" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <line x1="450" y1="100" x2="450" y2="140" stroke="#1A1F2B"/>
+  <text x="420" y="125" class="label" text-anchor="middle">50</text>
+  <text x="480" y="125" class="label" text-anchor="middle">90</text>
+  <text x="450" y="95" class="label-sm" text-anchor="middle" fill="#6B7280">root</text>
+
+  <!-- internal nodes -->
+  <g>
+    <rect x="180" y="200" width="120" height="40" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <line x1="240" y1="200" x2="240" y2="240" stroke="#1A1F2B"/>
+    <text x="210" y="225" class="label" text-anchor="middle">10</text>
+    <text x="270" y="225" class="label" text-anchor="middle">30</text>
+
+    <rect x="390" y="200" width="120" height="40" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <line x1="450" y1="200" x2="450" y2="240" stroke="#1A1F2B"/>
+    <text x="420" y="225" class="label" text-anchor="middle">60</text>
+    <text x="480" y="225" class="label" text-anchor="middle">75</text>
+
+    <rect x="600" y="200" width="120" height="40" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <line x1="660" y1="200" x2="660" y2="240" stroke="#1A1F2B"/>
+    <text x="630" y="225" class="label" text-anchor="middle">100</text>
+    <text x="690" y="225" class="label" text-anchor="middle">120</text>
+  </g>
+
+  <!-- root to internal edges -->
+  <g stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)">
+    <path d="M410,140 L240,200"/>
+    <path d="M450,140 L450,200"/>
+    <path d="M490,140 L660,200"/>
+  </g>
+
+  <!-- leaves -->
+  <g>
+    <rect x="60"  y="300" width="90" height="36" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <rect x="170" y="300" width="90" height="36" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <rect x="280" y="300" width="90" height="36" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <rect x="390" y="300" width="90" height="36" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <rect x="500" y="300" width="90" height="36" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <rect x="610" y="300" width="90" height="36" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <rect x="720" y="300" width="90" height="36" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+
+    <text x="105" y="323" class="label-sm" text-anchor="middle">5,8</text>
+    <text x="215" y="323" class="label-sm" text-anchor="middle">10,22,29</text>
+    <text x="325" y="323" class="label-sm" text-anchor="middle">35,41</text>
+    <text x="435" y="323" class="label-sm" text-anchor="middle">60,68</text>
+    <text x="545" y="323" class="label-sm" text-anchor="middle">75,81</text>
+    <text x="655" y="323" class="label-sm" text-anchor="middle">100,110</text>
+    <text x="765" y="323" class="label-sm" text-anchor="middle">120,140</text>
+  </g>
+
+  <!-- internal to leaf edges -->
+  <g stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)">
+    <path d="M210,240 L105,300"/>
+    <path d="M270,240 L215,300"/>
+    <path d="M240,240 L325,300"/>
+    <path d="M420,240 L435,300"/>
+    <path d="M480,240 L545,300"/>
+    <path d="M630,240 L655,300"/>
+    <path d="M690,240 L765,300"/>
+  </g>
+
+  <!-- leaf linked list -->
+  <g stroke="#147D7A" stroke-width="2" marker-end="url(#arrow-teal)">
+    <path d="M150,318 L170,318"/>
+    <path d="M260,318 L280,318"/>
+    <path d="M370,318 L390,318"/>
+    <path d="M480,318 L500,318"/>
+    <path d="M590,318 L610,318"/>
+    <path d="M700,318 L720,318"/>
+  </g>
+
+  <rect x="40" y="380" width="820" height="60" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="404" class="label-sm" fill="#147D7A">■ leaf nodes (linked, sorted, hold data) — a range scan walks this chain directly</text>
+  <text x="60" y="424" class="label-sm">□ internal nodes (navigation only) — tree height stays ~3-4 levels even at hundreds of millions of rows</text>
+</svg>

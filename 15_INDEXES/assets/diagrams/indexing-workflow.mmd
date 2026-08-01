@@ -1,0 +1,9 @@
+```mermaid
+flowchart TD
+    A[Is this table OLTP<br/>high write or OLAP?] -->|OLTP| B[Enumerate actual,<br/>observed query patterns]
+    A -->|OLAP / warehouse| C[Identify star-schema shape:<br/>fact FKs + dimension keys]
+    B --> D[Index the minimum set<br/>covering highest-frequency<br/>queries + required constraints]
+    C --> E[Index dimension FKs broadly<br/>+ covering indexes for known,<br/>recurring report queries]
+    D --> F[Revisit periodically —<br/>table character can shift]
+    E --> F
+```

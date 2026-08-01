@@ -1,0 +1,73 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .panel-title{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="460" fill="#FAFAF7"/>
+  <rect width="900" height="460" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,444 L34,444 M16,444 L16,426"/>
+    <path d="M884,444 L866,444 M884,444 L884,426"/>
+  </g>
+  <text x="40" y="46" class="title">Index Lifecycle</text>
+  <text x="40" y="66" class="cap">10 — Index Maintenance · healthy pages degrade under write load, maintenance restores them</text>
+
+  <!-- Stage 1: healthy -->
+  <rect x="40" y="110" width="230" height="170" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="60" y="136" class="panel-title" fill="#147D7A">HEALTHY</text>
+  <g>
+    <rect x="60" y="150" width="190" height="24" fill="#EAF6F5" stroke="#147D7A"/>
+    <rect x="60" y="178" width="190" height="24" fill="#EAF6F5" stroke="#147D7A"/>
+    <rect x="60" y="206" width="190" height="24" fill="#EAF6F5" stroke="#147D7A"/>
+  </g>
+  <text x="60" y="252" class="label" fill="#6B7280">densely packed,</text>
+  <text x="60" y="268" class="label" fill="#6B7280">sequential leaf pages</text>
+
+  <path d="M270,195 L330,195" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <text x="275" y="182" class="label" fill="#6B7280" font-size="11">writes accumulate</text>
+
+  <!-- Stage 2: degraded -->
+  <rect x="335" y="110" width="230" height="170" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="355" y="136" class="panel-title" fill="#C2410C">DEGRADED</text>
+  <g>
+    <rect x="355" y="150" width="120" height="24" fill="#FDECE3" stroke="#C2410C"/>
+    <rect x="490" y="178" width="80" height="24" fill="#FDECE3" stroke="#C2410C"/>
+    <rect x="355" y="206" width="60" height="24" fill="#FDECE3" stroke="#C2410C"/>
+    <rect x="430" y="150" width="40" height="24" fill="#F2EEE4" stroke="#D4CFC2" stroke-dasharray="3,2"/>
+    <rect x="420" y="206" width="150" height="24" fill="#F2EEE4" stroke="#D4CFC2" stroke-dasharray="3,2"/>
+  </g>
+  <text x="355" y="252" class="label" fill="#6B7280">scattered pages +</text>
+  <text x="355" y="268" class="label" fill="#6B7280">dead-tuple gaps (dashed)</text>
+
+  <path d="M565,195 L625,195" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <text x="570" y="182" class="label" fill="#6B7280" font-size="11">maintenance runs</text>
+
+  <!-- Stage 3: maintained -->
+  <rect x="630" y="110" width="230" height="170" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="650" y="136" class="panel-title" fill="#147D7A">MAINTAINED</text>
+  <g>
+    <rect x="650" y="150" width="190" height="24" fill="#EAF6F5" stroke="#147D7A"/>
+    <rect x="650" y="178" width="190" height="24" fill="#EAF6F5" stroke="#147D7A"/>
+    <rect x="650" y="206" width="190" height="24" fill="#EAF6F5" stroke="#147D7A"/>
+  </g>
+  <text x="650" y="252" class="label" fill="#6B7280">OPTIMIZE TABLE /</text>
+  <text x="650" y="268" class="label" fill="#6B7280">VACUUM / REBUILD</text>
+
+  <path d="M745,280 L745,310 Q745,330 630,330" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="4,4" fill="none" marker-end="url(#arrow)"/>
+  <text x="440" y="345" class="label" fill="#6B7280" font-size="11" text-anchor="middle">the cycle repeats — this is recurring operational work, not a one-time fix</text>
+
+  <rect x="40" y="380" width="820" height="46" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="408" class="label">Monitor fragmentation/dead-tuple % before scheduling maintenance — don't run it reflexively.</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .axis{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="460" fill="#FAFAF7"/>
+  <rect width="900" height="460" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,444 L34,444 M16,444 L16,426"/>
+    <path d="M884,444 L866,444 M884,444 L884,426"/>
+  </g>
+  <text x="40" y="46" class="title">Write vs. Read Trade-off</text>
+  <text x="40" y="66" class="cap">06 — Indexing Strategies · every index added trades write cost for read speed</text>
+
+  <!-- chart area -->
+  <rect x="90" y="100" width="700" height="290" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <!-- axes -->
+  <line x1="90" y1="390" x2="790" y2="390" stroke="#1A1F2B" stroke-width="1.5"/>
+  <line x1="90" y1="100" x2="90" y2="390" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="440" y="424" class="axis" text-anchor="middle">number of indexes on the table →</text>
+  <text x="50" y="245" class="axis" text-anchor="middle" transform="rotate(-90,50,245)">relative performance →</text>
+
+  <!-- read speed line (teal, rising, plateauing) -->
+  <path d="M100,370 C 250,300 400,160 780,130" fill="none" stroke="#147D7A" stroke-width="2.5"/>
+  <!-- write throughput line (amber, falling) -->
+  <path d="M100,140 C 300,180 500,300 780,370" fill="none" stroke="#C2410C" stroke-width="2.5"/>
+
+  <!-- sweet spot marker -->
+  <line x1="330" y1="100" x2="330" y2="390" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="340" y="118" class="axis" fill="#6B7280">deliberate OLTP budget</text>
+
+  <circle cx="780" cy="130" r="4" fill="#147D7A"/>
+  <text x="700" y="118" class="label" fill="#147D7A">read speed</text>
+  <circle cx="780" cy="370" r="4" fill="#C2410C"/>
+  <text x="700" y="386" class="label" fill="#C2410C">write throughput</text>
+
+  <text x="90" y="430" class="cap">Every index speeds specific reads but adds write overhead on every INSERT/UPDATE/DELETE that touches an indexed column — indefinitely, not once.</text>
+</svg>

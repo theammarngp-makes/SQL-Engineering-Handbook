@@ -1,0 +1,48 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="460" fill="#FAFAF7"/>
+  <rect width="900" height="460" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,444 L34,444 M16,444 L16,426"/>
+    <path d="M884,444 L866,444 M884,444 L884,426"/>
+  </g>
+  <text x="40" y="46" class="title">Selectivity: customer_id vs. status</text>
+  <text x="40" y="66" class="cap">07 — Query Optimization with Indexes · 10,000,000-row orders table</text>
+
+  <!-- high selectivity -->
+  <text x="60" y="112" class="label" fill="#147D7A" font-weight="700">customer_id — high selectivity</text>
+  <rect x="60" y="126" width="760" height="34" fill="#F2EEE4" stroke="#D4CFC2"/>
+  <rect x="60" y="126" width="4" height="34" fill="#147D7A"/>
+  <text x="80" y="148" class="label">≈ 2,000,000 distinct values → selectivity ≈ 0.2 → seek narrows to ~5 rows</text>
+
+  <!-- low selectivity -->
+  <text x="60" y="200" class="label" fill="#C2410C" font-weight="700">status — low selectivity</text>
+  <rect x="60" y="214" width="760" height="34" fill="#F2EEE4" stroke="#D4CFC2"/>
+  <rect x="60" y="214" width="620" height="34" fill="#C2410C" opacity="0.85"/>
+  <text x="80" y="236" class="label" fill="#FFFFFF">3 distinct values → selectivity ≈ 0.0000003 → seek narrows to ~3,333,333 rows</text>
+
+  <!-- cost comparison bars -->
+  <text x="60" y="300" class="label" fill="#6B7280">Rows examined per matching seek (illustrative scale)</text>
+  <rect x="60" y="314" width="20" height="80" fill="#147D7A"/>
+  <text x="60" y="410" class="label" font-size="11">customer_id</text>
+  <text x="60" y="426" class="label" font-size="11" fill="#6B7280">~5 rows</text>
+
+  <rect x="200" y="130" width="20" height="264" fill="#C2410C"/>
+  <text x="185" y="410" class="label" font-size="11">status</text>
+  <text x="170" y="426" class="label" font-size="11" fill="#6B7280">~3.3M rows</text>
+
+  <text x="360" y="360" class="cap">The optimizer correctly ignores an index on "status" here — walking a</text>
+  <text x="360" y="378" class="cap">third of the table via random lookups costs more than reading it</text>
+  <text x="360" y="396" class="cap">sequentially. This is cost-based optimization working as intended.</text>
+</svg>

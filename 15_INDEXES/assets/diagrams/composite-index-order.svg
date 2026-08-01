@@ -1,0 +1,64 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="460" fill="#FAFAF7"/>
+  <rect width="900" height="460" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,444 L34,444 M16,444 L16,426"/>
+    <path d="M884,444 L866,444 M884,444 L884,426"/>
+  </g>
+  <text x="40" y="46" class="title">Composite Index — Nested Sort Order</text>
+  <text x="40" y="66" class="cap">03 — Composite Indexes · INDEX(customer_id, order_date, status)</text>
+
+  <!-- column headers -->
+  <g class="label-sm" fill="#6B7280">
+    <text x="80" y="104">customer_id</text>
+    <text x="260" y="104">order_date</text>
+    <text x="430" y="104">status</text>
+  </g>
+  <rect x="60" y="112" width="760" height="2" fill="#D4CFC2"/>
+
+  <!-- rows, colored bands showing grouping -->
+  <g font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#1A1F2B">
+    <rect x="60" y="128" width="760" height="38" fill="#EAF6F5"/>
+    <text x="80" y="152">4471</text><text x="260" y="152">2026-01-02</text><text x="430" y="152">completed</text>
+
+    <rect x="60" y="166" width="760" height="38" fill="#F3FBFA"/>
+    <text x="80" y="190">4471</text><text x="260" y="190">2026-01-05</text><text x="430" y="190">pending</text>
+
+    <rect x="60" y="204" width="760" height="38" fill="#EAF6F5"/>
+    <text x="80" y="228">4471</text><text x="260" y="228">2026-01-09</text><text x="430" y="228">completed</text>
+
+    <rect x="60" y="242" width="760" height="38" fill="#FDF6E9"/>
+    <text x="80" y="266">88291</text><text x="260" y="266">2026-01-01</text><text x="430" y="266">completed</text>
+
+    <rect x="60" y="280" width="760" height="38" fill="#FBF0DD"/>
+    <text x="80" y="304">88291</text><text x="260" y="304">2026-01-03</text><text x="430" y="304">cancelled</text>
+
+    <rect x="60" y="318" width="760" height="38" fill="#F2EEE4"/>
+    <text x="80" y="342">91002</text><text x="260" y="342">2026-01-01</text><text x="430" y="342">pending</text>
+  </g>
+  <rect x="60" y="128" width="760" height="228" fill="none" stroke="#D4CFC2"/>
+
+  <!-- bracket callouts -->
+  <g stroke="#147D7A" stroke-width="1.5" fill="none">
+    <path d="M834,128 L844,128 L844,242 L834,242"/>
+  </g>
+  <text x="850" y="190" class="label-sm" fill="#147D7A">customer_id</text>
+  <text x="850" y="206" class="label-sm" fill="#147D7A">= 4471 group</text>
+
+  <text x="40" y="400" class="label-sm">Sorted first by customer_id, then by order_date within each</text>
+  <text x="40" y="420" class="label-sm">customer_id, then by status within each (customer_id, order_date) pair.</text>
+  <text x="40" y="440" class="label-sm">Only searchable starting from the leftmost column — customer_id.</text>
+</svg>

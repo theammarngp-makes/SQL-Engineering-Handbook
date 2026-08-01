@@ -1,0 +1,91 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#6B6455;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .panel-title{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <!-- corner ticks -->
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">Full Table Scan vs. Index Seek</text>
+  <text x="40" y="66" class="cap">01 — Index Fundamentals · orders WHERE customer_id = 88291</text>
+
+  <!-- LEFT PANEL: full scan -->
+  <rect x="40" y="96" width="380" height="300" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="60" y="126" class="panel-title" fill="#C2410C">FULL TABLE SCAN</text>
+  <text x="60" y="146" class="label-sm">type = ALL · no usable index</text>
+
+  <g>
+    <!-- 14 row squares, two rows -->
+    <g transform="translate(60,170)">
+      <!-- row 1 -->
+      <g>
+        <rect x="0"   y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="46"  y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="92"  y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="138" y="0" width="40" height="40" fill="#FDECE3" stroke="#C2410C" stroke-width="2"/>
+        <rect x="184" y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="230" y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="276" y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+      </g>
+      <!-- row 2 -->
+      <g transform="translate(0,46)">
+        <rect x="0"   y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="46"  y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="92"  y="0" width="40" height="40" fill="#FDECE3" stroke="#C2410C" stroke-width="2"/>
+        <rect x="138" y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="184" y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="230" y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+        <rect x="276" y="0" width="40" height="40" fill="#FFFFFF" stroke="#1A1F2B"/>
+      </g>
+    </g>
+    <path d="M60,164 L336,164" stroke="#C2410C" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+    <text x="60" y="278" class="label-sm">every row read and checked, most discarded</text>
+  </g>
+
+  <rect x="60" y="330" width="300" height="46" fill="#FDECE3" stroke="#C2410C"/>
+  <text x="76" y="359" class="label" fill="#C2410C">cost ≈ n rows  →  ~40,000,000 reads</text>
+
+  <!-- RIGHT PANEL: index seek -->
+  <rect x="460" y="96" width="400" height="300" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="480" y="126" class="panel-title" fill="#147D7A">INDEX SEEK</text>
+  <text x="480" y="146" class="label-sm">type = ref · idx_orders_customer_id</text>
+
+  <!-- funnel: root -> internal -> leaf matches -->
+  <g stroke="#1A1F2B" stroke-width="1.5" fill="none">
+    <rect x="640" y="175" width="60" height="30" fill="#FFFFFF"/>
+    <path d="M660,205 L610,240 M690,205 L740,240" marker-end="url(#arrow)"/>
+    <rect x="580" y="240" width="60" height="30" fill="#FFFFFF"/>
+    <rect x="710" y="240" width="60" height="30" fill="#FFFFFF"/>
+    <path d="M600,270 L560,305 M770,270 L810,305" marker-end="url(#arrow)"/>
+  </g>
+  <text x="655" y="195" class="label-sm" text-anchor="middle">root</text>
+  <text x="595" y="260" class="label-sm" text-anchor="middle">int.</text>
+  <text x="725" y="260" class="label-sm" text-anchor="middle">int.</text>
+
+  <rect x="520" y="305" width="80" height="34" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+  <text x="560" y="327" class="label-sm" text-anchor="middle" fill="#147D7A">match</text>
+  <rect x="780" y="305" width="80" height="34" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+  <text x="820" y="327" class="label-sm" text-anchor="middle" fill="#147D7A">match</text>
+
+  <rect x="480" y="330" width="380" height="46" fill="#EAF6F5" stroke="#147D7A"/>
+  <text x="496" y="359" class="label" fill="#147D7A">cost ≈ log n + k  →  ~5 reads</text>
+
+  <text x="450" y="440" class="cap" text-anchor="middle" font-size="13">O(n) full scan on the left  ·  O(log n) index seek on the right — same query, same result, radically different cost</text>
+</svg>

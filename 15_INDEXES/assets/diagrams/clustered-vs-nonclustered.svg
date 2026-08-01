@@ -1,0 +1,64 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .panel-title{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="460" fill="#FAFAF7"/>
+  <rect width="900" height="460" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,444 L34,444 M16,444 L16,426"/>
+    <path d="M884,444 L866,444 M884,444 L884,426"/>
+  </g>
+  <text x="40" y="46" class="title">Clustered vs. Non-Clustered Index</text>
+  <text x="40" y="66" class="cap">04 — Unique, Primary &amp; Foreign Key Indexes · InnoDB model</text>
+
+  <!-- LEFT: clustered -->
+  <rect x="40" y="96" width="390" height="330" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="60" y="126" class="panel-title" fill="#147D7A">CLUSTERED (PRIMARY KEY)</text>
+  <text x="60" y="146" class="label" fill="#6B7280">leaf nodes ARE the row</text>
+
+  <g>
+    <rect x="60" y="170" width="350" height="44" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="76" y="196" class="label">id=1 → { email: a@x.com, name: ..., ... }</text>
+    <rect x="60" y="220" width="350" height="44" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="76" y="246" class="label">id=2 → { email: b@x.com, name: ..., ... }</text>
+    <rect x="60" y="270" width="350" height="44" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="76" y="296" class="label">id=3 → { email: c@x.com, name: ..., ... }</text>
+  </g>
+  <text x="60" y="340" class="label" fill="#1A1F2B">One lookup. The row is right there.</text>
+  <text x="60" y="360" class="label" fill="#6B7280">A table can have at most one clustered index.</text>
+
+  <!-- RIGHT: non-clustered -->
+  <rect x="470" y="96" width="390" height="330" fill="#FFFFFF" stroke="#D4CFC2" stroke-width="1.5"/>
+  <text x="490" y="126" class="panel-title" fill="#C2410C">NON-CLUSTERED (SECONDARY)</text>
+  <text x="490" y="146" class="label" fill="#6B7280">leaf nodes point to the row</text>
+
+  <g>
+    <rect x="490" y="170" width="150" height="40" fill="#FDECE3" stroke="#C2410C" stroke-width="1.5"/>
+    <text x="504" y="195" class="label">'a@x.com' → id=1</text>
+    <rect x="490" y="216" width="150" height="40" fill="#FDECE3" stroke="#C2410C" stroke-width="1.5"/>
+    <text x="504" y="241" class="label">'b@x.com' → id=2</text>
+
+    <rect x="710" y="192" width="130" height="40" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <text x="724" y="217" class="label">clustered idx</text>
+    <path d="M640,190 L710,206" stroke="#C2410C" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+    <path d="M640,236 L710,216" stroke="#C2410C" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  </g>
+  <text x="490" y="300" class="label" fill="#1A1F2B">TWO lookups: index → primary key →</text>
+  <text x="490" y="320" class="label" fill="#1A1F2B">clustered index → full row.</text>
+  <text x="490" y="350" class="label" fill="#6B7280">A table can have many non-clustered indexes.</text>
+
+  <text x="40" y="410" class="cap">Same email lookup, two different costs — this is why File 05's covering indexes matter: they eliminate the second lookup entirely.</text>
+</svg>
