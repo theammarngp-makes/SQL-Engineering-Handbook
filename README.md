@@ -154,7 +154,7 @@ flowchart LR
 | 11 | NULL Handling & Data Cleaning | ✅️ Complete |
 | 12 | Advanced Aggregations | ✅️ Complete |
 | 13 | Set Operators | ✅️ Complete |
-| 14 | Views | 🔄 In Progress |
+| 14 | Views | ✅️  In Progress |
 | 15 | Indexes | 🔄 In Progress |
 | 16 | Query Optimization | 🔄 In Progress |
 | 17 | SQL Interview Questions | 🔄 In Progress |
