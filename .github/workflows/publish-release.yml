@@ -1,5 +1,4 @@
 name: Publish Release
-
 on:
   workflow_dispatch:
     inputs:
@@ -23,12 +22,58 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Create or update GitHub Release
-        uses: peter-evans/create-or-update-release@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ github.event.inputs.tag }}
-          target_commitish: ${{ github.event.inputs.commit }}
-          release_name: ${{ github.event.inputs.tag }} — Advanced modules & infra updates
-          body_path: RELEASE_NOTES_v1.1.0.md
-          draft: ${{ github.event.inputs.draft }}
+      - name: Create or update GitHub Release (REST API)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="${{ github.event.inputs.tag }}"
+          COMMITISH="${{ github.event.inputs.commit }}"
+          DRAFT_INPUT="${{ github.event.inputs.draft }}"
+          
+          if [ "${DRAFT_INPUT,,}" = "true" ]; then 
+            DRAFT_BOOL=true
+          else 
+            DRAFT_BOOL=false
+          fi
+          
+          REPO="${{ github.repository }}"
+          NAME="${{ github.event.inputs.tag }} - Advanced modules & infra updates"
+          BODY_FILE="RELEASE_NOTES_v1.1.0.md"
+
+          if [ -f "$BODY_FILE" ]; then
+            BODY_JSON=$(jq -R -s '.' "$BODY_FILE")
+          else
+            BODY_JSON=$(jq -R -s '.' <(echo ""))
+          fi
+
+          echo "Checking for existing release with tag: $TAG"
+          GET_URL="https://api.github.com/repos/${REPO}/releases/tags/${TAG}"
+          resp=$(curl -sS -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github+json" "$GET_URL" || true)
+
+          if echo "$resp" | jq -e 'has("id")' >/dev/null 2>&1; then
+            release_id=$(echo "$resp" | jq -r .id)
+            echo "Release exists (id=$release_id). Updating..."
+            PATCH_URL="https://api.github.com/repos/${REPO}/releases/${release_id}"
+            
+            jq -n \
+              --arg tag "$TAG" \
+              --arg commit "$COMMITISH" \
+              --arg name "$NAME" \
+              --arg body "$(echo "$BODY_JSON" | sed -e 's/^"//' -e 's/"$//')" \
+              --argjson draft "$DRAFT_BOOL" \
+              '{tag_name: $tag, target_commitish: $commit, name: $name, body: $body, draft: $draft}' | \
+            curl -sS -X PATCH -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github+json" "$PATCH_URL" -d @-
+          else
+            echo "No existing release found. Creating..."
+            POST_URL="https://api.github.com/repos/${REPO}/releases"
+            
+            jq -n \
+              --arg tag "$TAG" \
+              --arg commit "$COMMITISH" \
+              --arg name "$NAME" \
+              --arg body "$(echo "$BODY_JSON" | sed -e 's/^"//' -e 's/"$//')" \
+              --argjson draft "$DRAFT_BOOL" \
+              '{tag_name: $tag, target_commitish: $commit, name: $name, body: $body, draft: $draft}' | \
+            curl -sS -X POST -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github+json" "$POST_URL" -d @-
+          fi
