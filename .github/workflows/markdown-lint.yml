@@ -1,1 +1,19 @@
+name: Markdown lint
 
+on:
+  push:
+    paths:
+      - '**/*.md'
+  pull_request:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run markdownlint
+        uses: igorshubovych/markdownlint-action@v3
+        with:
+          files: "**/*.md"
