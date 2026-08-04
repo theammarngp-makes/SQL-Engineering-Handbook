@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      releases: write
     steps:
       - uses: actions/checkout@v4
       - name: Create or update GitHub Release
