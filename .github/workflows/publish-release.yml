@@ -1,0 +1,35 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
+        default: 'v1.1.0'
+      commit:
+        description: 'Target commitish (branch or commit SHA)'
+        required: true
+        default: 'a19b23aabc631d84759b70295526e7644b54e2da'
+      draft:
+        description: 'Create as draft? true/false'
+        required: false
+        default: 'false'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      releases: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create or update GitHub Release
+        uses: peter-evans/create-or-update-release@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.event.inputs.tag }}
+          target_commitish: ${{ github.event.inputs.commit }}
+          release_name: ${{ github.event.inputs.tag }} — Advanced modules & infra updates
+          body_path: RELEASE_NOTES_v1.1.0.md
+          draft: ${{ github.event.inputs.draft }}
