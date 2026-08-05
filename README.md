@@ -155,8 +155,8 @@ flowchart LR
 | 12 | Advanced Aggregations | ✅️ Complete |
 | 13 | Set Operators | ✅️ Complete |
 | 14 | Views | ✅️  In Progress |
-| 15 | Indexes | 🔄 In Progress |
-| 16 | Query Optimization | 🔄 In Progress |
+| 15 | Indexes | ✅️ In Progress |
+| 16 | Query Optimization | ✅️ In Progress |
 | 17 | SQL Interview Questions | 🔄 In Progress |
 | 18 | SQL Business Case Studies | 🔄 In Progress |
 | 19 | SQL Projects | 🔄 In Progress |
@@ -244,13 +244,13 @@ SQL-Engineering-Handbook/
 ├── 07_WINDOW_FUNCTIONS/                ✅ ROW_NUMBER, RANK, LAG/LEAD
 ├── 08_WINDOW_BUSINESS_CASES/           ✅ Applied window function scenarios
 ├── 09_DATE_FUNCTIONS/                  ✅ Date arithmetic, formatting, ranges
-├── 10_STRING_FUNCTIONS/                🔄 In progress
-├── 11_NULL_HANDLING_AND_DATA_CLEANING/ 🔄 In progress
-├── 12_ADVANCED_AGGREGATIONS/           🔄 In progress
-├── 13_SET_OPERATORS/                   🔄 In progress
-├── 14_VIEWS/                           🔄 In progress
-├── 15_INDEXES/                         🔄 In progress
-├── 16_QUERY_OPTIMIZATION/              🔄 In progress
+├── 10_STRING_FUNCTIONS/                ✅️ In progress
+├── 11_NULL_HANDLING_AND_DATA_CLEANING/ ✅️ In progress
+├── 12_ADVANCED_AGGREGATIONS/           ✅️ In progress
+├── 13_SET_OPERATORS/                   ✅️ In progress
+├── 14_VIEWS/                           ✅️ In progress
+├── 15_INDEXES/                         ✅️ In progress
+├── 16_QUERY_OPTIMIZATION/              ✅️ In progress
 ├── 17_SQL_INTERVIEW_QUESTIONS/         🔄 In progress
 ├── 18_SQL_BUSINESS_CASE_STUDIES/       🔄 In progress
 ├── 19_SQL_PROJECTS/                    🔄 In progress
