@@ -42,6 +42,39 @@ If you're an aspiring or practicing **Data Analyst** or **Analytics Engineer** w
 > **Honest status:** Modules **00–09** (Foundations → Date Functions) are complete and stable today. Modules **10–20**, plus `datasets/`, `projects/`, `exercises/`, and `cheatsheets/`, are actively being built module by module. Live status always lives in [`ROADMAP.md`](ROADMAP.md) — this README won't claim more than what's actually shipped.
 
 ---
+## 🗂️ Module Guide
+
+This is the part most handbooks . Every module below links straight to its folder and tells you exactly what's inside before you click.
+
+| # | Module | Contents | Status |
+|---|--------|----------|--------|
+| 00 | [Schema](00_Schema/) | Practice database DDL, seed data, and ERD used by every later module | ✅ |
+| 01 | [Fundamentals](01_Fundamentals/) | `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`, aliasing | ✅ |
+| 02 | [Aggregations](02_Aggregations/) | `COUNT`, `SUM`, `AVG`, `MIN`/`MAX`, `GROUP BY`, `HAVING` | ✅ |
+| 03 | [Joins](03_Joins/) | Inner, left, right, full, cross, self joins + performance audit | ✅ |
+| 04 | [Subqueries](04_Subqueries/) | Scalar, correlated, `EXISTS`, derived tables, subquery-to-join rewrites | ✅ |
+| 05 | [CASE WHEN](05_CASE_WHEN/) | Conditional logic and business-rule encoding | ✅ |
+| 06 | [CTEs](06_CTEs/) | Common Table Expressions, recursive CTEs | ✅ |
+| 07 | [Window Functions](07_Window_Functions/) | `ROW_NUMBER`, `RANK`, `LAG`/`LEAD`, `PARTITION BY` | ✅ |
+| 08 | [Window Business Cases](08_WINDOW_BUSINESS_CASES/) | Applied window-function scenarios (running totals, cohorts, rankings) | ✅ |
+| 09 | [Date Functions](09_Date_Functions/) | Date arithmetic, formatting, range queries | ✅ |
+| 10 | [String Functions](10_STRING_FUNCTIONS/) | String manipulation and data cleaning | ✅ |
+| 11 | [NULL Handling & Data Cleaning](11_NULL_HANDLING_AND_DATA_CLEANING/) | `COALESCE`, `NULLIF`, data-quality patterns | ✅ |
+| 12 | [Advanced Aggregations](12_ADVANCED_AGGREGATIONS/) | Conditional and multi-level aggregation | ✅ |
+| 13 | [Set Operators](13_SET_OPERATORS/) | `UNION`, `INTERSECT`, `EXCEPT`, reconciliation queries | ✅ |
+| 14 | [Views](14_VIEWS/) | Views, security, updatable views, performance | ✅ |
+| 15 | [Indexes](15_INDEXES/) | B-Tree, composite, covering indexes, reading `EXPLAIN` | ✅ |
+| 16 | [Query Optimization](16_QUERY_OPTIMIZATION/) | Execution plans, rewrite patterns, anti-patterns | ✅ |
+| 17 | [SQL Interview Questions](17_SQL_INTERVIEW_QUESTIONS/) | Curated question bank with worked answers | 📋 |
+| 18 | [SQL Business Case Studies](18_SQL_BUSINESS_CASE_STUDIES/) | End-to-end analytics scenarios across domains | 📋 |
+| 19 | [SQL Projects](19_SQL_PROJECTS/) | Portfolio-ready guided projects | 📋 |
+| 20 | [SQL Cheatsheet](20_SQL_CHEATSHEET/) | One-page syntax and pattern reference | 📋 |
+
+Legend: ✅ Complete · 🔄 In Progress · 📋 Planned — live tracking always in [`ROADMAP.md`](ROADMAP.md).
+
+Each module folder itself contains a `README.md` (concept + business context), one or more paired `.sql` files, and where relevant an audit or troubleshooting doc — click into any module above to see its own contents list.
+
+---
 
 ## What Makes It Different
 
