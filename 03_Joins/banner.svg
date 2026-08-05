@@ -1,0 +1,12 @@
+<!-- Module 03 Banner - Joins -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="grad-03" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="200" fill="url(#grad-03)"/>
+  <text x="600" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">🔗 03 — SQL Joins</text>
+  <text x="600" y="120" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.85)" text-anchor="middle">INNER, LEFT, RIGHT, FULL OUTER, CROSS, SELF JOINS & Multi-Table Joins</text>
+</svg>
