@@ -1,0 +1,12 @@
+<!-- Module 15 Banner - Indexes -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="grad-15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#30cfd0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#330867;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="200" fill="url(#grad-15)"/>
+  <text x="600" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">⚡ 15 — Indexes</text>
+  <text x="600" y="120" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.85)" text-anchor="middle">B-Tree, Composite, Covering Indexes & Query Optimization</text>
+</svg>
