@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" fill="url(#bg-grad10)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">SUBQUERY MEMORY BEHAVIOR: MATERIALIZATION VS VOLCANO STREAMING</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Comparing In-Memory Hash Buffering (work_mem) against Pipelined Tuple Streaming</text>
+
+  <!-- Left Side: Materialization Node -->
+  <g transform="translate(50, 100)">
+    <rect width="420" height="310" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <rect width="420" height="35" rx="10" fill="#d97706"/>
+    <text x="210" y="23" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">1. SUBQUERY MATERIALIZATION (work_mem)</text>
+
+    <rect x="20" y="55" width="380" height="110" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+    <text x="30" y="78" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Memory Buffer Allocation:</text>
+    <text x="30" y="98" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Inner subquery results fully buffered in RAM</text>
+    <text x="30" y="118" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Memory limit: work_mem (e.g. 64MB)</text>
+    <text x="30" y="138" font-family="JetBrains Mono, monospace" font-size="11" fill="#f43f5e">• Exceeds work_mem? Spills to Temp Disk File!</text>
+
+    <rect x="20" y="180" width="380" height="105" rx="6" fill="#0f172a" stroke="#475569"/>
+    <text x="30" y="202" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#cbd5e1">Execution Profile:</text>
+    <text x="30" y="222" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8">InitPlan / Materialize Node</text>
+    <text x="30" y="242" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8">Batches: 1 (RAM) or N (Disk Temp File)</text>
+    <text x="30" y="262" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fbbf24">High initial startup cost; fast probes.</text>
+  </g>
+
+  <!-- Right Side: Volcano Tuple Streaming -->
+  <g transform="translate(530, 100)">
+    <rect width="420" height="310" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <rect width="420" height="35" rx="10" fill="#059669"/>
+    <text x="210" y="23" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">2. VOLCANO TUPLE STREAMING (Pipelined)</text>
+
+    <rect x="20" y="55" width="380" height="110" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1"/>
+    <text x="30" y="78" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#34d399">Pipelined Execution Iterator:</text>
+    <text x="30" y="98" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Zero full-table materialization</text>
+    <text x="30" y="118" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Single tuple pulled on demand via Next()</text>
+    <text x="30" y="138" font-family="JetBrains Mono, monospace" font-size="11" fill="#34d399">• Constant memory footprint (~0 bytes)</text>
+
+    <rect x="20" y="180" width="380" height="105" rx="6" fill="#0f172a" stroke="#475569"/>
+    <text x="30" y="202" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#cbd5e1">Execution Profile:</text>
+    <text x="30" y="222" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8">Unnested Semi-Join / Index Scan</text>
+    <text x="30" y="242" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8">Early Exit Short Circuit on 1st Match</text>
+    <text x="30" y="262" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#34d399">Zero startup cost; optimal response time.</text>
+  </g>
+</svg>

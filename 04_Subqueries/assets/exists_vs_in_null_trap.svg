@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" fill="url(#bg-grad6)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">THREE-VALUED LOGIC &amp; THE NOT IN (SELECT ... NULL) TRAP</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Why a Single NULL Value in a NOT IN Subquery Silently Empties Your Query Result Set</text>
+
+  <!-- Left: NOT IN Trap -->
+  <g transform="translate(50, 100)">
+    <rect width="420" height="310" rx="10" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <rect width="420" height="35" rx="10" fill="#be123c"/>
+    <text x="210" y="23" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">❌ THE NOT IN NULL TRAP (DANGEROUS)</text>
+
+    <text x="20" y="60" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">WHERE dept_id NOT IN (1, 2, NULL)</text>
+
+    <rect x="20" y="80" width="380" height="135" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1"/>
+    <text x="30" y="102" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f43f5e">Expansion into Logical Operator Chain:</text>
+    <text x="30" y="125" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">NOT (dept_id = 1 OR dept_id = 2 OR dept_id = NULL)</text>
+    <text x="30" y="145" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">≡ (dept_id ≠ 1) AND (dept_id ≠ 2) AND (dept_id ≠ NULL)</text>
+    <text x="30" y="165" font-family="JetBrains Mono, monospace" font-size="11" fill="#f43f5e">≡ TRUE AND TRUE AND UNKNOWN</text>
+    <text x="30" y="185" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#f43f5e">≡ UNKNOWN (Evaluates to FALSE in WHERE!)</text>
+
+    <rect x="20" y="230" width="380" height="60" rx="6" fill="#be123c" opacity="0.3"/>
+    <text x="210" y="255" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#fca5a5" text-anchor="middle">RESULT: 0 ROWS RETURNED!</text>
+    <text x="210" y="275" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">Silent production bug — data is hidden, no error thrown.</text>
+  </g>
+
+  <!-- Right: NOT EXISTS Safe -->
+  <g transform="translate(530, 100)">
+    <rect width="420" height="310" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <rect width="420" height="35" rx="10" fill="#059669"/>
+    <text x="210" y="23" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">✅ THE NOT EXISTS PATTERN (BULLETPROOF)</text>
+
+    <text x="20" y="60" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">WHERE NOT EXISTS (SELECT 1 FROM d ...)</text>
+
+    <rect x="20" y="80" width="380" height="135" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1"/>
+    <text x="30" y="102" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#34d399">Correlation Predicate Evaluation:</text>
+    <text x="30" y="125" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">WHERE d.dept_id = e.dept_id</text>
+    <text x="30" y="145" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">If d.dept_id IS NULL: (NULL = e.dept_id) → UNKNOWN</text>
+    <text x="30" y="165" font-family="JetBrains Mono, monospace" font-size="11" fill="#34d399">Row is NOT returned by subquery filter → Row Count = 0</text>
+    <text x="30" y="185" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#34d399">NOT EXISTS (0 rows) ≡ TRUE!</text>
+
+    <rect x="20" y="230" width="380" height="60" rx="6" fill="#059669" opacity="0.3"/>
+    <text x="210" y="255" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7" text-anchor="middle">RESULT: EXACT UNMATCHED ROWS RETURNED!</text>
+    <text x="210" y="275" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">Immune to NULL values in target column.</text>
+  </g>
+</svg>

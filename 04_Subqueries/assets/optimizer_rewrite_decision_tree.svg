@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="480" fill="url(#bg-grad7)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">COST-BASED OPTIMIZER (CBO) SUBQUERY REWRITE DECISION MATRIX</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">How PostgreSQL, MySQL, and SQL Server Transform Subquery Expressions into Physical Join Trees</text>
+
+  <!-- Node 1: Root -->
+  <g transform="translate(380, 95)">
+    <rect width="240" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="120" y="22" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">Is Subquery in WHERE/JOIN?</text>
+    <text x="120" y="38" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">EXISTS / IN / ANY / ALL / Scalar</text>
+  </g>
+
+  <!-- Branches from Root -->
+  <path d="M 400 145 L 230 190" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <path d="M 600 145 L 770 190" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+
+  <!-- Left Branch: EXISTS / IN -->
+  <g transform="translate(100, 190)">
+    <rect width="260" height="60" rx="8" fill="#1e293b" stroke="#818cf8" stroke-width="2"/>
+    <text x="130" y="25" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#818cf8" text-anchor="middle">EXISTS / IN Subquery</text>
+    <text x="130" y="43" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Can it be unnested to Semi Join?</text>
+  </g>
+
+  <!-- Right Branch: NOT EXISTS / NOT IN -->
+  <g transform="translate(640, 190)">
+    <rect width="260" height="60" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <text x="130" y="25" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#f43f5e" text-anchor="middle">NOT EXISTS / NOT IN Subquery</text>
+    <text x="130" y="43" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Are target columns non-nullable?</text>
+  </g>
+
+  <!-- Branch L1 & L2 -->
+  <path d="M 170 250 L 110 300" stroke="#818cf8" stroke-width="1.5" fill="none"/>
+  <path d="M 290 250 L 350 300" stroke="#818cf8" stroke-width="1.5" fill="none"/>
+
+  <!-- Outcome L1: Hash Semi Join -->
+  <g transform="translate(20, 300)">
+    <rect width="180" height="130" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#059669"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">YES → Hash Semi Join</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Inner table hashed in memory</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Probe outer table in 1 pass</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#34d399">• Early exit per bucket</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#34d399">Optimal for Large Sets</text>
+  </g>
+
+  <!-- Outcome L2: Nested Loop Semi Join -->
+  <g transform="translate(260, 300)">
+    <rect width="180" height="130" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#d97706"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">INDEXED → NestLoop Semi</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Index Scan on inner table</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Short-circuits on 1st match</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#fbbf24">• O(N log M) complexity</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fbbf24">Optimal for Small Probe</text>
+  </g>
+
+  <!-- Branch R1 & R2 -->
+  <path d="M 710 250 L 650 300" stroke="#f43f5e" stroke-width="1.5" fill="none"/>
+  <path d="M 830 250 L 890 300" stroke="#f43f5e" stroke-width="1.5" fill="none"/>
+
+  <!-- Outcome R1: Hash Anti Join -->
+  <g transform="translate(540, 300)">
+    <rect width="180" height="130" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#059669"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">NOT EXISTS → Hash Anti</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Safe against NULLs</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Single pass execution</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#34d399">• Unnested automatically</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#34d399">Recommended Standard</text>
+  </g>
+
+  <!-- Outcome R2: SubPlan Anti-Join Trap -->
+  <g transform="translate(790, 300)">
+    <rect width="180" height="130" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#be123c"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">NOT IN + Nullable → SubPlan</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Optimizer CANNOT unnest</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#f43f5e">• Forces SubPlan per row</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#f43f5e">• Full Table Scan O(N × M)</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#f43f5e">SEVERE BOTTLENECK</text>
+  </g>
+</svg>

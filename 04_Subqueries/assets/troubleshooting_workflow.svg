@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="480" fill="url(#bg-grad12)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">SUBQUERY TROUBLESHOOTING &amp; INCIDENT DIAGNOSTIC FLOWCHART</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">SRE Decision Tree for Fixing Slow Subqueries and Empty Result Outages</text>
+
+  <!-- Root -->
+  <g transform="translate(380, 95)">
+    <rect width="240" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="120" y="22" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">Identify Subquery Symptom</text>
+    <text x="120" y="38" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Run EXPLAIN (ANALYZE, BUFFERS)</text>
+  </g>
+
+  <!-- Branch Left & Right -->
+  <path d="M 400 145 L 230 190" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <path d="M 600 145 L 770 190" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+
+  <!-- Left Branch: Performance Slowdown -->
+  <g transform="translate(100, 190)">
+    <rect width="260" height="55" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <text x="130" y="23" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#f43f5e" text-anchor="middle">High Latency / Timeout</text>
+    <text x="130" y="40" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Query takes &gt; 5 seconds</text>
+  </g>
+
+  <!-- Right Branch: Incorrect Results / Empty Rows -->
+  <g transform="translate(640, 190)">
+    <rect width="260" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <text x="130" y="23" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#fbbf24" text-anchor="middle">0 Rows Returned / Bug</text>
+    <text x="130" y="40" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Silent data omission</text>
+  </g>
+
+  <!-- Left Sub-branches -->
+  <path d="M 170 245 L 110 295" stroke="#f43f5e" stroke-width="1.5" fill="none"/>
+  <path d="M 290 245 L 350 295" stroke="#f43f5e" stroke-width="1.5" fill="none"/>
+
+  <!-- Outcome L1: SubPlan Found -->
+  <g transform="translate(20, 295)">
+    <rect width="180" height="135" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#be123c"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">SubPlan Detected</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Correlated row-by-row loop</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Remove RANDOM()</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#34d399">• Rewrite to Window Func</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" fill="#34d399">• Pre-aggregate in JOIN</text>
+    <text x="10" y="122" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#34d399">FIX: Eliminate SubPlan</text>
+  </g>
+
+  <!-- Outcome L2: Materialize Spill -->
+  <g transform="translate(260, 295)">
+    <rect width="180" height="135" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#d97706"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Temp Disk File Spill</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Batches &gt; 1 in Hash</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Subquery hash spills to disk</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#fbbf24">• Increase session work_mem</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" fill="#fbbf24">• Add B-Tree index</text>
+    <text x="10" y="122" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#fbbf24">FIX: Tune RAM / Index</text>
+  </g>
+
+  <!-- Right Sub-branches -->
+  <path d="M 710 245 L 650 295" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
+  <path d="M 830 245 L 890 295" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
+
+  <!-- Outcome R1: NOT IN NULL Trap -->
+  <g transform="translate(540, 295)">
+    <rect width="180" height="135" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#be123c"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">NOT IN (col NULL)</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• 3-Valued logic evaluation</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#f43f5e">• UNKNOWN in WHERE</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#34d399">• Replace with NOT EXISTS</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" fill="#34d399">• Or add IS NOT NULL</text>
+    <text x="10" y="122" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#34d399">FIX: Anti-Join Rewrite</text>
+  </g>
+
+  <!-- Outcome R2: Scalar Subquery NULL -->
+  <g transform="translate(790, 295)">
+    <rect width="180" height="135" rx="6" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
+    <rect width="180" height="25" rx="6" fill="#4f46e5"/>
+    <text x="90" y="17" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Scalar Projection NULL</text>
+    <text x="10" y="45" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Inner query returned 0 rows</text>
+    <text x="10" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">• Projects NULL into SELECT</text>
+    <text x="10" y="85" font-family="Inter, sans-serif" font-size="10" fill="#818cf8">• Wrap in COALESCE(..., 0)</text>
+    <text x="10" y="105" font-family="Inter, sans-serif" font-size="10" fill="#818cf8">• Or convert to LEFT JOIN</text>
+    <text x="10" y="122" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#818cf8">FIX: COALESCE Guard</text>
+  </g>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="500" fill="url(#bg-grad2)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="500" y="45" font-family="Inter, sans-serif" font-size="24" font-weight="800" fill="#f8fafc" text-anchor="middle">MODULE 04 — SUBQUERY ENGINEERING LEARNING ROADMAP</text>
+  <text x="500" y="70" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">From Fundamental Semantics to Cost-Based Optimizer Internal Rewrites</text>
+
+  <!-- Flow Nodes -->
+  <!-- Level 1: Foundations -->
+  <g transform="translate(60, 110)">
+    <rect width="250" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="125" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8" text-anchor="middle">1. SEMANTIC FOUNDATIONS</text>
+    <text x="125" y="52" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Single-Row &amp; Multi-Row</text>
+    <text x="125" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Topics 01 &amp; 02</text>
+  </g>
+
+  <!-- Arrow 1->2 -->
+  <path d="M 310 155 L 370 155" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Level 2: Correlation & Semantics -->
+  <g transform="translate(375, 110)">
+    <rect width="250" height="90" rx="8" fill="#1e293b" stroke="#818cf8" stroke-width="2"/>
+    <text x="125" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#818cf8" text-anchor="middle">2. CORRELATION &amp; SET OPERATORS</text>
+    <text x="125" y="52" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">EXISTS vs IN &amp; ANY/ALL Logic</text>
+    <text x="125" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Topics 03, 04, 05</text>
+  </g>
+
+  <!-- Arrow 2->3 -->
+  <path d="M 625 155 L 685 155" stroke="#818cf8" stroke-width="2" fill="none"/>
+
+  <!-- Level 3: Projections & Derived -->
+  <g transform="translate(690, 110)">
+    <rect width="250" height="90" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="2"/>
+    <text x="125" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#c084fc" text-anchor="middle">3. PROJECTIONS &amp; DERIVED</text>
+    <text x="125" y="52" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Scalar Projections &amp; Inline Views</text>
+    <text x="125" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Topics 06 &amp; 07</text>
+  </g>
+
+  <!-- Downward Connector -->
+  <path d="M 815 200 L 815 260 L 185 260 L 185 300" stroke="#c084fc" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+
+  <!-- Level 4: Optimization & Rewrites -->
+  <g transform="translate(60, 300)">
+    <rect width="250" height="90" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <text x="125" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#f43f5e" text-anchor="middle">4. REWRITES &amp; OPTIMIZATION</text>
+    <text x="125" y="52" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Subquery Unnesting &amp; Decorrelation</text>
+    <text x="125" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Topics 08 &amp; 09</text>
+  </g>
+
+  <!-- Arrow 4->5 -->
+  <path d="M 310 345 L 370 345" stroke="#f43f5e" stroke-width="2" fill="none"/>
+
+  <!-- Level 5: Plans & Mechanics -->
+  <g transform="translate(375, 300)">
+    <rect width="250" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <text x="125" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#fbbf24" text-anchor="middle">5. EXECUTION PLANS &amp; COST</text>
+    <text x="125" y="52" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">EXPLAIN ANALYZE Node Reading</text>
+    <text x="125" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Topic 10</text>
+  </g>
+
+  <!-- Arrow 5->6 -->
+  <path d="M 625 345 L 685 345" stroke="#fbbf24" stroke-width="2" fill="none"/>
+
+  <!-- Level 6: Production Mastery -->
+  <g transform="translate(690, 300)">
+    <rect width="250" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <text x="125" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#34d399" text-anchor="middle">6. PRODUCTION MASTERY</text>
+    <text x="125" y="52" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Incidents, Case Studies &amp; Benchmarks</text>
+    <text x="125" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Topics 11, 12, 13, 14, 15, 16</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="500" y="465" font-family="Inter, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">SQL Engineering Handbook • Designed for Production Database Architects &amp; Query Optimization Engineers</text>
+</svg>

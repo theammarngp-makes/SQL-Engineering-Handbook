@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad13" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" fill="url(#bg-grad13)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">PRE-PRODUCTION SUBQUERY QUALITY &amp; AUDIT CHECKLIST</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Mandatory Verification Steps Before Merging Subquery Code to Production</text>
+
+  <!-- Left Column -->
+  <g transform="translate(50, 100)">
+    <rect width="420" height="310" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="210" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8" text-anchor="middle">1. CORRECTNESS &amp; SAFETY AUDIT</text>
+
+    <text x="20" y="70" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 1. NOT IN NULL Audit: Zero NOT IN on nullable cols</text>
+    <text x="20" y="105" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 2. NOT EXISTS Anti-Join: Preferred for unmatched rows</text>
+    <text x="20" y="140" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 3. Cardinality Safeguard: LIMIT 1 on scalar subqueries</text>
+    <text x="20" y="175" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 4. COALESCE Guard: Wrap projected subqueries for NULLs</text>
+    <text x="20" y="210" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 5. Mandatory Aliases: All derived tables explicitly named</text>
+    <text x="20" y="245" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 6. Duplicate Protection: Joins do not duplicate outer rows</text>
+  </g>
+
+  <!-- Right Column -->
+  <g transform="translate(530, 100)">
+    <rect width="420" height="310" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="210" y="30" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#34d399" text-anchor="middle">2. PERFORMANCE &amp; OPTIMIZER AUDIT</text>
+
+    <text x="20" y="70" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 7. EXPLAIN Plan Audit: Zero SubPlan nodes with loops&gt;1</text>
+    <text x="20" y="105" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 8. Hash Semi-Join Check: Confirmed subquery unnested</text>
+    <text x="20" y="140" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 9. RAM Allocation: Inner hash tables fit in work_mem</text>
+    <text x="20" y="175" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 10. Secondary Indexes: B-Tree on correlation keys</text>
+    <text x="20" y="210" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 11. Window Function: Replaced projected SELECT subquery</text>
+    <text x="20" y="245" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">☑ 12. 10M Scale Test: p99 latency verified under load</text>
+  </g>
+</svg>

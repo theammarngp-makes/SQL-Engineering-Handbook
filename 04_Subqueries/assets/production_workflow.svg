@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" fill="url(#bg-grad11)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">PRODUCTION SUBQUERY DEPLOYMENT &amp; CI/CD VERIFICATION PIPELINE</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Automated Quality Gates Preventing SubPlan Inefficiency and 3-Valued Logic Bugs</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 110)">
+    <rect width="200" height="260" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="200" height="35" rx="8" fill="#0284c7"/>
+    <text x="100" y="23" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">1. Static AST Analysis</text>
+    <text x="15" y="65" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Linter checks SQL</text>
+    <text x="15" y="90" font-family="JetBrains Mono, monospace" font-size="11" fill="#f43f5e">• Flags NOT IN (col)</text>
+    <text x="15" y="115" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Enforces NOT EXISTS</text>
+    <text x="15" y="140" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Checks mandatory aliases</text>
+    <rect x="15" y="185" width="170" height="45" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="100" y="212" font-family="Inter, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">Static Lint Pass</text>
+  </g>
+
+  <path d="M 245 240 L 285 240" stroke="#38bdf8" stroke-width="2" fill="none"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(290, 110)">
+    <rect width="200" height="260" rx="8" fill="#1e293b" stroke="#818cf8" stroke-width="1.5"/>
+    <rect width="200" height="35" rx="8" fill="#4f46e5"/>
+    <text x="100" y="23" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">2. Staging Plan Gate</text>
+    <text x="15" y="65" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Runs EXPLAIN (FORMAT JSON)</text>
+    <text x="15" y="90" font-family="JetBrains Mono, monospace" font-size="11" fill="#f43f5e">• Asserts NO SubPlan</text>
+    <text x="15" y="115" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Verifies Hash Semi Join</text>
+    <text x="15" y="140" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Checks index utilization</text>
+    <rect x="15" y="185" width="170" height="45" rx="4" fill="#0f172a" stroke="#818cf8" stroke-width="1"/>
+    <text x="100" y="212" font-family="Inter, sans-serif" font-size="11" fill="#818cf8" text-anchor="middle">Plan Gate Pass</text>
+  </g>
+
+  <path d="M 495 240 L 535 240" stroke="#818cf8" stroke-width="2" fill="none"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(540, 110)">
+    <rect width="200" height="260" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <rect width="200" height="35" rx="8" fill="#d97706"/>
+    <text x="100" y="23" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">3. 10M Row Scale Test</text>
+    <text x="15" y="65" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Runs synthetic load test</text>
+    <text x="15" y="90" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Measures shared buffer hits</text>
+    <text x="15" y="115" font-family="JetBrains Mono, monospace" font-size="11" fill="#fbbf24">• Asserts Batches = 1</text>
+    <text x="15" y="140" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Verifies p99 &lt; 50ms</text>
+    <rect x="15" y="185" width="170" height="45" rx="4" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+    <text x="100" y="212" font-family="Inter, sans-serif" font-size="11" fill="#fbbf24" text-anchor="middle">Load Test Pass</text>
+  </g>
+
+  <path d="M 745 240 L 785 240" stroke="#fbbf24" stroke-width="2" fill="none"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(790, 110)">
+    <rect width="170" height="260" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="170" height="35" rx="8" fill="#059669"/>
+    <text x="85" y="23" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">4. Prod Canary</text>
+    <text x="12" y="65" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Blue/Green rollout</text>
+    <text x="12" y="90" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Monitors pg_stat</text>
+    <text x="12" y="115" font-family="JetBrains Mono, monospace" font-size="11" fill="#34d399">• Zero locks</text>
+    <text x="12" y="140" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• 100% Traffic</text>
+    <rect x="12" y="185" width="146" height="45" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1"/>
+    <text x="85" y="212" font-family="Inter, sans-serif" font-size="11" fill="#34d399" text-anchor="middle">Deploy Verified</text>
+  </g>
+</svg>

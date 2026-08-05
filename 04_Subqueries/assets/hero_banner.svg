@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="box-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-grad)"/>
+  <rect width="1200" height="400" fill="none" stroke="#334155" stroke-width="2"/>
+
+  <!-- Grid overlay -->
+  <g stroke="#334155" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3">
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+    <line x1="500" y1="0" x2="500" y2="400"/>
+    <line x1="700" y1="0" x2="700" y2="400"/>
+    <line x1="900" y1="0" x2="900" y2="400"/>
+    <line x1="1100" y1="0" x2="1100" y2="400"/>
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+  </g>
+
+  <!-- Title & Subtitle -->
+  <text x="80" y="110" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#38bdf8" letter-spacing="3">SQL ENGINEERING HANDBOOK • MODULE 04</text>
+  <text x="80" y="170" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f8fafc" letter-spacing="-1">Subquery Architecture &amp; Optimization</text>
+  <text x="80" y="215" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#94a3b8">Relational Algebra • AST Decorrelation • Semi-Joins • Anti-Joins • Cost-Based Optimizer Rewrites</text>
+
+  <!-- Badges -->
+  <g transform="translate(80, 260)">
+    <!-- Badge 1 -->
+    <rect x="0" y="0" width="140" height="36" rx="18" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="70" y="23" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#38bdf8" text-anchor="middle">PostgreSQL 16+</text>
+    
+    <!-- Badge 2 -->
+    <rect x="155" y="0" width="140" height="36" rx="18" fill="#1e293b" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="225" y="23" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#818cf8" text-anchor="middle">MySQL 8.0+</text>
+
+    <!-- Badge 3 -->
+    <rect x="310" y="0" width="150" height="36" rx="18" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="385" y="23" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#c084fc" text-anchor="middle">SQL Server 2022</text>
+
+    <!-- Badge 4 -->
+    <rect x="475" y="0" width="130" height="36" rx="18" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="540" y="23" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#34d399" text-anchor="middle">Oracle 23c</text>
+  </g>
+
+  <!-- Graphic Component (Diagram Preview) -->
+  <g transform="translate(750, 70)">
+    <!-- Outer Subquery Box -->
+    <rect x="0" y="0" width="370" height="260" rx="12" fill="url(#box-grad)" stroke="#475569" stroke-width="2"/>
+    <text x="20" y="35" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#38bdf8">OUTER QUERY (Outer Loop / Probe)</text>
+    <text x="20" y="60" font-family="JetBrains Mono, monospace" font-size="12" fill="#94a3b8">SELECT e.emp_name FROM employes e</text>
+    <text x="20" y="80" font-family="JetBrains Mono, monospace" font-size="12" fill="#94a3b8">WHERE e.dept_id IN (...)</text>
+
+    <!-- Inner Subquery Box -->
+    <rect x="30" y="105" width="310" height="130" rx="8" fill="#0f172a" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <text x="45" y="135" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#818cf8">INNER SUBQUERY (SubPlan / InitPlan)</text>
+    <text x="45" y="160" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">SELECT d.dept_id FROM departments d</text>
+    <text x="45" y="180" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">WHERE d.location_id = 2</text>
+    
+    <!-- Decorrelation Tag -->
+    <rect x="45" y="195" width="220" height="24" rx="4" fill="#312e81"/>
+    <text x="155" y="211" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#a5b4fc" text-anchor="middle">Rewritten to Hash Semi Join (⋉)</text>
+  </g>
+
+  <!-- Accent Line at Bottom -->
+  <rect x="0" y="394" width="1200" height="6" fill="url(#accent-grad)"/>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" fill="url(#bg-grad4)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">RELATIONAL OPERATORS: SEMI JOIN (⋉) VS ANTI JOIN (⋋)</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">How Database Engines Process EXISTS (Matching) and NOT EXISTS / Anti-Join (Non-Matching)</text>
+
+  <!-- Left: Semi Join -->
+  <g transform="translate(50, 100)">
+    <rect width="420" height="310" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="210" y="35" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#38bdf8" text-anchor="middle">SEMI JOIN (e.g. EXISTS / IN)</text>
+    <text x="210" y="60" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Returns outer row ON FIRST MATCH in inner table</text>
+
+    <!-- Outer Table Box -->
+    <rect x="30" y="90" width="150" height="180" rx="6" fill="#0f172a" stroke="#475569"/>
+    <text x="105" y="115" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">Outer Table R</text>
+    <rect x="40" y="130" width="130" height="30" rx="4" fill="#0369a1"/>
+    <text x="105" y="150" font-family="JetBrains Mono, monospace" font-size="11" fill="#ffffff" text-anchor="middle">Row A (ID=10)</text>
+    <rect x="40" y="170" width="130" height="30" rx="4" fill="#334155"/>
+    <text x="105" y="190" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Row B (ID=20)</text>
+    <rect x="40" y="210" width="130" height="30" rx="4" fill="#0369a1"/>
+    <text x="105" y="230" font-family="JetBrains Mono, monospace" font-size="11" fill="#ffffff" text-anchor="middle">Row C (ID=30)</text>
+
+    <!-- Arrow First Match -->
+    <path d="M 170 145 L 240 145" stroke="#34d399" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Inner Table Box -->
+    <rect x="240" y="90" width="150" height="180" rx="6" fill="#0f172a" stroke="#475569"/>
+    <text x="315" y="115" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#818cf8" text-anchor="middle">Inner Table S</text>
+    <rect x="250" y="130" width="130" height="30" rx="4" fill="#4f46e5"/>
+    <text x="315" y="150" font-family="JetBrains Mono, monospace" font-size="11" fill="#ffffff" text-anchor="middle">Match 1 (ID=10)</text>
+    <text x="315" y="175" font-family="Inter, sans-serif" font-size="10" fill="#34d399" text-anchor="middle">✓ Short-Circuit!</text>
+    <rect x="250" y="190" width="130" height="30" rx="4" fill="#334155"/>
+    <text x="315" y="210" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Match 2 (ID=10)</text>
+    <text x="315" y="235" font-family="Inter, sans-serif" font-size="10" fill="#f43f5e" text-anchor="middle">Skipped (No Dupes)</text>
+
+    <text x="210" y="292" font-family="Inter, sans-serif" font-size="11" fill="#34d399" text-anchor="middle">Output: Rows A &amp; C (Duplicate-Safe, Fast Early Exit)</text>
+  </g>
+
+  <!-- Right: Anti Join -->
+  <g transform="translate(530, 100)">
+    <rect width="420" height="310" rx="10" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <text x="210" y="35" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#f43f5e" text-anchor="middle">ANTI JOIN (e.g. NOT EXISTS / NOT IN)</text>
+    <text x="210" y="60" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Returns outer row ONLY IF NO MATCH exists in inner table</text>
+
+    <!-- Outer Table Box -->
+    <rect x="30" y="90" width="150" height="180" rx="6" fill="#0f172a" stroke="#475569"/>
+    <text x="105" y="115" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">Outer Table R</text>
+    <rect x="40" y="130" width="130" height="30" rx="4" fill="#334155"/>
+    <text x="105" y="150" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Row A (ID=10)</text>
+    <rect x="40" y="170" width="130" height="30" rx="4" fill="#be123c"/>
+    <text x="105" y="190" font-family="JetBrains Mono, monospace" font-size="11" fill="#ffffff" text-anchor="middle">Row B (ID=20)</text>
+    <rect x="40" y="210" width="130" height="30" rx="4" fill="#334155"/>
+    <text x="105" y="230" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Row C (ID=30)</text>
+
+    <!-- Inner Table Box -->
+    <rect x="240" y="90" width="150" height="180" rx="6" fill="#0f172a" stroke="#475569"/>
+    <text x="315" y="115" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#818cf8" text-anchor="middle">Inner Table S</text>
+    <rect x="250" y="130" width="130" height="30" rx="4" fill="#4f46e5"/>
+    <text x="315" y="150" font-family="JetBrains Mono, monospace" font-size="11" fill="#ffffff" text-anchor="middle">Match 1 (ID=10)</text>
+    <rect x="250" y="170" width="130" height="30" rx="4" fill="#4f46e5"/>
+    <text x="315" y="190" font-family="JetBrains Mono, monospace" font-size="11" fill="#ffffff" text-anchor="middle">Match 3 (ID=30)</text>
+    <text x="315" y="230" font-family="Inter, sans-serif" font-size="11" fill="#f43f5e" text-anchor="middle">No match for ID=20!</text>
+
+    <text x="210" y="292" font-family="Inter, sans-serif" font-size="11" fill="#f43f5e" text-anchor="middle">Output: Row B Only (Missing/Unmatched Records Filter)</text>
+  </g>
+</svg>

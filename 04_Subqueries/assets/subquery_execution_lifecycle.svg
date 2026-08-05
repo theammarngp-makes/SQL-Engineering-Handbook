@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" fill="url(#bg-grad3)" stroke="#334155" stroke-width="2"/>
+  
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">SUBQUERY EXECUTION LIFECYCLE IN THE QUERY ENGINE</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Parsing → Logical AST Rewrites → Cost Estimation → Physical Node Execution</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 100)">
+    <rect width="200" height="280" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="200" height="40" rx="8" fill="#0284c7"/>
+    <text x="100" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1. SQL Parser &amp; AST</text>
+    <text x="15" y="70" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Receives Raw SQL</text>
+    <text x="15" y="95" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Builds SubLink Nodes</text>
+    <text x="15" y="120" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Identifies Correlation</text>
+    <text x="15" y="145" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Validates Types</text>
+    <text x="15" y="170" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Evaluates Scope</text>
+    <rect x="15" y="210" width="170" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="100" y="232" font-family="Inter, sans-serif" font-size="11" fill="#38bdf8" text-anchor="middle">SubLink (EXPR/EXISTS)</text>
+    <text x="100" y="248" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Unoptimized Tree</text>
+  </g>
+
+  <path d="M 245 240 L 285 240" stroke="#38bdf8" stroke-width="2" fill="none"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(290, 100)">
+    <rect width="200" height="280" rx="8" fill="#1e293b" stroke="#818cf8" stroke-width="1.5"/>
+    <rect width="200" height="40" rx="8" fill="#4f46e5"/>
+    <text x="100" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2. Logical Rewriter</text>
+    <text x="15" y="70" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Subquery Unnesting</text>
+    <text x="15" y="95" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Pull-up Subqueries</text>
+    <text x="15" y="120" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• IN → Semi Join</text>
+    <text x="15" y="145" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• NOT IN → Anti Join</text>
+    <text x="15" y="170" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Predicate Pushdown</text>
+    <rect x="15" y="210" width="170" height="50" rx="4" fill="#0f172a" stroke="#818cf8" stroke-width="1"/>
+    <text x="100" y="232" font-family="Inter, sans-serif" font-size="11" fill="#818cf8" text-anchor="middle">Flattened Join Tree</text>
+    <text x="100" y="248" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Decorrelated RelAlg</text>
+  </g>
+
+  <path d="M 495 240 L 535 240" stroke="#818cf8" stroke-width="2" fill="none"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(540, 100)">
+    <rect width="200" height="280" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect width="200" height="40" rx="8" fill="#e11d48"/>
+    <text x="100" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">3. Cost Optimizer</text>
+    <text x="15" y="70" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Cardinality Estimation</text>
+    <text x="15" y="95" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Selectivity (MCV)</text>
+    <text x="15" y="120" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Join Strategy Choice</text>
+    <text x="15" y="145" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• SubPlan vs Hash</text>
+    <text x="15" y="170" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Materialize Decision</text>
+    <rect x="15" y="210" width="170" height="50" rx="4" fill="#0f172a" stroke="#f43f5e" stroke-width="1"/>
+    <text x="100" y="232" font-family="Inter, sans-serif" font-size="11" fill="#f43f5e" text-anchor="middle">Physical Plan Tree</text>
+    <text x="100" y="248" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Cost &amp; Buffer Model</text>
+  </g>
+
+  <path d="M 745 240 L 785 240" stroke="#f43f5e" stroke-width="2" fill="none"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(790, 100)">
+    <rect width="170" height="280" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="170" height="40" rx="8" fill="#059669"/>
+    <text x="85" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">4. Engine Execution</text>
+    <text x="12" y="70" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Volcano Iterator</text>
+    <text x="12" y="95" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Shared Buffers</text>
+    <text x="12" y="120" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Work_Mem Spills</text>
+    <text x="12" y="145" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Probe Table</text>
+    <text x="12" y="170" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">• Stream Results</text>
+    <rect x="12" y="210" width="146" height="50" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1"/>
+    <text x="85" y="232" font-family="Inter, sans-serif" font-size="11" fill="#34d399" text-anchor="middle">Tuple Stream</text>
+    <text x="85" y="248" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Execution Complete</text>
+  </g>
+</svg>

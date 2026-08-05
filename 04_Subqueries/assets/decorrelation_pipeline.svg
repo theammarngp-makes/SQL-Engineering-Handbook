@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" fill="url(#bg-grad5)" stroke="#334155" stroke-width="2"/>
+
+  <text x="500" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">SUBQUERY DECORRELATION &amp; UNNESTING PIPELINE</text>
+  <text x="500" y="65" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Transforming O(N × M) Correlated Nested Loops into O(N + M) Hash Semi-Joins</text>
+
+  <!-- Step A: Correlated AST -->
+  <g transform="translate(40, 100)">
+    <rect width="270" height="300" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <rect width="270" height="35" rx="8" fill="#be123c"/>
+    <text x="135" y="23" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">A. Correlated Subquery (Naive AST)</text>
+    
+    <text x="15" y="60" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">SELECT e.emp_name</text>
+    <text x="15" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">FROM employes e</text>
+    <text x="15" y="100" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">WHERE e.salary &gt; (</text>
+    <text x="30" y="120" font-family="JetBrains Mono, monospace" font-size="11" fill="#f43f5e">SELECT AVG(d.salary)</text>
+    <text x="30" y="140" font-family="JetBrains Mono, monospace" font-size="11" fill="#f43f5e">FROM employes d</text>
+    <text x="30" y="160" font-family="JetBrains Mono, monospace" font-size="11" fill="#f43f5e">WHERE d.dept_id = e.dept_id</text>
+    <text x="15" y="180" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">);</text>
+
+    <rect x="15" y="210" width="240" height="70" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1"/>
+    <text x="135" y="232" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f43f5e" text-anchor="middle">Nested Loop SubPlan Operator</text>
+    <text x="135" y="250" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Executes Inner Subquery ONCE PER OUTER ROW</text>
+    <text x="135" y="268" font-family="Inter, sans-serif" font-size="10" fill="#f43f5e" text-anchor="middle">Complexity: O(N outer × M inner)</text>
+  </g>
+
+  <!-- Arrow A->B -->
+  <g transform="translate(315, 230)">
+    <path d="M 0 0 L 50 0" stroke="#fbbf24" stroke-width="3" fill="none"/>
+    <polygon points="50,-6 62,0 50,6" fill="#fbbf24"/>
+    <text x="30" y="-12" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fbbf24" text-anchor="middle">Unnest</text>
+  </g>
+
+  <!-- Step B: Intermediate Rewriter -->
+  <g transform="translate(380, 100)">
+    <rect width="260" height="300" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <rect width="260" height="35" rx="8" fill="#d97706"/>
+    <text x="130" y="23" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">B. Decorrelation &amp; Aggregation</text>
+
+    <text x="15" y="60" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">1. Pull-up Correlation Predicate</text>
+    <text x="15" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#fbbf24">d.dept_id = e.dept_id</text>
+    <text x="15" y="105" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">2. Convert to Group-By Subquery</text>
+    <text x="15" y="125" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">dept_avg AS (</text>
+    <text x="30" y="145" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">SELECT dept_id, AVG(salary)</text>
+    <text x="30" y="165" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">FROM employes GROUP BY dept_id)</text>
+
+    <rect x="15" y="210" width="230" height="70" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+    <text x="130" y="232" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle">Single Pass Materialization</text>
+    <text x="130" y="250" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Computes Dept Averages ONCE in Hash Table</text>
+    <text x="130" y="268" font-family="Inter, sans-serif" font-size="10" fill="#fbbf24" text-anchor="middle">Complexity: O(M inner)</text>
+  </g>
+
+  <!-- Arrow B->C -->
+  <g transform="translate(645, 230)">
+    <path d="M 0 0 L 45 0" stroke="#34d399" stroke-width="3" fill="none"/>
+    <polygon points="45,-6 57,0 45,6" fill="#34d399"/>
+    <text x="25" y="-12" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">Hash Join</text>
+  </g>
+
+  <!-- Step C: Optimized Hash Join Plan -->
+  <g transform="translate(705, 100)">
+    <rect width="255" height="300" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <rect width="255" height="35" rx="8" fill="#059669"/>
+    <text x="127" y="23" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">C. Physical Hash Join Tree</text>
+
+    <text x="15" y="60" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">SELECT e.emp_name</text>
+    <text x="15" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1">FROM employes e</text>
+    <text x="15" y="100" font-family="JetBrains Mono, monospace" font-size="11" fill="#34d399">JOIN dept_avg da</text>
+    <text x="15" y="120" font-family="JetBrains Mono, monospace" font-size="11" fill="#34d399">ON e.dept_id = da.dept_id</text>
+    <text x="15" y="140" font-family="JetBrains Mono, monospace" font-size="11" fill="#34d399">AND e.salary &gt; da.avg_sal;</text>
+
+    <rect x="15" y="210" width="225" height="70" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1"/>
+    <text x="127" y="232" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#34d399" text-anchor="middle">Hash Join (⋈) Physical Node</text>
+    <text x="127" y="250" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Single hash lookup per outer row</text>
+    <text x="127" y="268" font-family="Inter, sans-serif" font-size="10" fill="#34d399" text-anchor="middle">Linear Speedup: 1,000x Faster!</text>
+  </g>
+</svg>
