@@ -30,6 +30,7 @@
 - [Folder Structure](#folder-structure)
 - [Summary](#summary)
 ---
+
 | Resource Library File | Description | Link |
 | :--- | :--- | :--- |
 | 📖 **Books** | Curated list of essential SQL & database architecture books | [`books.md`](./books.md) |
@@ -44,6 +45,7 @@
 | 📜 **Certifications** | Industry-recognized database and cloud certifications | [`certifications.md`](./certifications.md) |
 | 🌐 **Communities** | Slack groups, Discord servers, Reddit, and developer forums | [`communities.md`](./communities.md) |
 | 🧰 **Awesome Tools** | DB clients, ERD diagram tools, formatters, and query editors | [`awesome-tools.md`](./awesome-tools.md) |
+
 ---
 
 ## Introduction
