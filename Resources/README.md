@@ -29,7 +29,21 @@
 - [Contribution Guidelines](#contribution-guidelines)
 - [Folder Structure](#folder-structure)
 - [Summary](#summary)
-
+---
+| Resource Library File | Description | Link |
+| :--- | :--- | :--- |
+| 📖 **Books** | Curated list of essential SQL & database architecture books | [`books.md`](./books.md) |
+| ✍️ **Blogs** | Official vendor blogs and real-world engineering postmortems | [`blogs.md`](./blogs.md) |
+| 📑 **Documentation** | Primary dialect docs for Postgres, MySQL, Snowflake, BigQuery, etc. | [`documentation.md`](./documentation.md) |
+| 🎥 **YouTube Channels** | Curated playlists and video tutorials for all skill levels | [`youtube.md`](./youtube.md) |
+| 🎯 **Interview Resources** | Staged 30/60/90-day interview roadmaps & technical prep | [`interview-resources.md`](./interview-resources.md) |
+| 📰 **Newsletters** | Weekly digests, dbt updates, and Postgres Weekly | [`newsletters.md`](./newsletters.md) |
+| 🎓 **Courses** | Free and paid structured SQL learning paths | [`courses.md`](./courses.md) |
+| 📊 **Datasets** | Real-world public datasets for query practice | [`datasets.md`](./datasets.md) |
+| 🛠️ **Playgrounds** | Browser-based SQL execution sandboxes and DB clients | [`playgrounds.md`](./playgrounds.md) |
+| 📜 **Certifications** | Industry-recognized database and cloud certifications | [`certifications.md`](./certifications.md) |
+| 🌐 **Communities** | Slack groups, Discord servers, Reddit, and developer forums | [`communities.md`](./communities.md) |
+| 🧰 **Awesome Tools** | DB clients, ERD diagram tools, formatters, and query editors | [`awesome-tools.md`](./awesome-tools.md) |
 ---
 
 ## Introduction
