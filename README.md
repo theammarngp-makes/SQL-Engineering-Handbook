@@ -48,6 +48,7 @@ This is the part most handbooks . Every module below links straight to its folde
 
 | # | Module | Contents | Status |
 |---|--------|----------|--------|
+|    | [Resources](Resources/) | All Learning resources including Certifications and hands-on-experience | ✅ |
 | 00 | [Schema](00_Schema/) | Practice database DDL, seed data, and ERD used by every later module | ✅ |
 | 01 | [Fundamentals](01_Fundamentals/) | `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`, aliasing | ✅ |
 | 02 | [Aggregations](02_Aggregations/) | `COUNT`, `SUM`, `AVG`, `MIN`/`MAX`, `GROUP BY`, `HAVING` | ✅ |
