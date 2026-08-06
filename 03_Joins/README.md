@@ -11,15 +11,9 @@
 [![Topics](https://img.shields.io/badge/TOPICS-9-f28c28?style=for-the-badge)]()
 [![Interview Critical](https://img.shields.io/badge/INTERVIEW-CRITICAL-e2445c?style=for-the-badge)]()
 [![Status](https://img.shields.io/badge/STATUS-COMPLETE-2ea44f?style=for-the-badge)]()
-
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-tested-336791?style=for-the-badge&logo=postgresql&logoColor=white)]()
 [![MySQL](https://img.shields.io/badge/MySQL-tested-4479A1?style=for-the-badge&logo=mysql&logoColor=white)]()
 [![License](https://img.shields.io/badge/License-MIT-6b7280?style=for-the-badge)]()
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-2ea44f?style=for-the-badge&logo=github&logoColor=white)]()
-
-[![Repo Stars](https://img.shields.io/github/stars/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&logo=github&color=2563EB&label=HANDBOOK%20STARS)](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/stargazers)
-[![Repo Forks](https://img.shields.io/github/forks/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&logo=github&color=2563EB&label=FORKS)](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/network/members)
-[![Last Commit](https://img.shields.io/github/last-commit/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&color=2563EB&label=LAST%20UPDATED)](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/commits/main)
 
 **Module 3 of the [SQL Engineering Handbook](../)** · Authored & maintained by [**Mohammad Ammar**](https://github.com/theammarngp-makes)
 
