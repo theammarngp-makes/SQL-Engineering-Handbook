@@ -95,7 +95,7 @@ The path is linear through **Beginner → Intermediate → Advanced**, then bran
 | Analytics engineers | Warehouse, dbt, and modeling depth past what one repo's schema can show |
 | Data engineers | Distributed-SQL and platform documentation (Spark, BigQuery, Redshift) |
 | Backend / software engineers who touch SQL occasionally | Transactions, indexing, and schema-design material scoped to "enough to be dangerous safely" |
-| Anyone with a SQL interview in the next 30–90 days | A staged plan in `interview-resources.md`, not just a question bank |
+| Anyone with a SQL interview in the next 30–90 days | A staged plan in [`interview-resources.md`](interview-resources.md), not just a question bank |
 | Contributors | A documented [Resource Card Template](#resource-card-template) and [Contribution Guidelines](#contribution-guidelines) so additions stay consistent |
 
 ## Role-Based Roadmaps
@@ -108,7 +108,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`00_SAMPLE_DATABASE`](../00_SAMPLE_DATABASE/), [`01_FUNDAMENTALS`](../01_FUNDAMENTALS/), [`02_AGGREGATIONS`](../02_AGGREGATIONS/), [`03_JOINS`](../03_JOINS/) (inner/left) | `documentation.md` → your chosen dialect's official docs · `books.md` → *Essential Beginner Books* · `youtube.md` → *SQL Fundamentals* | 3–4 weeks |
+| [`00_SAMPLE_DATABASE`](../00_SAMPLE_DATABASE/), [`01_FUNDAMENTALS`](../01_FUNDAMENTALS/), [`02_AGGREGATIONS`](../02_AGGREGATIONS/), [`03_JOINS`](../03_JOINS/) (inner/left) | [`documentation.md`](documentation.md) → your chosen dialect's official docs · [`books.md`](books.md) → *Essential Beginner Books* · [`youtube.md`](youtube.md) → *SQL Fundamentals* | 3–4 weeks |
 
 **Exit criteria:** you can independently answer a business question with a `SELECT`, aggregate it, and join two tables without checking a syntax reference.
 
@@ -118,7 +118,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`03_JOINS`](../03_JOINS/) (right/full/cross), [`04_CASE_WHEN`](../04_CASE_WHEN/), [`05_SUBQUERIES`](../05_SUBQUERIES/), [`06_CTEs`](../06_CTEs/), [`07_WINDOW_FUNCTIONS`](../07_WINDOW_FUNCTIONS/), [`08_WINDOW_BUSINESS_CASES`](../08_WINDOW_BUSINESS_CASES/), [`09_DATE_FUNCTIONS`](../09_DATE_FUNCTIONS/) | `books.md` → *Intermediate Books* · `blogs.md` → analytics-engineering posts · `documentation.md` → window function references | 5–6 weeks |
+| [`03_JOINS`](../03_JOINS/) (right/full/cross), [`04_CASE_WHEN`](../04_CASE_WHEN/), [`05_SUBQUERIES`](../05_SUBQUERIES/), [`06_CTEs`](../06_CTEs/), [`07_WINDOW_FUNCTIONS`](../07_WINDOW_FUNCTIONS/), [`08_WINDOW_BUSINESS_CASES`](../08_WINDOW_BUSINESS_CASES/), [`09_DATE_FUNCTIONS`](../09_DATE_FUNCTIONS/) | [`books.md`](books.md) → *Intermediate Books* · [`blogs.md`](blogs.md) → analytics-engineering posts · [`documentation.md`](documentation.md) → window function references | 5–6 weeks |
 
 **Exit criteria:** you can write a CTE-based query using window functions to answer a layered business question, the way it's actually done on a data team.
 
@@ -128,7 +128,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`10_STRING_FUNCTIONS`](../10_STRING_FUNCTIONS/) through [`16_QUERY_OPTIMIZATION`](../16_QUERY_OPTIMIZATION/) *(in progress — see [`ROADMAP.md`](../ROADMAP.md))* | `books.md` → *Database Internals, Query Optimization, Performance Tuning* · `documentation.md` → `EXPLAIN` / `EXPLAIN ANALYZE` sections · `blogs.md` → engineering blogs' performance postmortems | 6–8 weeks |
+| [`10_STRING_FUNCTIONS`](../10_STRING_FUNCTIONS/) through [`16_QUERY_OPTIMIZATION`](../16_QUERY_OPTIMIZATION/) *(in progress — see [`ROADMAP.md`](../ROADMAP.md))* | [`books.md`](books.md) → *Database Internals, Query Optimization, Performance Tuning* · [`documentation.md`](documentation.md) → `EXPLAIN` / `EXPLAIN ANALYZE` sections · [`blogs.md`](blogs.md) → engineering blogs' performance postmortems | 6–8 weeks |
 
 **Exit criteria:** you can read an execution plan, explain why a query is slow, and fix it with an index or a rewrite.
 
@@ -138,7 +138,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`06_CTEs`](../06_CTEs/), [`08_WINDOW_BUSINESS_CASES`](../08_WINDOW_BUSINESS_CASES/), [`12_ADVANCED_AGGREGATIONS`](../12_ADVANCED_AGGREGATIONS/), [`18_SQL_BUSINESS_CASE_STUDIES`](../18_SQL_BUSINESS_CASE_STUDIES/), plus [`projects/nagpurlens`](../projects/nagpurlens/) and [`projects/olist`](../projects/olist/) | `blogs.md` → dbt Blog, Snowflake Blog · `documentation.md` → dbt Documentation · `books.md` → *Analytics Engineering, Data Warehousing, Data Modeling* | 4–5 weeks on top of Intermediate |
+| [`06_CTEs`](../06_CTEs/), [`08_WINDOW_BUSINESS_CASES`](../08_WINDOW_BUSINESS_CASES/), [`12_ADVANCED_AGGREGATIONS`](../12_ADVANCED_AGGREGATIONS/), [`18_SQL_BUSINESS_CASE_STUDIES`](../18_SQL_BUSINESS_CASE_STUDIES/), plus [`projects/nagpurlens`](../projects/nagpurlens/) and [`projects/olist`](../projects/olist/) | [`blogs.md`](blogs.md) → dbt Blog, Snowflake Blog · [`documentation.md`](documentation.md) → dbt Documentation · [`books.md`](books.md) → *Analytics Engineering, Data Warehousing, Data Modeling* | 4–5 weeks on top of Intermediate |
 
 **Exit criteria:** you can design a star schema, write a dbt-style modeled query, and defend a metric definition in a review.
 
@@ -148,7 +148,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`13_SET_OPERATORS`](../13_SET_OPERATORS/), [`14_VIEWS`](../14_VIEWS/), [`15_INDEXES`](../15_INDEXES/), [`16_QUERY_OPTIMIZATION`](../16_QUERY_OPTIMIZATION/), [`19_SQL_PROJECTS`](../19_SQL_PROJECTS/) | `documentation.md` → Apache Spark SQL, BigQuery, Redshift docs · `books.md` → *Database Internals, Data Warehousing* · `blogs.md` → Netflix / Uber / Airbnb engineering blogs | 5–6 weeks on top of Intermediate |
+| [`13_SET_OPERATORS`](../13_SET_OPERATORS/), [`14_VIEWS`](../14_VIEWS/), [`15_INDEXES`](../15_INDEXES/), [`16_QUERY_OPTIMIZATION`](../16_QUERY_OPTIMIZATION/), [`19_SQL_PROJECTS`](../19_SQL_PROJECTS/) | [`documentation.md`](documentation.md) → Apache Spark SQL, BigQuery, Redshift docs · [`books.md`](books.md) → *Database Internals, Data Warehousing* · [`blogs.md`](blogs.md) → Netflix / Uber / Airbnb engineering blogs | 5–6 weeks on top of Intermediate |
 
 **Exit criteria:** you can reason about partitioning and distributed joins, and explain why the same query behaves differently on a 10-row table versus a 10-billion-row table.
 
@@ -158,7 +158,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`11_NULL_HANDLING_AND_DATA_CLEANING`](../11_NULL_HANDLING_AND_DATA_CLEANING/), [`14_VIEWS`](../14_VIEWS/), [`15_INDEXES`](../15_INDEXES/), schema-design practice in [`datasets/employee_management`](../datasets/employee_management/) | `documentation.md` → your dialect's transactions/locking docs · `books.md` → *Database Design, Reference Books* · `blogs.md` → PostgreSQL/MySQL official blogs | 4 weeks on top of Intermediate |
+| [`11_NULL_HANDLING_AND_DATA_CLEANING`](../11_NULL_HANDLING_AND_DATA_CLEANING/), [`14_VIEWS`](../14_VIEWS/), [`15_INDEXES`](../15_INDEXES/), schema-design practice in [`datasets/employee_management`](../datasets/employee_management/) | [`documentation.md`](documentation.md) → your dialect's transactions/locking docs · [`books.md`](books.md) → *Database Design, Reference Books* · [`blogs.md`](blogs.md) → PostgreSQL/MySQL official blogs | 4 weeks on top of Intermediate |
 
 **Exit criteria:** you can design a normalized schema, wrap a multi-step write in a transaction, and explain an isolation level out loud.
 
@@ -168,7 +168,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`17_SQL_INTERVIEW_QUESTIONS`](../17_SQL_INTERVIEW_QUESTIONS/), [`exercises/interview`](../exercises/interview/), [`20_SQL_CHEATSHEET`](../20_SQL_CHEATSHEET/) | `interview-resources.md` — full roadmap with 30/60/90-day plans *(next up in this library)* | 2–4 weeks, intensive |
+| [`17_SQL_INTERVIEW_QUESTIONS`](../17_SQL_INTERVIEW_QUESTIONS/), [`exercises/interview`](../exercises/interview/), [`20_SQL_CHEATSHEET`](../20_SQL_CHEATSHEET/) | [`interview-resources.md`](interview-resources.md) — full roadmap with 30/60/90-day plans *(next up in this library)* | 2–4 weeks, intensive |
 
 **Exit criteria:** you can solve a fresh SQL question on a shared screen, out loud, in under 15 minutes.
 
@@ -184,7 +184,7 @@ Selection followed a strict pecking order:
 
 ### Resource Card Template
 
-Every entry in `books.md`, `blogs.md`, `documentation.md`, `youtube.md`, and `interview-resources.md` follows the same thirteen-field card, so you can compare resources at a glance instead of reading five different formats:
+Every entry in [`books.md`](books.md), [`blogs.md`](blogs.md), [`documentation.md`](documentation.md), [`youtube.md`](youtube.md), and [`interview-resources.md`](interview-resources.md) follows the same thirteen-field card, so you can compare resources at a glance instead of reading five different formats:
 
 | Field | What It Tells You |
 |---|---|
@@ -232,24 +232,24 @@ This library accepts contributions the same way the rest of the Handbook does �
 resources/
 │
 ├── README.md                 ✅  You are here — navigation, philosophy, roadmaps
-├── books.md                  ✅  Books with full annotations, by category
-├── blogs.md                  ✅  Official + engineering blogs worth following
-├── documentation.md          ✅  Official documentation index, per dialect/platform
-├── youtube.md                ✅  Curated channels and playlists
-├── interview-resources.md    ✅  Interview roadmap + 30/60/90-day plans
-├── newsletters.md            ✅  Curated newsletters (dbt, Postgres Weekly, etc.)
-├── courses.md                ✅  Free and paid SQL courses
-├── datasets.md               ✅  Public datasets for practice
-├── playgrounds.md            ✅  Online SQL playgrounds and sandboxes
-├── certifications.md         ✅  Recognized SQL / database certifications
-├── communities.md            ✅  Discord, Slack, Reddit, forums, mailing lists
-└── awesome-tools.md          ✅  SQL editors, ERD tools, database clients, formatters
+├── [books.md](books.md)                  ✅  Books with full annotations, by category
+├── [blogs.md](blogs.md)                  ✅  Official + engineering blogs worth following
+├── [documentation.md](documentation.md)          ✅  Official documentation index, per dialect/platform
+├── [youtube.md](youtube.md)                ✅  Curated channels and playlists
+├── [interview-resources.md](interview-resources.md)    ✅  Interview roadmap + 30/60/90-day plans
+├── [newsletters.md](newsletters.md)            ✅  Curated newsletters (dbt, Postgres Weekly, etc.)
+├── [courses.md](courses.md)                ✅  Free and paid SQL courses
+├── [datasets.md](datasets.md)               ✅  Public datasets for practice
+├── [playgrounds.md](playgrounds.md)            ✅  Online SQL playgrounds and sandboxes
+├── [certifications.md](certifications.md)         ✅  Recognized SQL / database certifications
+├── [communities.md](communities.md)            ✅  Discord, Slack, Reddit, forums, mailing lists
+└── [awesome-tools.md](awesome-tools.md)          ✅  SQL editors, ERD tools, database clients, formatters
 ```
 
-**Legend:** ✅ Available — all 13 files are built. The core six (`books.md` → `interview-resources.md`) use the full [Resource Card Template](#resource-card-template); the second wave (`newsletters.md` → `awesome-tools.md`) uses a lighter table format proportional to their original one-line specs.
+**Legend:** ✅ Available — all 13 files are built. The core six ([`books.md`](books.md) → [`interview-resources.md`](interview-resources.md)) use the full [Resource Card Template](#resource-card-template); the second wave ([`newsletters.md`](newsletters.md) → [`awesome-tools.md`](awesome-tools.md)) uses a lighter table format proportional to their original one-line specs.
 
 > [!IMPORTANT]
-> The original folder listing had `newsletters.md` twice, with two slightly different descriptions ("curated newsletters" and "weekly learning resources"). Merged into a single entry above. If a second, distinct file was actually intended — e.g. a reading-newsletters list separate from a weekly-digest tracker — flag it and it'll get split back out.
+> The original folder listing had [`newsletters.md`](newsletters.md) twice, with two slightly different descriptions ("curated newsletters" and "weekly learning resources"). Merged into a single entry above. If a second, distinct file was actually intended — e.g. a reading-newsletters list separate from a weekly-digest tracker — flag it and it'll get split back out.
 
 ## Summary
 
@@ -262,3 +262,4 @@ Pair this library with the Handbook's own [`00_SAMPLE_DATABASE`](../00_SAMPLE_DA
 ---
 
 *Questions, or a resource to suggest? Open an issue using the templates in [`.github/ISSUE_TEMPLATE`](../.github/ISSUE_TEMPLATE/), or check [`../FAQ.md`](../FAQ.md).*
+
