@@ -83,6 +83,8 @@ emp_id  dept_id                   dept_id  employee_count
   4        20
 ```
 
+![GROUP BY collapses rows into per-category buckets](./assets/diagrams/group-by-bucketing.svg)
+
 ## Engineering Notes
 
 - **The GROUP BY rule**: every column in the `SELECT` list must either (a) appear in the `GROUP BY` clause, or (b) be wrapped inside an aggregate function. MySQL will silently allow violations of this rule in non-strict SQL mode and return an arbitrary row's value — this is a well-known footgun. PostgreSQL enforces the rule strictly and will refuse to run the query. **Always write GROUP BY queries as if strict mode is on**, regardless of which engine you're targeting.
@@ -155,3 +157,7 @@ GROUP BY dept_id;
 
 ---
 **Related Topics:** [COUNT()](./01_COUNT.md) · [HAVING](./06_HAVING.md) · [SUM()](./02_SUM.md) · [Conditional Aggregation](./07_CONDITIONAL_AGGREGATION.md)
+
+---
+
+[← Previous Lesson](./04_MIN_MAX.md) | [↑ Module README](./README.md) | [Next Lesson →](./06_HAVING.md)

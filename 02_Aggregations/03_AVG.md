@@ -42,6 +42,8 @@ COUNT (NULL skipped)=      3     <- NOT 4
 AVG                 =  50000
 ```
 
+![AVG() divides by COUNT(column), not COUNT(*)](./assets/diagrams/avg-denominator.svg)
+
 ## Engineering Notes
 
 - **`AVG()` divides by the count of non-`NULL` values, not the total row count.** This is the single most important fact in this file. If 2 out of 10 employees have a `NULL` salary, `AVG(salary)` divides by 8, not 10.
@@ -98,3 +100,7 @@ SELECT AVG(salary) AS company_avg_salary FROM employes;
 
 ---
 **Related Topics:** [SUM()](./02_SUM.md) · [MIN() & MAX()](./04_MIN_MAX.md) · [HAVING](./06_HAVING.md)
+
+---
+
+[← Previous Lesson](./02_SUM.md) | [↑ Module README](./README.md) | [Next Lesson →](./04_MIN_MAX.md)

@@ -1,0 +1,41 @@
+<svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="780" height="300" fill="#ffffff"/>
+  <text x="390" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    Anatomy of a Real Business Report Query
+  </text>
+  <text x="390" y="44" text-anchor="middle" font-size="12" fill="#586069">
+    Every clause from this module, layered into one realistic report
+  </text>
+
+  <g font-size="13" fill="#24292e">
+    <rect x="40" y="60" width="700" height="34" rx="6" fill="#fce8e6"/>
+    <text x="55" y="82" font-weight="700" fill="#cf222e">SELECT</text>
+    <text x="150" y="82">dept_id, COUNT(*), AVG(salary), ...</text>
+    <text x="620" y="82" font-size="10" fill="#8a6a1e">final columns</text>
+
+    <rect x="40" y="98" width="700" height="34" rx="6" fill="#e6f0ff"/>
+    <text x="55" y="120" font-weight="700" fill="#2f6feb">FROM / JOIN</text>
+    <text x="220" y="120">employes JOIN departments JOIN locations</text>
+    <text x="620" y="120" font-size="10" fill="#4c6fbf">base rows</text>
+
+    <rect x="40" y="136" width="700" height="34" rx="6" fill="#e6f0ff"/>
+    <text x="55" y="158" font-weight="700" fill="#2f6feb">WHERE</text>
+    <text x="150" y="158">dept_id IS NOT NULL</text>
+    <text x="620" y="158" font-size="10" fill="#4c6fbf">row filter</text>
+
+    <rect x="40" y="174" width="700" height="34" rx="6" fill="#efe8fd"/>
+    <text x="55" y="196" font-weight="700" fill="#6f42c1">GROUP BY</text>
+    <text x="180" y="196">dept_id</text>
+    <text x="620" y="196" font-size="10" fill="#5c3fa8">bucket rows</text>
+
+    <rect x="40" y="212" width="700" height="34" rx="6" fill="#efe8fd"/>
+    <text x="55" y="234" font-weight="700" fill="#6f42c1">HAVING</text>
+    <text x="180" y="234">COUNT(*) &gt; 1</text>
+    <text x="620" y="234" font-size="10" fill="#5c3fa8">group filter</text>
+
+    <rect x="40" y="250" width="700" height="34" rx="6" fill="#e6f5ea"/>
+    <text x="55" y="272" font-weight="700" fill="#22863a">ORDER BY</text>
+    <text x="180" y="272">employee_count DESC</text>
+    <text x="620" y="272" font-size="10" fill="#22863a">sort for the reader</text>
+  </g>
+</svg>

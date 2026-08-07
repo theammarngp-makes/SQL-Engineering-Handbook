@@ -71,6 +71,8 @@ SUM() of those per-row 1s and 0s, per group
   = the conditional count for that group
 ```
 
+![CASE WHEN inside an aggregate pivots rows into side-by-side columns](./assets/diagrams/case-when-pivot.svg)
+
 ## Engineering Notes
 
 - `SUM(CASE WHEN cond THEN 1 ELSE 0 END)` and `COUNT(CASE WHEN cond THEN 1 END)` (note: **no `ELSE`**, defaulting to `NULL`) are functionally equivalent — both count only matching rows. The `COUNT` form is slightly more idiomatic since `COUNT()` already ignores `NULL` by design, removing the need for an explicit `ELSE 0`.
@@ -135,3 +137,7 @@ Conditional aggregation — `CASE WHEN` (or PostgreSQL's `FILTER`) nested inside
 
 ---
 **Related Topics:** [GROUP BY](./05_GROUP_BY.md) · [HAVING](./06_HAVING.md) · [Business Cases](./08_BUSINESS_CASES.md) · Advanced Aggregations (Module 12)
+
+---
+
+[← Previous Lesson](./06_HAVING.md) | [↑ Module README](./README.md) | [Next Lesson →](./08_BUSINESS_CASES.md)

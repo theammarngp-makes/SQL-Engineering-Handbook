@@ -1,0 +1,65 @@
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="720" height="260" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    GROUP BY dept_id — Rows Collapse Into Per-Category Buckets
+  </text>
+
+  <!-- source rows -->
+  <g font-size="12" fill="#24292e">
+    <rect x="30" y="55" width="160" height="150" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="110" y="76" text-anchor="middle" font-weight="600">Rows</text>
+    <text x="45" y="98">emp_id  dept_id</text>
+    <rect x="45" y="106" width="130" height="20" fill="#dbeafe"/>
+    <text x="50" y="121">  1        10</text>
+    <rect x="45" y="130" width="130" height="20" fill="#ede9fe"/>
+    <text x="50" y="145">  2        20</text>
+    <rect x="45" y="154" width="130" height="20" fill="#dbeafe"/>
+    <text x="50" y="169">  3        10</text>
+    <rect x="45" y="178" width="130" height="20" fill="#ede9fe"/>
+    <text x="50" y="193">  4        20</text>
+  </g>
+
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow-g)" fill="none">
+    <path d="M195,130 C240,130 240,130 280,130"/>
+  </g>
+  <defs>
+    <marker id="arrow-g" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+
+  <text x="240" y="115" text-anchor="middle" font-size="11" fill="#586069">GROUP BY</text>
+  <text x="240" y="145" text-anchor="middle" font-size="11" fill="#586069">dept_id</text>
+
+  <!-- buckets -->
+  <g>
+    <rect x="290" y="70" width="180" height="70" rx="8" fill="#2f6feb"/>
+    <text x="380" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">dept_id = 10</text>
+    <text x="380" y="114" text-anchor="middle" font-size="12" fill="#ffffff">emp 1, emp 3</text>
+    <text x="380" y="130" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">COUNT(*) = 2</text>
+
+    <rect x="290" y="155" width="180" height="70" rx="8" fill="#6f42c1"/>
+    <text x="380" y="179" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">dept_id = 20</text>
+    <text x="380" y="199" text-anchor="middle" font-size="12" fill="#ffffff">emp 2, emp 4</text>
+    <text x="380" y="215" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">COUNT(*) = 2</text>
+  </g>
+
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow-g)" fill="none">
+    <path d="M475,105 C520,105 520,105 555,105"/>
+    <path d="M475,190 C520,190 520,190 555,190"/>
+  </g>
+
+  <!-- final output -->
+  <g font-size="12" fill="#24292e">
+    <rect x="560" y="55" width="130" height="150" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="625" y="76" text-anchor="middle" font-weight="600">SELECT output</text>
+    <text x="575" y="100">dept_id  count</text>
+    <text x="575" y="125" fill="#2f6feb" font-weight="600">  10       2</text>
+    <text x="575" y="150" fill="#6f42c1" font-weight="600">  20       2</text>
+  </g>
+
+  <rect x="30" y="225" width="660" height="24" rx="6" fill="#fff5e6" stroke="#e8622c" stroke-width="1"/>
+  <text x="360" y="241" text-anchor="middle" font-size="11" fill="#7a4a1e">
+    One output row per unique dept_id — a NULL in the grouping column forms its own bucket
+  </text>
+</svg>

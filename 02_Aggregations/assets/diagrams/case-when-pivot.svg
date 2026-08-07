@@ -1,0 +1,56 @@
+<svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow-cw" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="270" fill="#ffffff"/>
+  <text x="380" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    CASE WHEN Inside an Aggregate — Pivoting Rows Into Columns
+  </text>
+
+  <!-- rows -->
+  <g font-size="12" fill="#24292e">
+    <rect x="30" y="55" width="160" height="130" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="110" y="76" text-anchor="middle" font-weight="600">salary</text>
+    <text x="50" y="98">62000 → &gt;50000</text>
+    <text x="50" y="120">40000 → ≤50000</text>
+    <text x="50" y="142">58000 → &gt;50000</text>
+  </g>
+
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow-cw)" fill="none">
+    <path d="M195,98 C230,98 230,98 260,80"/>
+    <path d="M195,120 C230,120 230,120 260,150"/>
+    <path d="M195,142 C230,142 230,142 260,80"/>
+  </g>
+
+  <text x="380" y="45" font-size="0"> </text>
+
+  <g font-size="12" font-weight="600" fill="#ffffff">
+    <rect x="260" y="60" width="140" height="40" rx="8" fill="#2f6feb"/>
+    <text x="330" y="85" text-anchor="middle">CASE → 1</text>
+
+    <rect x="260" y="135" width="140" height="40" rx="8" fill="#57606a"/>
+    <text x="330" y="160" text-anchor="middle">CASE → 0</text>
+  </g>
+
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow-cw)" fill="none">
+    <path d="M400,80 C440,80 440,110 470,110"/>
+    <path d="M400,155 C440,155 440,180 470,180"/>
+  </g>
+
+  <g font-size="13" font-weight="700" fill="#ffffff">
+    <rect x="470" y="60" width="260" height="55" rx="8" fill="#22863a"/>
+    <text x="600" y="83" text-anchor="middle" font-size="12">SUM(CASE WHEN...THEN 1 ELSE 0 END)</text>
+    <text x="600" y="102" text-anchor="middle" font-size="14">high_earners = 2</text>
+
+    <rect x="470" y="150" width="260" height="55" rx="8" fill="#e8622c"/>
+    <text x="600" y="173" text-anchor="middle" font-size="12">SUM(CASE WHEN...ELSE 0 END)</text>
+    <text x="600" y="192" text-anchor="middle" font-size="14">standard_earners = 1</text>
+  </g>
+
+  <rect x="30" y="220" width="700" height="34" rx="6" fill="#fff5e6" stroke="#e8622c" stroke-width="1"/>
+  <text x="380" y="238" text-anchor="middle" font-size="11" fill="#7a4a1e">
+    Both metrics come from the same GROUP BY row — WHERE would have discarded one side entirely
+  </text>
+</svg>

@@ -1,0 +1,41 @@
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="700" height="200" fill="#ffffff"/>
+  <text x="350" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    SUM() Skips NULL — It Does Not Treat It As Zero
+  </text>
+
+  <g font-size="13" fill="#24292e" font-weight="600">
+    <rect x="30"  y="60" width="90" height="40" rx="6" fill="#2f6feb"/>
+    <text x="75" y="85" text-anchor="middle" fill="#ffffff">50000</text>
+
+    <rect x="140" y="60" width="90" height="40" rx="6" fill="#d0d7de"/>
+    <text x="185" y="85" text-anchor="middle" fill="#57606a">NULL</text>
+
+    <rect x="250" y="60" width="90" height="40" rx="6" fill="#2f6feb"/>
+    <text x="295" y="85" text-anchor="middle" fill="#ffffff">62000</text>
+
+    <rect x="360" y="60" width="90" height="40" rx="6" fill="#2f6feb"/>
+    <text x="405" y="85" text-anchor="middle" fill="#ffffff">48000</text>
+  </g>
+
+  <text x="185" y="118" text-anchor="middle" font-size="11" fill="#cf222e" font-weight="600">excluded from SUM</text>
+
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow-s)">
+    <line x1="75" y1="100" x2="75" y2="140"/>
+    <line x1="295" y1="100" x2="295" y2="140"/>
+    <line x1="405" y1="100" x2="405" y2="140"/>
+  </g>
+  <defs>
+    <marker id="arrow-s" markerWidth="10" markerHeight="10" refX="5" refY="8" orient="auto">
+      <path d="M0,0 L10,0 L5,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+
+  <rect x="230" y="145" width="240" height="42" rx="8" fill="#22863a"/>
+  <text x="350" y="171" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">SUM = 160000</text>
+
+  <text x="530" y="80" font-size="11" fill="#586069">Empty / all-NULL group</text>
+  <text x="530" y="96" font-size="11" fill="#586069">→ SUM() returns NULL,</text>
+  <text x="530" y="112" font-size="11" fill="#586069">not 0. Wrap in</text>
+  <text x="530" y="128" font-size="11" fill="#586069">COALESCE(SUM(x), 0).</text>
+</svg>

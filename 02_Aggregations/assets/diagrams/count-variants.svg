@@ -1,0 +1,62 @@
+<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="760" height="260" fill="#ffffff"/>
+  <text x="380" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    COUNT(*) vs COUNT(column) vs COUNT(DISTINCT column)
+  </text>
+  <text x="380" y="45" text-anchor="middle" font-size="12" fill="#586069">
+    dept_id column: 10, NULL, 10, 20
+  </text>
+
+  <!-- source rows -->
+  <g font-size="12" fill="#24292e">
+    <rect x="30" y="70" width="150" height="120" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="105" y="90" text-anchor="middle" font-weight="600">employes</text>
+    <text x="45" y="112">emp_id  dept_id</text>
+    <text x="45" y="132">  1        10</text>
+    <text x="45" y="152">  2       NULL</text>
+    <text x="45" y="172">  3        10</text>
+    <text x="45" y="192" font-size="0">placeholder</text>
+    <text x="45" y="192">  4        20</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow-c)" fill="none">
+    <path d="M185,100 C230,100 230,100 260,100"/>
+    <path d="M185,140 C230,140 230,140 260,140"/>
+    <path d="M185,180 C230,180 230,180 260,180"/>
+  </g>
+  <defs>
+    <marker id="arrow-c" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+
+  <!-- result boxes -->
+  <g font-size="13" font-weight="600" fill="#ffffff">
+    <rect x="260" y="78" width="220" height="44" rx="8" fill="#2f6feb"/>
+    <text x="270" y="105" font-size="13">COUNT(*)</text>
+
+    <rect x="260" y="118" width="220" height="44" rx="8" fill="#6f42c1"/>
+    <text x="270" y="145" font-size="13">COUNT(dept_id)</text>
+
+    <rect x="260" y="158" width="220" height="44" rx="8" fill="#e8622c"/>
+    <text x="270" y="185" font-size="12">COUNT(DISTINCT dept_id)</text>
+  </g>
+
+  <g font-size="20" font-weight="700" fill="#24292e">
+    <text x="560" y="107" text-anchor="middle">4</text>
+    <text x="560" y="147" text-anchor="middle">3</text>
+    <text x="560" y="187" text-anchor="middle">2</text>
+  </g>
+
+  <g font-size="11" fill="#586069">
+    <text x="600" y="105">every row counted</text>
+    <text x="600" y="145">NULL row skipped</text>
+    <text x="600" y="185">unique values: 10, 20</text>
+  </g>
+
+  <rect x="30" y="220" width="700" height="28" rx="6" fill="#fff5e6" stroke="#e8622c" stroke-width="1"/>
+  <text x="380" y="239" text-anchor="middle" font-size="11" fill="#7a4a1e">
+    COUNT(*) never returns NULL — an empty table gives 0, not NULL, unlike SUM() / AVG()
+  </text>
+</svg>

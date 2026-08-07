@@ -1,0 +1,34 @@
+<svg viewBox="0 0 700 230" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="700" height="230" fill="#ffffff"/>
+  <text x="350" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    AVG() Divides by COUNT(column), Not COUNT(*)
+  </text>
+  <text x="350" y="45" text-anchor="middle" font-size="12" fill="#586069">
+    salary: 50000, NULL, 60000, 40000
+  </text>
+
+  <!-- fraction -->
+  <g font-size="14" font-weight="600" fill="#24292e" text-anchor="middle">
+    <text x="180" y="100">SUM(salary)</text>
+    <line x1="110" y1="112" x2="250" y2="112" stroke="#24292e" stroke-width="2"/>
+    <text x="180" y="135" fill="#6f42c1">COUNT(salary) = 3</text>
+  </g>
+
+  <text x="270" y="118" font-size="20" fill="#586069">=</text>
+
+  <rect x="300" y="90" width="140" height="50" rx="8" fill="#22863a"/>
+  <text x="370" y="121" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">50000</text>
+
+  <!-- wrong path -->
+  <g font-size="12" fill="#cf222e">
+    <text x="460" y="100">Wrong: dividing by</text>
+    <text x="460" y="116">COUNT(*) = 4 would</text>
+    <text x="460" y="132">give 37500 — treats</text>
+    <text x="460" y="148">the NULL as a zero.</text>
+  </g>
+
+  <rect x="30" y="175" width="640" height="34" rx="6" fill="#fff5e6" stroke="#e8622c" stroke-width="1"/>
+  <text x="350" y="196" text-anchor="middle" font-size="11" fill="#7a4a1e">
+    AVG(column) = SUM(column) / COUNT(column) — both silently skip NULL rows in the same direction
+  </text>
+</svg>

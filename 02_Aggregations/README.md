@@ -1,3 +1,20 @@
+<p align="center">
+  <img src="./banner.svg" alt="Module 02 — Aggregations" width="100%">
+</p>
+
+## 📚 Module Navigation
+
+| Lesson | Topic | Open |
+|---|---|---|
+| 01 | COUNT() | [01_COUNT.md](./01_COUNT.md) |
+| 02 | SUM() | [02_SUM.md](./02_SUM.md) |
+| 03 | AVG() | [03_AVG.md](./03_AVG.md) |
+| 04 | MIN() & MAX() | [04_MIN_MAX.md](./04_MIN_MAX.md) |
+| 05 | GROUP BY | [05_GROUP_BY.md](./05_GROUP_BY.md) |
+| 06 | HAVING | [06_HAVING.md](./06_HAVING.md) |
+| 07 | Conditional Aggregation | [07_CONDITIONAL_AGGREGATION.md](./07_CONDITIONAL_AGGREGATION.md) |
+| 08 | Business Cases | [08_BUSINESS_CASES.md](./08_BUSINESS_CASES.md) |
+
 # Module 02 — Aggregations
 
 ## Introduction
@@ -160,6 +177,21 @@ Beginner → Intermediate (Files 01–06: Beginner. Files 07–08: Intermediate,
 [Module 03 — Joins ▶](../03_Joins)
 
 *(Also see [Module 12 — Advanced Aggregations](../12_ADVANCED_AGGREGATIONS) for `ROLLUP`, `CUBE`, and `GROUPING SETS`, which build directly on the `GROUP BY`/`HAVING` foundation from this module, and [Module 11 — NULL Handling and Data Cleaning](../11_NULL_HANDLING_AND_DATA_CLEANING) for a deeper treatment of `NULL` beyond the aggregate-specific behavior covered here.)*
+
+## Visual Learning
+
+Every diagram used across this module's lessons, in one place:
+
+| Diagram | Used In |
+|---|---|
+| ![COUNT variants](./assets/diagrams/count-variants.svg) | [01_COUNT.md](./01_COUNT.md) |
+| ![SUM NULL handling](./assets/diagrams/sum-null-handling.svg) | [02_SUM.md](./02_SUM.md) |
+| ![AVG denominator](./assets/diagrams/avg-denominator.svg) | [03_AVG.md](./03_AVG.md) |
+| ![MIN/MAX across types](./assets/diagrams/min-max-across-types.svg) | [04_MIN_MAX.md](./04_MIN_MAX.md) |
+| ![GROUP BY bucketing](./assets/diagrams/group-by-bucketing.svg) | [05_GROUP_BY.md](./05_GROUP_BY.md) |
+| ![WHERE vs HAVING flow](./assets/diagrams/where-vs-having-flow.svg) | [06_HAVING.md](./06_HAVING.md) |
+| ![CASE WHEN pivot](./assets/diagrams/case-when-pivot.svg) | [07_CONDITIONAL_AGGREGATION.md](./07_CONDITIONAL_AGGREGATION.md) |
+| ![Business case query anatomy](./assets/diagrams/business-case-query-anatomy.svg) | [08_BUSINESS_CASES.md](./08_BUSINESS_CASES.md) |
 
 ## Further Reading
 

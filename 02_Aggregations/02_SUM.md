@@ -48,6 +48,8 @@ employes.salary: [50000, NULL, 62000, 48000]
                  160000
 ```
 
+![SUM() skips NULL rather than treating them as zero](./assets/diagrams/sum-null-handling.svg)
+
 ## Engineering Notes
 
 - `SUM()` **ignores `NULL` values** — it does not treat them as zero. `SUM(salary)` over `[50000, NULL, 62000]` is `112000`, not an error and not `112000/0` weirdness.
@@ -102,3 +104,7 @@ FROM employes WHERE dept_id = 999;
 
 ---
 **Related Topics:** [COUNT()](./01_COUNT.md) · [AVG()](./03_AVG.md) · [GROUP BY](./05_GROUP_BY.md)
+
+---
+
+[← Previous Lesson](./01_COUNT.md) | [↑ Module README](./README.md) | [Next Lesson →](./03_AVG.md)

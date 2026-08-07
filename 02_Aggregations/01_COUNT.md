@@ -22,6 +22,8 @@ By the end of this file you should be able to:
 | `COUNT(column_name)` | Only rows where `column_name` is **not** `NULL` |
 | `COUNT(DISTINCT column_name)` | Only the number of unique non-`NULL` values |
 
+![COUNT(*) vs COUNT(column) vs COUNT(DISTINCT column)](./assets/diagrams/count-variants.svg)
+
 ## Business Context
 
 Almost every dashboard has a headline number in the top-left corner — total customers, total orders, total open tickets. That number is a `COUNT()`. Getting it wrong (e.g., silently excluding rows with a `NULL` email) means shipping a dashboard that under-reports reality.
@@ -114,3 +116,7 @@ SELECT COUNT(*) AS total_employees FROM employes;
 
 ---
 **Related Topics:** [SUM()](./02_SUM.md) · [GROUP BY](./05_GROUP_BY.md) · [HAVING](./06_HAVING.md)
+
+---
+
+[← Previous Lesson](./README.md) | [↑ Module README](./README.md) | [Next Lesson →](./02_SUM.md)

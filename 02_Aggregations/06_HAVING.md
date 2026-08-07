@@ -20,6 +20,8 @@
 | `WHERE` | Individual rows | Before `GROUP BY` |
 | `HAVING` | Aggregated groups | After `GROUP BY` |
 
+![WHERE filters rows, HAVING filters groups, in the full pipeline](./assets/diagrams/where-vs-having-flow.svg)
+
 ## Business Context
 
 "Show me departments with more than 5 employees" cannot be expressed with `WHERE`, because "more than 5 employees" is a fact about the *group*, not about any single row — no individual employee row has a "5 employees" value to filter on. That's exactly the gap `HAVING` fills.
@@ -118,3 +120,7 @@ HAVING dept_id = 10;   -- works, but should be WHERE dept_id = 10
 
 ---
 **Related Topics:** [GROUP BY](./05_GROUP_BY.md) · [COUNT()](./01_COUNT.md) · [Conditional Aggregation](./07_CONDITIONAL_AGGREGATION.md)
+
+---
+
+[← Previous Lesson](./05_GROUP_BY.md) | [↑ Module README](./README.md) | [Next Lesson →](./07_CONDITIONAL_AGGREGATION.md)

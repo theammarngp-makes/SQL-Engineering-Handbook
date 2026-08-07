@@ -26,6 +26,8 @@ ORDER BY <most useful sort for the audience>
 
 This file works through that shape across five business domains, using the schema already established in this module.
 
+![Anatomy of a full business report query, clause by clause](./assets/diagrams/business-case-query-anatomy.svg)
+
 ## Schema Used
 
 Same as the rest of the module: `employes(emp_id, emp_name, dept_id, manager_id, salary)`, `departments(dept_id, dept_name, location_id)`, `locations(location_id, city)`.
@@ -95,3 +97,7 @@ Real reporting work is rarely a single aggregate function in isolation — it's 
 
 ---
 **Related Topics:** [GROUP BY](./05_GROUP_BY.md) · [HAVING](./06_HAVING.md) · [Conditional Aggregation](./07_CONDITIONAL_AGGREGATION.md)
+
+---
+
+[← Previous Lesson](./07_CONDITIONAL_AGGREGATION.md) | [↑ Module README](./README.md) | [Next Module →](../03_Joins)

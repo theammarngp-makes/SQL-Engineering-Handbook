@@ -1,0 +1,60 @@
+<svg viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow-wh" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#586069"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="240" fill="#ffffff"/>
+  <text x="450" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#24292e">
+    WHERE Filters Rows · HAVING Filters Groups
+  </text>
+  <text x="450" y="44" text-anchor="middle" font-size="12" fill="#586069">
+    Two different filters, at two different stages of the pipeline
+  </text>
+
+  <g font-size="13" font-weight="600" fill="#ffffff">
+    <rect x="20"  y="80" width="110" height="56" rx="8" fill="#57606a"/>
+    <text x="75"  y="103" text-anchor="middle">FROM</text>
+    <text x="75"  y="120" text-anchor="middle" font-size="10" font-weight="400">base rows</text>
+
+    <rect x="160" y="80" width="130" height="56" rx="8" fill="#2f6feb"/>
+    <text x="225" y="103" text-anchor="middle">WHERE</text>
+    <text x="225" y="120" text-anchor="middle" font-size="10" font-weight="400">filters ROWS</text>
+
+    <rect x="320" y="80" width="130" height="56" rx="8" fill="#57606a"/>
+    <text x="385" y="103" text-anchor="middle" font-size="12">GROUP BY</text>
+    <text x="385" y="120" text-anchor="middle" font-size="10" font-weight="400">rows grouped</text>
+
+    <rect x="480" y="80" width="130" height="56" rx="8" fill="#6f42c1"/>
+    <text x="545" y="103" text-anchor="middle">HAVING</text>
+    <text x="545" y="120" text-anchor="middle" font-size="10" font-weight="400">filters GROUPS</text>
+
+    <rect x="640" y="80" width="110" height="56" rx="8" fill="#e8622c"/>
+    <text x="695" y="103" text-anchor="middle">SELECT</text>
+    <text x="695" y="120" text-anchor="middle" font-size="10" font-weight="400">final columns</text>
+
+    <rect x="780" y="80" width="100" height="56" rx="8" fill="#22863a"/>
+    <text x="830" y="103" text-anchor="middle" font-size="12">ORDER BY</text>
+    <text x="830" y="120" text-anchor="middle" font-size="10" font-weight="400">rows sorted</text>
+  </g>
+
+  <g stroke="#586069" stroke-width="2" marker-end="url(#arrow-wh)">
+    <line x1="130" y1="108" x2="158" y2="108"/>
+    <line x1="290" y1="108" x2="318" y2="108"/>
+    <line x1="450" y1="108" x2="478" y2="108"/>
+    <line x1="610" y1="108" x2="638" y2="108"/>
+    <line x1="750" y1="108" x2="778" y2="108"/>
+  </g>
+
+  <rect x="160" y="160" width="130" height="30" rx="6" fill="#dbeafe" stroke="#2f6feb"/>
+  <text x="225" y="180" text-anchor="middle" font-size="10" fill="#1a4fb4">e.g. dept_id = 10</text>
+
+  <rect x="480" y="160" width="130" height="30" rx="6" fill="#ede9fe" stroke="#6f42c1"/>
+  <text x="545" y="180" text-anchor="middle" font-size="10" fill="#4c2c8f">e.g. COUNT(*) &gt; 1</text>
+
+  <rect x="20" y="205" width="860" height="26" rx="6" fill="#fff5e6" stroke="#e8622c" stroke-width="1"/>
+  <text x="450" y="223" text-anchor="middle" font-size="11" fill="#7a4a1e">
+    An aggregate condition can never appear in WHERE — at that point in the pipeline, no aggregate has been computed yet
+  </text>
+</svg>

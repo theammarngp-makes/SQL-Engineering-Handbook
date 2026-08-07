@@ -18,6 +18,8 @@
 | `MIN(column)` | The smallest non-`NULL` value |
 | `MAX(column)` | The largest non-`NULL` value |
 
+![MIN() and MAX() across numeric, date, and text columns](./assets/diagrams/min-max-across-types.svg)
+
 ## Business Context
 
 "What was our highest sale of the month?" "Who's been here the longest?" "What's the earliest unfulfilled order?" — every one of these is a `MIN()`/`MAX()` query, and they're often the first thing an executive asks after seeing a `SUM()` or `AVG()` figure.
@@ -103,3 +105,7 @@ LIMIT 1;
 
 ---
 **Related Topics:** [COUNT()](./01_COUNT.md) · [GROUP BY](./05_GROUP_BY.md) · Window Functions (Module 07)
+
+---
+
+[← Previous Lesson](./03_AVG.md) | [↑ Module README](./README.md) | [Next Lesson →](./05_GROUP_BY.md)
