@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./banner.svg" alt="Module 02 — Aggregations" width="100%">
+  <img src="./banner.png" alt="Module 02 — Aggregations" width="100%">
 </p>
 
 ## 📚 Module Navigation
