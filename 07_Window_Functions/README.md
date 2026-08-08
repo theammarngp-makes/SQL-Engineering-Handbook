@@ -6,14 +6,7 @@
 
 <br/>
 
-[![Level](https://img.shields.io/badge/LEVEL-Beginner%20%E2%86%92%20Intermediate-9c5fff?style=for-the-badge)]()
-[![Estimated Time](https://img.shields.io/badge/TIME-3--4%20HRS-2563EB?style=for-the-badge)]()
-[![Topics](https://img.shields.io/badge/TOPICS-7-f28c28?style=for-the-badge)]()
-[![Interview Critical](https://img.shields.io/badge/INTERVIEW-CRITICAL-e2445c?style=for-the-badge)]()
-[![Status](https://img.shields.io/badge/STATUS-COMPLETE-2ea44f?style=for-the-badge)]()
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-tested-336791?style=for-the-badge&logo=postgresql&logoColor=white)]()
-[![MySQL](https://img.shields.io/badge/MySQL-tested-4479A1?style=for-the-badge&logo=mysql&logoColor=white)]()
-[![License](https://img.shields.io/badge/License-MIT-6b7280?style=for-the-badge)]()
+
 
 **Module 7 of the [SQL Engineering Handbook](../)** &#183; Authored & maintained by [**Mohammad Ammar**](https://github.com/theammarngp-makes)
 
