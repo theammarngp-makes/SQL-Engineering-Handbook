@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/30859126/README.md)
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=0:0f172a,50:1e3a8a,100:2563eb&text=SQL%20Joins&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Module%2003%20%E2%80%94%20SQL%20Engineering%20Handbook&descAlign=62&descSize=20&descColor=e2e8f0" width="100%"/>
@@ -5,6 +6,9 @@
 <img src="https://readme-typing-svg.herokuapp.com/?font=Poppins&weight=500&size=22&duration=3000&pause=1000&color=2563EB&center=true&vCenter=true&width=750&lines=Real-world+data+never+lives+in+one+table.;INNER+%C2%B7+LEFT+%C2%B7+RIGHT+%C2%B7+FULL+OUTER+%C2%B7+CROSS+%C2%B7+SELF;Production-grade+SQL+%E2%80%94+not+a+tutorial+dump." alt="Typing SVG" />
 
 <br/>
+
+
+</div>
 
 ---
 
@@ -334,7 +338,7 @@ Found a bug, a stale comment, or a gap this audit missed? Issues and PRs are gen
 
 <table>
 <tr>
-<td width="90"><img src="https://avatars.githubusercontent.com/u/224389032?v=4" width="70" style="border-radius:50"/></td>
+<td width="90"><img src="https://avatars.githubusercontent.com/u/224389032?v=4" width="70" style="border-radius:50%"/></td>
 <td>
 <b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analytics Engineer, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineering-Handbook">SQL Engineering Handbook</a> (20+ modules). Based in Nagpur, India.
 </td>
