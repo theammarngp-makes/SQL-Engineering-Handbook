@@ -1,0 +1,49 @@
+<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect x="0" y="0" width="640" height="300" rx="16" fill="#0f172a"/>
+  <text x="320" y="36" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="700">RANK() &#8212; Competition Ranking (Gaps After Ties)</text>
+  <text x="320" y="56" text-anchor="middle" fill="#94a3b8" font-size="12">Tied rows share a rank; the next rank skips ahead</text>
+
+  <text x="70" y="112" fill="#94a3b8" font-size="12">ORDER BY value</text>
+  <g font-size="16" font-weight="700">
+    <rect x="70" y="120" width="110" height="46" rx="8" fill="#1e3a8a" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="125" y="149" text-anchor="middle" fill="#e2e8f0">10</text>
+
+    <rect x="200" y="120" width="110" height="46" rx="8" fill="#1e3a8a" stroke="#f28c28" stroke-width="1.5"/>
+    <text x="255" y="149" text-anchor="middle" fill="#e2e8f0">20</text>
+
+    <rect x="330" y="120" width="110" height="46" rx="8" fill="#1e3a8a" stroke="#f28c28" stroke-width="1.5"/>
+    <text x="385" y="149" text-anchor="middle" fill="#e2e8f0">20</text>
+
+    <rect x="460" y="120" width="110" height="46" rx="8" fill="#1e3a8a" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="515" y="149" text-anchor="middle" fill="#e2e8f0">40</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="2" marker-end="url(#arrow3)">
+    <line x1="125" y1="166" x2="125" y2="196"/>
+    <line x1="255" y1="166" x2="255" y2="196"/>
+    <line x1="385" y1="166" x2="385" y2="196"/>
+    <line x1="515" y1="166" x2="515" y2="196"/>
+  </g>
+
+  <g font-size="18" font-weight="800">
+    <rect x="70" y="200" width="110" height="46" rx="23" fill="#2ea44f"/>
+    <text x="125" y="229" text-anchor="middle" fill="#052e16">1</text>
+
+    <rect x="200" y="200" width="110" height="46" rx="23" fill="#e2445c"/>
+    <text x="255" y="229" text-anchor="middle" fill="#2b0410">2</text>
+
+    <rect x="330" y="200" width="110" height="46" rx="23" fill="#e2445c"/>
+    <text x="385" y="229" text-anchor="middle" fill="#2b0410">2</text>
+
+    <rect x="460" y="200" width="110" height="46" rx="23" fill="#2ea44f"/>
+    <text x="515" y="229" text-anchor="middle" fill="#052e16">4</text>
+  </g>
+
+  <text x="385" y="270" text-anchor="middle" fill="#e2445c" font-size="12" font-weight="600">rank 3 is skipped &#8212; next distinct value jumps straight to 4</text>
+
+  <defs>
+    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

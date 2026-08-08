@@ -1,5 +1,9 @@
 # DENSE_RANK()
 
+<p align="center">
+  <img src="./assets/diagrams/dense-rank-no-gaps.svg" alt="DENSE_RANK diagram showing no gaps after ties" width="640"/>
+</p>
+
 ## Overview
 
 `DENSE_RANK()` behaves like `RANK()` except it **never leaves a gap** in
@@ -98,9 +102,17 @@ Beginner
 
 ## Related Topics
 
-- `02_RANK`
-- `04_PARTITION_BY`
+- [`02_RANK`](./02_RANK.md)
+- [`04_PARTITION_BY`](./04_PARTITION_BY.md)
 
 ## Next Topic
 
-[`04_PARTITION_BY`](../04_PARTITION_BY/README.md)
+[`04_PARTITION_BY`](./04_PARTITION_BY.md)
+
+---
+
+## Lesson Navigation
+
+&#8592; Previous: [`02_RANK`](./02_RANK.md)
+&#8593; [Module README](./README.md)
+&#8594; Next: [`04_PARTITION_BY`](./04_PARTITION_BY.md)

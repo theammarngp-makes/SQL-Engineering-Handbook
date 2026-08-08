@@ -1,5 +1,9 @@
 # RANK()
 
+<p align="center">
+  <img src="./assets/diagrams/rank-gaps.svg" alt="RANK competition ranking diagram showing gaps after ties" width="640"/>
+</p>
+
 ## Overview
 
 `RANK()` assigns a competition-style rank to each row. Rows with equal
@@ -99,9 +103,17 @@ Beginner
 
 ## Related Topics
 
-- `01_ROW_NUMBER`
-- `03_DENSE_RANK`
+- [`01_ROW_NUMBER`](./01_ROW_NUMBER.md)
+- [`03_DENSE_RANK`](./03_DENSE_RANK.md)
 
 ## Next Topic
 
-[`03_DENSE_RANK`](../03_DENSE_RANK/README.md)
+[`03_DENSE_RANK`](./03_DENSE_RANK.md)
+
+---
+
+## Lesson Navigation
+
+&#8592; Previous: [`01_ROW_NUMBER`](./01_ROW_NUMBER.md)
+&#8593; [Module README](./README.md)
+&#8594; Next: [`03_DENSE_RANK`](./03_DENSE_RANK.md)

@@ -1,5 +1,9 @@
 # PARTITION BY
 
+<p align="center">
+  <img src="./assets/diagrams/partition-by-split.svg" alt="PARTITION BY diagram showing the result set split into independent windows" width="640"/>
+</p>
+
 ## Overview
 
 `PARTITION BY` splits the result set into independent groups (partitions)
@@ -104,9 +108,17 @@ Intermediate
 
 ## Related Topics
 
-- `02_RANK`, `03_DENSE_RANK`
-- `05_LAG_LEAD`
+- [`02_RANK`](./02_RANK.md), [`03_DENSE_RANK`](./03_DENSE_RANK.md)
+- [`05_LAG_LEAD`](./05_LAG_LEAD.md)
 
 ## Next Topic
 
-[`05_LAG_LEAD`](../05_LAG_LEAD/README.md)
+[`05_LAG_LEAD`](./05_LAG_LEAD.md)
+
+---
+
+## Lesson Navigation
+
+&#8592; Previous: [`03_DENSE_RANK`](./03_DENSE_RANK.md)
+&#8593; [Module README](./README.md)
+&#8594; Next: [`05_LAG_LEAD`](./05_LAG_LEAD.md)

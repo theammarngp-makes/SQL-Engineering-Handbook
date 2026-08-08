@@ -1,5 +1,9 @@
 # Running Totals and Running Averages
 
+<p align="center">
+  <img src="./assets/diagrams/running-totals-accumulation.svg" alt="Running total accumulation diagram using SUM() OVER()" width="640"/>
+</p>
+
 ## Overview
 
 Aggregate functions (`SUM()`, `AVG()`, `COUNT()`, `MIN()`, `MAX()`) can
@@ -110,9 +114,17 @@ Intermediate
 
 ## Related Topics
 
-- `05_LAG_LEAD`
-- `04_PARTITION_BY`
+- [`05_LAG_LEAD`](./05_LAG_LEAD.md)
+- [`04_PARTITION_BY`](./04_PARTITION_BY.md)
 
 ## Next Topic
 
 `08_Subqueries_Advanced` *(or the next module in your handbook sequence)*
+
+---
+
+## Lesson Navigation
+
+&#8592; Previous: [`06_FIRST_LAST_NTILE`](./06_FIRST_LAST_NTILE.md)
+&#8593; [Module README](./README.md)
+&#8594; Next: This is the final lesson in this module &#8212; see the [Module README](./README.md) for the full roadmap.

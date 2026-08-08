@@ -1,0 +1,47 @@
+<svg viewBox="0 0 660 380" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect x="0" y="0" width="660" height="380" rx="16" fill="#0f172a"/>
+  <text x="330" y="36" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="700">PARTITION BY &#8212; Independent Windows Per Group</text>
+  <text x="330" y="56" text-anchor="middle" fill="#94a3b8" font-size="12">Each partition restarts the window function from scratch</text>
+
+  <!-- full result set -->
+  <rect x="230" y="76" width="200" height="42" rx="8" fill="#1e3a8a" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="330" y="102" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">Full Result Set</text>
+
+  <!-- split arrows -->
+  <path d="M290,118 L130,150" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow5)"/>
+  <path d="M330,118 L330,150" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow5)"/>
+  <path d="M370,118 L530,150" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow5)"/>
+
+  <text x="330" y="140" text-anchor="middle" fill="#f28c28" font-size="12" font-weight="700">PARTITION BY dept_name</text>
+
+  <!-- partition A -->
+  <rect x="40" y="152" width="180" height="180" rx="10" fill="#111827" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="130" y="176" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">dept = 'Sales'</text>
+  <rect x="60" y="188" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="130" y="208" text-anchor="middle" fill="#e2e8f0" font-size="12">row 1 &#8594; window pos 1</text>
+  <rect x="60" y="224" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="130" y="244" text-anchor="middle" fill="#e2e8f0" font-size="12">row 2 &#8594; window pos 2</text>
+  <rect x="60" y="260" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="130" y="280" text-anchor="middle" fill="#e2e8f0" font-size="12">row 3 &#8594; window pos 3</text>
+  <text x="130" y="316" text-anchor="middle" fill="#2ea44f" font-size="12" font-weight="700">resets to 1</text>
+
+  <!-- partition B -->
+  <rect x="240" y="152" width="180" height="180" rx="10" fill="#111827" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="330" y="176" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">dept = 'HR'</text>
+  <rect x="260" y="188" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="330" y="208" text-anchor="middle" fill="#e2e8f0" font-size="12">row 1 &#8594; window pos 1</text>
+  <rect x="260" y="224" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="330" y="244" text-anchor="middle" fill="#e2e8f0" font-size="12">row 2 &#8594; window pos 2</text>
+  <text x="330" y="316" text-anchor="middle" fill="#2ea44f" font-size="12" font-weight="700">resets to 1</text>
+
+  <!-- partition C -->
+  <rect x="440" y="152" width="180" height="180" rx="10" fill="#111827" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="530" y="176" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">dept = 'Finance'</text>
+  <rect x="460" y="188" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="530" y="208" text-anchor="middle" fill="#e2e8f0" font-size="12">row 1 &#8594; window pos 1</text>
+  <rect x="460" y="224" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="530" y="244" text-anchor="middle" fill="#e2e8f0" font-size="12">row 2 &#8594; window pos 2</text>
+  <rect x="460" y="260" width="140" height="30" rx="6" fill="#1e3a8a"/><text x="530" y="280" text-anchor="middle" fill="#e2e8f0" font-size="12">row 3 &#8594; window pos 3</text>
+  <text x="530" y="316" text-anchor="middle" fill="#2ea44f" font-size="12" font-weight="700">resets to 1</text>
+
+  <text x="330" y="360" text-anchor="middle" fill="#64748b" font-size="11">Unlike GROUP BY, every original row is still returned &#8212; only the window calculation resets per partition.</text>
+
+  <defs>
+    <marker id="arrow5" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

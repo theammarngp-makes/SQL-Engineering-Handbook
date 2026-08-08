@@ -1,5 +1,9 @@
 # LAG() and LEAD()
 
+<p align="center">
+  <img src="./assets/diagrams/lag-lead-offset.svg" alt="LAG and LEAD diagram showing access to previous and next row values" width="640"/>
+</p>
+
 ## Overview
 
 `LAG()` looks **backward** to a previous row; `LEAD()` looks **forward**
@@ -106,9 +110,17 @@ Intermediate
 
 ## Related Topics
 
-- `04_PARTITION_BY`
-- `06_FIRST_LAST_NTILE`
+- [`04_PARTITION_BY`](./04_PARTITION_BY.md)
+- [`06_FIRST_LAST_NTILE`](./06_FIRST_LAST_NTILE.md)
 
 ## Next Topic
 
-[`06_FIRST_LAST_NTILE`](../06_FIRST_LAST_NTILE/README.md)
+[`06_FIRST_LAST_NTILE`](./06_FIRST_LAST_NTILE.md)
+
+---
+
+## Lesson Navigation
+
+&#8592; Previous: [`04_PARTITION_BY`](./04_PARTITION_BY.md)
+&#8593; [Module README](./README.md)
+&#8594; Next: [`06_FIRST_LAST_NTILE`](./06_FIRST_LAST_NTILE.md)

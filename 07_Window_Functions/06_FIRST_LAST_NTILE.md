@@ -1,5 +1,9 @@
 # FIRST_VALUE(), LAST_VALUE(), and NTILE()
 
+<p align="center">
+  <img src="./assets/diagrams/first-last-ntile.svg" alt="FIRST_VALUE, LAST_VALUE, and NTILE diagram" width="640"/>
+</p>
+
 ## Overview
 
 `FIRST_VALUE()` and `LAST_VALUE()` retrieve the value at the **start**
@@ -102,9 +106,17 @@ Intermediate
 
 ## Related Topics
 
-- `04_PARTITION_BY`
-- `07_RUNNING_TOTALS`
+- [`04_PARTITION_BY`](./04_PARTITION_BY.md)
+- [`07_RUNNING_TOTALS`](./07_RUNNING_TOTALS.md)
 
 ## Next Topic
 
-[`07_RUNNING_TOTALS`](../07_RUNNING_TOTALS/README.md)
+[`07_RUNNING_TOTALS`](./07_RUNNING_TOTALS.md)
+
+---
+
+## Lesson Navigation
+
+&#8592; Previous: [`05_LAG_LEAD`](./05_LAG_LEAD.md)
+&#8593; [Module README](./README.md)
+&#8594; Next: [`07_RUNNING_TOTALS`](./07_RUNNING_TOTALS.md)

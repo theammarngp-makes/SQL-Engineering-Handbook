@@ -1,0 +1,50 @@
+<svg viewBox="0 0 660 340" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect x="0" y="0" width="660" height="340" rx="16" fill="#0f172a"/>
+  <text x="330" y="34" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="700">FIRST_VALUE / LAST_VALUE / NTILE</text>
+  <text x="330" y="54" text-anchor="middle" fill="#94a3b8" font-size="12">Boundary values across a frame, and equal-sized bucketing across a partition</text>
+
+  <!-- frame row -->
+  <rect x="60" y="80" width="540" height="46" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="330" y="76" text-anchor="middle" fill="#64748b" font-size="11">window frame: UNBOUNDED PRECEDING &#8594; UNBOUNDED FOLLOWING</text>
+
+  <g font-size="13" font-weight="700">
+    <rect x="70" y="86" width="100" height="34" rx="6" fill="#2ea44f"/>
+    <text x="120" y="108" text-anchor="middle" fill="#052e16">Row 1</text>
+
+    <rect x="185" y="86" width="100" height="34" rx="6" fill="#1e3a8a"/>
+    <text x="235" y="108" text-anchor="middle" fill="#e2e8f0">Row 2</text>
+
+    <rect x="300" y="86" width="100" height="34" rx="6" fill="#1e3a8a"/>
+    <text x="350" y="108" text-anchor="middle" fill="#e2e8f0">Row 3</text>
+
+    <rect x="415" y="86" width="100" height="34" rx="6" fill="#1e3a8a"/>
+    <text x="465" y="108" text-anchor="middle" fill="#e2e8f0">Row 4</text>
+
+    <rect x="530" y="86" width="60" height="34" rx="6" fill="#e2445c"/>
+    <text x="560" y="108" text-anchor="middle" fill="#2b0410">Row 5</text>
+  </g>
+
+  <text x="120" y="146" text-anchor="middle" fill="#2ea44f" font-size="12" font-weight="700">&#8593; FIRST_VALUE()</text>
+  <text x="560" y="146" text-anchor="middle" fill="#e2445c" font-size="12" font-weight="700">&#8593; LAST_VALUE()</text>
+  <text x="330" y="164" text-anchor="middle" fill="#f28c28" font-size="11" font-weight="600">without an explicit frame, LAST_VALUE() silently returns the CURRENT row instead</text>
+
+  <!-- NTILE section -->
+  <line x1="60" y1="190" x2="600" y2="190" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="330" y="214" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">NTILE(3) &#8212; split the partition into 3 equal-ish buckets</text>
+
+  <g font-size="12" font-weight="700">
+    <rect x="70" y="228" width="150" height="70" rx="8" fill="#1e3a8a" stroke="#2563eb"/>
+    <text x="145" y="250" text-anchor="middle" fill="#e2e8f0">bucket 1</text>
+    <text x="145" y="270" text-anchor="middle" fill="#94a3b8" font-size="11">rows 1&#8211;2</text>
+
+    <rect x="255" y="228" width="150" height="70" rx="8" fill="#1e3a8a" stroke="#2563eb"/>
+    <text x="330" y="250" text-anchor="middle" fill="#e2e8f0">bucket 2</text>
+    <text x="330" y="270" text-anchor="middle" fill="#94a3b8" font-size="11">rows 3&#8211;4</text>
+
+    <rect x="440" y="228" width="150" height="70" rx="8" fill="#1e3a8a" stroke="#2563eb"/>
+    <text x="515" y="250" text-anchor="middle" fill="#e2e8f0">bucket 3</text>
+    <text x="515" y="270" text-anchor="middle" fill="#94a3b8" font-size="11">row 5</text>
+  </g>
+
+  <text x="330" y="322" text-anchor="middle" fill="#64748b" font-size="11">When rows don't divide evenly, earlier buckets absorb the extra rows &#8212; bucket sizes can differ by one.</text>
+</svg>

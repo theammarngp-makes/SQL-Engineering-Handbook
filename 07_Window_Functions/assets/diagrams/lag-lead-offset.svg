@@ -1,0 +1,39 @@
+<svg viewBox="0 0 660 300" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect x="0" y="0" width="660" height="300" rx="16" fill="#0f172a"/>
+  <text x="330" y="36" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="700">LAG() / LEAD() &#8212; Looking Across Rows</text>
+  <text x="330" y="56" text-anchor="middle" fill="#94a3b8" font-size="12">Each row can reach one row back and one row forward, without a self-join</text>
+
+  <g font-size="14" font-weight="700">
+    <rect x="40" y="130" width="120" height="46" rx="8" fill="#1e3a8a" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="100" y="159" text-anchor="middle" fill="#e2e8f0">Row N-1</text>
+
+    <rect x="270" y="118" width="120" height="70" rx="10" fill="#9c5fff" stroke="#c4b5fd" stroke-width="2"/>
+    <text x="330" y="147" text-anchor="middle" fill="#1e1033">Row N</text>
+    <text x="330" y="166" text-anchor="middle" fill="#1e1033" font-size="11">current row</text>
+
+    <rect x="500" y="130" width="120" height="46" rx="8" fill="#1e3a8a" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="560" y="159" text-anchor="middle" fill="#e2e8f0">Row N+1</text>
+  </g>
+
+  <!-- LAG arrow -->
+  <path d="M270,140 L166,152" stroke="#f28c28" stroke-width="2.5" fill="none" marker-end="url(#arrowOrange)"/>
+  <text x="215" y="105" text-anchor="middle" fill="#f28c28" font-size="13" font-weight="700">LAG(col, 1)</text>
+  <text x="215" y="122" text-anchor="middle" fill="#f28c28" font-size="11">reads the previous row's value</text>
+
+  <!-- LEAD arrow -->
+  <path d="M390,140 L494,152" stroke="#2ea44f" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="445" y="105" text-anchor="middle" fill="#2ea44f" font-size="13" font-weight="700">LEAD(col, 1)</text>
+  <text x="445" y="122" text-anchor="middle" fill="#2ea44f" font-size="11">reads the next row's value</text>
+
+  <text x="330" y="230" text-anchor="middle" fill="#e2e8f0" font-size="12">Requires <tspan font-weight="700" fill="#f28c28">ORDER BY</tspan> inside OVER() &#8212; without it, "previous" and "next" are undefined.</text>
+  <text x="330" y="252" text-anchor="middle" fill="#64748b" font-size="11">Common use: month-over-month deltas, previous-order comparisons, gap detection.</text>
+
+  <defs>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#f28c28"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2ea44f"/>
+    </marker>
+  </defs>
+</svg>
