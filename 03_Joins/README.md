@@ -6,21 +6,6 @@
 
 <br/>
 
-[![Level](https://img.shields.io/badge/LEVEL-Beginner%20%E2%86%92%20Advanced-9c5fff?style=for-the-badge)]()
-[![Estimated Time](https://img.shields.io/badge/TIME-6--8%20HRS-2563EB?style=for-the-badge)]()
-[![Topics](https://img.shields.io/badge/TOPICS-9-f28c28?style=for-the-badge)]()
-[![Interview Critical](https://img.shields.io/badge/INTERVIEW-CRITICAL-e2445c?style=for-the-badge)]()
-[![Status](https://img.shields.io/badge/STATUS-COMPLETE-2ea44f?style=for-the-badge)]()
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-tested-336791?style=for-the-badge&logo=postgresql&logoColor=white)]()
-[![MySQL](https://img.shields.io/badge/MySQL-tested-4479A1?style=for-the-badge&logo=mysql&logoColor=white)]()
-[![License](https://img.shields.io/badge/License-MIT-6b7280?style=for-the-badge)]()
-
-**Module 3 of the [SQL Engineering Handbook](../)** · Authored & maintained by [**Mohammad Ammar**](https://github.com/theammarngp-makes)
-
-<sub>Part of an open-source effort to build the most rigorous, production-grade SQL reference on GitHub — corrections and additions genuinely welcome, see <a href="./CONTRIBUTOR_CHECKLIST.md">CONTRIBUTOR_CHECKLIST.md</a>.</sub>
-
-</div>
-
 ---
 
 ## 📑 Table of Contents
