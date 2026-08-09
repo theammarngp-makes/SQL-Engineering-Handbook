@@ -35,6 +35,9 @@
 
 ---
 
+[![SQL Engineering Handbook](https://shields.io)](https://github.io)
+
+---
 ## Who This Is For
 
 If you're an aspiring or practicing **Data Analyst** or **Analytics Engineer** who wants a structured path from SQL fundamentals to real business analytics — not another disconnected list of `.sql` files — this handbook is built for you.
