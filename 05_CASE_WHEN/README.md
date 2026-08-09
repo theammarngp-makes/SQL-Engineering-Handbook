@@ -165,15 +165,16 @@ unguarded division.
 ## Related Modules
 
 [`01_Fundamentals`](../01_Fundamentals/README.md) ·
-[`03_Aggregations`](../03_Aggregations/README.md) ·
-[`04_Subqueries`](../04_Subqueries/README.md) ·
+[`02_Aggregations`](../02_Aggregations/README.md) ·
+[`03_Joins`](../3_Joins/README.md) .
+[`04_Subqueries`](../04Subqueries/README.md) ·
 [`06_CTEs`](../06_CTEs/README.md) ·
 [`07_Window_Functions`](../07_Window_Functions/README.md) ·
 [`09_Date_Functions`](../09_Date_Functions/README.md) ·
-[`10_String_Functions`](../10_String_Functions/README.md) ·
-[`11_Data_Cleaning`](../11_Data_Cleaning/README.md) ·
-[`12_Advanced_Aggregations`](../12_Advanced_Aggregations/README.md) ·
-[`14_Views`](../14_Views/README.md) ·
+[`10_STRING_FUNCTIONS`](../10_STRING_FUNCTIONS/README.md) ·
+[`11_NULL_HANDLING_AND_DATA_CLEANING`](../11_NULL_HANDLING_AND_DATA_CLEANING/README.md) ·
+[`12_ADVANCED_AGGREGATIONS`](../12_ADVANCED_AGGREGATIONS/README.md) ·
+[`14_VIEWS`](../14_VIEWS/README.md) ·
 [`16_Query_Optimization`](../16_Query_Optimization/README.md) ·
 [`17_SQL_Interview_Questions`](../17_SQL_Interview_Questions/README.md) ·
 [`18_Business_Case_Studies`](../18_Business_Case_Studies/README.md) ·
