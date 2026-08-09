@@ -1,0 +1,54 @@
+<svg viewBox="0 0 820 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .card{ fill:#f8fafc; stroke:#cbd5e1; stroke-width:1.5; }
+      .num{ fill:#2563eb; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:13px; fill:#0f172a; font-weight:700; }
+      .small{ font-family:Segoe UI; font-size:11px; fill:#475569; }
+    </style>
+  </defs>
+  <rect width="820" height="260" fill="#ffffff"/>
+  <text x="30" y="28" font-family="Segoe UI" font-size="16" font-weight="700" fill="#0f172a">Five Business Case Studies</text>
+
+  <!-- 5 cards -->
+  <g>
+    <rect x="30" y="50" width="140" height="160" rx="10" class="card"/>
+    <circle cx="100" cy="85" r="16" class="num"/>
+    <text x="100" y="91" font-family="Segoe UI" font-size="14" fill="#fff" text-anchor="middle">1</text>
+    <text x="100" y="120" class="lbl" text-anchor="middle">Retail</text>
+    <text x="100" y="140" class="small" text-anchor="middle">Value</text>
+    <text x="100" y="155" class="small" text-anchor="middle">Segmentation</text>
+  </g>
+  <g>
+    <rect x="185" y="50" width="140" height="160" rx="10" class="card"/>
+    <circle cx="255" cy="85" r="16" class="num"/>
+    <text x="255" y="91" font-family="Segoe UI" font-size="14" fill="#fff" text-anchor="middle">2</text>
+    <text x="255" y="120" class="lbl" text-anchor="middle">HR</text>
+    <text x="255" y="140" class="small" text-anchor="middle">Performance</text>
+    <text x="255" y="155" class="small" text-anchor="middle">Bands</text>
+  </g>
+  <g>
+    <rect x="340" y="50" width="140" height="160" rx="10" class="card"/>
+    <circle cx="410" cy="85" r="16" class="num"/>
+    <text x="410" y="91" font-family="Segoe UI" font-size="14" fill="#fff" text-anchor="middle">3</text>
+    <text x="410" y="120" class="lbl" text-anchor="middle">Logistics</text>
+    <text x="410" y="140" class="small" text-anchor="middle">Fulfillment</text>
+    <text x="410" y="155" class="small" text-anchor="middle">Monitoring</text>
+  </g>
+  <g>
+    <rect x="495" y="50" width="140" height="160" rx="10" class="card"/>
+    <circle cx="565" cy="85" r="16" class="num"/>
+    <text x="565" y="91" font-family="Segoe UI" font-size="14" fill="#fff" text-anchor="middle">4</text>
+    <text x="565" y="120" class="lbl" text-anchor="middle">Finance</text>
+    <text x="565" y="140" class="small" text-anchor="middle">Budget Risk</text>
+    <text x="565" y="155" class="small" text-anchor="middle">Tiers</text>
+  </g>
+  <g>
+    <rect x="650" y="50" width="140" height="160" rx="10" class="card"/>
+    <circle cx="720" cy="85" r="16" class="num"/>
+    <text x="720" y="91" font-family="Segoe UI" font-size="14" fill="#fff" text-anchor="middle">5</text>
+    <text x="720" y="120" class="lbl" text-anchor="middle">BI</text>
+    <text x="720" y="140" class="small" text-anchor="middle">Percentile</text>
+    <text x="720" y="155" class="small" text-anchor="middle">Rep Tiers</text>
+  </g>
+</svg>

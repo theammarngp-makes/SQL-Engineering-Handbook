@@ -1,0 +1,38 @@
+<svg viewBox="0 0 820 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .out{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:13px; fill:#0f172a; }
+      .mono{ font-family:Menlo,Consolas,monospace; font-size:11px; fill:#334155; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#a3); fill:none; }
+    </style>
+    <marker id="a3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="820" height="260" fill="#ffffff"/>
+  <text x="30" y="28" font-family="Segoe UI" font-size="16" font-weight="700" fill="#0f172a">Conditional Aggregation: Rows → Pivoted Columns</text>
+
+  <rect x="30" y="60" width="170" height="140" rx="8" class="box"/>
+  <text x="115" y="80" class="lbl" text-anchor="middle" font-weight="700">orders rows</text>
+  <text x="45" y="105" class="mono">delivered  15000</text>
+  <text x="45" y="122" class="mono">cancelled    500</text>
+  <text x="45" y="139" class="mono">delivered   2200</text>
+  <text x="45" y="156" class="mono">refunded      75</text>
+  <text x="45" y="173" class="mono">shipped    42000</text>
+  <text x="45" y="190" class="mono">placed       300</text>
+
+  <path d="M200,130 L300,130" class="arrow"/>
+  <text x="250" y="120" class="lbl" text-anchor="middle" font-size="12">GROUP BY</text>
+  <text x="250" y="145" class="lbl" text-anchor="middle" font-size="12">+ CASE</text>
+
+  <rect x="310" y="40" width="480" height="180" rx="8" class="out"/>
+  <text x="550" y="65" class="lbl" text-anchor="middle" font-weight="700">one row per rep</text>
+
+  <text x="330" y="95" class="mono" font-weight="700">emp_id  delivered_rev  cancelled  delivered_ct</text>
+  <line x1="330" y1="103" x2="770" y2="103" stroke="#94a3b8"/>
+  <text x="330" y="123" class="mono">4       15000.00       1          1</text>
+  <text x="330" y="143" class="mono">5       2200.00        0          1</text>
+
+  <text x="330" y="180" class="lbl" font-size="12">SUM(CASE WHEN status='delivered'</text>
+  <text x="330" y="197" class="lbl" font-size="12">THEN amount ELSE 0 END)</text>
+</svg>

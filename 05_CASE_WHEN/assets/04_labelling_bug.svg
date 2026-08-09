@@ -1,0 +1,43 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#f8fafc; stroke:#cbd5e1; stroke-width:1.5; }
+      .bad{ fill:#fef2f2; stroke:#dc2626; stroke-width:1.5; }
+      .good{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; }
+      .small{ font-family:Segoe UI; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo,Consolas,monospace; font-size:12px; }
+    </style>
+  </defs>
+  <rect width="800" height="260" fill="#ffffff"/>
+  <text x="30" y="28" font-family="Segoe UI" font-size="16" font-weight="700" fill="#0f172a">ELSE Branch Absorbing a New Category</text>
+
+  <rect x="30" y="60" width="150" height="50" rx="8" class="box"/>
+  <text x="105" y="90" class="lbl" text-anchor="middle">city = Nagpur</text>
+
+  <rect x="30" y="130" width="150" height="50" rx="8" class="box"/>
+  <text x="105" y="160" class="lbl" text-anchor="middle">city = Pune</text>
+
+  <rect x="30" y="200" width="150" height="50" rx="8" class="bad"/>
+  <text x="105" y="230" class="lbl" text-anchor="middle" fill="#991b1b">city = Indore</text>
+
+  <path d="M180,85 L340,85" stroke="#64748b" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+  <path d="M180,155 L340,145" stroke="#64748b" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+  <path d="M180,225 L340,145" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3" fill="none" marker-end="url(#a2)"/>
+
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/></marker>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#dc2626"/></marker>
+  </defs>
+
+  <rect x="350" y="65" width="180" height="50" rx="8" class="good"/>
+  <text x="440" y="95" class="lbl" text-anchor="middle">'Nagpur Employee'</text>
+
+  <rect x="350" y="120" width="180" height="50" rx="8" class="bad"/>
+  <text x="440" y="150" class="lbl" text-anchor="middle" fill="#991b1b">ELSE 'Pune Employee'</text>
+
+  <text x="560" y="140" class="small" fill="#991b1b">Indore silently</text>
+  <text x="560" y="156" class="small" fill="#991b1b">mislabeled as Pune</text>
+
+  <text x="30" y="255" class="small">Fix: add an explicit WHEN for every known city, or use city || ' Employee' with no CASE at all.</text>
+</svg>

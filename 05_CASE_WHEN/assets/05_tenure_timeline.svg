@@ -1,0 +1,52 @@
+<svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .axis{ stroke:#94a3b8; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:13px; fill:#0f172a; }
+      .small{ font-family:Segoe UI; font-size:11px; fill:#475569; }
+      .dot{ stroke:#0f172a; stroke-width:1; }
+    </style>
+  </defs>
+  <rect width="800" height="240" fill="#ffffff"/>
+  <text x="30" y="28" font-family="Segoe UI" font-size="16" font-weight="700" fill="#0f172a">Tenure-Based Seniority (correct rule) vs. emp_id Order (flawed rule)</text>
+
+  <line x1="60" y1="90" x2="760" y2="90" class="axis"/>
+  <text x="60" y="75" class="small">2016</text>
+  <text x="760" y="75" class="small" text-anchor="end">2026 (today)</text>
+
+  <!-- points roughly by hire_date -->
+  <circle cx="110" cy="90" r="7" fill="#2563eb" class="dot"/>
+  <text x="110" y="115" class="small" text-anchor="middle">Vikram (2016)</text>
+  <text x="110" y="130" class="small" text-anchor="middle" font-weight="700" fill="#0f766e">Senior</text>
+
+  <circle cx="190" cy="90" r="7" fill="#2563eb" class="dot"/>
+  <text x="190" y="115" class="small" text-anchor="middle">Karan (2017)</text>
+  <text x="190" y="130" class="small" text-anchor="middle" font-weight="700" fill="#0f766e">Senior</text>
+
+  <circle cx="240" cy="90" r="7" fill="#2563eb" class="dot"/>
+  <text x="240" y="115" class="small" text-anchor="middle">Aditi (2018)</text>
+  <text x="240" y="130" class="small" text-anchor="middle" font-weight="700" fill="#0f766e">Senior</text>
+
+  <circle cx="330" cy="90" r="7" fill="#f59e0b" class="dot"/>
+  <text x="330" y="115" class="small" text-anchor="middle">Rohan (2019)</text>
+  <text x="330" y="130" class="small" text-anchor="middle" font-weight="700" fill="#b45309">Mid</text>
+
+  <circle cx="410" cy="90" r="7" fill="#f59e0b" class="dot"/>
+  <text x="410" y="115" class="small" text-anchor="middle">Farhan (2020)</text>
+  <text x="410" y="130" class="small" text-anchor="middle" font-weight="700" fill="#b45309">Mid</text>
+
+  <circle cx="500" cy="90" r="7" fill="#dc2626" class="dot"/>
+  <text x="500" y="115" class="small" text-anchor="middle">Sneha (2021)</text>
+  <text x="500" y="130" class="small" text-anchor="middle" font-weight="700" fill="#991b1b">Junior</text>
+
+  <circle cx="590" cy="90" r="7" fill="#dc2626" class="dot"/>
+  <text x="590" y="115" class="small" text-anchor="middle">Priya (2022)</text>
+  <text x="590" y="130" class="small" text-anchor="middle" font-weight="700" fill="#991b1b">Junior</text>
+
+  <circle cx="690" cy="90" r="7" fill="#dc2626" class="dot"/>
+  <text x="690" y="115" class="small" text-anchor="middle">Ishita (2023)</text>
+  <text x="690" y="130" class="small" text-anchor="middle" font-weight="700" fill="#991b1b">Junior</text>
+
+  <text x="30" y="190" class="small">Color = correct tenure-based tier. Note it does NOT match ascending emp_id order —</text>
+  <text x="30" y="206" class="small">the flawed emp_id-based rule from this lesson would rank these employees differently and incorrectly.</text>
+</svg>

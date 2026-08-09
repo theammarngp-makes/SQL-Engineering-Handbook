@@ -1,0 +1,29 @@
+<svg viewBox="0 0 820 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .node{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:13px; fill:#0f172a; font-weight:700; }
+      .small{ font-family:Segoe UI; font-size:11px; fill:#475569; }
+      .arrow{ stroke:#94a3b8; stroke-width:1.5; marker-end:url(#a4); fill:none; }
+    </style>
+    <marker id="a4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect width="820" height="220" fill="#ffffff"/>
+  <text x="30" y="28" font-family="Segoe UI" font-size="16" font-weight="700" fill="#0f172a">Interview Question Difficulty Ladder</text>
+
+  <rect x="30" y="60" width="180" height="70" rx="10" class="node"/>
+  <text x="120" y="90" class="lbl" text-anchor="middle">Foundational</text>
+  <text x="120" y="110" class="small" text-anchor="middle">Q1–5 · syntax &amp; NULLs</text>
+
+  <path d="M210,95 L300,95" class="arrow"/>
+
+  <rect x="310" y="60" width="180" height="70" rx="10" class="node"/>
+  <text x="400" y="90" class="lbl" text-anchor="middle">Intermediate</text>
+  <text x="400" y="110" class="small" text-anchor="middle">Q6–11 · joins &amp; aggregates</text>
+
+  <path d="M490,95 L580,95" class="arrow"/>
+
+  <rect x="590" y="60" width="200" height="70" rx="10" class="node"/>
+  <text x="690" y="90" class="lbl" text-anchor="middle">Advanced / Scenario</text>
+  <text x="690" y="110" class="small" text-anchor="middle">Q12–18 · production bugs</text>
+</svg>

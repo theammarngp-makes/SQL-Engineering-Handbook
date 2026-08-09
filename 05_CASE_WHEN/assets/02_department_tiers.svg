@@ -1,0 +1,41 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .axis{ stroke:#94a3b8; stroke-width:1; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:13px; fill:#0f172a; }
+      .small{ font-family:Segoe UI; font-size:12px; fill:#475569; }
+      .tag{ font-family:Segoe UI; font-size:12px; font-weight:700; }
+    </style>
+  </defs>
+  <rect width="760" height="300" fill="#ffffff"/>
+  <text x="30" y="30" font-family="Segoe UI" font-size="16" font-weight="700" fill="#0f172a">Headcount → CASE Tier</text>
+
+  <line x1="80" y1="250" x2="700" y2="250" class="axis"/>
+  <line x1="80" y1="60" x2="80" y2="250" class="axis"/>
+
+  <!-- Engineering: 3 -->
+  <rect x="140" y="70" width="90" height="180" fill="#2563eb"/>
+  <text x="185" y="265" class="small" text-anchor="middle">Engineering</text>
+  <text x="185" y="60" class="lbl" text-anchor="middle">3</text>
+  <text x="185" y="160" class="tag" fill="#ffffff" text-anchor="middle">Large</text>
+
+  <!-- Sales: 2 -->
+  <rect x="310" y="130" width="90" height="120" fill="#14b8a6"/>
+  <text x="355" y="265" class="small" text-anchor="middle">Sales</text>
+  <text x="355" y="120" class="lbl" text-anchor="middle">2</text>
+  <text x="355" y="195" class="tag" fill="#0f172a" text-anchor="middle">Medium</text>
+
+  <!-- Support: 2 -->
+  <rect x="450" y="130" width="90" height="120" fill="#14b8a6"/>
+  <text x="495" y="265" class="small" text-anchor="middle">Support</text>
+  <text x="495" y="120" class="lbl" text-anchor="middle">2</text>
+  <text x="495" y="195" class="tag" fill="#0f172a" text-anchor="middle">Medium</text>
+
+  <!-- Finance: 1 -->
+  <rect x="590" y="190" width="90" height="60" fill="#f59e0b"/>
+  <text x="635" y="265" class="small" text-anchor="middle">Finance</text>
+  <text x="635" y="180" class="lbl" text-anchor="middle">1</text>
+  <text x="635" y="225" class="tag" fill="#0f172a" text-anchor="middle">Small</text>
+
+  <text x="80" y="55" class="small">headcount</text>
+</svg>

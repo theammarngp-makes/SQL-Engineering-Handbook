@@ -1,0 +1,61 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .tbl { fill:#0f172a; stroke:#2563eb; stroke-width:1.5; rx:10; }
+      .hdr { fill:#2563eb; }
+      .col { font-family:Menlo,Consolas,monospace; font-size:13px; fill:#e2e8f0; }
+      .name{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:15px; font-weight:700; fill:#ffffff; }
+      .rel { stroke:#64748b; stroke-width:1.5; fill:none; }
+    </style>
+  </defs>
+  <rect width="900" height="420" fill="#f8fafc"/>
+
+  <!-- locations -->
+  <rect x="30" y="30" width="190" height="110" class="tbl"/>
+  <rect x="30" y="30" width="190" height="30" rx="10" class="hdr"/>
+  <text x="125" y="50" class="name" text-anchor="middle">locations</text>
+  <text x="42" y="80" class="col">location_id (PK)</text>
+  <text x="42" y="100" class="col">city</text>
+  <text x="42" y="120" class="col">region</text>
+
+  <!-- departments -->
+  <rect x="350" y="30" width="210" height="130" class="tbl"/>
+  <rect x="350" y="30" width="210" height="30" rx="10" class="hdr"/>
+  <text x="455" y="50" class="name" text-anchor="middle">departments</text>
+  <text x="362" y="80" class="col">dept_id (PK)</text>
+  <text x="362" y="100" class="col">dept_name</text>
+  <text x="362" y="120" class="col">location_id (FK)</text>
+  <text x="362" y="140" class="col">budget</text>
+
+  <!-- employees -->
+  <rect x="350" y="220" width="220" height="170" class="tbl"/>
+  <rect x="350" y="220" width="220" height="30" rx="10" class="hdr"/>
+  <text x="460" y="240" class="name" text-anchor="middle">employees</text>
+  <text x="362" y="270" class="col">emp_id (PK)</text>
+  <text x="362" y="290" class="col">emp_name</text>
+  <text x="362" y="310" class="col">dept_id (FK)</text>
+  <text x="362" y="330" class="col">manager_id (FK, self)</text>
+  <text x="362" y="350" class="col">salary / hire_date</text>
+  <text x="362" y="370" class="col">performance_score</text>
+
+  <!-- orders -->
+  <rect x="650" y="220" width="210" height="150" class="tbl"/>
+  <rect x="650" y="220" width="210" height="30" rx="10" class="hdr"/>
+  <text x="755" y="240" class="name" text-anchor="middle">orders</text>
+  <text x="662" y="270" class="col">order_id (PK)</text>
+  <text x="662" y="290" class="col">emp_id (FK)</text>
+  <text x="662" y="310" class="col">order_amount</text>
+  <text x="662" y="330" class="col">order_status</text>
+  <text x="662" y="350" class="col">order_date</text>
+
+  <!-- relationships -->
+  <path d="M220,85 L350,95" class="rel"/>
+  <path d="M455,160 L455,220" class="rel"/>
+  <path d="M570,305 L650,305" class="rel"/>
+  <path d="M460,390 C460,410 410,410 400,390" class="rel"/>
+
+  <text x="270" y="80" font-family="Segoe UI" font-size="12" fill="#64748b">1:N</text>
+  <text x="465" y="195" font-family="Segoe UI" font-size="12" fill="#64748b">1:N</text>
+  <text x="600" y="298" font-family="Segoe UI" font-size="12" fill="#64748b">1:N</text>
+  <text x="420" y="415" font-family="Segoe UI" font-size="12" fill="#64748b">self (manager)</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .city{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; }
+      .small{ font-family:Segoe UI; font-size:12px; fill:#475569; }
+      .dept{ fill:#14b8a6; }
+    </style>
+  </defs>
+  <rect width="760" height="260" fill="#ffffff"/>
+  <text x="30" y="30" font-family="Segoe UI" font-size="16" font-weight="700" fill="#0f172a">City → Department Concentration</text>
+
+  <!-- Nagpur : High Demand, 2 depts -->
+  <circle cx="150" cy="140" r="70" class="city"/>
+  <text x="150" y="115" class="lbl" text-anchor="middle" font-weight="700">Nagpur</text>
+  <circle cx="130" cy="150" r="10" class="dept"/>
+  <circle cx="170" cy="150" r="10" class="dept"/>
+  <text x="150" y="200" class="small" text-anchor="middle" fill="#0f766e" font-weight="700">High Demand</text>
+
+  <!-- Pune : Low Demand, 1 dept -->
+  <circle cx="400" cy="140" r="55" class="city"/>
+  <text x="400" y="120" class="lbl" text-anchor="middle" font-weight="700">Pune</text>
+  <circle cx="400" cy="150" r="10" class="dept"/>
+  <text x="400" y="190" class="small" text-anchor="middle" fill="#b45309" font-weight="700">Low Demand</text>
+
+  <!-- Indore : Low Demand, 1 dept -->
+  <circle cx="600" cy="140" r="55" class="city"/>
+  <text x="600" y="120" class="lbl" text-anchor="middle" font-weight="700">Indore</text>
+  <circle cx="600" cy="150" r="10" class="dept"/>
+  <text x="600" y="190" class="small" text-anchor="middle" fill="#b45309" font-weight="700">Low Demand</text>
+
+  <text x="30" y="245" class="small">● teal dot = one distinct department in that city</text>
+</svg>

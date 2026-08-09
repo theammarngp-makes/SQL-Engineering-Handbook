@@ -1,0 +1,46 @@
+<svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .diamond{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+      .small{ font-family:Segoe UI; font-size:12px; fill:#475569; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="320" fill="#ffffff"/>
+
+  <rect x="20" y="130" width="130" height="50" rx="8" class="box"/>
+  <text x="85" y="160" class="lbl" text-anchor="middle">Row enters</text>
+
+  <polygon points="260,110 340,155 260,200 180,155" class="diamond"/>
+  <text x="260" y="150" class="lbl" text-anchor="middle">condition1</text>
+  <text x="260" y="168" class="lbl" text-anchor="middle">TRUE?</text>
+
+  <polygon points="470,190 550,235 470,280 390,235" class="diamond"/>
+  <text x="470" y="230" class="lbl" text-anchor="middle">condition2</text>
+  <text x="470" y="248" class="lbl" text-anchor="middle">TRUE?</text>
+
+  <rect x="640" y="30" width="130" height="50" rx="8" class="res"/>
+  <text x="705" y="60" class="lbl" text-anchor="middle">result1</text>
+
+  <rect x="640" y="205" width="130" height="50" rx="8" class="res"/>
+  <text x="705" y="235" class="lbl" text-anchor="middle">result2</text>
+
+  <rect x="440" y="290" width="150" height="50" rx="8" class="res"/>
+  <text x="515" y="320" class="lbl" text-anchor="middle">ELSE result</text>
+
+  <path d="M150,155 L180,155" class="arrow"/>
+  <path d="M340,155 L410,155 L410,55 L640,55" class="arrow"/>
+  <text x="380" y="140" class="small">Yes</text>
+  <path d="M260,200 L260,235 L390,235" class="arrow"/>
+  <text x="270" y="220" class="small">No</text>
+  <path d="M550,235 L640,235" class="arrow"/>
+  <text x="580" y="225" class="small">Yes</text>
+  <path d="M470,280 L470,315 L440,315" class="arrow"/>
+  <text x="480" y="300" class="small">No</text>
+</svg>
