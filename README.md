@@ -35,7 +35,7 @@
 
 ---
 
-[![SQL Engineering Handbook](https://shields.io)](https://github.io)
+## 🌐 Live Link : https://theammarngp-makes.github.io/SQL-Engineering-Handbook
 
 ---
 ## Who This Is For
