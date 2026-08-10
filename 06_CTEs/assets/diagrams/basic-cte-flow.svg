@@ -1,0 +1,57 @@
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="380" fill="#FAFAF7"/>
+  <rect width="900" height="380" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,364 L34,364 M16,364 L16,346"/>
+    <path d="M884,364 L866,364 M884,364 L884,346"/>
+  </g>
+  <text x="40" y="46" class="title">Anatomy of a Basic CTE</text>
+  <text x="40" y="66" class="cap">01 — Basic CTEs · the WITH clause builds a named, temporary result set for one statement</text>
+
+  <!-- base table -->
+  <rect x="60" y="110" width="150" height="60" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="135" y="135" class="label" text-anchor="middle" font-weight="700">EMPLOYES</text>
+  <text x="135" y="155" class="label-sm" text-anchor="middle" fill="#6B7280">base table (on disk)</text>
+
+  <path d="M210,140 L280,140" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- WITH clause box -->
+  <rect x="280" y="90" width="260" height="100" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="410" y="112" class="label-sm" text-anchor="middle" fill="#147D7A">WITH employes_CTE AS ( ... )</text>
+  <rect x="300" y="122" width="220" height="50" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="410" y="150" class="label" text-anchor="middle" font-weight="700">employes_CTE</text>
+  <text x="410" y="205" class="label-sm" text-anchor="middle" fill="#6B7280">exists only for this statement</text>
+  <text x="410" y="220" class="label-sm" text-anchor="middle" fill="#6B7280">not written to disk, not indexable</text>
+
+  <path d="M540,140 L620,140" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- outer select -->
+  <rect x="620" y="110" width="220" height="60" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="730" y="135" class="label" text-anchor="middle" font-weight="700">SELECT * FROM</text>
+  <text x="730" y="155" class="label-sm" text-anchor="middle">employes_CTE</text>
+
+  <!-- lifecycle bar -->
+  <rect x="60" y="270" width="780" height="70" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="80" y="292" class="label-sm" fill="#147D7A">■ Scope: the CTE name is visible only inside the statement that defines it —</text>
+  <text x="80" y="310" class="label-sm">the next statement in the script can no longer reference it.</text>
+  <text x="80" y="328" class="label-sm">■ Lifetime: built, used, and discarded in a single execution — no cleanup step required.</text>
+</svg>

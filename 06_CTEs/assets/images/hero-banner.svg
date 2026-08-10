@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#22303F" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2DD4C7"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:44px;fill:#F5F3EC;}
+    .subtitle{font-family:'IBM Plex Mono',Consolas,monospace;font-size:16px;fill:#9FB2C4;}
+    .tag{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#2DD4C7;letter-spacing:2px;}
+    .node{fill:#0F1B26;stroke:#2DD4C7;stroke-width:1.5;}
+    .lbl{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#9FB2C4;}
+  </style>
+  <rect width="1200" height="300" fill="#0B1420"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+
+  <!-- faint CTE chain silhouette, right side: WITH a AS (...), b AS (...) SELECT -->
+  <g opacity="0.95">
+    <rect x="860" y="55" width="150" height="42" rx="4" class="node"/>
+    <text x="935" y="80" text-anchor="middle" class="lbl" fill="#2DD4C7">emp_cte</text>
+
+    <path d="M935,97 L935,120" stroke="#2DD4C7" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)"/>
+
+    <rect x="860" y="120" width="150" height="42" rx="4" class="node"/>
+    <text x="935" y="145" text-anchor="middle" class="lbl" fill="#2DD4C7">dept_cte</text>
+
+    <path d="M935,162 L935,185" stroke="#2DD4C7" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)"/>
+
+    <rect x="860" y="185" width="150" height="42" rx="4" class="node"/>
+    <text x="935" y="210" text-anchor="middle" class="lbl" fill="#2DD4C7">location_cte</text>
+
+    <path d="M1010,141 L1060,141" stroke="#2DD4C7" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)"/>
+
+    <rect x="1060" y="118" width="90" height="46" rx="4" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <text x="1105" y="146" text-anchor="middle" class="lbl" fill="#F5F3EC">SELECT</text>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#3A4A5A" stroke-width="1.5">
+    <path d="M24,24 L46,24 M24,24 L24,46"/>
+    <path d="M1176,24 L1154,24 M1176,24 L1176,46"/>
+    <path d="M24,276 L46,276 M24,276 L24,254"/>
+    <path d="M1176,276 L1154,276 M1176,276 L1176,254"/>
+  </g>
+
+  <text x="60" y="90" class="tag">SQL ENGINEERING HANDBOOK · MODULE 06</text>
+  <text x="60" y="150" class="title">Common Table Expressions</text>
+  <text x="60" y="184" class="subtitle">Breaking complex SQL into readable, reusable, testable stages.</text>
+  <text x="60" y="210" class="subtitle">WITH Clause · Chained CTEs · CTE Joins · Aggregation · Business Case Studies</text>
+</svg>

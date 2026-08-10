@@ -1,0 +1,83 @@
+<svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .step{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:11px;fill:#6B7280;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="440" fill="#FAFAF7"/>
+  <rect width="900" height="440" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,424 L34,424 M16,424 L16,406"/>
+    <path d="M884,424 L866,424 M884,424 L884,406"/>
+  </g>
+  <text x="40" y="46" class="title">From Raw Tables to Business Insight</text>
+  <text x="40" y="66" class="cap">05 — Business CTE Applications · CTEs → joins → aggregation → CASE WHEN → decision-ready output</text>
+
+  <!-- stage 1: three source ctes -->
+  <text x="60" y="98" class="step">1 · PREPARE</text>
+  <rect x="60" y="106" width="120" height="40" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="120" y="130" class="label-sm" text-anchor="middle" fill="#147D7A">emp_cte</text>
+  <rect x="60" y="156" width="120" height="40" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="120" y="180" class="label-sm" text-anchor="middle" fill="#147D7A">dept_cte</text>
+  <rect x="60" y="206" width="120" height="40" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="120" y="230" class="label-sm" text-anchor="middle" fill="#147D7A">locations_cte</text>
+
+  <path d="M180,175 L250,175" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- stage 2: join -->
+  <text x="250" y="98" class="step">2 · JOIN</text>
+  <rect x="250" y="150" width="140" height="50" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="320" y="180" class="label-sm" text-anchor="middle">city · dept · emp_id</text>
+
+  <path d="M390,175 L450,175" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- stage 3: aggregate -->
+  <text x="450" y="98" class="step">3 · AGGREGATE</text>
+  <rect x="450" y="150" width="140" height="50" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="520" y="174" class="label-sm" text-anchor="middle">GROUP BY city</text>
+  <text x="520" y="190" class="label-sm" text-anchor="middle">COUNT(emp_id)</text>
+
+  <path d="M590,175 L650,175" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- stage 4: classify -->
+  <text x="650" y="98" class="step">4 · CLASSIFY</text>
+  <rect x="650" y="150" width="180" height="50" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="740" y="172" class="label-sm" text-anchor="middle" fill="#F5F3EC">CASE WHEN count &gt;= 3</text>
+  <text x="740" y="188" class="label-sm" text-anchor="middle" fill="#CFEDEA">THEN 'High Demanded'</text>
+
+  <path d="M740,200 L740,240" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- output table -->
+  <rect x="480" y="240" width="350" height="110" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="500" y="262" class="label-sm" font-weight="700">city</text>
+  <text x="620" y="262" class="label-sm" font-weight="700">emp_count</text>
+  <text x="730" y="262" class="label-sm" font-weight="700">city_demand</text>
+  <line x1="490" y1="270" x2="820" y2="270" stroke="#D4CFC2"/>
+  <text x="500" y="288" class="label-sm">Nagpur</text>
+  <text x="620" y="288" class="label-sm">3</text>
+  <text x="730" y="288" class="label-sm" fill="#147D7A">High Demanded</text>
+  <line x1="490" y1="296" x2="820" y2="296" stroke="#F0EDE3"/>
+  <text x="500" y="314" class="label-sm">Pune</text>
+  <text x="620" y="314" class="label-sm">1</text>
+  <text x="730" y="314" class="label-sm">Low Demanded</text>
+  <line x1="490" y1="322" x2="820" y2="322" stroke="#F0EDE3"/>
+  <text x="500" y="340" class="label-sm">Mumbai</text>
+  <text x="620" y="340" class="label-sm">1</text>
+  <text x="730" y="340" class="label-sm">Low Demanded</text>
+
+  <rect x="40" y="380" width="820" height="46" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="400" class="label-sm" fill="#147D7A">■ Each stage stays a separate, readable CTE — the CASE WHEN classification is the</text>
+  <text x="60" y="416" class="label-sm">   last step, applied only after the numbers it depends on already exist.</text>
+</svg>

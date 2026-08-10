@@ -1,0 +1,67 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .step{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:11px;fill:#6B7280;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="400" fill="#FAFAF7"/>
+  <rect width="900" height="400" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,384 L34,384 M16,384 L16,366"/>
+    <path d="M884,384 L866,384 M884,384 L884,366"/>
+  </g>
+  <text x="40" y="46" class="title">Aggregation Pipeline: WHERE vs. HAVING</text>
+  <text x="40" y="66" class="cap">04 — CTE Aggregations · row-level filtering happens before GROUP BY; group-level filtering happens after</text>
+
+  <!-- pipeline stages -->
+  <g>
+    <rect x="40" y="110" width="140" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <text x="110" y="134" class="label" text-anchor="middle">CTE rows</text>
+    <text x="110" y="152" class="label-sm" text-anchor="middle" fill="#6B7280">emp ⋈ dept</text>
+    <text x="110" y="100" class="step">1 · JOIN</text>
+
+    <path d="M180,138 L235,138" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="235" y="110" width="140" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <text x="305" y="134" class="label" text-anchor="middle">WHERE</text>
+    <text x="305" y="152" class="label-sm" text-anchor="middle" fill="#6B7280">filters rows</text>
+    <text x="305" y="100" class="step">2 · ROW FILTER</text>
+
+    <path d="M375,138 L430,138" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="430" y="110" width="140" height="56" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="500" y="134" class="label" text-anchor="middle" fill="#147D7A">GROUP BY</text>
+    <text x="500" y="152" class="label-sm" text-anchor="middle">dept_name, city</text>
+    <text x="500" y="100" class="step">3 · GROUP</text>
+
+    <path d="M570,138 L625,138" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="625" y="110" width="140" height="56" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="695" y="134" class="label" text-anchor="middle" fill="#147D7A">HAVING</text>
+    <text x="695" y="152" class="label-sm" text-anchor="middle">COUNT(*) &gt; 1</text>
+    <text x="695" y="100" class="step">4 · GROUP FILTER</text>
+
+    <path d="M695,166 L695,210" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="580" y="210" width="230" height="50" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="695" y="240" class="label" text-anchor="middle" fill="#F5F3EC">dept_name · num_of_emp</text>
+  </g>
+
+  <rect x="40" y="290" width="820" height="90" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="314" class="label-sm" fill="#147D7A">■ WHERE runs before aggregation — it can only see individual employee rows,</text>
+  <text x="60" y="332" class="label-sm">   never a computed COUNT() or SUM().</text>
+  <text x="60" y="352" class="label-sm">□ HAVING runs after GROUP BY — it filters the aggregated groups themselves,</text>
+  <text x="60" y="370" class="label-sm">   e.g. keeping only departments where COUNT(emp_id) &gt; 1.</text>
+</svg>
