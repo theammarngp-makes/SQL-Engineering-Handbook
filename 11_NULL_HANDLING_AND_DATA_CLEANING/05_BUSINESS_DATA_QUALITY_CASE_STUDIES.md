@@ -28,6 +28,8 @@ These case studies mirror the actual shape of "clean this dataset" tickets an an
 
 ## Visual Explanation
 
+![Data quality investigation flow from stakeholder report to fix](./assets/05_investigation_flow.svg)
+
 ```
 Typical Data Quality Investigation Flow
 ─────────────────────────────────────────

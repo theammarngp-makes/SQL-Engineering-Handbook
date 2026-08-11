@@ -31,6 +31,8 @@ Standardization fixes broken GROUP BY aggregations, restores JOIN match rates ac
 
 ## Visual Explanation
 
+![Standardization pipeline from raw input to GROUP-BY-safe value](./assets/03_standardization_pipeline.svg)
+
 ```
 "  John Smith  "
         │

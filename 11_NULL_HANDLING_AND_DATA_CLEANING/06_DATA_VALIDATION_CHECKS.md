@@ -28,6 +28,8 @@ Validation checks catch referential integrity gaps (orphaned foreign keys), logi
 
 ## Visual Explanation
 
+![Validation gate pattern separating passing and failing rows](./assets/06_validation_gate.svg)
+
 ```
 Validation Gate Pattern
 ──────────────────────────

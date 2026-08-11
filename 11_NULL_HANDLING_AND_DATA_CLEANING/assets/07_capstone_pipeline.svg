@@ -1,0 +1,49 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .neutral{ fill:#f8fafc; stroke:#94a3b8; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:12px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="340" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Capstone: Raw Layer → Cleaning Steps → Trusted Layer</text>
+
+  <rect x="30" y="70" width="170" height="46" rx="8" class="neutral"/>
+  <text x="115" y="98" class="mono" text-anchor="middle">accounts_raw</text>
+
+  <rect x="30" y="130" width="170" height="46" rx="8" class="neutral"/>
+  <text x="115" y="158" class="mono" text-anchor="middle">subscriptions_raw</text>
+
+  <path d="M200,93 L240,120" class="arrow"/>
+  <path d="M200,153 L240,126" class="arrow"/>
+
+  <rect x="245" y="60" width="290" height="150" rx="10" class="box"/>
+  <text x="390" y="84" class="lbl" text-anchor="middle">Cleaning Steps</text>
+  <text x="270" y="106" class="small">1. Validate FKs (orphan check)</text>
+  <text x="270" y="126" class="small">2. Standardize company_name</text>
+  <text x="270" y="146" class="small">3. Deduplicate accounts</text>
+  <text x="270" y="166" class="small">4. Resolve NULL semantics</text>
+  <text x="270" y="186" class="small">5. Recompute MAA metric</text>
+
+  <path d="M535,135 L590,135" class="arrow"/>
+
+  <rect x="595" y="90" width="180" height="46" rx="8" class="res"/>
+  <text x="685" y="118" class="mono" text-anchor="middle">accounts_clean</text>
+
+  <rect x="595" y="150" width="180" height="46" rx="8" class="res"/>
+  <text x="685" y="172" class="mono" text-anchor="middle" font-size="10.5">monthly_active</text>
+  <text x="685" y="186" class="mono" text-anchor="middle" font-size="10.5">_accounts</text>
+
+  <line x1="30" y1="240" x2="770" y2="240" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="30" y="266" class="small">A NULL cancelled_at is not a data quality gap here — it correctly means "still active." The pipeline preserves that meaning.</text>
+  <text x="30" y="288" class="small">Every earlier chapter in this module is a step in this pipeline: NULL semantics → functions → standardization → dedup → validation.</text>
+</svg>

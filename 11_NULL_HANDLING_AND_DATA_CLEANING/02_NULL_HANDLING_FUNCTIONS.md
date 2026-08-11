@@ -30,6 +30,8 @@ These functions let you produce business-readable output without changing stored
 
 ## Visual Explanation
 
+![COALESCE, IFNULL, and NULLIF function flow](./assets/02_null_functions_flow.svg)
+
 ```
 COALESCE(a, b, c)
 ──────────────────

@@ -27,6 +27,8 @@ This project produces a clean `accounts` view suitable for a monthly active acco
 
 ## Visual Explanation
 
+![Raw layer to trusted layer capstone cleaning pipeline](./assets/07_capstone_pipeline.svg)
+
 ```
 Raw Layer                  Cleaning Steps                Trusted Layer
 ───────────                ──────────────                ─────────────

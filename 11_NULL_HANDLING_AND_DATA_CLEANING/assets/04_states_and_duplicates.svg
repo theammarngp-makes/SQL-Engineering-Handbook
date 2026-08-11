@@ -1,0 +1,54 @@
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .neutral{ fill:#f8fafc; stroke:#94a3b8; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:12.5px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="360" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Three States of "No Meaningful Value" — and Duplicate Collapse</text>
+
+  <rect x="30" y="56" width="220" height="60" rx="8" class="box"/>
+  <text x="140" y="82" class="lbl" text-anchor="middle">NULL</text>
+  <text x="140" y="102" class="small" text-anchor="middle">no value was ever stored</text>
+
+  <rect x="280" y="56" width="220" height="60" rx="8" class="warn"/>
+  <text x="390" y="82" class="lbl" text-anchor="middle">'' (empty string)</text>
+  <text x="390" y="102" class="small" text-anchor="middle">stored, zero-length</text>
+
+  <rect x="530" y="56" width="240" height="60" rx="8" class="warn"/>
+  <text x="650" y="82" class="lbl" text-anchor="middle">'   ' (whitespace-only)</text>
+  <text x="650" y="102" class="small" text-anchor="middle">stored, only spaces</text>
+
+  <text x="30" y="140" class="mono">IS NULL</text>
+  <text x="120" y="140" class="small">catches only the first column — the other two silently look "filled in."</text>
+
+  <line x1="30" y1="160" x2="770" y2="160" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="30" y="192" class="lbl">Duplicate Collapse</text>
+
+  <rect x="30" y="204" width="230" height="30" rx="6" class="neutral"/>
+  <text x="145" y="224" class="mono" text-anchor="middle">order#4471, $82.00, 10:02am</text>
+  <rect x="30" y="240" width="230" height="30" rx="6" class="neutral"/>
+  <text x="145" y="260" class="mono" text-anchor="middle">order#4471, $82.00, 10:02am</text>
+  <text x="150" y="286" class="small" text-anchor="middle">webhook retry duplicate</text>
+
+  <path d="M270,235 L330,220" class="arrow"/>
+
+  <rect x="340" y="204" width="230" height="66" rx="8" class="res"/>
+  <text x="455" y="234" class="lbl" text-anchor="middle">Canonical row</text>
+  <text x="455" y="256" class="small" text-anchor="middle">deduped on natural key:</text>
+  <text x="455" y="272" class="mono" text-anchor="middle" font-size="11">customer + timestamp + amount</text>
+
+  <text x="30" y="320" class="small">Blank/whitespace masquerade as "complete" data; unresolved duplicates inflate every downstream count and average.</text>
+</svg>

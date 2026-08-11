@@ -1,0 +1,51 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:15px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12.5px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:12.5px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="340" fill="#ffffff"/>
+  <text x="30" y="34" class="title">COALESCE · IFNULL · NULLIF</text>
+
+  <!-- COALESCE lane -->
+  <rect x="30" y="56" width="150" height="42" rx="8" class="box"/>
+  <text x="105" y="82" class="lbl" text-anchor="middle">COALESCE()</text>
+  <path d="M180,77 L220,77" class="arrow"/>
+  <text x="230" y="60" class="mono">(NULL, NULL, 5)</text>
+  <text x="230" y="82" class="small">→ first non-NULL, left to right</text>
+  <text x="230" y="100" class="mono" fill="#0f766e">returns 5</text>
+  <text x="480" y="82" class="small">✓ ANSI standard · any # of args · all engines</text>
+
+  <!-- IFNULL lane -->
+  <rect x="30" y="120" width="150" height="42" rx="8" class="warn"/>
+  <text x="105" y="146" class="lbl" text-anchor="middle">IFNULL()</text>
+  <path d="M180,141 L220,141" class="arrow"/>
+  <text x="230" y="124" class="mono">(discount, 0)</text>
+  <text x="230" y="146" class="small">→ exactly 2 arguments</text>
+  <text x="230" y="164" class="mono" fill="#b45309">MySQL-only — use COALESCE elsewhere</text>
+
+  <!-- NULLIF lane -->
+  <rect x="30" y="184" width="150" height="42" rx="8" class="res"/>
+  <text x="105" y="210" class="lbl" text-anchor="middle">NULLIF()</text>
+  <path d="M180,205 L220,205" class="arrow"/>
+  <text x="230" y="188" class="mono">(revenue, 0)</text>
+  <text x="230" y="210" class="small">→ NULL if equal, else 1st value</text>
+  <text x="230" y="228" class="mono" fill="#0f766e">turns 0 into NULL — kills a divide-by-zero</text>
+
+  <line x1="30" y1="252" x2="770" y2="252" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="30" y="280" class="mono">revenue / NULLIF(orders, 0)</text>
+  <text x="330" y="280" class="small">→ division skips instead of crashing when orders = 0</text>
+
+  <text x="30" y="308" class="small">All three translate a stored value into something safe or readable — none of them change the underlying data.</text>
+</svg>

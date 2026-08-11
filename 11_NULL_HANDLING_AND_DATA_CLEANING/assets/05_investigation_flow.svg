@@ -1,0 +1,53 @@
+<svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .neutral{ fill:#f8fafc; stroke:#94a3b8; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="380" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Data Quality Investigation Flow</text>
+
+  <rect x="300" y="54" width="200" height="46" rx="8" class="neutral"/>
+  <text x="400" y="82" class="small" text-anchor="middle" font-size="11.5">1. Stakeholder reports a suspicious number</text>
+
+  <path d="M400,100 L400,124" class="arrow"/>
+
+  <rect x="300" y="126" width="200" height="46" rx="8" class="box"/>
+  <text x="400" y="150" class="lbl" text-anchor="middle" font-size="12.5">2. Profile the data</text>
+  <text x="400" y="166" class="small" text-anchor="middle" font-size="11">NULL rate · dup rate · distinct counts</text>
+
+  <path d="M400,172 L400,196" class="arrow"/>
+
+  <text x="400" y="210" class="small" text-anchor="middle" font-weight="600">3. Diagnose which category</text>
+
+  <path d="M340,220 L180,246" class="arrow"/>
+  <path d="M400,220 L400,246" class="arrow"/>
+  <path d="M460,220 L640,246" class="arrow"/>
+
+  <rect x="90" y="248" width="180" height="44" rx="8" class="warn"/>
+  <text x="180" y="274" class="lbl" text-anchor="middle" font-size="12.5">NULL handling</text>
+
+  <rect x="310" y="248" width="180" height="44" rx="8" class="warn"/>
+  <text x="400" y="274" class="lbl" text-anchor="middle" font-size="12.5">Duplication</text>
+
+  <rect x="550" y="248" width="180" height="44" rx="8" class="warn"/>
+  <text x="640" y="274" class="lbl" text-anchor="middle" font-size="12.5">Standardization</text>
+
+  <path d="M180,292 L370,318" class="arrow"/>
+  <path d="M400,292 L400,318" class="arrow"/>
+  <path d="M640,292 L430,318" class="arrow"/>
+
+  <rect x="300" y="320" width="200" height="46" rx="8" class="res"/>
+  <text x="400" y="344" class="lbl" text-anchor="middle" font-size="12.5">4. Fix end-to-end,</text>
+  <text x="400" y="360" class="small" text-anchor="middle" font-size="11">then re-validate the number</text>
+</svg>

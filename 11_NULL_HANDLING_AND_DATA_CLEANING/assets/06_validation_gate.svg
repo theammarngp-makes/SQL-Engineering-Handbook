@@ -1,0 +1,45 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .diamond{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .bad{ fill:#fef2f2; stroke:#ef4444; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="340" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Validation Gate Pattern</text>
+
+  <rect x="30" y="70" width="180" height="50" rx="8" class="box"/>
+  <text x="120" y="100" class="lbl" text-anchor="middle">Raw / incoming data</text>
+
+  <path d="M210,95 L270,95" class="arrow"/>
+
+  <polygon points="360,60 460,95 360,130 260,95" class="diamond"/>
+  <text x="360" y="90" class="lbl" text-anchor="middle" font-size="12.5">Validation</text>
+  <text x="360" y="106" class="lbl" text-anchor="middle" font-size="12.5">query</text>
+
+  <path d="M460,95 L520,95" class="arrow"/>
+  <text x="480" y="82" class="small">passes</text>
+
+  <rect x="520" y="70" width="220" height="50" rx="8" class="res"/>
+  <text x="630" y="100" class="lbl" text-anchor="middle">Loads to warehouse / dashboard</text>
+
+  <path d="M360,130 L360,190" class="arrow"/>
+  <text x="370" y="165" class="small">fails</text>
+
+  <rect x="230" y="192" width="260" height="60" rx="8" class="bad"/>
+  <text x="360" y="216" class="lbl" text-anchor="middle" fill="#991b1b">Quarantine / Alert / Reject</text>
+  <text x="360" y="236" class="small" text-anchor="middle">a human or automated gate decides next</text>
+
+  <line x1="30" y1="278" x2="770" y2="278" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="30" y="304" class="small">Validation queries don't fix data — they flag, count, and report, catching problems before a dashboard does.</text>
+  <text x="30" y="324" class="small">Cheapest place to catch bad data: before it loads. Most expensive: after leadership has already seen the number.</text>
+</svg>

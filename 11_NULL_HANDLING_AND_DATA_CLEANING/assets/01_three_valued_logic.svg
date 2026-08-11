@@ -1,0 +1,60 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .neutral{ fill:#f8fafc; stroke:#94a3b8; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:15px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12.5px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:12.5px; fill:#334155; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="340" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Three-Valued Logic: TRUE / FALSE / UNKNOWN</text>
+
+  <rect x="40" y="60" width="200" height="70" rx="10" class="res"/>
+  <text x="140" y="98" class="lbl" text-anchor="middle">TRUE</text>
+  <text x="140" y="118" class="small" text-anchor="middle">condition clearly holds</text>
+
+  <rect x="300" y="60" width="200" height="70" rx="10" class="warn"/>
+  <text x="400" y="98" class="lbl" text-anchor="middle">FALSE</text>
+  <text x="400" y="118" class="small" text-anchor="middle">condition clearly fails</text>
+
+  <rect x="560" y="60" width="200" height="70" rx="10" class="box"/>
+  <text x="660" y="94" class="lbl" text-anchor="middle">UNKNOWN</text>
+  <text x="660" y="112" class="small" text-anchor="middle">any comparison</text>
+  <text x="660" y="126" class="small" text-anchor="middle">touching NULL</text>
+
+  <line x1="40" y1="160" x2="760" y2="160" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="40" y="190" class="mono">age = 30</text>
+  <text x="200" y="190" class="small">→</text>
+  <text x="220" y="190" class="mono" fill="#0f766e">TRUE</text>
+
+  <text x="40" y="216" class="mono">age = 25</text>
+  <text x="200" y="216" class="small">→</text>
+  <text x="220" y="216" class="mono" fill="#b45309">FALSE</text>
+
+  <text x="40" y="242" class="mono">age = NULL</text>
+  <text x="200" y="242" class="small">→</text>
+  <text x="220" y="242" class="mono" fill="#1d4ed8">UNKNOWN</text>
+
+  <text x="40" y="268" class="mono">NOT (age = NULL)</text>
+  <text x="200" y="268" class="small">→</text>
+  <text x="220" y="268" class="mono" fill="#1d4ed8">still UNKNOWN</text>
+
+  <rect x="420" y="176" width="340" height="130" rx="10" class="neutral"/>
+  <text x="440" y="202" class="lbl">Rule of thumb</text>
+  <text x="440" y="226" class="small">NULL is not equal to anything —</text>
+  <text x="440" y="244" class="small">not even to another NULL.</text>
+  <text x="440" y="266" class="small">Use <tspan class="mono">IS NULL</tspan> / <tspan class="mono">IS NOT NULL</tspan></text>
+  <text x="440" y="284" class="small">— never <tspan class="mono">= NULL</tspan>.</text>
+
+  <text x="40" y="326" class="small">WHERE clauses only keep rows where the condition evaluates to TRUE — UNKNOWN rows are silently dropped.</text>
+</svg>

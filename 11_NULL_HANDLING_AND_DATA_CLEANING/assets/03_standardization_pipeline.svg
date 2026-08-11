@@ -1,0 +1,48 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:13px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="300" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Standardization Pipeline: Same Person, Three Formats</text>
+
+  <rect x="30" y="70" width="150" height="50" rx="8" class="warn"/>
+  <text x="105" y="99" class="mono" text-anchor="middle">"  john smith "</text>
+  <text x="105" y="135" class="small" text-anchor="middle">raw input</text>
+
+  <path d="M180,95 L230,95" class="arrow"/>
+  <text x="205" y="82" class="small" text-anchor="middle">TRIM()</text>
+
+  <rect x="235" y="70" width="150" height="50" rx="8" class="box"/>
+  <text x="310" y="99" class="mono" text-anchor="middle">"john smith"</text>
+
+  <path d="M385,95 L435,95" class="arrow"/>
+  <text x="410" y="82" class="small" text-anchor="middle">UPPER()</text>
+
+  <rect x="440" y="70" width="150" height="50" rx="8" class="box"/>
+  <text x="515" y="99" class="mono" text-anchor="middle">"JOHN SMITH"</text>
+
+  <path d="M590,95 L640,95" class="arrow"/>
+  <text x="615" y="82" class="small" text-anchor="middle">REPLACE()</text>
+
+  <rect x="620" y="140" width="150" height="50" rx="8" class="res"/>
+  <text x="695" y="169" class="mono" text-anchor="middle">"JOHN SMITH"</text>
+  <text x="695" y="205" class="small" text-anchor="middle">GROUP-BY-safe</text>
+
+  <path d="M665,120 L665,140" class="arrow"/>
+
+  <line x1="30" y1="230" x2="770" y2="230" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="30" y="256" class="small">"John Smith", "john smith ", "JOHN  SMITH" all collapse to one canonical value — one GROUP BY row instead of three.</text>
+  <text x="30" y="278" class="small">TRIM only strips leading/trailing whitespace — REPLACE('  ',' ') is still needed to collapse internal double spaces.</text>
+</svg>

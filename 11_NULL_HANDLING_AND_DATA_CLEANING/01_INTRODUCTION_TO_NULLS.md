@@ -30,6 +30,8 @@ Understanding NULL correctly lets you answer questions like "how many customers 
 
 ## Visual Explanation
 
+![Three-valued logic: TRUE, FALSE, UNKNOWN](./assets/01_three_valued_logic.svg)
+
 ```
 Three-Valued Logic in SQL
 ──────────────────────────

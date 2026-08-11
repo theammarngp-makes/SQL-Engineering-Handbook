@@ -30,6 +30,8 @@ Correct duplicate handling prevents inflated revenue, customer count, and engage
 
 ## Visual Explanation
 
+![NULL vs empty string vs whitespace, and duplicate row collapse](./assets/04_states_and_duplicates.svg)
+
 ```
 Three states of "no meaningful value":
 
