@@ -1,0 +1,72 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .step{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:11px;fill:#6B7280;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="420" fill="#FAFAF7"/>
+  <rect width="900" height="420" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,404 L34,404 M16,404 L16,386"/>
+    <path d="M884,404 L866,404 M884,404 L884,386"/>
+  </g>
+  <text x="40" y="46" class="title">Year-to-Date Profit Meets Budget Variance</text>
+  <text x="40" y="66" class="cap">05 — Finance · a windowed running total, joined to a budgets table, resets cleanly at each fiscal year</text>
+
+  <g>
+    <text x="60" y="98" class="step">1 · WINDOW</text>
+    <rect x="60" y="106" width="220" height="56" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="170" y="130" class="label-sm" text-anchor="middle" fill="#147D7A">SUM(profit) OVER</text>
+    <text x="170" y="146" class="label-sm" text-anchor="middle">(PARTITION BY dept, fy</text>
+
+    <path d="M280,134 L340,134" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <text x="340" y="98" class="step">2 · RUNNING YTD</text>
+    <rect x="340" y="106" width="180" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <text x="430" y="130" class="label-sm" text-anchor="middle">YTD profit</text>
+    <text x="430" y="146" class="label-sm" text-anchor="middle" fill="#6B7280">resets per fiscal_year</text>
+
+    <path d="M520,134 L580,134" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <text x="580" y="98" class="step">3 · JOIN BUDGET</text>
+    <rect x="580" y="106" width="240" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <text x="700" y="130" class="label-sm" text-anchor="middle">JOIN budgets b</text>
+    <text x="700" y="146" class="label-sm" text-anchor="middle" fill="#6B7280">ON dept, month</text>
+  </g>
+
+  <path d="M700,162 L700,205" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- variance table -->
+  <rect x="380" y="205" width="440" height="130" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="400" y="228" class="label-sm" font-weight="700">dept</text>
+  <text x="480" y="228" class="label-sm" font-weight="700">ytd_actual</text>
+  <text x="610" y="228" class="label-sm" font-weight="700">ytd_budget</text>
+  <text x="730" y="228" class="label-sm" font-weight="700">variance</text>
+  <line x1="390" y1="236" x2="810" y2="236" stroke="#D4CFC2"/>
+  <text x="400" y="256" class="label-sm">Sales</text>
+  <text x="480" y="256" class="label-sm">412,000</text>
+  <text x="610" y="256" class="label-sm">380,000</text>
+  <text x="730" y="256" class="label-sm" fill="#147D7A">+32,000</text>
+  <line x1="390" y1="264" x2="810" y2="264" stroke="#F0EDE3"/>
+  <text x="400" y="284" class="label-sm">Ops</text>
+  <text x="480" y="284" class="label-sm">298,000</text>
+  <text x="610" y="284" class="label-sm">250,000</text>
+  <text x="730" y="284" class="label-sm" fill="#B45309">+48,000</text>
+  <text x="750" y="298" class="label-sm" fill="#B45309" font-size="10">(over budget)</text>
+
+  <rect x="40" y="350" width="820" height="50" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="370" class="label-sm" fill="#147D7A">■ Reused pattern: this is Sales Analytics' running total and Banking's running balance,</text>
+  <text x="60" y="388" class="label-sm">   applied to profit — then joined, not windowed, against a pre-aggregated budget grain.</text>
+</svg>

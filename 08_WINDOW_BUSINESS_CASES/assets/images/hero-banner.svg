@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#22303F" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2DD4C7"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:40px;fill:#F5F3EC;}
+    .subtitle{font-family:'IBM Plex Mono',Consolas,monospace;font-size:15px;fill:#9FB2C4;}
+    .tag{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#2DD4C7;letter-spacing:2px;}
+    .node{fill:#0F1B26;stroke:#2DD4C7;stroke-width:1.5;}
+    .lbl{font-family:'IBM Plex Mono',Consolas,monospace;font-size:10px;fill:#9FB2C4;}
+  </style>
+  <rect width="1200" height="300" fill="#0B1420"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+
+  <!-- faint domain chips, right side: HR / SALES / ECOM / BANK / FIN -->
+  <g opacity="0.95">
+    <rect x="800"  y="70"  width="90" height="34" rx="4" class="node"/>
+    <text x="845" y="92" text-anchor="middle" class="lbl" fill="#2DD4C7">HR</text>
+
+    <rect x="900"  y="70"  width="90" height="34" rx="4" class="node"/>
+    <text x="945" y="92" text-anchor="middle" class="lbl" fill="#2DD4C7">SALES</text>
+
+    <rect x="1000" y="70"  width="90" height="34" rx="4" class="node"/>
+    <text x="1045" y="92" text-anchor="middle" class="lbl" fill="#2DD4C7">ECOM</text>
+
+    <rect x="1100" y="70"  width="90" height="34" rx="4" class="node"/>
+    <text x="1145" y="92" text-anchor="middle" class="lbl" fill="#2DD4C7">BANK</text>
+
+    <rect x="950"  y="120" width="90" height="34" rx="4" class="node"/>
+    <text x="995" y="142" text-anchor="middle" class="lbl" fill="#2DD4C7">FINANCE</text>
+
+    <path d="M845,104 L995,120" stroke="#2DD4C7" stroke-width="1.2" fill="none" opacity="0.6"/>
+    <path d="M945,104 L995,120" stroke="#2DD4C7" stroke-width="1.2" fill="none" opacity="0.6"/>
+    <path d="M1045,104 L995,120" stroke="#2DD4C7" stroke-width="1.2" fill="none" opacity="0.6"/>
+    <path d="M1145,104 L995,120" stroke="#2DD4C7" stroke-width="1.2" fill="none" opacity="0.6"/>
+
+    <rect x="900" y="185" width="190" height="40" rx="4" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <text x="995" y="210" text-anchor="middle" class="lbl" fill="#F5F3EC">OVER (PARTITION BY ...)</text>
+    <path d="M995,154 L995,185" stroke="#2DD4C7" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)"/>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#3A4A5A" stroke-width="1.5">
+    <path d="M24,24 L46,24 M24,24 L24,46"/>
+    <path d="M1176,24 L1154,24 M1176,24 L1176,46"/>
+    <path d="M24,276 L46,276 M24,276 L24,254"/>
+    <path d="M1176,276 L1154,276 M1176,276 L1176,254"/>
+  </g>
+
+  <text x="60" y="90" class="tag">SQL ENGINEERING HANDBOOK · MODULE 08</text>
+  <text x="60" y="148" class="title">Window Function Business Cases</text>
+  <text x="60" y="182" class="subtitle">Five domains, one mental model: peer, time, and self comparison.</text>
+  <text x="60" y="208" class="subtitle">HR · Sales · E-Commerce · Banking · Finance</text>
+</svg>

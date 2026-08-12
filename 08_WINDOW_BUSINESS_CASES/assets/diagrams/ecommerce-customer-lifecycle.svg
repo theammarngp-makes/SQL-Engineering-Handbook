@@ -1,0 +1,62 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="400" fill="#FAFAF7"/>
+  <rect width="900" height="400" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,384 L34,384 M16,384 L16,366"/>
+    <path d="M884,384 L866,384 M884,384 L884,366"/>
+  </g>
+  <text x="40" y="46" class="title">A Customer's Order History, Annotated</text>
+  <text x="40" y="66" class="cap">03 — E-Commerce · ROW_NUMBER() flags the first order; SUM() OVER (...) builds running lifetime value</text>
+
+  <!-- timeline of orders for one customer -->
+  <line x1="80" y1="180" x2="820" y2="180" stroke="#1A1F2B" stroke-width="1.5"/>
+
+  <g>
+    <circle cx="150" cy="180" r="10" fill="#123A38" stroke="#147D7A" stroke-width="2"/>
+    <text x="150" y="150" text-anchor="middle" class="label-sm" font-weight="700">order 1</text>
+    <text x="150" y="135" text-anchor="middle" class="label-sm" fill="#147D7A">ROW_NUMBER()=1</text>
+    <text x="150" y="210" text-anchor="middle" class="label-sm">$40</text>
+    <text x="150" y="226" text-anchor="middle" class="label-sm" fill="#6B7280">CLV: $40</text>
+
+    <circle cx="360" cy="180" r="8" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+    <text x="360" y="150" text-anchor="middle" class="label-sm">order 2</text>
+    <text x="360" y="210" text-anchor="middle" class="label-sm">$25</text>
+    <text x="360" y="226" text-anchor="middle" class="label-sm" fill="#6B7280">CLV: $65</text>
+    <text x="255" y="146" text-anchor="middle" class="label-sm" fill="#B45309">↕ gap = LAG(order_date)</text>
+
+    <circle cx="560" cy="180" r="8" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+    <text x="560" y="150" text-anchor="middle" class="label-sm">order 3</text>
+    <text x="560" y="210" text-anchor="middle" class="label-sm">$90</text>
+    <text x="560" y="226" text-anchor="middle" class="label-sm" fill="#6B7280">CLV: $155</text>
+
+    <circle cx="740" cy="180" r="8" fill="#EAF6F5" stroke="#147D7A" stroke-width="2"/>
+    <text x="740" y="150" text-anchor="middle" class="label-sm">order 4</text>
+    <text x="740" y="210" text-anchor="middle" class="label-sm">$30</text>
+    <text x="740" y="226" text-anchor="middle" class="label-sm" fill="#147D7A" font-weight="700">CLV: $185</text>
+  </g>
+
+  <path d="M160,180 L352,180" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M368,180 L552,180" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M568,180 L732,180" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="270" width="820" height="80" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="294" class="label-sm" fill="#147D7A">■ ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date) = 1 isolates the first order</text>
+  <text x="60" y="312" class="label-sm">   — the standard building block for cohort and CLV-start analysis.</text>
+  <text x="60" y="336" class="label-sm">□ Running CLV is the same framed SUM() pattern as Sales Analytics' running revenue, now partitioned by customer_id.</text>
+</svg>

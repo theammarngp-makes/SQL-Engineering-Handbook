@@ -1,0 +1,68 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="420" fill="#FAFAF7"/>
+  <rect width="900" height="420" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,404 L34,404 M16,404 L16,386"/>
+    <path d="M884,404 L866,404 M884,404 L884,386"/>
+  </g>
+  <text x="40" y="46" class="title">Running Revenue &amp; Month-over-Month Growth</text>
+  <text x="40" y="66" class="cap">02 — Sales Analytics · SUM() OVER (ROWS BETWEEN UNBOUNDED PRECEDING) + LAG(revenue) for growth %</text>
+
+  <!-- bar chart: monthly revenue with cumulative line -->
+  <g>
+    <!-- axis -->
+    <line x1="80" y1="330" x2="820" y2="330" stroke="#1A1F2B" stroke-width="1.5"/>
+    <line x1="80" y1="100" x2="80" y2="330" stroke="#1A1F2B" stroke-width="1.5"/>
+
+    <!-- bars: monthly revenue -->
+    <rect x="120" y="270" width="60" height="60" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="150" y="350" text-anchor="middle" class="label-sm">Jan</text>
+    <text x="150" y="260" text-anchor="middle" class="label-sm">40k</text>
+
+    <rect x="230" y="240" width="60" height="90" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="260" y="350" text-anchor="middle" class="label-sm">Feb</text>
+    <text x="260" y="230" text-anchor="middle" class="label-sm">55k</text>
+    <text x="260" y="215" text-anchor="middle" class="label-sm" fill="#147D7A">+37.5%</text>
+
+    <rect x="340" y="220" width="60" height="110" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="370" y="350" text-anchor="middle" class="label-sm">Mar</text>
+    <text x="370" y="210" text-anchor="middle" class="label-sm">62k</text>
+    <text x="370" y="195" text-anchor="middle" class="label-sm" fill="#147D7A">+12.7%</text>
+
+    <rect x="450" y="250" width="60" height="80" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="480" y="350" text-anchor="middle" class="label-sm">Apr</text>
+    <text x="480" y="240" text-anchor="middle" class="label-sm">50k</text>
+    <text x="480" y="225" text-anchor="middle" class="label-sm" fill="#B45309">−19.4%</text>
+
+    <rect x="560" y="200" width="60" height="130" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="590" y="350" text-anchor="middle" class="label-sm">May</text>
+    <text x="590" y="190" text-anchor="middle" class="label-sm">72k</text>
+    <text x="590" y="175" text-anchor="middle" class="label-sm" fill="#147D7A">+44.0%</text>
+
+    <!-- cumulative running-total line -->
+    <path d="M150,310 L260,290 L370,255 L480,215 L590,150" fill="none" stroke="#1A1F2B" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow-teal)"/>
+    <text x="640" y="150" class="label-sm" fill="#1A1F2B">cumulative</text>
+    <text x="640" y="164" class="label-sm" fill="#1A1F2B">running total →</text>
+  </g>
+
+  <rect x="60" y="365" width="780" height="0" fill="none"/>
+  <rect x="40" y="368" width="820" height="46" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="388" class="label-sm" fill="#147D7A">■ Bars = SUM(revenue) OVER (ORDER BY month ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW).</text>
+  <text x="60" y="404" class="label-sm">□ % labels = (revenue − LAG(revenue)) / NULLIF(LAG(revenue), 0) — guarded against a zero or NULL prior month.</text>
+</svg>

@@ -1,5 +1,9 @@
 # 04 · Banking — Window Functions in Transaction & Risk Analytics
 
+<p align="center">
+  <img src="assets/diagrams/banking-balance-outlier.svg" alt="Running balance with a per-account fraud baseline" width="85%">
+</p>
+
 ## Introduction
 
 Banking data is sequential by nature: every account has an ordered history of transactions, and nearly every question a risk or operations team asks is really a question about **how a transaction relates to the ones around it** — is this withdrawal unusually large compared to this account's own history? Has the balance dropped sharply? Is there a suspicious gap or spike in transaction frequency? This chapter applies the running-total and gap-analysis patterns from earlier chapters to the highest-stakes domain in this module: financial risk.
@@ -119,3 +123,7 @@ Banking analytics is where the running-total pattern (Sales Analytics) and the p
 ---
 
 **Next:** [`04_BANKING.sql`](./04_BANKING.sql) — the fully engineered SQL chapter for this domain.
+
+---
+
+**Previous:** [`03_ECOMMERCE.md`](03_ECOMMERCE.md) · **Module:** [README](README.md) · **Next chapter:** [`05_FINANCE.md`](05_FINANCE.md)

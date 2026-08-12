@@ -1,5 +1,9 @@
 # 02 · Sales Analytics — Window Functions in Revenue Reporting
 
+<p align="center">
+  <img src="assets/diagrams/sales-running-total-growth.svg" alt="Running revenue and month-over-month growth" width="85%">
+</p>
+
 ## Introduction
 
 Sales organizations run on cadence: monthly quotas, quarterly targets, year-over-year growth commitments to the board. Almost every metric a sales leader looks at is a *comparison over time* or a *ranking against peers* — and both are core window function use cases.
@@ -124,3 +128,7 @@ Sales analytics reframes the window function toolkit around **time** rather than
 ---
 
 **Next:** [`02_SALES_ANALYTICS.sql`](./02_SALES_ANALYTICS.sql) — the fully engineered SQL chapter for this domain.
+
+---
+
+**Previous:** [`01_HR_ANALYTICS.md`](01_HR_ANALYTICS.md) · **Module:** [README](README.md) · **Next chapter:** [`03_ECOMMERCE.md`](03_ECOMMERCE.md)

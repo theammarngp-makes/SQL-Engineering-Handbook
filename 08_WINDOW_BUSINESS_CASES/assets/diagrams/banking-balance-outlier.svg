@@ -1,0 +1,67 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="420" fill="#FAFAF7"/>
+  <rect width="900" height="420" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,404 L34,404 M16,404 L16,386"/>
+    <path d="M884,404 L866,404 M884,404 L884,386"/>
+  </g>
+  <text x="40" y="46" class="title">Running Balance With a Per-Account Fraud Baseline</text>
+  <text x="40" y="66" class="cap">04 — Banking · SUM() reconstructs the balance; AVG()/STDDEV() OVER (PARTITION BY account_id) flags outliers</text>
+
+  <!-- ledger table -->
+  <rect x="60" y="95" width="500" height="34" fill="#123A38"/>
+  <text x="80" y="117" class="label-sm" fill="#F5F3EC">date</text>
+  <text x="180" y="117" class="label-sm" fill="#F5F3EC">amount</text>
+  <text x="300" y="117" class="label-sm" fill="#F5F3EC">running balance</text>
+  <text x="470" y="117" class="label-sm" fill="#F5F3EC">flag</text>
+
+  <g>
+    <rect x="60" y="129" width="500" height="30" fill="#FFFFFF" stroke="#E8E4D9"/>
+    <text x="80" y="149" class="label-sm">Aug 01</text>
+    <text x="180" y="149" class="label-sm">+1,000</text>
+    <text x="300" y="149" class="label-sm">1,000</text>
+
+    <rect x="60" y="159" width="500" height="30" fill="#EAF6F5" stroke="#E8E4D9"/>
+    <text x="80" y="179" class="label-sm">Aug 04</text>
+    <text x="180" y="179" class="label-sm">−150</text>
+    <text x="300" y="179" class="label-sm">850</text>
+
+    <rect x="60" y="189" width="500" height="30" fill="#FFFFFF" stroke="#E8E4D9"/>
+    <text x="80" y="209" class="label-sm">Aug 09</text>
+    <text x="180" y="209" class="label-sm">−80</text>
+    <text x="300" y="209" class="label-sm">770</text>
+
+    <rect x="60" y="219" width="500" height="30" fill="#FEF0E6" stroke="#B45309"/>
+    <text x="80" y="239" class="label-sm">Aug 10</text>
+    <text x="180" y="239" class="label-sm" fill="#B45309" font-weight="700">−9,200</text>
+    <text x="300" y="239" class="label-sm" fill="#B45309" font-weight="700">−8,430</text>
+    <text x="470" y="239" class="label-sm" fill="#B45309" font-weight="700">⚠ &gt; 3σ</text>
+  </g>
+
+  <!-- baseline box -->
+  <rect x="600" y="129" width="240" height="120" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="620" y="153" class="label-sm" font-weight="700">Account baseline</text>
+  <line x1="610" y1="163" x2="820" y2="163" stroke="#D4CFC2"/>
+  <text x="620" y="184" class="label-sm">AVG(amount)  = −77</text>
+  <text x="620" y="204" class="label-sm">STDDEV(amount) = 58</text>
+  <text x="620" y="228" class="label-sm" fill="#B45309">|−9,200 − (−77)| ≫ 3σ</text>
+  <text x="620" y="244" class="label-sm" fill="#B45309">→ flagged for review</text>
+
+  <rect x="40" y="270" width="820" height="70" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="292" class="label-sm" fill="#147D7A">■ Running balance: SUM(amount) OVER (PARTITION BY account_id ORDER BY txn_ts ROWS BETWEEN</text>
+  <text x="60" y="308" class="label-sm">   UNBOUNDED PRECEDING AND CURRENT ROW) — amount is signed, ordered by full timestamp, not just date.</text>
+  <text x="60" y="328" class="label-sm">□ The baseline is per-account, not company-wide — the same $9,200 is normal for a business account, alarming here.</text>
+</svg>

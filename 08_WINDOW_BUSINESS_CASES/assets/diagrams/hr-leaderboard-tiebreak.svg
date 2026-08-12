@@ -1,0 +1,68 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .col-h{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#147D7A;font-weight:700;}
+  </style>
+  <rect width="900" height="420" fill="#FAFAF7"/>
+  <rect width="900" height="420" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,404 L34,404 M16,404 L16,386"/>
+    <path d="M884,404 L866,404 M884,404 L884,386"/>
+  </g>
+  <text x="40" y="46" class="title">Department Leaderboard: Three Ways to Rank a Tie</text>
+  <text x="40" y="66" class="cap">01 — HR Analytics · PARTITION BY dept_id ORDER BY salary DESC, same input, three outputs</text>
+
+  <!-- table header -->
+  <rect x="60" y="95" width="780" height="34" fill="#123A38"/>
+  <text x="90" y="117" class="label-sm" fill="#F5F3EC">employee</text>
+  <text x="230" y="117" class="label-sm" fill="#F5F3EC">dept</text>
+  <text x="330" y="117" class="label-sm" fill="#F5F3EC">salary</text>
+  <text x="450" y="117" class="label-sm" fill="#F5F3EC">ROW_NUMBER()</text>
+  <text x="600" y="117" class="label-sm" fill="#F5F3EC">RANK()</text>
+  <text x="710" y="117" class="label-sm" fill="#F5F3EC">DENSE_RANK()</text>
+
+  <!-- rows: two employees tied on salary -->
+  <g>
+    <rect x="60" y="129" width="780" height="34" fill="#FFFFFF" stroke="#E8E4D9"/>
+    <text x="90" y="151" class="label-sm">A. Rao</text>
+    <text x="230" y="151" class="label-sm">Eng</text>
+    <text x="330" y="151" class="label-sm">95,000</text>
+    <text x="470" y="151" class="label" font-weight="700">1</text>
+    <text x="620" y="151" class="label" font-weight="700">1</text>
+    <text x="730" y="151" class="label" font-weight="700">1</text>
+
+    <rect x="60" y="163" width="780" height="34" fill="#EAF6F5" stroke="#E8E4D9"/>
+    <text x="90" y="185" class="label-sm">B. Iyer</text>
+    <text x="230" y="185" class="label-sm">Eng</text>
+    <text x="330" y="185" class="label-sm">95,000</text>
+    <text x="470" y="185" class="label" font-weight="700">2</text>
+    <text x="620" y="185" class="label" font-weight="700" fill="#147D7A">1</text>
+    <text x="730" y="185" class="label" font-weight="700" fill="#147D7A">1</text>
+    <text x="500" y="185" class="label-sm" fill="#6B7280">tie broken</text>
+
+    <rect x="60" y="197" width="780" height="34" fill="#FFFFFF" stroke="#E8E4D9"/>
+    <text x="90" y="219" class="label-sm">C. Shah</text>
+    <text x="230" y="219" class="label-sm">Eng</text>
+    <text x="330" y="219" class="label-sm">88,000</text>
+    <text x="470" y="219" class="label" font-weight="700">3</text>
+    <text x="620" y="219" class="label" font-weight="700" fill="#B45309">3</text>
+    <text x="730" y="219" class="label" font-weight="700">2</text>
+    <text x="640" y="219" class="label-sm" fill="#B45309">skips 2</text>
+  </g>
+
+  <rect x="60" y="260" width="780" height="120" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="80" y="284" class="label-sm" fill="#147D7A">■ ROW_NUMBER() — always unique, 1·2·3·... — use for "exactly top N per group," ties resolved arbitrarily</text>
+  <text x="80" y="308" class="label-sm" fill="#147D7A">   unless the ORDER BY has a tiebreaker column.</text>
+  <text x="80" y="332" class="label-sm">□ RANK() — ties share a rank, next rank is skipped (1,1,3) — matches "both employees are #1."</text>
+  <text x="80" y="356" class="label-sm">□ DENSE_RANK() — ties share a rank, no skip (1,1,2) — matches a leaderboard with no visible gaps.</text>
+</svg>

@@ -1,5 +1,9 @@
 # 01 · HR Analytics — Window Functions in People Data
 
+<p align="center">
+  <img src="assets/diagrams/hr-leaderboard-tiebreak.svg" alt="Department leaderboard: ROW_NUMBER vs RANK vs DENSE_RANK" width="85%">
+</p>
+
 ## Introduction
 
 Every organization with more than a handful of employees eventually needs to answer questions that a simple `SELECT * FROM employees` cannot: *Who are our top performers per department? Who is overdue for a promotion? How does compensation compare across peers?*
@@ -126,3 +130,7 @@ HR analytics is the clearest entry point into window functions because the compa
 ---
 
 **Next:** [`01_HR_ANALYTICS.sql`](./01_HR_ANALYTICS.sql) — the fully engineered SQL chapter for this domain.
+
+---
+
+**Module:** [README](README.md) · **Next chapter:** [`02_SALES_ANALYTICS.md`](02_SALES_ANALYTICS.md)

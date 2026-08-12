@@ -1,5 +1,9 @@
 # 05 · Finance — Window Functions in Budgeting & Profitability Analysis
 
+<p align="center">
+  <img src="assets/diagrams/finance-ytd-variance.svg" alt="Year-to-date profit meets budget variance" width="85%">
+</p>
+
 ## Introduction
 
 If Sales Analytics (Chapter 02) taught you to track revenue over time, Finance closes the loop by tracking **profit, expense, and budget variance** over the same time dimension - but with a critical difference: finance teams almost always need to compare an *actual* number to a *planned* number, not just to a prior period. This chapter combines every pattern built so far - running totals, period-over-period comparison, and leaderboard ranking - into the reporting structure finance and FP&A (Financial Planning & Analysis) teams present to leadership every month.
@@ -118,3 +122,7 @@ Finance is the capstone domain of this module because nearly every pattern intro
 ---
 
 **Next:** [`05_FINANCE.sql`](./05_FINANCE.sql) — the fully engineered SQL chapter for this domain, and the final chapter of Module 08.
+
+---
+
+**Previous:** [`04_BANKING.md`](04_BANKING.md) · **Module:** [README](README.md) · **Next module:** [`09_Date_Functions`](../09_Date_Functions/) ➡

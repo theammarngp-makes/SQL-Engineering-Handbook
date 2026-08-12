@@ -1,5 +1,9 @@
 # 03 · E-Commerce — Window Functions in Customer & Product Analytics
 
+<p align="center">
+  <img src="assets/diagrams/ecommerce-customer-lifecycle.svg" alt="Customer order history annotated with first-order flag and running CLV" width="85%">
+</p>
+
 ## Introduction
 
 E-commerce analytics blends the two patterns you've already built: peer comparison (Chapter 01) and time-based comparison (Chapter 02) - then adds a third dimension unique to this domain: **the customer as the unit of analysis over their entire relationship with the business**. Customer Lifetime Value, repeat purchase behavior, and order-level ranking all require looking at a customer's or product's full history, not just a single transaction.
@@ -121,3 +125,7 @@ E-commerce analytics is where peer comparison (Chapter 01) and time-based compar
 ---
 
 **Next:** [`03_ECOMMERCE.sql`](./03_ECOMMERCE.sql) — the fully engineered SQL chapter for this domain.
+
+---
+
+**Previous:** [`02_SALES_ANALYTICS.md`](02_SALES_ANALYTICS.md) · **Module:** [README](README.md) · **Next chapter:** [`04_BANKING.md`](04_BANKING.md)
