@@ -11,23 +11,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- (none yet)
+- Expanded Window Business Cases module with additional chapters and diagrams (HR Analytics chapter and visual assets). (e015ecc — 2026-08-12)
+- Expanded NULL Handling & Data Cleaning module with visual explanation of three-valued logic and validation guidance. (aed8596 — 2026-08-11)
+- Substantially expanded the CTEs module with engineering patterns, diagrams, runnable examples and interview tips. (ffe7ff2 — 2026-08-06)
+- Added CASE_WHEN sample schema and seed data (shared schema used across lessons). (4de05c6 — 2026-08-07)
+- Added/expanded Aggregations content and assets (new banner image, analytics patterns and examples). (5c11c6a, 88a9ef — 2026-08-07–08)
+- Expanded Window Functions lessons (ROW_NUMBER, navigation improvements, diagrams). (24b8a9e — 2026-08-08)
+- Resource library: improved Resources/README table and links to curated files (books, certifications, communities, tools). (6ef3561, f346550 — 2026-08-06)
+- Added several module assets and diagrams to support lessons (CTE flow, row-number diagrams, HR leaderboard visuals). (ffe7ff2, 24b8a9e, e015ecc — Aug 6–12, 2026)
 
 ### Changed
 
-- (none yet)
+- Multiple README updates across the repo: added live GH Pages link, adjusted banners, badges, and navigation for improved presentation and module discoverability. (fcd6556, 259918a, fd0ca21, f346550 — 2026-08-06–11)
+- Replaced SVG banner for Aggregations with PNG and updated module README references. (c9ab3ca, 1fc3d69 — 2026-08-07–08)
+- Standardized some module README headings and corrected internal links/navigation (various README edits to align module naming and paths). (7679a2d, 9436e62, 56dc371 — 2026-08-06–10)
+- Updated .gitignore to include common macOS artifacts (.DS_Store) and minor housekeeping changes. (5c11c6a — 2026-08-07)
 
 ### Removed
 
-- (none yet)
+- Removed or simplified some decorative badges and redundant README snippets to reduce clutter and improve readability. (4a3f4a0, fd0ca21 — 2026-08-06)
+- Clean-up of temporary/legacy file references in Resources and module READMEs (small pruning across commits). (f346550, 6ef3561 — 2026-08-06)
 
 ### Fixed
 
-- (none yet)
+- README formatting and avatar/style adjustments (rounding/corrected attributes) and other small presentation fixes. (c83ff6b, c99c601, fb92943 — 2026-08-07–08)
+- Corrected module file references and naming inconsistencies introduced during expansion (e.g., module link paths, consistent module folder names). (7679a2d, 4de05c6 — 2026-08-07–10)
+- Incorporated minor query / example corrections that surfaced while expanding lessons (small fixes within lesson files). (multiple commits Aug 6–12, 2026)
 
 ### Documentation
 
-- (none yet)
+- Added 00_Sample_Schema.sql (shared sample schema + seed data) to support hands-on lessons and reproducible examples. (4de05c6 — 2026-08-07)
+- Added diagrams and assets referenced by new lessons (CTE flow diagrams, ROW_NUMBER visuals, HR leaderboard). (ffe7ff2, 24b8a9e, e015ecc — Aug 6–12, 2026)
+- Updated Resources/README to include a structured table of resource files (books, certifications, communities, tools). (6ef3561, f346550 — 2026-08-06)
+- Continued README and handbook navigation refinements to make module progression clearer for learners and contributors. (fcd6556, 259918a — 2026-08-06–11)
 
 ---
 
