@@ -1,0 +1,92 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .label-xs{font-family:'IBM Plex Mono',Consolas,monospace;font-size:10.5px;fill:#FFFFFF;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .tag{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#147D7A;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">The Rolling Windows Every Dashboard Uses</text>
+  <text x="40" y="66" class="cap">05 — Business Date Analytics · MTD, QTD, YTD and trailing windows against one calendar</text>
+
+  <!-- 12 month bar -->
+  <g>
+    <!-- month cells, 60px wide starting x=60, y=110, width 60 height=40 -->
+  </g>
+  <!-- quarter groupings background -->
+  <rect x="60"  y="110" width="180" height="40" fill="#EAF6F5" stroke="#147D7A" stroke-width="1"/>
+  <rect x="240" y="110" width="180" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1"/>
+  <rect x="420" y="110" width="180" height="40" fill="#EAF6F5" stroke="#147D7A" stroke-width="1"/>
+  <rect x="600" y="110" width="180" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1"/>
+
+  <!-- month labels -->
+  <g class="label-sm" text-anchor="middle">
+    <text x="90"  y="134">Jan</text><text x="150" y="134">Feb</text><text x="210" y="134">Mar</text>
+    <text x="270" y="134">Apr</text><text x="330" y="134">May</text><text x="390" y="134">Jun</text>
+    <text x="450" y="134">Jul</text><text x="510" y="134">Aug</text><text x="570" y="134">Sep</text>
+    <text x="630" y="134">Oct</text><text x="690" y="134">Nov</text><text x="750" y="134">Dec</text>
+  </g>
+  <!-- month gridlines -->
+  <g stroke="#B8B2A2" stroke-width="1">
+    <line x1="120" y1="110" x2="120" y2="150"/><line x1="180" y1="110" x2="180" y2="150"/>
+    <line x1="300" y1="110" x2="300" y2="150"/><line x1="360" y1="110" x2="360" y2="150"/>
+    <line x1="480" y1="110" x2="480" y2="150"/><line x1="540" y1="110" x2="540" y2="150"/>
+    <line x1="660" y1="110" x2="660" y2="150"/><line x1="720" y1="110" x2="720" y2="150"/>
+  </g>
+  <text x="150" y="102" class="tag" text-anchor="middle">Q1</text>
+  <text x="330" y="102" class="tag" text-anchor="middle">Q2</text>
+  <text x="510" y="102" class="tag" text-anchor="middle">Q3</text>
+  <text x="690" y="102" class="tag" text-anchor="middle">Q4</text>
+
+  <!-- current date marker at Jul 7 -> x = 420 + (7/31)*60 approx -->
+  <line x1="434" y1="95" x2="434" y2="150" stroke="#B45309" stroke-width="2"/>
+  <polygon points="434,95 428,84 440,84" fill="#B45309"/>
+  <text x="434" y="76" class="label-sm" text-anchor="middle" style="fill:#B45309">CURRENT_DATE (Jul 7)</text>
+
+  <!-- MTD bar -->
+  <line x1="420" y1="200" x2="434" y2="200" stroke="#147D7A" stroke-width="6"/>
+  <circle cx="420" cy="200" r="4" fill="#147D7A"/>
+  <circle cx="434" cy="200" r="4" fill="#147D7A"/>
+  <text x="60" y="204" class="label" style="fill:#147D7A">MTD</text>
+  <text x="450" y="204" class="label-sm">Jul 1 → Jul 7 (this month only)</text>
+
+  <!-- QTD bar -->
+  <line x1="420" y1="240" x2="434" y2="240" stroke="#147D7A" stroke-width="6"/>
+  <circle cx="420" cy="240" r="4" fill="#147D7A"/>
+  <circle cx="434" cy="240" r="4" fill="#147D7A"/>
+  <text x="60" y="244" class="label" style="fill:#147D7A">QTD</text>
+  <text x="450" y="244" class="label-sm">Jul 1 → Jul 7 (Q3 started July 1, same span here)</text>
+
+  <!-- YTD bar -->
+  <line x1="60" y1="280" x2="434" y2="280" stroke="#147D7A" stroke-width="6"/>
+  <circle cx="60" cy="280" r="4" fill="#147D7A"/>
+  <circle cx="434" cy="280" r="4" fill="#147D7A"/>
+  <text x="60" y="270" class="label" style="fill:#147D7A">YTD</text>
+  <text x="450" y="284" class="label-sm">Jan 1 → Jul 7 (full year to date)</text>
+
+  <!-- trailing 30 -->
+  <line x1="330" y1="320" x2="434" y2="320" stroke="#B45309" stroke-width="6" stroke-dasharray="2,4"/>
+  <circle cx="330" cy="320" r="4" fill="#B45309"/>
+  <circle cx="434" cy="320" r="4" fill="#B45309"/>
+  <text x="60" y="324" class="label" style="fill:#B45309">Trailing 30d</text>
+  <text x="450" y="324" class="label-sm">rolling window, ignores month/quarter boundaries</text>
+
+  <rect x="40" y="370" width="820" height="80" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="392" class="label-sm">All four windows share one anchor — <tspan fill="#B45309">CURRENT_DATE</tspan> — computed once and reused,</text>
+  <text x="56" y="410" class="label-sm">so a report's MTD, QTD, YTD, and trailing-30-day figures never drift out of sync with each other</text>
+  <text x="56" y="428" class="label-sm">mid-query, even if the query itself runs for several seconds.</text>
+</svg>

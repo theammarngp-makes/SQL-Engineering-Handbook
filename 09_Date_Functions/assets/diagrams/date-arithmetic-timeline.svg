@@ -1,0 +1,66 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#147D7A;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">Moving Along the Timeline</text>
+  <text x="40" y="66" class="cap">03 — Date Calculations · interval arithmetic and measuring the gap between two points</text>
+
+  <!-- main timeline -->
+  <line x1="80" y1="200" x2="820" y2="200" stroke="#1A1F2B" stroke-width="2"/>
+  <polygon points="820,200 806,193 806,207" fill="#1A1F2B"/>
+  <text x="820" y="222" class="label-sm" text-anchor="end">future →</text>
+  <text x="80" y="222" class="label-sm">← past</text>
+
+  <!-- anchor point d -->
+  <circle cx="450" cy="200" r="6" fill="#1A1F2B"/>
+  <text x="450" y="185" class="label" text-anchor="middle">d</text>
+
+  <!-- DATE_SUB arrow (left) -->
+  <line x1="450" y1="200" x2="260" y2="200" stroke="#B45309" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="180" y="128" width="200" height="46" fill="#FEF3E7" stroke="#B45309" stroke-width="1.5"/>
+  <text x="192" y="150" class="fn" style="fill:#B45309">DATE_SUB(d, INTERVAL</text>
+  <text x="192" y="167" class="fn" style="fill:#B45309">1 MONTH)</text>
+
+  <!-- DATE_ADD arrow (right) -->
+  <line x1="450" y1="200" x2="700" y2="200" stroke="#147D7A" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <rect x="580" y="128" width="220" height="46" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="592" y="150" class="fn">DATE_ADD(d, INTERVAL</text>
+  <text x="592" y="167" class="fn">90 DAY)</text>
+
+  <!-- DATEDIFF measurement -->
+  <line x1="260" y1="280" x2="700" y2="280" stroke="#1A1F2B" stroke-width="1.5"/>
+  <line x1="260" y1="270" x2="260" y2="290" stroke="#1A1F2B" stroke-width="1.5"/>
+  <line x1="700" y1="270" x2="700" y2="290" stroke="#1A1F2B" stroke-width="1.5"/>
+  <rect x="150" y="300" width="600" height="40" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="450" y="325" class="label-sm" text-anchor="middle">DATEDIFF(CURRENT_DATE, d) → whole days between d and today</text>
+
+  <!-- TIMESTAMPDIFF -->
+  <rect x="120" y="360" width="660" height="40" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="450" y="385" class="label-sm" text-anchor="middle">TIMESTAMPDIFF(HOUR, d, CURRENT_TIMESTAMP) → precise hour-level gap</text>
+
+  <rect x="40" y="420" width="820" height="38" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="443" class="label-sm">Interval arithmetic respects month/year boundaries (28–31 day months); a naive <tspan fill="#B45309">d + 30</tspan> does not.</text>
+</svg>

@@ -78,6 +78,8 @@ WHERE order_date >= DATE_FORMAT(CURRENT_DATE, '%Y-01-01')
 
 ## Visual Explanation
 
+![MTD, QTD, YTD and trailing-30-day rolling windows](assets/diagrams/mtd-qtd-ytd-windows.svg)
+
 ```
 Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
  └────Q1────┘  └────Q2────┘  └────Q3────┘  └────Q4────┘

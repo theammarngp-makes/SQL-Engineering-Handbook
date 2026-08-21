@@ -1,0 +1,68 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:14px;fill:#147D7A;}
+    .fn-amber{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:14px;fill:#B45309;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">When Is "Now" Actually Evaluated?</text>
+  <text x="40" y="66" class="cap">01 — Current Date Functions · statement-fixed vs. call-time evaluation</text>
+
+  <!-- statement bar -->
+  <rect x="60" y="100" width="780" height="44" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="450" y="127" class="label" text-anchor="middle">Statement begins execution ── row 1 ── row 2 ── row 3 ── … ── statement ends</text>
+
+  <line x1="450" y1="144" x2="450" y2="180" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- frozen group -->
+  <rect x="90" y="190" width="720" height="110" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="110" y="215" class="fn">NOW()  ·  CURRENT_TIMESTAMP  ·  CURDATE()  ·  CURRENT_DATE</text>
+  <text x="110" y="238" class="label-sm">Evaluated exactly once, when the statement starts.</text>
+  <text x="110" y="256" class="label-sm">Every row in the result set — row 1, row 2, row 3 — sees the identical value.</text>
+  <text x="110" y="274" class="label-sm">This is why these are the correct choice for filtering and timestamping a batch consistently.</text>
+  <g stroke="#147D7A" stroke-width="1.5">
+    <line x1="140" y1="290" x2="140" y2="300"/>
+    <line x1="450" y1="290" x2="450" y2="300"/>
+    <line x1="760" y1="290" x2="760" y2="300"/>
+  </g>
+  <text x="140" y="313" class="label-sm" text-anchor="middle" style="fill:#147D7A">row 1</text>
+  <text x="450" y="313" class="label-sm" text-anchor="middle" style="fill:#147D7A">row 2</text>
+  <text x="760" y="313" class="label-sm" text-anchor="middle" style="fill:#147D7A">row 3</text>
+  <text x="450" y="330" class="label-sm" text-anchor="middle" style="fill:#147D7A">same frozen value at every row →</text>
+
+  <!-- sysdate group -->
+  <rect x="90" y="350" width="720" height="100" fill="#FEF3E7" stroke="#B45309" stroke-width="1.5"/>
+  <text x="110" y="375" class="fn-amber">SYSDATE()</text>
+  <text x="110" y="398" class="label-sm">Re-evaluated at the exact instant it is called — not when the statement started.</text>
+  <text x="110" y="416" class="label-sm">In a long-running statement, row 1 and row 3 can return genuinely different values.</text>
+  <g stroke="#B45309" stroke-width="1.5" stroke-dasharray="3,3">
+    <line x1="140" y1="416" x2="140" y2="430"/>
+    <line x1="450" y1="416" x2="450" y2="430"/>
+    <line x1="760" y1="416" x2="760" y2="430"/>
+  </g>
+  <text x="450" y="443" class="label-sm" text-anchor="middle" style="fill:#B45309">value can drift row-to-row →</text>
+</svg>

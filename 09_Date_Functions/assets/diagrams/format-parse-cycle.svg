@@ -1,0 +1,58 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">Two Directions, Two Different Jobs</text>
+  <text x="40" y="66" class="cap">04 — Date Formatting · storage-native values vs. human-facing strings</text>
+
+  <!-- left node: internal date -->
+  <rect x="70" y="200" width="220" height="80" rx="4" fill="#1A1F2B"/>
+  <text x="180" y="235" class="label" style="fill:#F5F3EC" text-anchor="middle">Internal DATE value</text>
+  <text x="180" y="255" class="label-sm" style="fill:#9FB2C4" text-anchor="middle">(binary, no "format")</text>
+  <text x="180" y="270" class="label-sm" style="fill:#9FB2C4" text-anchor="middle">used for storage · filtering · math</text>
+
+  <!-- right node: string -->
+  <rect x="590" y="200" width="250" height="80" rx="4" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="715" y="228" class="label" text-anchor="middle">'July 07, 2026'</text>
+  <text x="715" y="248" class="label-sm" style="fill:#6B7280" text-anchor="middle">a display string</text>
+  <text x="715" y="264" class="label-sm" style="fill:#6B7280" text-anchor="middle">used for humans · exports ·</text>
+  <text x="715" y="278" class="label-sm" style="fill:#6B7280" text-anchor="middle">dashboards</text>
+
+  <!-- top arrow: DATE_FORMAT -->
+  <path d="M290,225 C 400,175 500,175 610,225" fill="none" stroke="#147D7A" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <rect x="380" y="140" width="160" height="42" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="400" y="166" class="fn" style="fill:#147D7A">DATE_FORMAT()</text>
+
+  <!-- bottom arrow: STR_TO_DATE -->
+  <path d="M610,255 C 500,305 400,305 290,255" fill="none" stroke="#B45309" stroke-width="2.5" marker-end="url(#arrow-amber)"/>
+  <rect x="380" y="298" width="160" height="42" fill="#FEF3E7" stroke="#B45309" stroke-width="1.5"/>
+  <text x="400" y="324" class="fn" style="fill:#B45309">STR_TO_DATE()</text>
+
+  <rect x="40" y="380" width="820" height="70" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="402" class="label-sm">Formatting is a one-way, display-only transformation — the result is text, not a date.</text>
+  <text x="56" y="422" class="label-sm">Parsing goes the other way: user- or system-supplied text becomes a real DATE you can filter,</text>
+  <text x="56" y="440" class="label-sm">sort, and do arithmetic on again. Never store the formatted string in place of the source date.</text>
+</svg>

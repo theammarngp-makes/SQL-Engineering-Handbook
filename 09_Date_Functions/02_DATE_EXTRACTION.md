@@ -75,6 +75,8 @@ Each extraction function accepts a single date/datetime expression and returns a
 
 ## Visual Explanation
 
+![Extracting nine parts from a single date](assets/diagrams/date-part-extraction.svg)
+
 ```
 '2026-07-07'  (Tuesday, 188th day of the year)
       │

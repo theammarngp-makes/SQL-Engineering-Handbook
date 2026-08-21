@@ -1,0 +1,102 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#147D7A;}
+    .val{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+  </style>
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">One Date, Nine Extractable Parts</text>
+  <text x="40" y="66" class="cap">02 — Date Extraction · decomposing a single value for grouping and segmentation</text>
+
+  <!-- center date node -->
+  <rect x="370" y="216" width="160" height="48" rx="4" fill="#1A1F2B"/>
+  <text x="450" y="238" class="label" style="fill:#F5F3EC" text-anchor="middle">'2026-07-07'</text>
+  <text x="450" y="256" class="label-sm" style="fill:#9FB2C4" text-anchor="middle">Tuesday · day 188</text>
+
+  <!-- spokes: 9 functions arranged in a ring -->
+  <g id="spokes">
+    <!-- positions around center (450,240) -->
+  </g>
+
+  <!-- helper to draw each spoke: line + box -->
+  <!-- YEAR -->
+  <line x1="390" y1="216" x2="180" y2="90" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="70" y="66" width="140" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="80" y="84" class="fn">YEAR()</text>
+  <text x="80" y="101" class="val">→ 2026</text>
+
+  <!-- QUARTER -->
+  <line x1="410" y1="216" x2="300" y2="90" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="230" y="66" width="140" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="240" y="84" class="fn">QUARTER()</text>
+  <text x="240" y="101" class="val">→ 3</text>
+
+  <!-- MONTH -->
+  <line x1="440" y1="216" x2="450" y2="90" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="390" y="66" width="140" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="400" y="84" class="fn">MONTH()</text>
+  <text x="400" y="101" class="val">→ 7</text>
+
+  <!-- MONTHNAME -->
+  <line x1="480" y1="216" x2="610" y2="90" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="550" y="66" width="150" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="560" y="84" class="fn">MONTHNAME()</text>
+  <text x="560" y="101" class="val">→ 'July'</text>
+
+  <!-- WEEK -->
+  <line x1="510" y1="220" x2="740" y2="110" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="700" y="86" width="130" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="710" y="104" class="fn">WEEK()</text>
+  <text x="710" y="121" class="val">→ 27</text>
+
+  <!-- DAY (right side) -->
+  <line x1="530" y1="250" x2="740" y2="250" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="700" y="228" width="130" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="710" y="246" class="fn">DAY()</text>
+  <text x="710" y="263" class="val">→ 7</text>
+
+  <!-- DAYNAME (bottom right) -->
+  <line x1="510" y1="264" x2="720" y2="380" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="690" y="358" width="140" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="700" y="376" class="fn">DAYNAME()</text>
+  <text x="700" y="393" class="val">→ 'Tuesday'</text>
+
+  <!-- WEEKDAY (bottom mid-right) -->
+  <line x1="470" y1="264" x2="540" y2="380" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="470" y="358" width="150" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="480" y="376" class="fn">WEEKDAY()</text>
+  <text x="480" y="393" class="val">→ 1 (0=Mon)</text>
+
+  <!-- DAYOFYEAR (bottom mid-left) -->
+  <line x1="410" y1="264" x2="330" y2="380" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="230" y="358" width="150" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="240" y="376" class="fn">DAYOFYEAR()</text>
+  <text x="240" y="393" class="val">→ 188</text>
+
+  <!-- DAYOFWEEK (bottom left) -->
+  <line x1="380" y1="240" x2="200" y2="330" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <rect x="60" y="308" width="150" height="42" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="70" y="326" class="fn">DAYOFWEEK()</text>
+  <text x="70" y="343" class="val">→ 3 (1=Sun)</text>
+
+  <rect x="40" y="425" width="820" height="34" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="447" class="label-sm">Every spoke reads the same stored value — extraction never mutates the underlying date, only what you group or filter by.</text>
+</svg>

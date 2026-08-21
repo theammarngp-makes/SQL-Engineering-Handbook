@@ -1,0 +1,65 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#22303F" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:44px;fill:#F5F3EC;}
+    .subtitle{font-family:'IBM Plex Mono',Consolas,monospace;font-size:16px;fill:#9FB2C4;}
+    .tag{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#2DD4C7;letter-spacing:2px;}
+    .cellnum{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#5A7386;}
+  </style>
+  <rect width="1200" height="300" fill="#0B1420"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+
+  <!-- faint calendar grid motif, right side -->
+  <g opacity="0.95">
+    <rect x="880" y="55" width="260" height="200" rx="6" fill="#0F1B26" stroke="#2DD4C7" stroke-width="1.5"/>
+    <line x1="880" y1="95" x2="1140" y2="95" stroke="#2DD4C7" stroke-width="1.5"/>
+    <line x1="925" y1="55" x2="925" y2="80" stroke="#2DD4C7" stroke-width="2"/>
+    <line x1="1095" y1="55" x2="1095" y2="80" stroke="#2DD4C7" stroke-width="2"/>
+    <!-- 5x4 day cells -->
+    <g stroke="#22303F">
+      <line x1="932" y1="95" x2="932" y2="255"/>
+      <line x1="984" y1="95" x2="984" y2="255"/>
+      <line x1="1036" y1="95" x2="1036" y2="255"/>
+      <line x1="1088" y1="95" x2="1088" y2="255"/>
+      <line x1="880" y1="135" x2="1140" y2="135"/>
+      <line x1="880" y1="175" x2="1140" y2="175"/>
+      <line x1="880" y1="215" x2="1140" y2="215"/>
+    </g>
+    <!-- highlighted "today" cell -->
+    <rect x="1036" y="175" width="52" height="40" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <text x="1062" y="200" class="cellnum" text-anchor="middle" style="fill:#2DD4C7" font-weight="700">07</text>
+    <!-- scattered date numbers -->
+    <text x="906" y="120" class="cellnum" text-anchor="middle">01</text>
+    <text x="958" y="120" class="cellnum" text-anchor="middle">02</text>
+    <text x="1010" y="120" class="cellnum" text-anchor="middle">03</text>
+    <text x="1114" y="120" class="cellnum" text-anchor="middle">05</text>
+    <text x="906" y="160" class="cellnum" text-anchor="middle">08</text>
+    <text x="958" y="160" class="cellnum" text-anchor="middle">09</text>
+    <text x="1010" y="160" class="cellnum" text-anchor="middle">10</text>
+    <text x="1114" y="160" class="cellnum" text-anchor="middle">12</text>
+    <text x="906" y="240" class="cellnum" text-anchor="middle">22</text>
+    <text x="958" y="240" class="cellnum" text-anchor="middle">23</text>
+    <text x="1010" y="240" class="cellnum" text-anchor="middle">24</text>
+    <text x="1114" y="240" class="cellnum" text-anchor="middle">26</text>
+    <!-- small clock accent -->
+    <circle cx="908" cy="70" r="10" fill="none" stroke="#2DD4C7" stroke-width="1.5"/>
+    <path d="M908,64 L908,70 L912,73" stroke="#2DD4C7" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#3A4A5A" stroke-width="1.5">
+    <path d="M24,24 L46,24 M24,24 L24,46"/>
+    <path d="M1176,24 L1154,24 M1176,24 L1176,46"/>
+    <path d="M24,276 L46,276 M24,276 L24,254"/>
+    <path d="M1176,276 L1154,276 M1176,276 L1176,254"/>
+  </g>
+
+  <text x="60" y="90" class="tag">SQL ENGINEERING HANDBOOK · MODULE 09</text>
+  <text x="60" y="150" class="title">Date Functions</text>
+  <text x="60" y="184" class="subtitle">Every report is a question about "when," not just "what."</text>
+  <text x="60" y="210" class="subtitle">Extraction · Arithmetic · Formatting · MTD/QTD/YTD · Tenure &amp; SLA Math</text>
+</svg>

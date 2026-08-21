@@ -79,6 +79,8 @@ SELECT SYSDATE();            -- 2026-07-07 14:32:09  (evaluated live, see below)
 
 ## Visual Explanation
 
+![NOW() vs CURDATE() vs SYSDATE() evaluation timing](assets/diagrams/now-vs-sysdate.svg)
+
 ```
 Statement starts execution
         │

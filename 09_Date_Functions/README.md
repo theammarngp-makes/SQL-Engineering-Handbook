@@ -1,85 +1,89 @@
-# Module 09 — Date Functions
+<p align="center">
+  <img src="assets/images/hero-banner.svg" alt="Module 09 — Date Functions" width="100%">
+</p>
 
-> **Time is a first-class dimension in analytics.** Every report a company runs — revenue this month, tenure of an employee, SLA breaches on a shipment — is a question about *when*, not just *what*. This module teaches you to answer those questions the way production data teams do.
+<p align="center">
+  <img src="https://img.shields.io/badge/status-complete-2DD4C7?style=flat-square" alt="status: complete">
+  <img src="https://img.shields.io/badge/engine-MySQL%208.0%2B-4479A1?style=flat-square" alt="engine: MySQL 8.0+">
+  <img src="https://img.shields.io/badge/also%20covers-PostgreSQL%20%C2%B7%20SQL%20Server-336791?style=flat-square" alt="cross-engine notes">
+  <img src="https://img.shields.io/badge/files-5%20modules%20%2B%20README-1A1F2B?style=flat-square" alt="5 files">
+  <img src="https://img.shields.io/badge/diagrams-5%20SVG-2DD4C7?style=flat-square" alt="5 diagrams">
+  <img src="https://img.shields.io/badge/interview%20questions-15-C2410C?style=flat-square" alt="15 interview questions">
+  <img src="https://img.shields.io/badge/license-MIT-6B7280?style=flat-square" alt="license: MIT">
+</p>
+
+<p align="center"><i>Part of the <a href="../README.md">SQL Engineering Handbook</a></i></p>
 
 ---
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Why Dates Matter](#why-dates-matter)
-3. [Learning Objectives](#learning-objectives)
-4. [Skills You Will Build](#skills-you-will-build)
-5. [Prerequisites](#prerequisites)
-6. [Folder Structure](#folder-structure)
-7. [Topics Covered](#topics-covered)
-8. [Functions Covered](#functions-covered)
-9. [Learning Roadmap](#learning-roadmap)
-10. [Business Domains](#business-domains)
-11. [Difficulty & Estimated Time](#difficulty--estimated-time)
-12. [Business Applications](#business-applications)
-13. [Real Dashboards This Module Powers](#real-dashboards-this-module-powers)
-14. [Performance Tips](#performance-tips)
-15. [Best Practices](#best-practices)
-16. [Common Mistakes](#common-mistakes)
-17. [Module Workflow](#module-workflow)
-18. [Interview Preparation](#interview-preparation)
-19. [Career Relevance](#career-relevance)
-20. [Further Reading](#further-reading)
-21. [Module Navigation](#module-navigation)
+1. [Why This Module Exists](#why-this-module-exists)
+2. [Who This Is For](#who-this-is-for)
+3. [Prerequisites](#prerequisites)
+4. [What This Module Covers](#what-this-module-covers)
+5. [The Diagrams](#the-diagrams)
+6. [Functions Covered](#functions-covered)
+7. [Learning Roadmap](#learning-roadmap)
+8. [Business Domains](#business-domains)
+9. [Difficulty & Estimated Time](#difficulty--estimated-time)
+10. [Real Dashboards This Module Powers](#real-dashboards-this-module-powers)
+11. [Performance Tips](#performance-tips)
+12. [Best Practices](#best-practices)
+13. [Common Mistakes](#common-mistakes)
+14. [Build Status](#build-status)
+15. [Module Checklist](#module-checklist)
+16. [How to Use This Module](#how-to-use-this-module)
+17. [Interview Preparation](#interview-preparation)
+18. [Career Relevance](#career-relevance)
+19. [Further Reading](#further-reading)
+20. [Module Navigation](#module-navigation)
 
 ---
 
-## Introduction
+## Why This Module Exists
 
-Every mature analytics organization runs on a calendar. Finance closes the books monthly. Sales reports quarterly. HR tracks tenure in days. Marketing measures campaign lift over a 7-day or 30-day window. None of this is possible without a working, production-grade command of SQL date and time functions.
+Every mature analytics organization runs on a calendar. Finance closes
+the books monthly. Sales reports quarterly. HR tracks tenure in days.
+Marketing measures campaign lift over a 7-day or 30-day window. None of
+this is possible without a working, production-grade command of SQL
+date and time functions.
 
-This module — **09_Date_Functions** — is the point in the handbook where you stop writing queries that merely *filter* data and start writing queries that *reason about time*. You will learn not just the syntax of `DATEDIFF()` or `DATE_FORMAT()`, but the engineering judgment behind when to compute a date in SQL versus in the application layer, why storing derived date columns is sometimes the correct architectural choice, and how naive date logic silently corrupts dashboards in production.
-
-By the end of this module, date logic will stop being something you look up and start being something you reason through.
-
----
-
-## Why Dates Matter
+This is the point in the handbook where you stop writing queries that
+merely *filter* data and start writing queries that *reason about
+time*. You will learn not just the syntax of `DATEDIFF()` or
+`DATE_FORMAT()`, but the engineering judgment behind when to compute a
+date in SQL versus in the application layer, why storing derived date
+columns is sometimes the correct architectural choice, and how naive
+date logic silently corrupts dashboards in production.
 
 Consider what breaks if date logic is wrong:
 
-- A **"Last 30 Days"** dashboard filter that uses `> CURDATE() - 30` instead of `>= CURDATE() - INTERVAL 30 DAY` silently drops or includes an extra day, and nobody notices until finance reconciliation fails.
-- An **employee tenure** calculation that ignores time zones reports employees as "hired tomorrow" in some regions.
-- A **cohort retention** query that groups by `hire_date` instead of `DATE_TRUNC('month', hire_date)` produces one row per calendar day instead of one row per cohort month, making the report unusable.
-- An **SLA breach** report using `DATEDIFF()` (which only counts whole days) instead of `TIMESTAMPDIFF(HOUR, ...)` masks late deliveries that occurred within the same calendar day.
+- A **"Last 30 Days"** dashboard filter that uses `> CURDATE() - 30`
+  instead of `>= CURDATE() - INTERVAL 30 DAY` silently drops or
+  includes an extra day, and nobody notices until finance
+  reconciliation fails.
+- An **employee tenure** calculation that ignores time zones reports
+  employees as "hired tomorrow" in some regions.
+- A **cohort retention** query that groups by `hire_date` instead of
+  `DATE_TRUNC('month', hire_date)` produces one row per calendar day
+  instead of one row per cohort month, making the report unusable.
+- An **SLA breach** report using `DATEDIFF()` (which only counts whole
+  days) instead of `TIMESTAMPDIFF(HOUR, ...)` masks late deliveries
+  that occurred within the same calendar day.
 
-Dates are deceptively simple and operationally dangerous. This module exists to close that gap before it costs you in production — or in an interview.
+Dates are deceptively simple and operationally dangerous. This module
+exists to close that gap before it costs you in production — or in an
+interview.
 
----
+## Who This Is For
 
-## Learning Objectives
-
-By the end of this module, you will be able to:
-
-- Retrieve and reason about the current date/time in a session-safe, timezone-aware way.
-- Extract any component of a date (year, month, quarter, week, weekday) for grouping and filtering.
-- Perform date arithmetic — additions, subtractions, and differences — using calendar-correct interval logic rather than fixed day-count approximations.
-- Format dates for human-readable reporting and parse human-entered strings back into proper date types.
-- Build the business-critical rolling and periodic windows (MTD, QTD, YTD, trailing 7/30/90 days) that power real dashboards.
-- Calculate tenure, age, subscription duration, and delivery SLAs correctly, including edge cases like leap years and month-end overflow.
-- Recognize and avoid the date-handling mistakes that most commonly break production reports and fail candidates in technical interviews.
-
----
-
-## Skills You Will Build
-
-| Skill | Description |
-|---|---|
-| Temporal filtering | Writing sargable, index-friendly `WHERE` clauses on date columns |
-| Calendar arithmetic | Adding/subtracting intervals correctly across month and year boundaries |
-| Period bucketing | Grouping transactional data into day/week/month/quarter/year buckets |
-| Rolling window analysis | Trailing N-day and N-month metrics for trend reporting |
-| Fiscal calendar handling | Adapting calendar-quarter logic to non-January fiscal years |
-| Duration and tenure math | Computing precise, edge-case-safe durations between two timestamps |
-| Cross-dialect fluency | Recognizing MySQL, PostgreSQL, and SQL Server equivalents for the same operation |
-
----
+Aspiring Data Analysts and Analytics Engineers who have finished
+Modules 00–08 and are ready to move from "queries that filter data" to
+"queries that reason about time." No prior scheduling or calendar-math
+background is assumed — every pattern (rolling windows, fiscal
+periods, tenure math) is built up from the raw extraction and
+arithmetic functions first.
 
 ## Prerequisites
 
@@ -93,46 +97,51 @@ Before starting this module, you should be comfortable with:
 - Common Table Expressions — `WITH` (Module 07)
 - Window functions — `ROW_NUMBER()`, `RANK()`, `OVER()` (Module 08)
 
-If any of these feel shaky, revisit the relevant module first. Date functions are frequently combined with window functions and CTEs in this module's later scenarios.
+If any of these feel shaky, revisit the relevant module first. Date
+functions are frequently combined with window functions and CTEs in
+this module's later scenarios.
 
----
+## What This Module Covers
 
-## Folder Structure
+| # | File | Focus | Size | Diagram |
+|---|------|-------|------|---------|
+| 01 | [Current Date Functions](01_CURRENT_DATE_FUNCTIONS.md) · [.sql](01_CURRENT_DATE_FUNCTIONS.sql) | Session-safe retrieval of "now"; `NOW()` vs. `CURDATE()` vs. `SYSDATE()` evaluation timing | 9.3 KB · 7.3 KB | [now vs. sysdate](assets/diagrams/now-vs-sysdate.svg) |
+| 02 | [Date Extraction](02_DATE_EXTRACTION.md) · [.sql](02_DATE_EXTRACTION.sql) | Decomposing a date into year, quarter, month, week, weekday, day-of-year for grouping | 8.5 KB · 8.2 KB | [part extraction](assets/diagrams/date-part-extraction.svg) |
+| 03 | [Date Calculations](03_DATE_CALCULATIONS.md) · [.sql](03_DATE_CALCULATIONS.sql) | Interval-based addition, subtraction, and differencing — day-count vs. calendar-unit | 10.0 KB · 10.6 KB | [arithmetic timeline](assets/diagrams/date-arithmetic-timeline.svg) |
+| 04 | [Date Formatting](04_DATE_FORMATTING.md) · [.sql](04_DATE_FORMATTING.sql) | Converting between internal date types and human/system string representations | 9.9 KB · 8.1 KB | [format/parse cycle](assets/diagrams/format-parse-cycle.svg) |
+| 05 | [Business Date Analytics](05_BUSINESS_DATE_ANALYTICS.md) · [.sql](05_BUSINESS_DATE_ANALYTICS.sql) | MTD/QTD/YTD, rolling windows, fiscal periods, tenure, SLA monitoring, cohort foundations | 10.2 KB · 12.3 KB | [MTD/QTD/YTD windows](assets/diagrams/mtd-qtd-ytd-windows.svg) |
+| — | **README.md** (this file) | Module map, diagrams, roadmap, and navigation | — | [hero banner](assets/images/hero-banner.svg) |
 
-```
-09_Date_Functions/
-│
-├── README.md                          ← You are here
-│
-├── 01_CURRENT_DATE_FUNCTIONS.md        Concept: retrieving "now" safely
-├── 01_CURRENT_DATE_FUNCTIONS.sql       Practice: CURRENT_DATE, NOW(), session context
-│
-├── 02_DATE_EXTRACTION.md               Concept: decomposing a date into parts
-├── 02_DATE_EXTRACTION.sql              Practice: YEAR, MONTH, QUARTER, WEEKDAY, etc.
-│
-├── 03_DATE_CALCULATIONS.md             Concept: arithmetic and differences
-├── 03_DATE_CALCULATIONS.sql            Practice: DATE_ADD, DATE_SUB, DATEDIFF, TIMESTAMPDIFF
-│
-├── 04_DATE_FORMATTING.md               Concept: presentation and parsing
-├── 04_DATE_FORMATTING.sql              Practice: DATE_FORMAT, STR_TO_DATE, CAST, CONVERT
-│
-├── 05_BUSINESS_DATE_ANALYTICS.md       Concept: real reporting patterns
-└── 05_BUSINESS_DATE_ANALYTICS.sql      Practice: MTD/QTD/YTD, tenure, SLA, cohorts
-```
+Each numbered pair (`.md` + `.sql`) is self-contained: read the concept
+file first, then work through the paired SQL file scenario by
+scenario. Sizes above are the current on-disk file sizes, listed so
+you know what you're opening before you click.
 
-Each numbered pair (`.md` + `.sql`) is self-contained: read the concept file first, then work through the paired SQL file scenario by scenario.
+## The Diagrams
 
----
+Every diagram in this module (5 total, one per concept file) is
+rendered as a standalone SVG in
+[`assets/diagrams/`](assets/diagrams/) and embedded directly in its
+corresponding file — no external image hosting, so they render
+correctly whether you're reading on GitHub, cloned locally, in any
+markdown viewer, or on the handbook's GitHub Pages site.
 
-## Topics Covered
+<p align="center">
+  <img src="assets/diagrams/now-vs-sysdate.svg" alt="NOW() vs SYSDATE() evaluation timing" width="48%">
+  <img src="assets/diagrams/date-part-extraction.svg" alt="Date part extraction" width="48%">
+</p>
+<p align="center">
+  <img src="assets/diagrams/date-arithmetic-timeline.svg" alt="Date arithmetic timeline" width="48%">
+  <img src="assets/diagrams/format-parse-cycle.svg" alt="Format and parse cycle" width="48%">
+</p>
+<p align="center">
+  <img src="assets/diagrams/mtd-qtd-ytd-windows.svg" alt="MTD QTD YTD rolling windows" width="70%">
+</p>
 
-1. **Current Date & Time** — session-safe retrieval of "now," and the difference between date-only and timestamp values.
-2. **Date Extraction** — pulling structured components (year, quarter, month, week, weekday, day-of-year) out of a date for grouping and segmentation.
-3. **Date Calculations** — interval-based addition, subtraction, and differencing, including day-count vs. calendar-unit differences.
-4. **Date Formatting** — converting between internal date types and human-facing or system-facing string representations.
-5. **Business Date Analytics** — the composite patterns real companies build on top of the above: rolling windows, fiscal periods, tenure, SLA monitoring, and cohort foundations.
-
----
+[`assets/DIAGRAM_SPECS.md`](assets/DIAGRAM_SPECS.md) documents exactly
+what exists, what each diagram shows, and what was deliberately left
+out (and why) — kept accurate against the actual asset folder, not
+aspirational.
 
 ## Functions Covered
 
@@ -151,9 +160,12 @@ Each numbered pair (`.md` + `.sql`) is self-contained: read the concept file fir
 ### Business & Composite Patterns
 Rolling windows (trailing 7/30/90 days) · MTD · QTD · YTD · fiscal-period calculations · tenure/age/duration math · SLA delay measurement
 
-> **Cross-dialect note:** This handbook is written and tested against **MySQL 8**. Wherever a function is MySQL-specific, the corresponding Markdown file includes a callout with the **PostgreSQL** and **SQL Server (T-SQL)** equivalent, since production teams rarely work in a single dialect for their entire career.
-
----
+> **Cross-dialect note:** This handbook is written and tested against
+> **MySQL 8**. Wherever a function is MySQL-specific, the
+> corresponding Markdown file includes a callout with the
+> **PostgreSQL** and **SQL Server (T-SQL)** equivalent, since
+> production teams rarely work in a single dialect for their entire
+> career.
 
 ## Learning Roadmap
 
@@ -173,12 +185,13 @@ Rolling windows (trailing 7/30/90 days) · MTD · QTD · YTD · fiscal-period ca
  05_BUSINESS_DATE_ANALYTICS
         │   "How do real companies combine all of the above into reports?"
         ▼
-   Module 10 →
+   Module 10 — String Functions →
 ```
 
-Each file builds on the last. Extraction depends on knowing what "current date" even means in a session; calculations depend on extraction; formatting depends on calculations; and business analytics is the synthesis of all four.
-
----
+Each file builds on the last. Extraction depends on knowing what
+"current date" even means in a session; calculations depend on
+extraction; formatting depends on calculations; and business analytics
+is the synthesis of all four.
 
 ## Business Domains
 
@@ -193,8 +206,6 @@ Each file builds on the last. Extraction depends on knowing what "current date" 
 | **Manufacturing** | Production schedule adherence, downtime duration, quality-check intervals |
 | **Marketing** | Campaign window analysis, attribution lookback periods |
 
----
-
 ## Difficulty & Estimated Time
 
 | File | Difficulty | Estimated Time |
@@ -206,21 +217,6 @@ Each file builds on the last. Extraction depends on knowing what "current date" 
 | 05_BUSINESS_DATE_ANALYTICS | Intermediate–Advanced | 90–120 min |
 | **Module Total** | **Intermediate** | **~4.5–6 hours** |
 
----
-
-## Business Applications
-
-This module is the backbone of nearly every recurring business report:
-
-- **Executive dashboards** — "Revenue this month vs. last month," "YTD performance vs. target"
-- **HR systems** — "Who is eligible for their 1-year review this quarter?"
-- **Operations** — "Which shipments breached their 48-hour SLA?"
-- **Finance** — "What was collected this fiscal quarter vs. the prior fiscal quarter?"
-- **Marketing** — "What was the 7-day rolling conversion rate during the campaign?"
-- **Customer success** — "Which subscriptions renew in the next 30 days?"
-
----
-
 ## Real Dashboards This Module Powers
 
 - A **monthly revenue trend chart** driven by `DATE_FORMAT(order_date, '%Y-%m')` grouping.
@@ -229,28 +225,42 @@ This module is the backbone of nearly every recurring business report:
 - A **rolling 30-day active users** widget driven by a trailing-window filter with a stable, sargable date boundary.
 - A **cohort retention grid**, whose foundation (bucketing users by signup month) is introduced here and formalized in the Window Functions and Cohort Analysis modules.
 
----
-
 ## Performance Tips
 
-- **Never wrap an indexed date column in a function inside `WHERE`.** `WHERE YEAR(order_date) = 2024` prevents index usage; prefer a sargable range: `WHERE order_date >= '2024-01-01' AND order_date < '2025-01-01'`.
-- **Prefer half-open interval ranges** (`>= start AND < end`) over `BETWEEN` for date ranges — `BETWEEN` is inclusive on both ends and silently mishandles timestamp precision (e.g., excludes `23:59:59.500` on the end date).
-- **Materialize a calendar/date dimension table** for high-volume reporting instead of computing fiscal periods or holiday flags inline on every query.
-- **Avoid computing the same derived date expression multiple times** in one query — compute it once in a CTE and reference it downstream.
-- **Be deliberate about `DATEDIFF()` vs. `TIMESTAMPDIFF()`.** `DATEDIFF()` truncates to whole calendar days and ignores time-of-day, which is usually wrong for SLA or duration reporting on timestamp columns.
-
----
+- **Never wrap an indexed date column in a function inside `WHERE`.**
+  `WHERE YEAR(order_date) = 2024` prevents index usage; prefer a
+  sargable range: `WHERE order_date >= '2024-01-01' AND order_date <
+  '2025-01-01'`.
+- **Prefer half-open interval ranges** (`>= start AND < end`) over
+  `BETWEEN` for date ranges — `BETWEEN` is inclusive on both ends and
+  silently mishandles timestamp precision (e.g., excludes
+  `23:59:59.500` on the end date).
+- **Materialize a calendar/date dimension table** for high-volume
+  reporting instead of computing fiscal periods or holiday flags
+  inline on every query.
+- **Avoid computing the same derived date expression multiple times**
+  in one query — compute it once in a CTE and reference it downstream.
+- **Be deliberate about `DATEDIFF()` vs. `TIMESTAMPDIFF()`.**
+  `DATEDIFF()` truncates to whole calendar days and ignores
+  time-of-day, which is usually wrong for SLA or duration reporting on
+  timestamp columns.
 
 ## Best Practices
 
-- Store dates and timestamps in proper native types (`DATE`, `DATETIME`, `TIMESTAMP`) — never as strings.
-- Be explicit about time zones for any `TIMESTAMP` column in a distributed or multi-region system.
-- Use `INTERVAL` arithmetic (`DATE_ADD(d, INTERVAL 1 MONTH)`) instead of naive day-count approximations (`d + 30`) — months are not a fixed number of days.
-- Name derived date columns clearly: `order_month`, `fiscal_quarter`, `days_since_signup` — not `d1`, `x`, `tmp`.
-- Document any assumption about fiscal year start, business-day-only logic, or timezone handling directly in the query as a comment.
-- When a report will run daily against production, prefer computing the "as of" boundary once (e.g., in a CTE) so all downstream logic is consistent within a single execution.
-
----
+- Store dates and timestamps in proper native types (`DATE`,
+  `DATETIME`, `TIMESTAMP`) — never as strings.
+- Be explicit about time zones for any `TIMESTAMP` column in a
+  distributed or multi-region system.
+- Use `INTERVAL` arithmetic (`DATE_ADD(d, INTERVAL 1 MONTH)`) instead
+  of naive day-count approximations (`d + 30`) — months are not a
+  fixed number of days.
+- Name derived date columns clearly: `order_month`, `fiscal_quarter`,
+  `days_since_signup` — not `d1`, `x`, `tmp`.
+- Document any assumption about fiscal year start, business-day-only
+  logic, or timezone handling directly in the query as a comment.
+- When a report will run daily against production, prefer computing
+  the "as of" boundary once (e.g., in a CTE) so all downstream logic
+  is consistent within a single execution.
 
 ## Common Mistakes
 
@@ -264,45 +274,80 @@ This module is the backbone of nearly every recurring business report:
 | Ignoring time zones on `TIMESTAMP` columns | Produces off-by-one-day errors across regions | Normalize to UTC in storage; convert at the presentation layer |
 | Confusing calendar quarter with fiscal quarter | Produces incorrect quarter labels for non-January fiscal years | Compute fiscal quarter explicitly relative to the fiscal year start |
 
----
+## Build Status
 
-## Module Workflow
+✅ **Complete and diagram-reviewed.** All 5 content files, their
+paired SQL, and every diagram referenced from those files are
+published and embedded. Module navigation links have been verified
+against the live repository folder names (not an assumed or outdated
+structure), and file sizes in the table above are read directly off
+disk rather than estimated.
 
-1. Read `01_CURRENT_DATE_FUNCTIONS.md`, then work through `01_CURRENT_DATE_FUNCTIONS.sql` scenario by scenario.
-2. Repeat for files `02` through `05`, in order — each file assumes mastery of the previous one.
-3. For each SQL file, do not just read the solution — attempt the stated business question yourself before revealing it.
-4. Complete the **Practice Challenges** at the end of every Markdown file before moving to the next numbered file.
-5. After finishing `05_BUSINESS_DATE_ANALYTICS`, attempt to build one dashboard-style query from scratch using only the business scenario, without referencing the solutions.
+## Module Checklist
 
----
+- [x] Every `.sql` file is paired 1:1 with its `.md` concept file
+- [x] Every file follows the handbook documentation template
+      (Introduction → ... → Practice Challenges → Further Reading)
+- [x] Every diagram referenced in a file exists in
+      `assets/diagrams/` and is embedded, not just linked
+- [x] Cross-engine notes (MySQL/PostgreSQL/SQL Server) present where
+      a function is dialect-specific
+- [x] `assets/DIAGRAM_SPECS.md` kept accurate against the actual
+      asset folder
+- [x] Module navigation links point to the real, live folder names
+      (`08_WINDOW_BUSINESS_CASES`, `10_STRING_FUNCTIONS`)
+
+## How to Use This Module
+
+1. Read the `.md` file for a topic before opening its `.sql` file —
+   the concepts (why a date function behaves the way it does) matter
+   more than memorizing syntax.
+2. Work through each `.sql` file scenario by scenario; don't just
+   read the solution — attempt the stated business question yourself
+   first.
+3. Complete the **Practice Challenges** at the end of every Markdown
+   file before moving to the next numbered file.
+4. Repeat for files `02` through `05`, in order — each file assumes
+   mastery of the previous one (see the [Learning Roadmap](#learning-roadmap)).
+5. After finishing `05_BUSINESS_DATE_ANALYTICS`, attempt to build one
+   dashboard-style query from scratch using only the business
+   scenario, without referencing the solutions.
 
 ## Interview Preparation
 
-Date-function questions are a favorite in SQL technical screens because they reveal whether a candidate understands *edge cases*, not just syntax. Expect questions such as:
+Date-function questions are a favorite in SQL technical screens
+because they reveal whether a candidate understands *edge cases*, not
+just syntax. Expect questions such as:
 
 - "Find the number of active days for each user in the last 30 days."
 - "Calculate each employee's tenure in full years and months."
 - "Write a query to find the last day of the previous month."
 - "Identify orders that breached a 48-hour delivery SLA."
-- "Compute month-to-date revenue as of yesterday, correctly handling the first day of the month."
-- "Explain why `WHERE YEAR(created_at) = 2023` is a performance anti-pattern."
+- "Compute month-to-date revenue as of yesterday, correctly handling
+  the first day of the month."
+- "Explain why `WHERE YEAR(created_at) = 2023` is a performance
+  anti-pattern."
 
-Each Markdown file in this module includes a dedicated **Interview Questions** section addressing patterns like these in depth.
-
----
+Each Markdown file in this module includes a dedicated **Interview
+Questions** section (3 questions per file, 15 total) addressing
+patterns like these in depth.
 
 ## Career Relevance
 
-Date logic appears in essentially every analytics, data engineering, and backend engineering role:
+Date logic appears in essentially every analytics, data engineering,
+and backend engineering role:
 
 - **Data Analysts** use it daily for recurring reporting cadences.
-- **Data Engineers** use it to build calendar dimension tables and partition pipelines by date.
-- **Backend Engineers** use it for SLA enforcement, subscription billing cycles, and session expiry logic.
-- **Product Analysts** use it for retention, cohort, and engagement analysis.
+- **Data Engineers** use it to build calendar dimension tables and
+  partition pipelines by date.
+- **Backend Engineers** use it for SLA enforcement, subscription
+  billing cycles, and session expiry logic.
+- **Product Analysts** use it for retention, cohort, and engagement
+  analysis.
 
-Fluency here is one of the fastest ways to distinguish a candidate who has "learned SQL syntax" from one who has "engineered with SQL in production."
-
----
+Fluency here is one of the fastest ways to distinguish a candidate who
+has "learned SQL syntax" from one who has "engineered with SQL in
+production."
 
 ## Further Reading
 
@@ -310,16 +355,18 @@ Fluency here is one of the fastest ways to distinguish a candidate who has "lear
 - [PostgreSQL Documentation — Date/Time Functions and Operators](https://www.postgresql.org/docs/current/functions-datetime.html)
 - [Microsoft Learn — Date and Time Data Types and Functions (Transact-SQL)](https://learn.microsoft.com/en-us/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql)
 - [MySQL 8.0 Reference Manual — Date and Time Type Storage Requirements](https://dev.mysql.com/doc/refman/8.0/en/storage-requirements.html)
-
----
+- Curated further reading also lives in the handbook root:
+  [books](../Resources/books.md),
+  [engineering blogs](../Resources/blogs.md),
+  [official documentation](../Resources/documentation.md),
+  [interview prep](../Resources/interview-resources.md).
 
 ## Module Navigation
 
-| Previous                | Current                        | Next |
-|----------------------------------------------------------------------------|------------------------------|------------------------------------------------------------------|
+| Previous | Current | Next |
+|---|---|---|
+| [← Module 08: Window Business Cases](../08_WINDOW_BUSINESS_CASES/README.md) | **Module 09: Date Functions** | [Module 10: String Functions →](../10_STRING_FUNCTIONS/README.md) |
 
-| [← Module 08:Window_Business_Cases](../08_Window_Business_Cases/README.md) |**Module 09: Date Functions**| [Module 10:String_Functions →](../10_String_Functions/README.md) |
-
-
+---
 
 *Part of the [SQL Engineering Handbook](../README.md) — a production-grade curriculum for engineering SQL the way real companies use it.*

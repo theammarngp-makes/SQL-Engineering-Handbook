@@ -81,6 +81,8 @@ SELECT TIMESTAMPDIFF(MONTH, hire_date, CURRENT_DATE) AS months_employed FROM emp
 
 ## Visual Explanation
 
+![Date arithmetic timeline — DATE_ADD, DATE_SUB, DATEDIFF, TIMESTAMPDIFF](assets/diagrams/date-arithmetic-timeline.svg)
+
 ```
                     DATE_SUB(d, INTERVAL 1 MONTH)     DATE_ADD(d, INTERVAL 90 DAY)
                               │                                    │

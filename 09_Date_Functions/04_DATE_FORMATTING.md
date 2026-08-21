@@ -95,6 +95,8 @@ SELECT CONVERT('2026-07-07', DATE);
 
 ## Visual Explanation
 
+![DATE_FORMAT and STR_TO_DATE round trip](assets/diagrams/format-parse-cycle.svg)
+
 ```
    Internal DATE value
    (binary, no "format")
