@@ -1,5 +1,9 @@
 # 04 — String Cleaning & Validation
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [03 String Transformation](03_STRING_TRANSFORMATION.md) · Next → [05 Business String Analytics](05_BUSINESS_STRING_ANALYTICS.md)
+
+![String Cleaning and Validation](assets/04_string_cleaning_and_validation.svg)
+
 ## Introduction
 
 Topics 01–03 gave you the primitives: measure, slice, search, transform. This topic is about combining them into repeatable cleaning and validation routines — the kind that run in an ETL pipeline before dirty data ever reaches a report. Using a healthcare intake schema (patient records, contact details), this topic covers whitespace normalization, structural validation of emails and phone numbers, and standardization rules for names and addresses.
@@ -134,3 +138,7 @@ Cleaning and validation are compositions of the functions from Topics 01–03, a
 
 - [PostgreSQL Pattern Matching](https://www.postgresql.org/docs/current/functions-matching.html)
 - [MySQL String Functions Reference](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

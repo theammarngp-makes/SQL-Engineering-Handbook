@@ -1,0 +1,84 @@
+<svg viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="55%" stop-color="#101826"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#58a6ff"/>
+      <stop offset="50%" stop-color="#7ee2b8"/>
+      <stop offset="100%" stop-color="#bc8cff"/>
+    </linearGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M 34 0 L 0 0 0 34" fill="none" stroke="#1c2531" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="280" fill="url(#bgGrad)"/>
+  <rect width="1200" height="280" fill="url(#grid)" opacity="0.55"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accentGrad)"/>
+  <rect x="0" y="274" width="1200" height="6" fill="url(#accentGrad)"/>
+
+  <!-- floating quote / function glyphs -->
+  <g opacity="0.16" font-family="'Cascadia Code','SFMono-Regular',Consolas,monospace" font-weight="700">
+    <text x="60" y="70" font-size="46" fill="#58a6ff">"</text>
+    <text x="1085" y="240" font-size="70" fill="#bc8cff">"</text>
+    <text x="980" y="70" font-size="30" fill="#7ee2b8">λ</text>
+    <text x="90" y="235" font-size="28" fill="#d29922">%_%</text>
+  </g>
+
+  <!-- module badge -->
+  <g transform="translate(60,58)">
+    <rect x="0" y="0" width="150" height="40" rx="20" fill="#101826" stroke="#30363d" stroke-width="1.5"/>
+    <circle cx="22" cy="20" r="8" fill="none" stroke="url(#accentGrad)" stroke-width="2.5"/>
+    <text x="40" y="26" font-size="16" font-weight="700" letter-spacing="2" fill="#8b949e" font-family="'Cascadia Code','SFMono-Regular',Consolas,monospace">MODULE 10</text>
+  </g>
+
+  <!-- title -->
+  <text x="60" y="150" font-size="58" font-weight="800" fill="#f0f6fc" letter-spacing="0.5">
+    String Functions
+  </text>
+  <rect x="62" y="164" width="430" height="6" rx="3" fill="url(#accentGrad)"/>
+
+  <!-- subtitle -->
+  <text x="60" y="200" font-size="19" fill="#8b949e">
+    Turning dirty, inconsistent text into clean, joinable, reportable data.
+  </text>
+
+  <!-- footer meta row -->
+  <g font-family="'Cascadia Code','SFMono-Regular',Consolas,monospace" font-size="13" fill="#8b949e">
+    <text x="60" y="240">SQL Engineering Handbook</text>
+    <circle cx="255" cy="236" r="2.5" fill="#30363d"/>
+    <text x="270" y="240">5 topics</text>
+    <circle cx="345" cy="236" r="2.5" fill="#30363d"/>
+    <text x="360" y="240">26 functions</text>
+    <circle cx="470" cy="236" r="2.5" fill="#30363d"/>
+    <text x="485" y="240">Intermediate</text>
+  </g>
+
+  <!-- right side decorative code panel -->
+  <g transform="translate(760,55)">
+    <rect x="0" y="0" width="380" height="170" rx="10" fill="#0f1622" stroke="#30363d" stroke-width="1.5"/>
+    <circle cx="18" cy="18" r="5" fill="#f85149"/>
+    <circle cx="36" cy="18" r="5" fill="#d29922"/>
+    <circle cx="54" cy="18" r="5" fill="#3fb950"/>
+    <g font-family="'Cascadia Code','SFMono-Regular',Consolas,monospace" font-size="13.5">
+      <text x="18" y="48" fill="#8b949e">SELECT</text>
+      <text x="90" y="48" fill="#7ee2b8">TRIM</text>
+      <text x="126" y="48" fill="#c9d1d9">(</text>
+      <text x="132" y="48" fill="#58a6ff">UPPER</text>
+      <text x="176" y="48" fill="#c9d1d9">(raw_name))</text>
+      <text x="18" y="72" fill="#8b949e">AS</text>
+      <text x="42" y="72" fill="#f0f6fc">clean_name,</text>
+      <text x="18" y="96" fill="#58a6ff">CONCAT_WS</text>
+      <text x="120" y="96" fill="#c9d1d9">(' ', first, last)</text>
+      <text x="18" y="120" fill="#8b949e">FROM</text>
+      <text x="66" y="120" fill="#f0f6fc">customers</text>
+      <text x="18" y="144" fill="#8b949e">WHERE</text>
+      <text x="76" y="144" fill="#d29922">email</text>
+      <text x="128" y="144" fill="#bc8cff"> LIKE</text>
+      <text x="168" y="144" fill="#7ee2b8"> '%@gmail.com'</text>
+    </g>
+  </g>
+</svg>

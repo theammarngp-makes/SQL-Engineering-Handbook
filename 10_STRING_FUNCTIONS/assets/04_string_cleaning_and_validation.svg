@@ -1,0 +1,86 @@
+<svg viewBox="0 0 980 420" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrHead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#484f58"/>
+    </marker>
+  </defs>
+  <rect width="980" height="420" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="418" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">04 — String Cleaning &amp; Validation</text>
+  <text x="700" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">the production cleaning pipeline</text>
+
+  <!-- raw input -->
+  <g transform="translate(40,85)">
+    <rect width="900" height="40" rx="8" fill="#2a1215" stroke="#f85149"/>
+    <text x="16" y="26" font-family="'Cascadia Code',Consolas,monospace" font-size="13.5" fill="#ffa198">raw:  '  Sofia.MARTINEZ@Company..com  '</text>
+  </g>
+
+  <!-- arrow down -->
+  <line x1="490" y1="125" x2="490" y2="150" stroke="#484f58" stroke-width="2" marker-end="url(#arrHead)"/>
+
+  <!-- 5 pipeline stages -->
+  <g font-family="'Segoe UI',sans-serif">
+    <!-- stage 1 -->
+    <g transform="translate(40,155)">
+      <rect width="164" height="88" rx="10" fill="#101826" stroke="#58a6ff"/>
+      <text x="82" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#58a6ff">1 · TRIM</text>
+      <text x="82" y="46" text-anchor="middle" font-family="'Cascadia Code',Consolas,monospace" font-size="11" fill="#c9d1d9">TRIM(s)</text>
+      <text x="82" y="66" text-anchor="middle" font-size="10.5" fill="#8b949e">strip lead/trail</text>
+      <text x="82" y="80" text-anchor="middle" font-size="10.5" fill="#8b949e">whitespace</text>
+    </g>
+    <line x1="204" y1="199" x2="228" y2="199" stroke="#484f58" stroke-width="2" marker-end="url(#arrHead)"/>
+
+    <!-- stage 2 -->
+    <g transform="translate(232,155)">
+      <rect width="164" height="88" rx="10" fill="#101826" stroke="#7ee2b8"/>
+      <text x="82" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#7ee2b8">2 · CASE</text>
+      <text x="82" y="46" text-anchor="middle" font-family="'Cascadia Code',Consolas,monospace" font-size="11" fill="#c9d1d9">LOWER(s)</text>
+      <text x="82" y="66" text-anchor="middle" font-size="10.5" fill="#8b949e">normalize before</text>
+      <text x="82" y="80" text-anchor="middle" font-size="10.5" fill="#8b949e">any comparison</text>
+    </g>
+    <line x1="396" y1="199" x2="420" y2="199" stroke="#484f58" stroke-width="2" marker-end="url(#arrHead)"/>
+
+    <!-- stage 3 -->
+    <g transform="translate(424,155)">
+      <rect width="164" height="88" rx="10" fill="#101826" stroke="#d29922"/>
+      <text x="82" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#d29922">3 · STANDARDIZE</text>
+      <text x="82" y="46" text-anchor="middle" font-family="'Cascadia Code',Consolas,monospace" font-size="11" fill="#c9d1d9">REPLACE(s,'..','.')</text>
+      <text x="82" y="66" text-anchor="middle" font-size="10.5" fill="#8b949e">collapse known</text>
+      <text x="82" y="80" text-anchor="middle" font-size="10.5" fill="#8b949e">formatting variants</text>
+    </g>
+    <line x1="588" y1="199" x2="612" y2="199" stroke="#484f58" stroke-width="2" marker-end="url(#arrHead)"/>
+
+    <!-- stage 4 -->
+    <g transform="translate(616,155)">
+      <rect width="164" height="88" rx="10" fill="#101826" stroke="#bc8cff"/>
+      <text x="82" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#bc8cff">4 · VALIDATE</text>
+      <text x="82" y="46" text-anchor="middle" font-family="'Cascadia Code',Consolas,monospace" font-size="11" fill="#c9d1d9">REGEXP / LIKE</text>
+      <text x="82" y="66" text-anchor="middle" font-size="10.5" fill="#8b949e">flag records that</text>
+      <text x="82" y="80" text-anchor="middle" font-size="10.5" fill="#8b949e">fail business rules</text>
+    </g>
+    <line x1="780" y1="199" x2="804" y2="199" stroke="#484f58" stroke-width="2" marker-end="url(#arrHead)"/>
+
+    <!-- stage 5 -->
+    <g transform="translate(808,155)">
+      <rect width="132" height="88" rx="10" fill="#101826" stroke="#f778ba"/>
+      <text x="66" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#f778ba">5 · EXTRACT</text>
+      <text x="66" y="46" text-anchor="middle" font-family="'Cascadia Code',Consolas,monospace" font-size="10.5" fill="#c9d1d9">SUBSTRING</text>
+      <text x="66" y="66" text-anchor="middle" font-size="10.5" fill="#8b949e">derive fields</text>
+      <text x="66" y="80" text-anchor="middle" font-size="10.5" fill="#8b949e">from clean input</text>
+    </g>
+  </g>
+
+  <!-- arrow down to clean output -->
+  <line x1="490" y1="243" x2="490" y2="268" stroke="#484f58" stroke-width="2" marker-end="url(#arrHead)"/>
+
+  <g transform="translate(40,273)">
+    <rect width="900" height="40" rx="8" fill="#0d2818" stroke="#3fb950"/>
+    <text x="16" y="26" font-family="'Cascadia Code',Consolas,monospace" font-size="13.5" fill="#7ee2b8">clean:  'sofia.martinez@company.com'   ✓ passes email pattern check</text>
+  </g>
+
+  <text x="40" y="345" font-size="12.5" fill="#8b949e">Skipping step 1 or 2 is the single most common cause of "duplicate" customers or failed joins in production.</text>
+  <text x="40" y="367" font-size="12.5" fill="#8b949e">Reuses: TRIM · UPPER/LOWER · REPLACE · LOCATE · LIKE · REGEXP · CHAR_LENGTH — no new functions, only new judgment.</text>
+  <text x="40" y="395" font-size="11.5" fill="#484f58" font-family="'Cascadia Code',Consolas,monospace">order matters: validating before standardizing produces false negatives on otherwise-clean data.</text>
+</svg>

@@ -1,5 +1,9 @@
 # 02 — String Search & Extraction
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [01 Basic String Functions](01_BASIC_STRING_FUNCTIONS.md) · Next → [03 String Transformation](03_STRING_TRANSFORMATION.md)
+
+![String Search and Extraction](assets/02_string_search_and_extraction.svg)
+
 ## Introduction
 
 Once text is cleaned and normalized, the next recurring need is finding things inside it: does this email contain a domain you recognize, does this product code match a known prefix pattern, what comes after the third delimiter in this pipe-separated reference number. This topic covers SQL's search and extraction toolkit using an e-commerce schema — customer emails, order reference codes, and product SKUs.
@@ -143,3 +147,7 @@ Search and extraction functions make string parsing robust to content rather tha
 
 - [PostgreSQL Pattern Matching](https://www.postgresql.org/docs/current/functions-matching.html)
 - [MySQL String Comparison Functions](https://dev.mysql.com/doc/refman/8.0/en/string-comparison-functions.html)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

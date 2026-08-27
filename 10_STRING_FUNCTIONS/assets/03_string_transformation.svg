@@ -1,0 +1,75 @@
+<svg viewBox="0 0 980 460" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="980" height="460" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="458" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">03 — String Transformation</text>
+  <text x="700" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">before → function → after</text>
+
+  <!-- table header -->
+  <g font-family="'Cascadia Code',Consolas,monospace" font-size="11.5" fill="#484f58">
+    <text x="40" y="80">INPUT</text>
+    <text x="330" y="80">FUNCTION</text>
+    <text x="640" y="80">OUTPUT</text>
+  </g>
+  <line x1="40" y1="88" x2="940" y2="88" stroke="#21262d"/>
+
+  <!-- rows -->
+  <g font-family="'Cascadia Code',Consolas,monospace" font-size="13.5">
+
+  <!-- REPLACE -->
+  <g transform="translate(0,105)">
+    <text x="40" y="20" fill="#f0f6fc">'2024-01-15'</text>
+    <path d="M290 12 L 320 12" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow1)"/>
+    <text x="330" y="20" fill="#58a6ff">REPLACE(s,'-','/')</text>
+    <text x="640" y="20" fill="#7ee2b8">'2024/01/15'</text>
+  </g>
+
+  <!-- REVERSE -->
+  <g transform="translate(0,145)">
+    <text x="40" y="20" fill="#f0f6fc">'level'</text>
+    <text x="330" y="20" fill="#bc8cff">REVERSE(s)</text>
+    <text x="640" y="20" fill="#7ee2b8">'level'  (palindrome check)</text>
+  </g>
+
+  <!-- REPEAT -->
+  <g transform="translate(0,185)">
+    <text x="40" y="20" fill="#f0f6fc">'-'</text>
+    <text x="330" y="20" fill="#d29922">REPEAT(s, 10)</text>
+    <text x="640" y="20" fill="#7ee2b8">'----------'</text>
+  </g>
+
+  <!-- SPACE -->
+  <g transform="translate(0,225)">
+    <text x="40" y="20" fill="#f0f6fc">n = 4</text>
+    <text x="330" y="20" fill="#f778ba">SPACE(n)</text>
+    <text x="640" y="20" fill="#7ee2b8">'    '  (4 blank chars)</text>
+  </g>
+
+  <!-- INSERT -->
+  <g transform="translate(0,265)">
+    <text x="40" y="20" fill="#f0f6fc">'SQL Handbook'</text>
+    <text x="330" y="20" fill="#58a6ff">INSERT(s,5,0,'-Eng-')</text>
+    <text x="640" y="20" fill="#7ee2b8">'SQL-Eng- Handbook'</text>
+  </g>
+
+  <!-- LPAD -->
+  <g transform="translate(0,305)">
+    <text x="40" y="20" fill="#f0f6fc">'42'</text>
+    <text x="330" y="20" fill="#f85149">LPAD(s, 6, '0')</text>
+    <text x="640" y="20" fill="#7ee2b8">'000042'</text>
+  </g>
+
+  <!-- RPAD -->
+  <g transform="translate(0,345)">
+    <text x="40" y="20" fill="#f0f6fc">'ID7'</text>
+    <text x="330" y="20" fill="#f85149">RPAD(s, 8, '.')</text>
+    <text x="640" y="20" fill="#7ee2b8">'ID7.....'</text>
+  </g>
+
+  </g>
+
+  <line x1="40" y1="385" x2="940" y2="385" stroke="#21262d"/>
+  <text x="40" y="415" font-size="12.5" fill="#8b949e">LPAD is the standard way to build fixed-width, zero-padded IDs and invoice numbers for report output.</text>
+  <text x="40" y="435" font-size="12.5" fill="#8b949e">All transformations here are non-destructive — the source column is unchanged; only the result set differs.</text>
+</svg>

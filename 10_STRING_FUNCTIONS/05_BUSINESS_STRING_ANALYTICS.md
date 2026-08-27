@@ -1,5 +1,9 @@
 # 05 — Business String Analytics
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [04 String Cleaning & Validation](04_STRING_CLEANING_AND_VALIDATION.md) · Next → [Module 11 NULL Handling ▶](../11_NULL_HANDLING_AND_DATA_CLEANING/README.md)
+
+![Business String Analytics](assets/05_business_string_analytics.svg)
+
 ## Introduction
 
 This closing topic doesn't introduce new functions — it applies everything from Topics 01–04 to end-to-end business reporting problems, using a logistics schema (warehouse labels, shipment tracking, carrier performance). The goal is to practice deciding *which* combination of string functions a real reporting requirement calls for, not just executing one when told which to use.
@@ -134,3 +138,7 @@ This topic is where Topics 01–04 stop being separate skills and become one wor
 - [PostgreSQL String Functions and Operators](https://www.postgresql.org/docs/current/functions-string.html)
 - [MySQL String Functions Reference](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html)
 - [Microsoft Learn — String Functions (Transact-SQL)](https://learn.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

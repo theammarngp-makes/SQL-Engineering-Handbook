@@ -1,5 +1,9 @@
 # 01 — Basic String Functions
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · Next → [02 String Search & Extraction](02_STRING_SEARCH_AND_EXTRACTION.md)
+
+![Basic String Functions](assets/01_basic_string_functions.svg)
+
 ## Introduction
 
 Every string-heavy query in this handbook builds on a small set of foundational operations: measuring text, changing its case, slicing it, joining it together, and finding a character's position within it. This topic covers that foundation using an HR schema — employee names, department assignments, and derived usernames — the same category of problem you'll meet in almost any production system with a `users` or `employees` table.
@@ -160,3 +164,7 @@ Basic string functions — measurement, case conversion, slicing, assembly, and 
 
 - [PostgreSQL String Functions and Operators](https://www.postgresql.org/docs/current/functions-string.html)
 - [MySQL String Functions Reference](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

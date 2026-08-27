@@ -1,5 +1,9 @@
 # 03 — String Transformation
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [02 String Search & Extraction](02_STRING_SEARCH_AND_EXTRACTION.md) · Next → [04 String Cleaning & Validation](04_STRING_CLEANING_AND_VALIDATION.md)
+
+![String Transformation](assets/03_string_transformation.svg)
+
 ## Introduction
 
 Search and extraction (Topic 02) answer "where is it" and "give me a piece." Transformation functions answer "change it" — replace one substring with another, reverse a sequence for a checksum algorithm, pad a value to a fixed width for a legacy fixed-length export, or repeat a character to build a formatted separator line. This topic uses a banking/finance schema — account numbers, transaction references, and report formatting — where fixed-width formatting requirements are common and non-negotiable.
@@ -141,3 +145,7 @@ Transformation functions reshape string content and width to satisfy formatting 
 
 - [PostgreSQL String Functions and Operators](https://www.postgresql.org/docs/current/functions-string.html)
 - [MySQL String Functions Reference](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

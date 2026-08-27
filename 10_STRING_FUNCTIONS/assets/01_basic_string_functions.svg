@@ -1,0 +1,94 @@
+<svg viewBox="0 0 980 460" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="hdr1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#58a6ff"/><stop offset="100%" stop-color="#7ee2b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="980" height="460" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="458" rx="13" fill="none" stroke="#30363d"/>
+
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">01 — Basic String Functions</text>
+  <text x="640" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">6 categories · 11 functions</text>
+
+  <!-- input string bar -->
+  <g transform="translate(40,80)">
+    <rect width="900" height="46" rx="8" fill="#0f1622" stroke="#30363d"/>
+    <text x="16" y="29" font-family="'Cascadia Code',Consolas,monospace" font-size="15" fill="#8b949e">input →</text>
+    <text x="95" y="29" font-family="'Cascadia Code',Consolas,monospace" font-size="15" fill="#f0f6fc">"  Sofia Martinez  "</text>
+    <text x="330" y="29" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#484f58">(untrimmed, mixed case, raw column value)</text>
+  </g>
+
+  <!-- 6 category cards, 3x2 grid -->
+  <!-- helper coordinates -->
+  <g font-family="'Segoe UI',sans-serif">
+
+  <!-- card 1: Length -->
+  <g transform="translate(40,150)">
+    <rect width="285" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+    <rect x="0" y="0" width="6" height="130" rx="3" fill="#58a6ff"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#58a6ff">MEASURE</text>
+    <text x="20" y="52" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">LENGTH(s)</text>
+    <text x="20" y="72" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">CHAR_LENGTH(s)</text>
+    <text x="20" y="102" font-size="12" fill="#8b949e">Byte length vs. character</text>
+    <text x="20" y="118" font-size="12" fill="#8b949e">count — diverge on UTF-8.</text>
+  </g>
+
+  <!-- card 2: Case -->
+  <g transform="translate(348,150)">
+    <rect width="285" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+    <rect x="0" y="0" width="6" height="130" rx="3" fill="#7ee2b8"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#7ee2b8">NORMALIZE CASE</text>
+    <text x="20" y="52" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">UPPER(s)</text>
+    <text x="20" y="72" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">LOWER(s)</text>
+    <text x="20" y="102" font-size="12" fill="#8b949e">Makes comparisons and</text>
+    <text x="20" y="118" font-size="12" fill="#8b949e">joins case-insensitive.</text>
+  </g>
+
+  <!-- card 3: Trim -->
+  <g transform="translate(656,150)">
+    <rect width="285" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+    <rect x="0" y="0" width="6" height="130" rx="3" fill="#d29922"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#d29922">TRIM WHITESPACE</text>
+    <text x="20" y="52" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">TRIM(s) · LTRIM(s)</text>
+    <text x="20" y="72" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">RTRIM(s)</text>
+    <text x="20" y="102" font-size="12" fill="#8b949e">Removes lead/trail/both —</text>
+    <text x="20" y="118" font-size="12" fill="#8b949e">#1 cause of false mismatches.</text>
+  </g>
+
+  <!-- card 4: Slice -->
+  <g transform="translate(40,296)">
+    <rect width="285" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+    <rect x="0" y="0" width="6" height="130" rx="3" fill="#bc8cff"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#bc8cff">SLICE</text>
+    <text x="20" y="52" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">LEFT(s,n) · RIGHT(s,n)</text>
+    <text x="20" y="72" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">SUBSTRING(s,pos,len)</text>
+    <text x="20" y="102" font-size="12" fill="#8b949e">Positional extraction —</text>
+    <text x="20" y="118" font-size="12" fill="#8b949e">risky on non-fixed-width data.</text>
+  </g>
+
+  <!-- card 5: Join -->
+  <g transform="translate(348,296)">
+    <rect width="285" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+    <rect x="0" y="0" width="6" height="130" rx="3" fill="#f778ba"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#f778ba">JOIN / BUILD</text>
+    <text x="20" y="52" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">CONCAT(a,b,...)</text>
+    <text x="20" y="72" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">CONCAT_WS(sep,...)</text>
+    <text x="20" y="102" font-size="12" fill="#8b949e">CONCAT_WS skips NULLs;</text>
+    <text x="20" y="118" font-size="12" fill="#8b949e">CONCAT propagates them.</text>
+  </g>
+
+  <!-- card 6: Locate -->
+  <g transform="translate(656,296)">
+    <rect width="285" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+    <rect x="0" y="0" width="6" height="130" rx="3" fill="#f85149"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#f85149">LOCATE</text>
+    <text x="20" y="52" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#f0f6fc">LOCATE(sub, s)</text>
+    <text x="20" y="82" font-size="12" fill="#8b949e">Returns 1-based position of</text>
+    <text x="20" y="98" font-size="12" fill="#8b949e">a substring — foundation for</text>
+    <text x="20" y="114" font-size="12" fill="#8b949e">topic 02's search functions.</text>
+  </g>
+
+  </g>
+</svg>
