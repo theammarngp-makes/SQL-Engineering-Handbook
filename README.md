@@ -423,12 +423,12 @@ Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 <tr>
 <td width="90"><img src="https://avatars.githubusercontent.com/u/224389032?v=4" width="70" style="border-radius:50%"/></td>
 <td>
-<b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analytics Engineer, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineering-Handbook">SQL Engineering Handbook</a> (20+ modules). Based in Nagpur, India.
+<b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analyst, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineering-Handbook">SQL Engineering Handbook</a> (20+ modules). Based in Nagpur, India.
 </td>
 </tr>
 </table>
 
-[![Website](https://img.shields.io/badge/Website-theammarngp--makes.github.io-2563EB?style=for-the-badge&logo=googlechrome&logoColor=white)](https://theammarngp-makes.github.io)
+[![Website](https://img.shields.io/badge/Website-theammarngp--makes.loveable.app-2563EB?style=for-the-badge&logo=googlechrome&logoColor=white)](https://theammarngp.lovable.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-mohammad--ammar--ngp-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammad-ammar-ngp/)
 [![X](https://img.shields.io/badge/X-@theammarngp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/theammarngp)
 [![Gmail](https://img.shields.io/badge/Email-theammarngp@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:theammarngp@gmail.com)
@@ -439,5 +439,11 @@ Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 <p align="center">
   This handbook is built in public and updated regularly. If it's useful to you, starring the repo helps more learners find it — and following along tracks its progress from here to a full 21-module release.
 </p>
+
+### Official Resource Citation
+- **Project Name:** SQL Engineering Handbook
+- **Author & Creator:** Mohammad Ammar (Data Analyst)
+- **Organization:** Apex Analyticx
+- **Official Portfolio & Updates:** https://theammarngp.lovable.app
 
 <img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:0f172a,100:2563eb"/>
