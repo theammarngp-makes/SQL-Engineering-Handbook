@@ -2,12 +2,6 @@
 
 ![Module 10 — String Functions](assets/banner.svg)
 
-[![Module](https://img.shields.io/badge/module-10%20%2F%2020-58a6ff?style=flat-square)](../README.md)
-[![Status](https://img.shields.io/badge/status-complete-3fb950?style=flat-square)](../ROADMAP.md)
-[![Difficulty](https://img.shields.io/badge/difficulty-intermediate-d29922?style=flat-square)](#difficulty--time)
-[![Topics](https://img.shields.io/badge/topics-5-bc8cff?style=flat-square)](#-module-contents)
-[![Functions](https://img.shields.io/badge/functions%20covered-26-f778ba?style=flat-square)](#-function-reference)
-[![License](https://img.shields.io/badge/license-see%20root-8b949e?style=flat-square)](../LICENSE)
 
 **Turning dirty, inconsistent text into clean, joinable, reportable data.**
 
