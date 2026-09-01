@@ -1,0 +1,46 @@
+<svg viewBox="0 0 980 440" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="980" height="440" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="438" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">06 — Executive Dashboards</text>
+  <text x="660" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">Healthcare · the output contract</text>
+
+  <text x="40" y="86" font-size="13" font-weight="700" fill="#7ee2b8">Not new syntax — a shape. Query output that drops straight into a BI tool.</text>
+
+  <!-- left: raw query result -->
+  <g transform="translate(40,105)">
+    <rect width="400" height="220" rx="10" fill="#101826" stroke="#f85149"/>
+    <text x="20" y="28" font-size="12.5" font-weight="700" fill="#f85149">RAW GROUP BY OUTPUT</text>
+    <g font-family="'Cascadia Code',Consolas,monospace" font-size="10.5" fill="#ffa198">
+      <text x="20" y="54">department | NULL | NULL      ← what is this?</text>
+      <text x="20" y="74">Cardiology | 2024-01 | 142</text>
+      <text x="20" y="94">Cardiology | NULL   | 1,830   ← subtotal? total?</text>
+      <text x="20" y="114">NULL       | NULL   | 9,214    ← grand total, unlabeled</text>
+    </g>
+    <text x="20" y="150" font-size="11" fill="#8b949e">— unlabeled NULLs from ROLLUP</text>
+    <text x="20" y="168" font-size="11" fill="#8b949e">— inconsistent column meaning</text>
+    <text x="20" y="186" font-size="11" fill="#8b949e">— breaks naive BI-tool import</text>
+  </g>
+
+  <!-- right: dashboard-shaped output -->
+  <g transform="translate(500,105)">
+    <rect width="440" height="220" rx="10" fill="#101826" stroke="#3fb950"/>
+    <text x="20" y="28" font-size="12.5" font-weight="700" fill="#3fb950">DASHBOARD-SHAPED OUTPUT</text>
+    <g font-family="'Cascadia Code',Consolas,monospace" font-size="10.5" fill="#c9d1d9">
+      <text x="20" y="54">department  | month   | visits | row_type</text>
+      <text x="20" y="74">Cardiology  | 2024-01 | 142    | detail</text>
+      <text x="20" y="94">Cardiology  | ALL     | 1,830  | subtotal</text>
+      <text x="20" y="114">ALL         | ALL     | 9,214  | grand_total</text>
+    </g>
+    <text x="20" y="150" font-size="11" fill="#7ee2b8">— GROUPING() → explicit row_type label</text>
+    <text x="20" y="168" font-size="11" fill="#7ee2b8">— COALESCE(dept,'ALL') → no raw NULLs</text>
+    <text x="20" y="186" font-size="11" fill="#7ee2b8">— ready for Power BI / Looker / Tableau</text>
+  </g>
+
+  <text x="40" y="365" font-size="13" font-weight="700" fill="#d29922">one query per dashboard panel</text>
+  <g transform="translate(40,378)">
+    <rect width="900" height="42" rx="8" fill="#0f1622" stroke="#30363d"/>
+    <text x="16" y="27" font-family="'Cascadia Code',Consolas,monospace" font-size="12" fill="#c9d1d9">Combines Topics 01–05 deliberately around one panel's exact requirements — not a bigger, vaguer query.</text>
+  </g>
+</svg>

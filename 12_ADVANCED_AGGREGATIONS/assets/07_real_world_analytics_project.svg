@@ -1,0 +1,85 @@
+<svg viewBox="0 0 980 460" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr7" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#484f58"/>
+    </marker>
+    <linearGradient id="capstoneGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3fb950"/>
+      <stop offset="33%" stop-color="#58a6ff"/>
+      <stop offset="66%" stop-color="#bc8cff"/>
+      <stop offset="100%" stop-color="#f778ba"/>
+    </linearGradient>
+  </defs>
+  <rect width="980" height="460" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="458" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">07 — Real-World Analytics Project (Capstone)</text>
+  <text x="750" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">Logistics</text>
+
+  <text x="40" y="86" font-size="13" font-weight="700" fill="#f778ba">no new syntax — the brief is ambiguous, like a real ticket. difficulty = judgment.</text>
+
+  <!-- 6 converging pills -->
+  <g font-family="'Cascadia Code',Consolas,monospace" font-size="11.5">
+    <g transform="translate(30,105)"><rect width="145" height="32" rx="16" fill="#101826" stroke="#58a6ff"/><text x="72" y="21" text-anchor="middle" fill="#58a6ff">01 grouping</text></g>
+    <g transform="translate(185,105)"><rect width="145" height="32" rx="16" fill="#101826" stroke="#3fb950"/><text x="72" y="21" text-anchor="middle" fill="#3fb950">02 multi-agg</text></g>
+    <g transform="translate(340,105)"><rect width="145" height="32" rx="16" fill="#101826" stroke="#d29922"/><text x="72" y="21" text-anchor="middle" fill="#d29922">03 conditional</text></g>
+    <g transform="translate(495,105)"><rect width="150" height="32" rx="16" fill="#101826" stroke="#bc8cff"/><text x="75" y="21" text-anchor="middle" fill="#bc8cff">04 rollup/cube</text></g>
+    <g transform="translate(655,105)"><rect width="145" height="32" rx="16" fill="#101826" stroke="#f778ba"/><text x="72" y="21" text-anchor="middle" fill="#f778ba">05 KPIs</text></g>
+    <g transform="translate(810,105)"><rect width="140" height="32" rx="16" fill="#101826" stroke="#f85149"/><text x="70" y="21" text-anchor="middle" fill="#f85149">06 dashboards</text></g>
+  </g>
+
+  <line x1="100" y1="137" x2="470" y2="180" stroke="#30363d" stroke-width="1.5"/>
+  <line x1="255" y1="137" x2="480" y2="180" stroke="#30363d" stroke-width="1.5"/>
+  <line x1="410" y1="137" x2="490" y2="180" stroke="#30363d" stroke-width="1.5"/>
+  <line x1="570" y1="137" x2="500" y2="180" stroke="#30363d" stroke-width="1.5"/>
+  <line x1="725" y1="137" x2="510" y2="180" stroke="#30363d" stroke-width="1.5"/>
+  <line x1="880" y1="137" x2="520" y2="180" stroke="#30363d" stroke-width="1.5"/>
+
+  <g transform="translate(290,183)">
+    <rect width="400" height="66" rx="10" fill="#101826" stroke="url(#capstoneGlow)" stroke-width="2"/>
+    <text x="200" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#f0f6fc">Supply-Chain VP's ops report</text>
+    <text x="200" y="48" text-anchor="middle" font-size="11" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">warehouses · carriers · shipments · orders</text>
+  </g>
+
+  <line x1="490" y1="249" x2="490" y2="273" stroke="#484f58" stroke-width="2" marker-end="url(#arr7)"/>
+
+  <!-- 4 judgment calls -->
+  <g font-family="'Segoe UI',sans-serif">
+    <g transform="translate(40,280)">
+      <rect width="210" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+      <text x="18" y="26" font-size="12.5" font-weight="700" fill="#f0f6fc">1 · Grain</text>
+      <text x="18" y="48" font-size="10.5" fill="#8b949e">Per shipment? Per</text>
+      <text x="18" y="64" font-size="10.5" fill="#8b949e">warehouse-per-day?</text>
+      <text x="18" y="80" font-size="10.5" fill="#8b949e">The brief doesn't say —</text>
+      <text x="18" y="96" font-size="10.5" fill="#8b949e">you have to decide and</text>
+      <text x="18" y="112" font-size="10.5" fill="#8b949e">justify it.</text>
+    </g>
+    <g transform="translate(266,280)">
+      <rect width="210" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+      <text x="18" y="26" font-size="12.5" font-weight="700" fill="#f0f6fc">2 · Metrics</text>
+      <text x="18" y="48" font-size="10.5" fill="#8b949e">Which numbers need</text>
+      <text x="18" y="64" font-size="10.5" fill="#8b949e">conditional aggregation</text>
+      <text x="18" y="80" font-size="10.5" fill="#8b949e">(on-time vs. late,</text>
+      <text x="18" y="96" font-size="10.5" fill="#8b949e">damaged vs. intact)?</text>
+    </g>
+    <g transform="translate(492,280)">
+      <rect width="210" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+      <text x="18" y="26" font-size="12.5" font-weight="700" fill="#f0f6fc">3 · Subtotals</text>
+      <text x="18" y="48" font-size="10.5" fill="#8b949e">Where is a ROLLUP or</text>
+      <text x="18" y="64" font-size="10.5" fill="#8b949e">GROUPING SETS subtotal</text>
+      <text x="18" y="80" font-size="10.5" fill="#8b949e">actually warranted, vs.</text>
+      <text x="18" y="96" font-size="10.5" fill="#8b949e">just noise?</text>
+    </g>
+    <g transform="translate(718,280)">
+      <rect width="212" height="130" rx="10" fill="#101826" stroke="#30363d"/>
+      <text x="18" y="26" font-size="12.5" font-weight="700" fill="#f0f6fc">4 · Denominators</text>
+      <text x="18" y="48" font-size="10.5" fill="#8b949e">A ratio's denominator</text>
+      <text x="18" y="64" font-size="10.5" fill="#8b949e">needs a precise definition</text>
+      <text x="18" y="80" font-size="10.5" fill="#8b949e">— "of what population"</text>
+      <text x="18" y="96" font-size="10.5" fill="#8b949e">changes the answer.</text>
+    </g>
+  </g>
+
+  <text x="40" y="440" font-size="12" fill="#8b949e">This is exactly the decision-making a working analytics engineer does on every real ticket.</text>
+</svg>

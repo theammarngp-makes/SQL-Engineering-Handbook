@@ -1,0 +1,61 @@
+<svg viewBox="0 0 980 440" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr2" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#484f58"/>
+    </marker>
+  </defs>
+  <rect width="980" height="440" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="438" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">02 — Multiple Aggregations</text>
+  <text x="660" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">E-commerce · one pass, five metrics</text>
+
+  <!-- single group box -->
+  <g transform="translate(60,85)">
+    <rect width="230" height="120" rx="10" fill="#101826" stroke="#58a6ff"/>
+    <text x="115" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#58a6ff">GROUP BY customer_id</text>
+    <text x="115" y="50" text-anchor="middle" font-family="'Cascadia Code',Consolas,monospace" font-size="11" fill="#c9d1d9">one scan of the</text>
+    <text x="115" y="66" text-anchor="middle" font-family="'Cascadia Code',Consolas,monospace" font-size="11" fill="#c9d1d9">grouped rows</text>
+    <text x="115" y="94" text-anchor="middle" font-size="10.5" fill="#8b949e">customer_id = 4021</text>
+    <text x="115" y="110" text-anchor="middle" font-size="10.5" fill="#8b949e">7 order rows</text>
+  </g>
+
+  <line x1="290" y1="145" x2="335" y2="145" stroke="#484f58" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- fan-out to 5 aggregates -->
+  <g font-family="'Cascadia Code',Consolas,monospace" font-size="12">
+    <g transform="translate(340,60)">
+      <rect width="580" height="42" rx="8" fill="#0f1622" stroke="#3fb950"/>
+      <text x="16" y="27" fill="#3fb950">COUNT(*)</text>
+      <text x="140" y="27" fill="#8b949e">→ 7 orders placed</text>
+    </g>
+    <g transform="translate(340,110)">
+      <rect width="580" height="42" rx="8" fill="#0f1622" stroke="#58a6ff"/>
+      <text x="16" y="27" fill="#58a6ff">COUNT(DISTINCT product_id)</text>
+      <text x="330" y="27" fill="#8b949e">→ 5 unique products</text>
+    </g>
+    <g transform="translate(340,160)">
+      <rect width="580" height="42" rx="8" fill="#0f1622" stroke="#d29922"/>
+      <text x="16" y="27" fill="#d29922">SUM(order_total)</text>
+      <text x="220" y="27" fill="#8b949e">→ $1,284.50 lifetime spend</text>
+    </g>
+    <g transform="translate(340,210)">
+      <rect width="580" height="42" rx="8" fill="#0f1622" stroke="#bc8cff"/>
+      <text x="16" y="27" fill="#bc8cff">AVG(order_total)</text>
+      <text x="220" y="27" fill="#8b949e">→ $183.50 avg order value</text>
+    </g>
+    <g transform="translate(340,260)">
+      <rect width="580" height="42" rx="8" fill="#0f1622" stroke="#f778ba"/>
+      <text x="16" y="27" fill="#f778ba">MIN/MAX(order_date)</text>
+      <text x="240" y="27" fill="#8b949e">→ first &amp; most recent order</text>
+    </g>
+  </g>
+
+  <text x="60" y="330" font-size="13" font-weight="700" fill="#7ee2b8">key idea</text>
+  <g transform="translate(60,344)">
+    <rect width="860" height="66" rx="8" fill="#0d2818" stroke="#3fb950"/>
+    <text x="16" y="26" font-family="'Cascadia Code',Consolas,monospace" font-size="12.5" fill="#7ee2b8">Every aggregate in the SELECT list runs independently over the SAME group of rows.</text>
+    <text x="16" y="48" font-family="'Cascadia Code',Consolas,monospace" font-size="12.5" fill="#7ee2b8">Five metrics cost no more than one — the engine scans the grouped rows once.</text>
+  </g>
+</svg>

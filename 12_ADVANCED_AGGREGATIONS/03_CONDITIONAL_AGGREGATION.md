@@ -1,5 +1,9 @@
 # 03 · Conditional Aggregation
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [02 Multiple Aggregations](02_MULTIPLE_AGGREGATIONS.md) · Next → [04 ROLLUP, CUBE & GROUPING SETS](04_ROLLUP_CUBE_GROUPING_SETS.md)
+
+![Conditional Aggregation](assets/03_conditional_aggregation.svg)
+
 > **Module:** 02 — Advanced Aggregations
 > **Domain used in this file:** Banking / Finance (`accounts`, `transactions`, `branches`)
 > **Companion file:** [`03_CONDITIONAL_AGGREGATION.sql`](./03_CONDITIONAL_AGGREGATION.sql)
@@ -199,3 +203,7 @@ Conditional aggregation moves a business condition from `WHERE` (which filters t
 ---
 
 **◀ Previous:** [`02_MULTIPLE_AGGREGATIONS.md`](./02_MULTIPLE_AGGREGATIONS.md) · **Next ▶** [`04_ROLLUP_CUBE_GROUPING_SETS.md`](./04_ROLLUP_CUBE_GROUPING_SETS.md)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

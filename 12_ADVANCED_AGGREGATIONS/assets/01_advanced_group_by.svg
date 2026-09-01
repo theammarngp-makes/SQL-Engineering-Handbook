@@ -1,0 +1,60 @@
+<svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="980" height="470" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="468" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">01 — Advanced GROUP BY</text>
+  <text x="660" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">HR · departments × locations</text>
+
+  <text x="40" y="88" font-size="14" font-weight="700" fill="#7ee2b8">GROUP BY department, city  →  one row per (department, city) PAIR that exists</text>
+
+  <!-- raw rows -->
+  <g font-family="'Cascadia Code',Consolas,monospace" font-size="12">
+    <text x="40" y="112" fill="#484f58">source rows:</text>
+    <text x="150" y="112" fill="#c9d1d9">Engineering/NYC · Engineering/NYC · Sales/NYC · Engineering/SF · Sales/SF · Sales/SF</text>
+  </g>
+
+  <!-- grouping table -->
+  <g transform="translate(40,140)">
+    <rect width="900" height="34" fill="#111826"/>
+    <text x="16" y="23" font-size="12.5" font-weight="700" fill="#8b949e">department</text>
+    <text x="290" y="23" font-size="12.5" font-weight="700" fill="#8b949e">city</text>
+    <text x="560" y="23" font-size="12.5" font-weight="700" fill="#8b949e">employee_count</text>
+    <line x1="0" y1="34" x2="900" y2="34" stroke="#30363d"/>
+  </g>
+
+  <g font-family="'Cascadia Code',Consolas,monospace" font-size="13">
+    <g transform="translate(40,182)">
+      <rect width="900" height="38" fill="#101826"/>
+      <text x="16" y="25" fill="#58a6ff">Engineering</text>
+      <text x="290" y="25" fill="#f0f6fc">NYC</text>
+      <text x="560" y="25" fill="#7ee2b8">2</text>
+    </g>
+    <g transform="translate(40,222)">
+      <rect width="900" height="38" fill="#0d1117"/>
+      <text x="16" y="25" fill="#58a6ff">Engineering</text>
+      <text x="290" y="25" fill="#f0f6fc">SF</text>
+      <text x="560" y="25" fill="#7ee2b8">1</text>
+    </g>
+    <g transform="translate(40,262)">
+      <rect width="900" height="38" fill="#101826"/>
+      <text x="16" y="25" fill="#bc8cff">Sales</text>
+      <text x="290" y="25" fill="#f0f6fc">NYC</text>
+      <text x="560" y="25" fill="#7ee2b8">1</text>
+    </g>
+    <g transform="translate(40,302)">
+      <rect width="900" height="38" fill="#0d1117"/>
+      <text x="16" y="25" fill="#bc8cff">Sales</text>
+      <text x="290" y="25" fill="#f0f6fc">SF</text>
+      <text x="560" y="25" fill="#7ee2b8">2</text>
+    </g>
+  </g>
+  <rect x="40" y="182" width="900" height="158" fill="none" stroke="#30363d"/>
+
+  <text x="40" y="378" font-size="13" font-weight="700" fill="#f778ba">common mistake — grain confusion</text>
+  <g transform="translate(40,392)">
+    <rect width="900" height="56" rx="8" fill="#2a1215" stroke="#f85149"/>
+    <text x="16" y="24" font-family="'Cascadia Code',Consolas,monospace" font-size="12" fill="#ffa198">"4 department-city rows" ≠ "2 departments" ≠ "2 cities" — GROUP BY collapses on the</text>
+    <text x="16" y="42" font-family="'Cascadia Code',Consolas,monospace" font-size="12" fill="#ffa198">unique COMBINATION of every listed column, never each column independently.</text>
+  </g>
+</svg>

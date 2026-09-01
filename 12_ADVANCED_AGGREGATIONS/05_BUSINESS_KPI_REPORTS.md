@@ -1,5 +1,9 @@
 # 05 · Business KPI Reports
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [04 ROLLUP, CUBE & GROUPING SETS](04_ROLLUP_CUBE_GROUPING_SETS.md) · Next → [06 Executive Dashboards](06_EXECUTIVE_DASHBOARDS.md)
+
+![Business KPI Reports](assets/05_business_kpi_reports.svg)
+
 > **Module:** 02 — Advanced Aggregations
 > **Domain used in this file:** SaaS (`customers`, `subscriptions`, `plans`, `billing_events`)
 > **Companion file:** [`05_BUSINESS_KPI_REPORTS.sql`](./05_BUSINESS_KPI_REPORTS.sql)
@@ -192,3 +196,7 @@ Business KPI reports are Topics 01–04 aimed deliberately at named, board-level
 ---
 
 **◀ Previous:** [`04_ROLLUP_CUBE_GROUPING_SETS.md`](./04_ROLLUP_CUBE_GROUPING_SETS.md) · **Next ▶** [`06_EXECUTIVE_DASHBOARDS.md`](./06_EXECUTIVE_DASHBOARDS.md)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

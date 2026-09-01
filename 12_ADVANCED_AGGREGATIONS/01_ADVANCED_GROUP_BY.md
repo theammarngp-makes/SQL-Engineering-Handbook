@@ -1,5 +1,9 @@
 # 01 · Advanced GROUP BY
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · Next → [02 Multiple Aggregations](02_MULTIPLE_AGGREGATIONS.md)
+
+![Advanced GROUP BY](assets/01_advanced_group_by.svg)
+
 > **Module:** 02 — Advanced Aggregations
 > **Domain used in this file:** Human Resources (`employees`, `departments`, `locations`)
 > **Companion file:** [`01_ADVANCED_GROUP_BY.sql`](./01_ADVANCED_GROUP_BY.sql)
@@ -210,3 +214,7 @@ Multi-column `GROUP BY` is single-column `GROUP BY` applied to a combination of 
 ---
 
 **◀ Previous:** [Module README](./README.md) · **Next ▶** [`02_MULTIPLE_AGGREGATIONS.md`](./02_MULTIPLE_AGGREGATIONS.md)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

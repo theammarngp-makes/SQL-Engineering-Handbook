@@ -1,0 +1,45 @@
+<svg viewBox="0 0 980 440" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="980" height="440" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="438" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">03 — Conditional Aggregation</text>
+  <text x="640" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">Banking · CASE WHEN inside SUM</text>
+
+  <g transform="translate(40,80)">
+    <rect width="900" height="40" rx="8" fill="#0f1622" stroke="#30363d"/>
+    <text x="16" y="26" font-family="'Cascadia Code',Consolas,monospace" font-size="13" fill="#c9d1d9">transactions: type IN ('deposit','withdrawal'), amount, branch_id</text>
+  </g>
+
+  <text x="40" y="150" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">CASE WHEN "opts in" each row to a metric — still one GROUP BY pass:</text>
+
+  <g font-family="'Cascadia Code',Consolas,monospace" font-size="12.5">
+    <g transform="translate(40,168)">
+      <rect width="900" height="46" rx="8" fill="#101826" stroke="#3fb950"/>
+      <text x="16" y="29" fill="#3fb950">SUM(CASE WHEN type='deposit' THEN amount ELSE 0 END)</text>
+      <text x="700" y="29" fill="#7ee2b8">AS total_deposits</text>
+    </g>
+    <g transform="translate(40,222)">
+      <rect width="900" height="46" rx="8" fill="#101826" stroke="#f85149"/>
+      <text x="16" y="29" fill="#f85149">SUM(CASE WHEN type='withdrawal' THEN amount ELSE 0 END)</text>
+      <text x="700" y="29" fill="#ffa198">AS total_withdrawals</text>
+    </g>
+    <g transform="translate(40,276)">
+      <rect width="900" height="46" rx="8" fill="#101826" stroke="#58a6ff"/>
+      <text x="16" y="29" fill="#58a6ff">COUNT(CASE WHEN type='deposit' THEN 1 END)</text>
+      <text x="560" y="29" fill="#a5d6ff">AS deposit_count</text>
+    </g>
+  </g>
+
+  <text x="40" y="358" font-size="13" font-weight="700" fill="#d29922">WHERE vs. CASE WHEN</text>
+  <g transform="translate(40,372)">
+    <rect width="430" height="52" rx="8" fill="#101826" stroke="#30363d"/>
+    <text x="16" y="24" font-family="'Cascadia Code',Consolas,monospace" font-size="11.5" fill="#c9d1d9">WHERE type='deposit'</text>
+    <text x="16" y="42" font-size="11" fill="#8b949e">→ one filtered metric, rows removed entirely</text>
+  </g>
+  <g transform="translate(490,372)">
+    <rect width="450" height="52" rx="8" fill="#101826" stroke="#30363d"/>
+    <text x="16" y="24" font-family="'Cascadia Code',Consolas,monospace" font-size="11.5" fill="#c9d1d9">SUM(CASE WHEN type='deposit'...)</text>
+    <text x="16" y="42" font-size="11" fill="#8b949e">→ several differently-filtered metrics, side by side</text>
+  </g>
+</svg>

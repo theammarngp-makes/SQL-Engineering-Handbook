@@ -1,5 +1,9 @@
 # 07 · Real-World Analytics Project (Capstone)
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [06 Executive Dashboards](06_EXECUTIVE_DASHBOARDS.md) · Next → [Module 13 Set Operators ▶](../13_SET_OPERATORS/README.md)
+
+![Real-World Analytics Project](assets/07_real_world_analytics_project.svg)
+
 > **Module:** 02 — Advanced Aggregations
 > **Domain used in this file:** Logistics / Supply Chain (`warehouses`, `carriers`, `shipments`, `orders`)
 > **Companion file:** [`07_REAL_WORLD_ANALYTICS_PROJECT.sql`](./07_REAL_WORLD_ANALYTICS_PROJECT.sql)
@@ -200,3 +204,7 @@ This capstone is Module 02 applied the way it would actually be used: starting f
 ---
 
 **◀ Previous:** [`06_EXECUTIVE_DASHBOARDS.md`](./06_EXECUTIVE_DASHBOARDS.md) · **Back to:** [Module README](./README.md)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

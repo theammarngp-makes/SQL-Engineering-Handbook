@@ -1,5 +1,9 @@
 # 02 · Multiple Aggregations
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [01 Advanced GROUP BY](01_ADVANCED_GROUP_BY.md) · Next → [03 Conditional Aggregation](03_CONDITIONAL_AGGREGATION.md)
+
+![Multiple Aggregations](assets/02_multiple_aggregations.svg)
+
 > **Module:** 02 — Advanced Aggregations
 > **Domain used in this file:** E-commerce (`customers`, `orders`, `order_items`, `products`)
 > **Companion file:** [`02_MULTIPLE_AGGREGATIONS.sql`](./02_MULTIPLE_AGGREGATIONS.sql)
@@ -200,3 +204,7 @@ Combining multiple aggregate functions in one `GROUP BY` query is nearly free fr
 ---
 
 **◀ Previous:** [`01_ADVANCED_GROUP_BY.md`](./01_ADVANCED_GROUP_BY.md) · **Next ▶** [`03_CONDITIONAL_AGGREGATION.md`](./03_CONDITIONAL_AGGREGATION.md)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

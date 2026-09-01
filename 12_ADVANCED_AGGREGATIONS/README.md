@@ -1,16 +1,17 @@
 <div align="center">
 
-# Module 12 · Advanced Aggregations
+![Module 12 — Advanced Aggregations](assets/banner.svg)
 
-### Engineering-grade GROUP BY, conditional aggregation, ROLLUP/CUBE, and executive-level SQL reporting
+[![Module](https://img.shields.io/badge/module-12%20%2F%2020-58a6ff?style=flat-square)](../README.md)
+[![Status](https://img.shields.io/badge/status-complete-3fb950?style=flat-square)](../ROADMAP.md)
+[![Difficulty](https://img.shields.io/badge/difficulty-advanced-f85149?style=flat-square)](#difficulty--time)
+[![Topics](https://img.shields.io/badge/topics-7%20%2B%201%20capstone-bc8cff?style=flat-square)](#-module-contents)
+[![Clauses](https://img.shields.io/badge/clauses%20covered-11-f778ba?style=flat-square)](#-function-reference)
+[![License](https://img.shields.io/badge/license-see%20root-8b949e?style=flat-square)](../LICENSE)
 
-[![Module](https://img.shields.io/badge/Module-02-2563eb?style=flat-square)](.)
-[![Level](https://img.shields.io/badge/Level-Intermediate-16a34a?style=flat-square)](.)
-[![Dialects](https://img.shields.io/badge/Dialects-MySQL%208%2B%20%7C%20PostgreSQL-4f46e5?style=flat-square)](.)
-[![Status](https://img.shields.io/badge/Status-Complete-22c55e?style=flat-square)](.)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)](../LICENSE)
+**Multi-column GROUP BY, conditional metrics, ROLLUP/CUBE, and executive-ready SQL reporting.**
 
-*Part of the [SQL Engineering Handbook](../README.md) — a production-grade SQL curriculum built for data analysts, analytics engineers, and data engineers.*
+[◀ Module 11 — NULL Handling](../11_NULL_HANDLING_AND_DATA_CLEANING/README.md) · [Live Handbook Site](https://theammarngp-makes.github.io/SQL-Engineering-Handbook) · [Module 13 — Set Operators ▶](../13_SET_OPERATORS/README.md)
 
 </div>
 
@@ -18,190 +19,243 @@
 
 ## Table of Contents
 
-- [Module Introduction](#module-introduction)
-- [Why Advanced Aggregations Matter](#why-advanced-aggregations-matter)
-- [Learning Objectives](#learning-objectives)
-- [Skills You'll Gain](#skills-youll-gain)
-- [Prerequisites](#prerequisites)
-- [Folder Structure](#folder-structure)
-- [Topics Covered](#topics-covered)
-- [SQL Functions Covered](#sql-functions-covered)
-- [Business Applications](#business-applications)
-- [Analytics Engineering Perspective](#analytics-engineering-perspective)
-- [Reporting Workflows](#reporting-workflows)
-- [Dashboard Examples](#dashboard-examples)
-- [Performance Considerations](#performance-considerations)
-- [Best Practices](#best-practices)
-- [Common Mistakes](#common-mistakes)
-- [Interview Preparation](#interview-preparation)
-- [Career Relevance](#career-relevance)
-- [Learning Roadmap](#learning-roadmap)
-- [Summary](#summary)
-- [Further Reading](#further-reading)
-- [Navigation](#navigation)
+1. [Overview](#overview)
+2. [Why Advanced Aggregations Matter](#why-advanced-aggregations-matter)
+3. [Learning Objectives](#learning-objectives)
+4. [Skills Gained](#skills-gained)
+5. [Prerequisites](#prerequisites)
+6. [Folder Structure](#folder-structure)
+7. [Module Contents](#-module-contents)
+8. [Topic Walkthrough](#-topic-walkthrough)
+   - [01 — Advanced GROUP BY](#01--advanced-group-by)
+   - [02 — Multiple Aggregations](#02--multiple-aggregations)
+   - [03 — Conditional Aggregation](#03--conditional-aggregation)
+   - [04 — ROLLUP, CUBE & GROUPING SETS](#04--rollup-cube--grouping-sets)
+   - [05 — Business KPI Reports](#05--business-kpi-reports)
+   - [06 — Executive Dashboards](#06--executive-dashboards)
+   - [07 — Real-World Analytics Project (Capstone)](#07--real-world-analytics-project-capstone)
+9. [Function Reference](#-function-reference)
+10. [Business Applications](#business-applications)
+11. [Analytics Engineering Perspective](#analytics-engineering-perspective)
+12. [Performance Considerations](#performance-considerations)
+13. [Best Practices](#best-practices)
+14. [Common Mistakes](#common-mistakes)
+15. [Interview Preparation](#interview-preparation)
+16. [Career Relevance](#career-relevance)
+17. [Difficulty & Time](#difficulty--time)
+18. [Full Handbook Map](#-full-handbook-map)
+19. [Further Reading](#further-reading)
+20. [Navigation](#navigation)
 
 ---
 
-## Module Introduction
+## Overview
 
-Every dashboard a stakeholder has ever looked at — revenue by region, active users by plan tier, on-time delivery rate by warehouse — is an aggregation. `SELECT`, `WHERE`, and a single-column `GROUP BY` get you a report. They do not get you a *system* a business can run on.
+A single-column `GROUP BY` answers "what's the total per category?" — the first question every analyst learns to write. This module covers everything that happens the moment a stakeholder asks a harder version of that question: a total per category *broken down by a second category*, several differently-defined metrics *in the same row*, a subtotal-and-grand-total report that used to take three separate queries, or a number with an actual business name — MRR, churn rate, ARPU — that leadership already tracks.
 
-Module 02 picks up exactly where basic aggregation leaves off. Instead of asking "how do I get a total?", this module asks the questions a working analytics engineer actually gets asked:
-
-- "Can you break that total down by region **and** month, but also show me the grand total?"
-- "Can one query give me new customers, returning customers, and churned customers side by side?"
-- "Can we get subtotals per department *and* a company-wide total, in a single result set, without five separate queries stitched together in Excel?"
-
-Those questions are answered with the same handful of tools: multi-column `GROUP BY`, conditional aggregation with `CASE`, and the `ROLLUP` / `CUBE` / `GROUPING SETS` family. This module treats them not as syntax to memorize, but as the mechanism behind nearly every executive report, KPI table, and BI dashboard you will ever be asked to build.
-
-By the end of this module, a multi-dimensional revenue-by-region-by-month report with subtotals and a grand total will look like a normal Tuesday, not a special occasion.
-
----
+None of this is new relational theory. It's the same `GROUP BY` you already know, aimed with more precision and combined with more judgment. That's exactly what separates a beginner analyst's query from an analytics engineer's.
 
 ## Why Advanced Aggregations Matter
 
-Basic `GROUP BY` answers "what is the total per group?" Real business reporting rarely stops at one grouping level, and it almost never stops at one metric.
+Almost every dashboard, financial report, and executive summary in a real company is built from queries in this exact family:
 
-**The reporting problem, concretely:**
+- **Multi-dimensional breakdowns** — revenue by region *and* month, not just one or the other
+- **Composite metrics in one pass** — count, sum, average, and distinct-count together, computed once
+- **Conditional metrics** — new vs. returning, on-time vs. late, paid vs. failed, all in a single `GROUP BY`
+- **Hierarchical totals** — subtotal and grand-total rows without stacking multiple queries by hand
+- **Named business KPIs** — MRR, churn, ARPU, conversion rate — the specific numbers leadership already has a name for
 
-A finance stakeholder asks for a quarterly revenue report. The naive approach is one query per slice — one for regional totals, one for monthly totals, one for the grand total — followed by manually stacking the results in a spreadsheet. This does not scale, it is error-prone (totals drift out of sync as the underlying data changes between query runs), and it makes the report impossible to automate into a dashboard or scheduled job.
-
-**The engineering answer** is a single query that produces every level of the hierarchy in one aggregation pass, using `ROLLUP`, `CUBE`, or `GROUPING SETS`. The database computes subtotals and grand totals in one scan, guaranteeing the numbers are internally consistent, and the result set can be fed directly into a BI tool or materialized as a report table.
-
-**The KPI problem, concretely:**
-
-A product manager wants one table: new signups, upgraded accounts, downgraded accounts, and cancellations, all in the same row, broken out by month. Five separate `WHERE`-filtered queries produce five separate result sets that then have to be joined back together — slow, brittle, and hard to maintain. Conditional aggregation (`COUNT(CASE WHEN ...)`, `SUM(CASE WHEN ...)`) computes all four metrics in a single `GROUP BY` pass over the same rows.
-
-This is the difference between SQL as a query language and SQL as a **reporting engine**. Companies with mature data teams do not build dashboards by running many small queries and reassembling them downstream — they push the aggregation logic into SQL itself, because the database is faster, more consistent, and easier to schedule than anything built on top of it.
-
----
+Get the grain wrong here and a "total" silently becomes a subtotal, a dashboard panel double-counts a row, or a churn number quietly means something different than what the VP thinks it means. This module is about writing aggregation logic that a business can actually rely on.
 
 ## Learning Objectives
 
-After completing this module, you will be able to:
+By the end of this module, you will be able to:
 
-1. Group data across multiple columns and reason correctly about how grouping granularity changes result cardinality.
-2. Compute several independent aggregate metrics in a single `SELECT`, avoiding repeated table scans.
-3. Build conditional metrics — "count of X where condition," "sum of Y where condition" — using `CASE` inside aggregate functions.
-4. Turn a handful of conditional aggregates into a pivot-style report without a dedicated `PIVOT` operator.
-5. Generate subtotals and grand totals in a single query using `ROLLUP`, `CUBE`, and `GROUPING SETS`.
-6. Distinguish subtotal rows from data rows using `GROUPING()`, and format them correctly for downstream reporting tools.
-7. Design executive KPI tables and dashboard-ready result sets that mirror what BI tools like Power BI, Looker, and Tableau expect as input.
-8. Apply `HAVING` correctly to filter on aggregated values, and avoid the most common `WHERE`-versus-`HAVING` mistake.
-9. Reason about the performance cost of multi-dimensional aggregation and know when to pre-aggregate versus aggregate on the fly.
-10. Read and produce production-quality reporting SQL that a senior analytics engineer would approve in code review.
+1. Reason correctly about **grain** in multi-column `GROUP BY` queries — what exactly one output row represents
+2. Compute several independent metrics over the same group in a single pass, without repeated scans
+3. Use `CASE WHEN` inside aggregate functions to compute differently-filtered metrics side by side
+4. Choose between `ROLLUP`, `CUBE`, and `GROUPING SETS` for hierarchical and custom subtotal reporting
+5. Identify subtotal/grand-total rows with `GROUPING()` instead of fragile `NULL` checks
+6. Translate a named business KPI (MRR, churn, ARPU) into precise, correct SQL
+7. Shape query output so it can be consumed directly by a BI tool without further transformation
+8. Take an ambiguous, real-world reporting brief and make and justify the grain, metric, and denominator decisions it requires
 
----
+## Skills Gained
 
-## Skills You'll Gain
-
-| Skill | Description |
-|---|---|
-| Multi-dimensional grouping | Grouping by two, three, or more columns and interpreting the resulting grain correctly |
-| Conditional aggregation | Building `COUNT`/`SUM`/`AVG` metrics gated by business conditions in a single pass |
-| Pivot-style reporting | Producing wide, dashboard-ready tables from tall transactional data without a `PIVOT` clause |
-| Subtotal/grand-total generation | Using `ROLLUP`, `CUBE`, and `GROUPING SETS` to generate hierarchical totals in one query |
-| Grouping-row detection | Using `GROUPING()` to label subtotal and grand-total rows for presentation layers |
-| KPI table design | Structuring a single query to answer "what does the business need to see" rather than "what can I technically compute" |
-| Aggregation performance tuning | Recognizing when `GROUP BY` becomes a bottleneck and what indexing/pre-aggregation strategies address it |
-| Report-oriented SQL review | Evaluating aggregation queries the way a data team lead would in a pull request |
-
----
+- Multi-dimensional reporting query design
+- Composite, single-pass metric computation
+- Conditional aggregation for breakdown-by-status reporting
+- Hierarchical subtotal/grand-total reporting with `ROLLUP`/`CUBE`/`GROUPING SETS`
+- Translating business KPI definitions into precise SQL
+- Designing BI-tool-ready, dashboard-shaped query output
+- Making and defending grain, metric, and denominator decisions on ambiguous reporting briefs
 
 ## Prerequisites
 
-Before starting this module, you should already be comfortable with:
+This module assumes completion of:
 
-- ✅ `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`
-- ✅ Basic aggregate functions: `COUNT()`, `SUM()`, `AVG()`, `MIN()`, `MAX()`
-- ✅ Single-column `GROUP BY` and `HAVING`
-- ✅ Basic `JOIN` syntax (`INNER JOIN` at minimum)
-- ✅ `CASE WHEN` as a scalar expression in a `SELECT` list
-
-If any of these feel shaky, complete **Module 01** before starting here — this module assumes fluency with the fundamentals and moves directly into professional reporting patterns.
-
----
+| Module | Why it's needed here |
+|---|---|
+| `01–07` | `SELECT`, filtering, sorting, basic aggregation, joins, `CASE`, subqueries/CTEs |
+| [`05_CASE_WHEN`](../05_CASE_WHEN/README.md) | `CASE WHEN` logic is the mechanism behind every conditional aggregate in this module |
+| [`10_STRING_FUNCTIONS`](../10_STRING_FUNCTIONS/README.md) | Formatting derived labels for reporting output |
+| [`11_NULL_HANDLING_AND_DATA_CLEANING`](../11_NULL_HANDLING_AND_DATA_CLEANING/README.md) | Distinguishing real `NULL`s in source data from the structural `NULL`s `ROLLUP`/`CUBE` introduce |
 
 ## Folder Structure
 
 ```
 12_ADVANCED_AGGREGATIONS/
-│
-├── README.md                              → You are here
-│
-├── 01_ADVANCED_GROUP_BY.md                → Multi-column & nested grouping, theory + patterns
-├── 01_ADVANCED_GROUP_BY.sql               → Scenario-driven queries: multi-level GROUP BY
-│
-├── 02_MULTIPLE_AGGREGATIONS.md            → Combining COUNT/SUM/AVG/MIN/MAX in one pass
-├── 02_MULTIPLE_AGGREGATIONS.sql           → Scenario-driven queries: multi-metric reports
-│
-├── 03_CONDITIONAL_AGGREGATION.md          → CASE-driven metrics, conditional KPIs
-├── 03_CONDITIONAL_AGGREGATION.sql         → Scenario-driven queries: conditional aggregation
-│
-├── 04_ROLLUP_CUBE_GROUPING_SETS.md        → Subtotals, grand totals, GROUPING()
-├── 04_ROLLUP_CUBE_GROUPING_SETS.sql       → Scenario-driven queries: ROLLUP/CUBE/GROUPING SETS
-│
-├── 05_BUSINESS_KPI_REPORTS.md             → End-to-end KPI table design
-├── 05_BUSINESS_KPI_REPORTS.sql            → Scenario-driven queries: KPI reporting
-│
-├── 06_EXECUTIVE_DASHBOARDS.md             → Dashboard-ready, BI-tool-ready result sets
-├── 06_EXECUTIVE_DASHBOARDS.sql            → Scenario-driven queries: executive dashboards
-│
-├── 07_REAL_WORLD_ANALYTICS_PROJECT.md     → Capstone: a full reporting project, start to finish
-└── 07_REAL_WORLD_ANALYTICS_PROJECT.sql    → Capstone SQL solution
+├── README.md                                     ← you are here
+├── assets/                                        ← diagrams used in this README
+│   ├── banner.svg
+│   ├── 01_advanced_group_by.svg
+│   ├── 02_multiple_aggregations.svg
+│   ├── 03_conditional_aggregation.svg
+│   ├── 04_rollup_cube_grouping_sets.svg
+│   ├── 05_business_kpi_reports.svg
+│   ├── 06_executive_dashboards.svg
+│   └── 07_real_world_analytics_project.svg
+├── 01_ADVANCED_GROUP_BY.md
+├── 01_ADVANCED_GROUP_BY.sql
+├── 02_MULTIPLE_AGGREGATIONS.md
+├── 02_MULTIPLE_AGGREGATIONS.sql
+├── 03_CONDITIONAL_AGGREGATION.md
+├── 03_CONDITIONAL_AGGREGATION.sql
+├── 04_ROLLUP_CUBE_GROUPING_SETS.md
+├── 04_ROLLUP_CUBE_GROUPING_SETS.sql
+├── 05_BUSINESS_KPI_REPORTS.md
+├── 05_BUSINESS_KPI_REPORTS.sql
+├── 06_EXECUTIVE_DASHBOARDS.md
+├── 06_EXECUTIVE_DASHBOARDS.sql
+├── 07_REAL_WORLD_ANALYTICS_PROJECT.md
+└── 07_REAL_WORLD_ANALYTICS_PROJECT.sql
 ```
 
-Every `.md` file is the concept deep-dive. Every `.sql` file is the paired, runnable, scenario-driven companion — read them side by side.
+---
+
+## 📋 Module Contents
+
+Every file in this module, its business domain, and its size — so you know what you're committing to before you open it.
+
+| # | Topic (`.md`) | Domain | `.md` lines | `.sql` lines | Combined size | Difficulty |
+|---|---|---|---:|---:|---:|:---:|
+| 01 | [Advanced GROUP BY](01_ADVANCED_GROUP_BY.md) · [`.sql`](01_ADVANCED_GROUP_BY.sql) | Human Resources | 212 | 270 | 23.9 KB | 🟢 Foundational |
+| 02 | [Multiple Aggregations](02_MULTIPLE_AGGREGATIONS.md) · [`.sql`](02_MULTIPLE_AGGREGATIONS.sql) | E-commerce | 202 | 168 | 19.6 KB | 🟢 Foundational |
+| 03 | [Conditional Aggregation](03_CONDITIONAL_AGGREGATION.md) · [`.sql`](03_CONDITIONAL_AGGREGATION.sql) | Banking / Finance | 201 | 210 | 22.8 KB | 🟡 Intermediate |
+| 04 | [ROLLUP, CUBE & GROUPING SETS](04_ROLLUP_CUBE_GROUPING_SETS.md) · [`.sql`](04_ROLLUP_CUBE_GROUPING_SETS.sql) | Retail | 214 | 232 | 23.8 KB | 🟠 Advanced |
+| 05 | [Business KPI Reports](05_BUSINESS_KPI_REPORTS.md) · [`.sql`](05_BUSINESS_KPI_REPORTS.sql) | SaaS | 194 | 183 | 20.9 KB | 🟠 Advanced |
+| 06 | [Executive Dashboards](06_EXECUTIVE_DASHBOARDS.md) · [`.sql`](06_EXECUTIVE_DASHBOARDS.sql) | Healthcare | 203 | 170 | 21.8 KB | 🟠 Advanced |
+| 07 | [Real-World Analytics Project (Capstone)](07_REAL_WORLD_ANALYTICS_PROJECT.md) · [`.sql`](07_REAL_WORLD_ANALYTICS_PROJECT.sql) | Logistics / Supply Chain | 202 | 293 | 28.9 KB | 🔴 Capstone |
+| — | **Total** | 7 domains | **1,428** | **1,526** | **~161.9 KB** | — |
+
+> Every `.md` file follows the same 19-section anatomy — Introduction → Concept Overview → Business Motivation → Why This Feature Exists → Real Company Examples → Business Problems Solved → Visual Explanation → Syntax → Detailed Walkthrough → Production Workflow → Analytics Engineering Perspective → Performance Considerations → Edge Cases → Common Mistakes → Best Practices → Interview Questions → Summary → Practice Challenges → Further Reading — so once you know the shape of one file, you know the shape of all seven.
 
 ---
 
-## Topics Covered
+## 🧭 Topic Walkthrough
 
-<table>
-<tr><th>Category</th><th>Topics</th></tr>
-<tr>
-<td><strong>Advanced GROUP BY</strong></td>
-<td>Grouping by multiple columns · Nested grouping · Multi-level aggregation · Grain and cardinality reasoning</td>
-</tr>
-<tr>
-<td><strong>Core Aggregates, Combined</strong></td>
-<td><code>COUNT()</code> · <code>COUNT(DISTINCT)</code> · <code>SUM()</code> · <code>AVG()</code> · <code>MIN()</code> · <code>MAX()</code> used together in one report</td>
-</tr>
-<tr>
-<td><strong>Conditional Aggregation</strong></td>
-<td><code>COUNT</code> with <code>CASE</code> · <code>SUM</code> with <code>CASE</code> · <code>AVG</code> with <code>CASE</code> · conditional KPIs · pivot-style reports</td>
-</tr>
-<tr>
-<td><strong>Business Reporting</strong></td>
-<td>Revenue analysis · profit analysis · customer segmentation · regional reports · category performance · monthly business reports · department reports · sales performance · top/bottom performing products</td>
-</tr>
-<tr>
-<td><strong>Hierarchical Totals</strong></td>
-<td><code>ROLLUP</code> · <code>CUBE</code> · <code>GROUPING SETS</code> · <code>GROUPING()</code> · subtotals · grand totals</td>
-</tr>
-<tr>
-<td><strong>Filtering &amp; Optimization</strong></td>
-<td>Aggregation with <code>HAVING</code> · performance optimization · aggregation best practices</td>
-</tr>
-</table>
+### 01 — Advanced GROUP BY
+
+![Advanced GROUP BY](assets/01_advanced_group_by.svg)
+
+The core upgrade every beginner analyst has to make: from grouping by one column to grouping by a *combination* of columns. `GROUP BY department, city` collapses rows into one group per **(department, city) pair that actually exists** — not one group per department plus one group per city. This topic is entirely about grain discipline.
+
+📄 [`01_ADVANCED_GROUP_BY.md`](01_ADVANCED_GROUP_BY.md) · 🗄️ [`01_ADVANCED_GROUP_BY.sql`](01_ADVANCED_GROUP_BY.sql)
 
 ---
 
-## SQL Functions Covered
+### 02 — Multiple Aggregations
+
+![Multiple Aggregations](assets/02_multiple_aggregations.svg)
+
+`COUNT()`, `COUNT(DISTINCT)`, `SUM()`, `AVG()`, `MIN()`, and `MAX()` computed together in one `GROUP BY` pass. Every aggregate in the `SELECT` list runs independently over the same grouped rows — five metrics cost no more than one, because the engine scans the group once.
+
+📄 [`02_MULTIPLE_AGGREGATIONS.md`](02_MULTIPLE_AGGREGATIONS.md) · 🗄️ [`02_MULTIPLE_AGGREGATIONS.sql`](02_MULTIPLE_AGGREGATIONS.sql)
+
+---
+
+### 03 — Conditional Aggregation
+
+![Conditional Aggregation](assets/03_conditional_aggregation.svg)
+
+Puts `CASE WHEN` **inside** the aggregate function, so a single query computes several differently-filtered metrics side by side — the technique behind nearly every "breakdown by status" report: new vs. returning, deposits vs. withdrawals, on-time vs. late.
+
+📄 [`03_CONDITIONAL_AGGREGATION.md`](03_CONDITIONAL_AGGREGATION.md) · 🗄️ [`03_CONDITIONAL_AGGREGATION.sql`](03_CONDITIONAL_AGGREGATION.sql)
+
+---
+
+### 04 — ROLLUP, CUBE & GROUPING SETS
+
+![ROLLUP, CUBE and GROUPING SETS](assets/04_rollup_cube_grouping_sets.svg)
+
+The three tools behind every finance report with subtotal rows and a grand total: `ROLLUP` follows the hierarchy of the columns given, `CUBE` produces every possible subtotal combination, and `GROUPING SETS` lets you hand-pick exactly which combinations you want. `GROUPING()` identifies subtotal/grand-total rows — never a `NULL` check.
+
+📄 [`04_ROLLUP_CUBE_GROUPING_SETS.md`](04_ROLLUP_CUBE_GROUPING_SETS.md) · 🗄️ [`04_ROLLUP_CUBE_GROUPING_SETS.sql`](04_ROLLUP_CUBE_GROUPING_SETS.sql)
+
+---
+
+### 05 — Business KPI Reports
+
+![Business KPI Reports](assets/05_business_kpi_reports.svg)
+
+Where Topics 01–04 are mechanisms, this topic is composition — combining them deliberately to produce named business metrics: MRR, churn rate, ARPU, conversion rate. The engineering skill is translating a business definition ("what counts as churn?") into a precise SQL condition, not new syntax.
+
+📄 [`05_BUSINESS_KPI_REPORTS.md`](05_BUSINESS_KPI_REPORTS.md) · 🗄️ [`05_BUSINESS_KPI_REPORTS.sql`](05_BUSINESS_KPI_REPORTS.sql)
+
+---
+
+### 06 — Executive Dashboards
+
+![Executive Dashboards](assets/06_executive_dashboards.svg)
+
+A dashboard is a KPI report designed to be consumed directly by a BI tool: predictable columns, no unexplained `NULL`s, subtotal/grand-total rows properly labeled. This topic is about designing the *output contract* — shaping the result set, not computing new numbers.
+
+📄 [`06_EXECUTIVE_DASHBOARDS.md`](06_EXECUTIVE_DASHBOARDS.md) · 🗄️ [`06_EXECUTIVE_DASHBOARDS.sql`](06_EXECUTIVE_DASHBOARDS.sql)
+
+---
+
+### 07 — Real-World Analytics Project (Capstone)
+
+![Real-World Analytics Project](assets/07_real_world_analytics_project.svg)
+
+The capstone: every technique from Topics 01–06 comes together in one realistic engineering brief — build the logistics operations report a supply-chain VP would actually ask for. No new SQL syntax; the difficulty is entirely in grain decisions, metric selection, subtotal placement, and denominator definitions.
+
+📄 [`07_REAL_WORLD_ANALYTICS_PROJECT.md`](07_REAL_WORLD_ANALYTICS_PROJECT.md) · 🗄️ [`07_REAL_WORLD_ANALYTICS_PROJECT.sql`](07_REAL_WORLD_ANALYTICS_PROJECT.sql)
+
+---
+
+## 🔤 Function Reference
+
+Every clause and function taught in this module, grouped by what it does.
+
+<details open>
+<summary><b>Grouping & Core Aggregates</b> (Topics 01–02)</summary>
 
 | Function / Clause | Purpose |
 |---|---|
-| `GROUP BY (col1, col2, ...)` | Aggregate across multiple dimensions simultaneously |
+| `GROUP BY (col1, col2, ...)` | Aggregates across multiple dimensions simultaneously |
 | `COUNT()` / `COUNT(DISTINCT)` | Row counts and unique-value counts per group |
 | `SUM()` | Additive totals per group |
 | `AVG()` | Mean value per group |
 | `MIN()` / `MAX()` | Boundary values per group |
+
+</details>
+
+<details>
+<summary><b>Conditional & Hierarchical Aggregation</b> (Topics 03–04)</summary>
+
+| Function / Clause | Purpose |
+|---|---|
 | `CASE WHEN ... THEN ... END` (inside aggregates) | Conditional metrics within a single aggregation pass |
 | `ROLLUP(col1, col2, ...)` | Hierarchical subtotals + grand total, one dimension order |
 | `CUBE(col1, col2, ...)` | Every combination of subtotals across all listed dimensions |
 | `GROUPING SETS (...)` | Explicit, hand-picked set of grouping combinations |
 | `GROUPING(col)` | Returns `1` for subtotal/grand-total rows, `0` for detail rows |
 | `HAVING` | Filters groups *after* aggregation, unlike `WHERE` |
+
+</details>
+
+> Topics 05, 06, and 07 introduce no new functions — they are entirely about composing the clauses above into named KPIs, BI-ready dashboards, and a real-world reporting brief.
 
 ---
 
@@ -218,178 +272,105 @@ This module's techniques map directly onto reports that exist in nearly every co
 - **Supply chain & logistics** — on-time delivery rate by warehouse, shipment volume by carrier × region
 - **SaaS** — MRR movement (new, expansion, contraction, churn) as a single conditional-aggregation query
 
----
-
 ## Analytics Engineering Perspective
 
-A data analyst writes a query to answer one question. An analytics engineer writes a query — or more often, a `dbt` model or a scheduled report table — that many people will query *against* for months or years. That distinction changes how you should think about everything in this module.
+A data analyst writes a query to answer one question. An analytics engineer writes a query — or a `dbt` model, or a scheduled report table — that many people will query *against* for months or years. That distinction changes how you should think about everything in this module:
 
-- **Grain discipline.** Before writing a single `GROUP BY`, know the intended grain of the output (one row per region-month? per customer-segment? per product-category-day?). Multi-column grouping makes it easy to accidentally produce a finer grain than intended, silently duplicating what looked like a total.
-- **Idempotent aggregation.** Reporting queries are frequently re-run on a schedule. `ROLLUP`/`CUBE` output should be deterministic and stable — the same inputs must always produce the same subtotal and grand-total rows, in a predictable shape, so downstream dashboards don't break on refresh.
-- **Reusable metric definitions.** Conditional aggregation logic (e.g., "what counts as a *returning* customer") tends to get copy-pasted across a dozen reports. In a mature analytics engineering setup, that `CASE` logic belongs in a single, tested definition (a `dbt` macro, a view, or a documented business-logic table) — not re-typed slightly differently in every query.
-- **Separation of aggregation from presentation.** SQL should produce correctly aggregated numbers. Formatting, subtotal labeling, and layout belong in the BI layer. `GROUPING()` exists precisely so SQL can flag "this is a subtotal row" without hardcoding a label like `'All Regions'` into the data.
-
----
-
-## Reporting Workflows
-
-A typical production reporting workflow that uses this module's techniques looks like this:
-
-```
-┌─────────────────┐      ┌──────────────────────┐      ┌────────────────────┐
-│  Raw / staged     │      │  Aggregation layer     │      │  Presentation layer   │
-│  transactional     │ ──▶  │  (this module)          │ ──▶  │  (BI tool / export)     │
-│  tables             │      │  GROUP BY, CASE,         │      │  Power BI / Looker /   │
-│  (orders, sales,    │      │  ROLLUP / CUBE /          │      │  Tableau / scheduled   │
-│  payments, ...)      │      │  GROUPING SETS            │      │  report / dashboard     │
-└─────────────────┘      └──────────────────────┘      └────────────────────┘
-```
-
-1. **Extract the question.** "Regional revenue by month, with subtotals per region and a company grand total."
-2. **Identify the grain and the dimensions.** Grain = region × month. Dimensions to roll up = region, month.
-3. **Pick the aggregation tool.** A fixed hierarchy (region → month) suggests `ROLLUP`. If every combination of subtotals is needed, `CUBE`. If only specific combinations matter, `GROUPING SETS`.
-4. **Add conditional metrics if the report needs more than one KPI per row** (e.g., total revenue *and* refunded revenue *and* net revenue) using `CASE`-driven aggregation.
-5. **Filter groups, not rows,** with `HAVING` (e.g., "only show regions with more than $50,000 in monthly revenue").
-6. **Hand off a stable, well-typed result set** to the BI layer or materialize it as a report table on a schedule.
-
----
-
-## Dashboard Examples
-
-Representative outputs you will be able to produce by the end of this module:
-
-**Regional revenue with subtotals (ROLLUP):**
-
-| region | order_month | total_revenue |
-|---|---|---|
-| East | 2026-01 | 182,400 |
-| East | 2026-02 | 176,900 |
-| East | *(subtotal)* | 359,300 |
-| West | 2026-01 | 145,200 |
-| West | 2026-02 | 151,050 |
-| West | *(subtotal)* | 296,250 |
-| *(grand total)* | | 655,550 |
-
-**SaaS MRR movement (conditional aggregation):**
-
-| billing_month | new_mrr | expansion_mrr | contraction_mrr | churned_mrr |
-|---|---|---|---|---|
-| 2026-05 | 42,000 | 11,300 | -3,200 | -8,900 |
-| 2026-06 | 39,500 | 9,800 | -2,100 | -6,400 |
-
-Both of these are single queries — no spreadsheet stitching, no five separate result sets joined by hand.
-
----
+- **Grain discipline.** Know the intended grain of the output before writing a single `GROUP BY`. Multi-column grouping makes it easy to accidentally produce a finer grain than intended, silently duplicating what looked like a total.
+- **Idempotent aggregation.** Scheduled reports re-run repeatedly. `ROLLUP`/`CUBE` output should be deterministic and stable — the same inputs must always produce the same subtotal and grand-total rows, in a predictable shape.
+- **Reusable metric definitions.** Conditional aggregation logic (e.g., "what counts as a *returning* customer") gets copy-pasted across a dozen reports. In a mature setup, that `CASE` logic belongs in one tested definition — not re-typed slightly differently everywhere.
+- **Separation of aggregation from presentation.** SQL should produce correctly aggregated numbers. Formatting and subtotal labeling belong in the BI layer. `GROUPING()` exists so SQL can flag "this is a subtotal row" without hardcoding a label like `'All Regions'` into the data.
 
 ## Performance Considerations
 
-- **`GROUP BY` cost scales with cardinality, not row count alone.** Grouping by a high-cardinality combination of columns (e.g., `customer_id` × `order_date`) can produce a result set nearly as large as the source table — know your dimension cardinality before running it against a production table.
-- **`ROLLUP`/`CUBE` multiply output rows.** `CUBE` on *n* columns produces up to 2ⁿ grouping combinations. On more than 3–4 dimensions, this grows fast; prefer `GROUPING SETS` with an explicit, business-relevant list of combinations instead of a full `CUBE`.
-- **Conditional aggregation avoids repeated scans.** Five `CASE`-driven metrics in one `GROUP BY` pass are far cheaper than five separate filtered queries unioned together, because the table is scanned once instead of five times.
-- **Index the `GROUP BY` and filter columns**, not the aggregated columns. An index on `(region, order_date)` helps a `GROUP BY region, order_date` far more than an index on `revenue` ever will.
-- **`HAVING` runs after aggregation** — it does not reduce the number of rows scanned. Push every filter you can into `WHERE` first, and reserve `HAVING` strictly for conditions on the aggregated value itself.
-- **Pre-aggregate for dashboards with heavy read traffic.** If the same rollup is queried hundreds of times a day, materialize it into a summary table on a schedule rather than recomputing it live on every dashboard refresh.
-
----
+- Multi-column `GROUP BY` typically requires sorting or hashing on the full combination of grouped columns — a composite index matching the `GROUP BY` order can avoid an explicit sort step on large tables.
+- `ROLLUP`/`CUBE` compute multiple grouping levels in a single query, which is usually far cheaper than running several separate `GROUP BY` queries and `UNION`-ing them — but `CUBE` on many columns grows combinatorially and can be expensive on wide dimension sets.
+- `HAVING` filters *after* aggregation — it cannot use an index the way a `WHERE` clause on a raw column can. Filter as much as possible in `WHERE` before the aggregation runs.
+- Conditional aggregation (`CASE WHEN` inside `SUM`/`COUNT`) is usually cheaper than the equivalent multiple-`WHERE`-clause `UNION ALL` pattern, since it scans the source table once instead of N times.
 
 ## Best Practices
 
-- Always know the intended output grain *before* writing the `GROUP BY` clause — write it down as a comment if the query is non-trivial.
-- Alias every aggregate column with a business-meaningful name (`total_revenue`, not `sum_amt`).
-- Use `COALESCE()` or `IFNULL()` to convert `NULL` subtotal labels from `ROLLUP`/`CUBE` into readable values like `'All Regions'` in the presentation layer — not by hardcoding a fake row into the source data.
-- Prefer `GROUPING SETS` over `CUBE` once you only need specific combinations — it's more explicit about business intent and cheaper to compute.
-- Filter with `WHERE` wherever possible; reserve `HAVING` for aggregate-level conditions only.
-- Keep conditional-aggregation `CASE` logic consistent across the codebase — define "active customer" or "on-time delivery" once and reuse it, rather than re-deriving it slightly differently in every report.
-- Test aggregation queries against a known subtotal manually (e.g., confirm regional subtotals sum to the grand total) before shipping a report.
-
----
+- State the intended grain of a report as a comment above the query — "one row per (region, month)" — before writing the `GROUP BY`.
+- Prefer `GROUPING()` over `NULL` checks to identify subtotal/grand-total rows; a real `NULL` in the source data and a structural `NULL` from `ROLLUP` are otherwise indistinguishable.
+- Centralize repeated conditional-aggregation logic (e.g., a churn definition) in a view, CTE, or `dbt` macro rather than duplicating the `CASE WHEN` across reports.
+- Design KPI and dashboard queries around the output contract the consuming tool expects — labeled row types, no raw `NULL`s, consistent column meaning — not just a correct number.
 
 ## Common Mistakes
 
-| Mistake | Why It's a Problem | Fix |
-|---|---|---|
-| Filtering on an aggregate with `WHERE` | `WHERE` runs before aggregation and cannot reference `SUM()`/`COUNT()` | Use `HAVING` for aggregate-level conditions |
-| Forgetting a `GROUP BY` column that appears in `SELECT` | Causes an error (strict SQL modes) or silently wrong results (lenient modes) | Every non-aggregated `SELECT` column must appear in `GROUP BY` |
-| Treating `ROLLUP`/`CUBE` `NULL`s as missing data | Those `NULL`s mean "this is a subtotal row," not "unknown value" | Use `GROUPING()` to distinguish real `NULL`s from subtotal rows |
-| Using `CUBE` when only a few combinations are needed | Produces far more rows than the report requires, wasting compute | Use `GROUPING SETS` with the exact combinations needed |
-| Double-counting with `COUNT()` instead of `COUNT(DISTINCT)` after a `JOIN` | A one-to-many join inflates row counts before aggregation | Use `COUNT(DISTINCT primary_key)` when joins can multiply rows |
-| Copy-pasting slightly different `CASE` conditions across reports | Two reports quietly define "active user" differently, and numbers stop matching | Centralize business-logic definitions in one place |
-
----
+- Treating `GROUP BY col1, col2` as two independent groupings instead of one grouping on the combined pair.
+- Using `WHERE` to filter one metric on a multi-metric report, which removes rows needed by the *other* metrics in the same query — the fix is conditional aggregation, not `WHERE`.
+- Testing a `ROLLUP`/`CUBE` column for `NULL` to detect a subtotal row, which breaks the moment the source data legitimately contains `NULL` in that column.
+- Defining a ratio's denominator ambiguously ("churn rate") without specifying the population it's measured against, producing a number two people can compute two different — both defensible — ways.
 
 ## Interview Preparation
 
-Advanced aggregation is one of the most heavily tested areas in SQL interviews for analyst, analytics engineer, and data engineer roles, because it directly measures reporting fluency. Be ready to:
-
-- Explain the exact difference between `WHERE` and `HAVING`, including *why* `WHERE` cannot filter on an aggregate.
-- Write a query that returns both detail rows and a grand total in a single result set.
-- Explain what `ROLLUP(a, b)` produces versus `CUBE(a, b)` versus `GROUPING SETS ((a, b), (a), ())`.
-- Convert a "five separate `WHERE`-filtered queries" description into one query using conditional aggregation.
-- Explain what `GROUPING()` returns and why it matters for distinguishing real `NULL` values from subtotal rows.
-- Reason out loud about the output cardinality of a multi-column `GROUP BY` before running it.
-- Discuss when you would pre-aggregate into a summary table instead of aggregating on every query.
-
----
+Interviewers commonly test this module through business scenarios rather than syntax recall: "show revenue by region and month with subtotals," "compute new vs. returning customer counts in one query," "what's the difference between `ROLLUP` and `CUBE`," or "how would you calculate churn rate and what assumptions does your definition make." Each topic file in this module ends with an **Interview Questions** section modeled on exactly these patterns.
 
 ## Career Relevance
 
-This is not academic SQL — it is the daily work product of a data analyst or analytics engineer. Nearly every recurring report, KPI dashboard, or scheduled data extract that a business runs on is built from exactly the techniques in this module: multi-dimensional `GROUP BY`, conditional metrics, and hierarchical rollups. Fluency here is what separates "can write a `SELECT` statement" from "can be handed a vague business question and return a report a VP will trust."
+Advanced aggregation is the single most common SQL skill gap between "can write a working query" and "can be trusted with a stakeholder-facing report." Analysts, Analytics Engineers, and BI Engineers write this exact pattern — multi-column `GROUP BY`, conditional metrics, subtotal reporting — multiple times a week in production.
+
+**Production applications:**
+
+- Financial and executive reporting pipelines producing subtotal/grand-total tables on a schedule
+- SaaS metrics dashboards computing MRR, churn, and ARPU directly from transactional data
+- BI-layer views feeding Power BI, Looker, and Tableau dashboards without further transformation
+- Operational reports (logistics, healthcare, retail) segmented by conditional business rules
+
+## Difficulty & Time
+
+| | |
+|---|---|
+| **Level** | Advanced — assumes fluency with `GROUP BY`, joins, and `CASE WHEN`; introduces hierarchical aggregation (`ROLLUP`/`CUBE`/`GROUPING SETS`) and the judgment to compose it into real reports |
+| **Estimated time** | 10–14 hours across all seven sub-modules, including the capstone project |
+| **Business domains used** | Human Resources, E-commerce, Banking, Retail, SaaS, Healthcare, Logistics / Supply Chain |
 
 ---
 
-## Learning Roadmap
+## 🗂️ Full Handbook Map
 
-<details>
-<summary><strong>🟢 Beginner path</strong> — build the mental model first</summary>
+Where this module sits in the complete [SQL Engineering Handbook](../README.md):
 
-1. `01_ADVANCED_GROUP_BY` — get comfortable grouping by two or three columns
-2. `02_MULTIPLE_AGGREGATIONS` — combine multiple metrics in one query
-3. `03_CONDITIONAL_AGGREGATION` — introduce `CASE` inside aggregates
-4. Practice challenges at the end of each `.md` file before moving on
+| # | Module | Contents | Status |
+|---|---|---|:---:|
+| 00 | [Schema](../00_Schema/) | Practice database DDL, seed data, and ERD used by every later module | ✅ |
+| 01 | [Fundamentals](../01_Fundamentals/) | `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`, aliasing | ✅ |
+| 02 | [Aggregations](../02_Aggregations/) | `COUNT`, `SUM`, `AVG`, `MIN`/`MAX`, `GROUP BY`, `HAVING` | ✅ |
+| 03 | [Joins](../03_Joins/) | Inner, left, right, full, cross, self joins + performance audit | ✅ |
+| 04 | [Subqueries](../04_Subqueries/) | Scalar, correlated, `EXISTS`, derived tables, subquery-to-join rewrites | ✅ |
+| 05 | [CASE WHEN](../05_CASE_WHEN/) | Conditional logic and business-rule encoding | ✅ |
+| 06 | [CTEs](../06_CTEs/) | Common Table Expressions, recursive CTEs | ✅ |
+| 07 | [Window Functions](../07_Window_Functions/) | `ROW_NUMBER`, `RANK`, `LAG`/`LEAD`, `PARTITION BY` | ✅ |
+| 08 | [Window Business Cases](../08_WINDOW_BUSINESS_CASES/) | Applied window-function scenarios (running totals, cohorts, rankings) | ✅ |
+| 09 | [Date Functions](../09_Date_Functions/) | Date arithmetic, formatting, range queries | ✅ |
+| 10 | [String Functions](../10_STRING_FUNCTIONS/) | String manipulation and data cleaning | ✅ |
+| 11 | [NULL Handling & Data Cleaning](../11_NULL_HANDLING_AND_DATA_CLEANING/) | `COALESCE`, `NULLIF`, data-quality patterns | ✅ |
+| **12** | **Advanced Aggregations** *(this module)* | Multi-column `GROUP BY`, conditional aggregation, `ROLLUP`/`CUBE`, KPI reporting | ✅ |
+| 13 | [Set Operators](../13_SET_OPERATORS/) | `UNION`, `INTERSECT`, `EXCEPT`, reconciliation queries | ✅ |
+| 14 | [Views](../14_VIEWS/) | Views, security, updatable views, performance | ✅ |
+| 15 | [Indexes](../15_INDEXES/) | B-Tree, composite, covering indexes, reading `EXPLAIN` | ✅ |
+| 16 | [Query Optimization](../16_QUERY_OPTIMIZATION/) | Execution plans, rewrite patterns, anti-patterns | ✅ |
+| 17 | [SQL Interview Questions](../17_SQL_INTERVIEW_QUESTIONS/) | Curated question bank with worked answers | 📋 |
+| 18 | [SQL Business Case Studies](../18_SQL_BUSINESS_CASE_STUDIES/) | End-to-end analytics scenarios across domains | 📋 |
+| 19 | [SQL Projects](../19_SQL_PROJECTS/) | Portfolio-ready guided projects | 📋 |
+| 20 | [SQL Cheatsheet](../20_SQL_CHEATSHEET/) | One-page syntax and pattern reference | 📋 |
 
-</details>
-
-<details>
-<summary><strong>🟡 Intermediate path</strong> — production reporting patterns</summary>
-
-1. `04_ROLLUP_CUBE_GROUPING_SETS` — subtotal and grand-total generation
-2. `05_BUSINESS_KPI_REPORTS` — full KPI table design end to end
-3. Revisit `03_CONDITIONAL_AGGREGATION` and rebuild each example from memory
-
-</details>
-
-<details>
-<summary><strong>🔴 Advanced path</strong> — dashboard and capstone readiness</summary>
-
-1. `06_EXECUTIVE_DASHBOARDS` — BI-tool-ready, presentation-grade result sets
-2. `07_REAL_WORLD_ANALYTICS_PROJECT` — full capstone project, unaided
-3. Rebuild the capstone using a different business domain than the one provided
-
-</details>
-
----
-
-## Summary
-
-Basic aggregation answers one question about one group. This module builds the skill of answering many related questions about many groups, in a single, efficient query — which is what "reporting" actually means in a professional data team. Multi-column `GROUP BY` sets the grain. Conditional aggregation adds multiple business-defined metrics in one pass. `ROLLUP`, `CUBE`, and `GROUPING SETS` add the subtotal and grand-total structure every executive report expects. Together, these are the tools behind almost every dashboard, KPI table, and business report you will encounter in a data role.
-
----
+✅ Complete &nbsp;·&nbsp; 📋 Planned — live status always lives in [`ROADMAP.md`](../ROADMAP.md).
 
 ## Further Reading
 
-- [PostgreSQL Documentation — Aggregate Functions](https://www.postgresql.org/docs/current/functions-aggregate.html)
-- [PostgreSQL Documentation — GROUPING SETS, CUBE, and ROLLUP](https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUPING-SETS)
-- [MySQL 8.0 Reference Manual — GROUP BY Modifiers (ROLLUP)](https://dev.mysql.com/doc/refman/8.0/en/group-by-modifiers.html)
-- [MySQL 8.0 Reference Manual — Aggregate Function Descriptions](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html)
+- [PostgreSQL — GROUPING SETS, CUBE, and ROLLUP](https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUPING-SETS)
+- [MySQL — GROUP BY Modifiers (WITH ROLLUP)](https://dev.mysql.com/doc/refman/8.0/en/group-by-modifiers.html)
 - [Microsoft Learn — GROUP BY (Transact-SQL)](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql)
 
 ---
 
 ## Navigation
 
-| | |
-|---|---|
-| ⬅️ **Previous Module** | [`11_NULL_HANDLING_AND_DATA_CLEANING`](/11_NULL_HANDLING_AND_DATA_CLEANING/README.md) |
-| ⬆️ **Handbook Home** | [SQL Engineering Handbook](../README.md) |
-| ➡️ **Next Module** | [`13_SET_OPERATORS`](/13_SET_OPERATORS/README.md) |
+<div align="center">
 
+[◀ Module 11 — NULL Handling](../11_NULL_HANDLING_AND_DATA_CLEANING/README.md) &nbsp;·&nbsp; [🏠 Handbook Home](../README.md) &nbsp;·&nbsp; [Module 13 — Set Operators ▶](../13_SET_OPERATORS/README.md)
+
+[⬆ Back to top](#table-of-contents)
+
+</div>

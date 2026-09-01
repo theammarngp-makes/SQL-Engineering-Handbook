@@ -1,5 +1,9 @@
 # 06 · Executive Dashboards
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [05 Business KPI Reports](05_BUSINESS_KPI_REPORTS.md) · Next → [07 Real-World Analytics Project ▶](07_REAL_WORLD_ANALYTICS_PROJECT.md)
+
+![Executive Dashboards](assets/06_executive_dashboards.svg)
+
 > **Module:** 02 — Advanced Aggregations
 > **Domain used in this file:** Healthcare (`patients`, `visits`, `departments`, `providers`)
 > **Companion file:** [`06_EXECUTIVE_DASHBOARDS.sql`](./06_EXECUTIVE_DASHBOARDS.sql)
@@ -201,3 +205,7 @@ Executive dashboard queries are the culmination of everything in this module, de
 ---
 
 **◀ Previous:** [`05_BUSINESS_KPI_REPORTS.md`](./05_BUSINESS_KPI_REPORTS.md) · **Next ▶** [`07_REAL_WORLD_ANALYTICS_PROJECT.md`](./07_REAL_WORLD_ANALYTICS_PROJECT.md)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

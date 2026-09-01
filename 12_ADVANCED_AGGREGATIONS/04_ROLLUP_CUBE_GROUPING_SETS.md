@@ -1,5 +1,9 @@
 # 04 · ROLLUP, CUBE, and GROUPING SETS
 
+[🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md) · ← [03 Conditional Aggregation](03_CONDITIONAL_AGGREGATION.md) · Next → [05 Business KPI Reports](05_BUSINESS_KPI_REPORTS.md)
+
+![ROLLUP, CUBE and GROUPING SETS](assets/04_rollup_cube_grouping_sets.svg)
+
 > **Module:** 02 — Advanced Aggregations
 > **Domain used in this file:** Retail (`sales`, `stores`, `regions`, `products`)
 > **Companion file:** [`04_ROLLUP_CUBE_GROUPING_SETS.sql`](./04_ROLLUP_CUBE_GROUPING_SETS.sql)
@@ -212,3 +216,7 @@ ORDER BY r.region_name, s.store_name;
 ---
 
 **◀ Previous:** [`03_CONDITIONAL_AGGREGATION.md`](./03_CONDITIONAL_AGGREGATION.md) · **Next ▶** [`05_BUSINESS_KPI_REPORTS.md`](./05_BUSINESS_KPI_REPORTS.md)
+
+---
+
+[⬆ Back to top](#) · [🏠 Module Home](README.md) · [🗂️ Handbook Home](../README.md)

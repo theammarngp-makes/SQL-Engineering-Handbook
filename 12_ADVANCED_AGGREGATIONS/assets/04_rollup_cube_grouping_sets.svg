@@ -1,0 +1,55 @@
+<svg viewBox="0 0 980 480" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="980" height="480" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="978" height="478" rx="13" fill="none" stroke="#30363d"/>
+  <rect x="0" y="0" width="980" height="54" rx="14" fill="#111826"/>
+  <rect x="0" y="40" width="980" height="14" fill="#111826"/>
+  <text x="28" y="35" font-size="19" font-weight="700" fill="#f0f6fc">04 — ROLLUP, CUBE &amp; GROUPING SETS</text>
+  <text x="700" y="35" font-size="13" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">Retail · (region, product)</text>
+
+  <text x="40" y="86" font-size="12.5" fill="#8b949e" font-family="'Cascadia Code',Consolas,monospace">base pair: (region, product) — e.g. (West, Shoes)</text>
+
+  <!-- ROLLUP column -->
+  <g transform="translate(40,105)">
+    <rect width="280" height="330" rx="10" fill="#101826" stroke="#58a6ff"/>
+    <text x="140" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#58a6ff">ROLLUP(region, product)</text>
+    <text x="140" y="50" text-anchor="middle" font-size="10.5" fill="#8b949e">follows the hierarchy given</text>
+    <g font-family="'Cascadia Code',Consolas,monospace" font-size="11.5" fill="#c9d1d9">
+      <text x="20" y="82">(region, product)  detail</text>
+      <text x="20" y="106">(region)           subtotal</text>
+      <text x="20" y="130">()                 grand total</text>
+    </g>
+    <text x="140" y="300" text-anchor="middle" font-size="11" fill="#3fb950">3 grouping levels</text>
+    <text x="140" y="318" text-anchor="middle" font-size="10.5" fill="#8b949e">no (product)-only row</text>
+  </g>
+
+  <!-- CUBE column -->
+  <g transform="translate(350,105)">
+    <rect width="280" height="330" rx="10" fill="#101826" stroke="#bc8cff"/>
+    <text x="140" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#bc8cff">CUBE(region, product)</text>
+    <text x="140" y="50" text-anchor="middle" font-size="10.5" fill="#8b949e">every combination, no hierarchy</text>
+    <g font-family="'Cascadia Code',Consolas,monospace" font-size="11.5" fill="#c9d1d9">
+      <text x="20" y="82">(region, product)  detail</text>
+      <text x="20" y="106">(region)           subtotal</text>
+      <text x="20" y="130">(product)          subtotal</text>
+      <text x="20" y="154">()                 grand total</text>
+    </g>
+    <text x="140" y="300" text-anchor="middle" font-size="11" fill="#3fb950">4 grouping levels</text>
+    <text x="140" y="318" text-anchor="middle" font-size="10.5" fill="#8b949e">all subtotal directions</text>
+  </g>
+
+  <!-- GROUPING SETS column -->
+  <g transform="translate(660,105)">
+    <rect width="280" height="330" rx="10" fill="#101826" stroke="#d29922"/>
+    <text x="140" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#d29922">GROUPING SETS</text>
+    <text x="140" y="50" text-anchor="middle" font-size="10.5" fill="#8b949e">you choose exactly what you want</text>
+    <g font-family="'Cascadia Code',Consolas,monospace" font-size="11.5" fill="#c9d1d9">
+      <text x="20" y="82">((region, product))</text>
+      <text x="20" y="106">((product))   ← no</text>
+      <text x="20" y="124">  (region)-only row</text>
+    </g>
+    <text x="140" y="300" text-anchor="middle" font-size="11" fill="#3fb950">custom levels</text>
+    <text x="140" y="318" text-anchor="middle" font-size="10.5" fill="#8b949e">hand-picked, by design</text>
+  </g>
+
+  <text x="40" y="455" font-size="12" fill="#8b949e">Grand-total / subtotal rows are identified with GROUPING()/GROUPING_ID() — never by testing a column for NULL.</text>
+</svg>
