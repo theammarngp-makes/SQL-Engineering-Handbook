@@ -32,6 +32,8 @@ A bank's fraud-detection system and its core ledger should, in theory, always ag
 
 ## Visual Explanation
 
+![Reconciliation flow comparing expected and received shipments](./assets/05_reconciliation_flow.svg)
+
 ```
    Expected Shipments          Received Shipments
  ┌───────────────────┐       ┌───────────────────┐

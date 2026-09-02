@@ -1,0 +1,35 @@
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .neutral{ fill:#f8fafc; stroke:#94a3b8; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:13.5px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:12px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+    </style>
+  </defs>
+  <rect width="800" height="360" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Cost Ladder: Cheapest to Most Expensive</text>
+
+  <rect x="30" y="56" width="740" height="52" rx="8" class="res"/>
+  <text x="50" y="80" class="lbl">UNION ALL</text>
+  <text x="50" y="98" class="mono" font-size="11.5">concat branches → done. No sort, no comparison. Cheapest possible plan.</text>
+
+  <rect x="30" y="118" width="740" height="52" rx="8" class="box"/>
+  <text x="50" y="142" class="lbl">NOT EXISTS (anti-join)</text>
+  <text x="50" y="160" class="mono" font-size="11.5">for each row in A: index seek into B, keep if no match — no full materialization of B if indexed.</text>
+
+  <rect x="30" y="180" width="740" height="52" rx="8" class="warn"/>
+  <text x="50" y="204" class="lbl">UNION</text>
+  <text x="50" y="222" class="mono" font-size="11.5">combine → SORT or HASH → de-dup. That extra step is the entire added cost over UNION ALL.</text>
+
+  <rect x="30" y="242" width="740" height="52" rx="8" class="warn"/>
+  <text x="50" y="266" class="lbl">EXCEPT / INTERSECT (native)</text>
+  <text x="50" y="284" class="mono" font-size="11.5">sort/hash BOTH full sets, then compute the set difference or overlap.</text>
+
+  <line x1="30" y1="312" x2="770" y2="312" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="30" y="338" class="small">The question every non-ALL operator answers is "have I seen this row before?" — that lookup is what costs money.</text>
+</svg>

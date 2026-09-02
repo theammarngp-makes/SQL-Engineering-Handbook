@@ -1,0 +1,40 @@
+<svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .neutral{ fill:#f8fafc; stroke:#94a3b8; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:12.5px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+      .arrow{ stroke:#64748b; stroke-width:1.5; marker-end:url(#ah); fill:none; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="800" height="320" fill="#ffffff"/>
+  <text x="30" y="34" class="title">UNION vs UNION ALL: Same Syntax, Opposite Cost</text>
+
+  <rect x="30" y="56" width="220" height="44" rx="8" class="neutral"/>
+  <text x="140" y="83" class="mono" text-anchor="middle">Branch A: [10,20,20,30]</text>
+
+  <rect x="280" y="56" width="180" height="44" rx="8" class="neutral"/>
+  <text x="370" y="83" class="mono" text-anchor="middle">Branch B: [20,40]</text>
+
+  <path d="M140,100 L140,132" class="arrow"/>
+  <path d="M370,100 L370,132" class="arrow"/>
+
+  <rect x="30" y="134" width="740" height="60" rx="8" class="warn"/>
+  <text x="55" y="160" class="lbl">UNION ALL</text>
+  <text x="55" y="180" class="mono" font-size="12">[10, 20, 20, 30, 20, 40]  — 6 rows, no sort, nothing removed</text>
+
+  <rect x="30" y="206" width="740" height="60" rx="8" class="box"/>
+  <text x="55" y="232" class="lbl">UNION</text>
+  <text x="55" y="252" class="mono" font-size="12">[10, 20, 30, 40]  — 4 rows, sort/hash pass, every duplicate collapsed</text>
+
+  <line x1="30" y1="280" x2="770" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="30" y="304" class="small">UNION removes ALL duplicates, including ones that already existed inside a single branch — not just cross-branch overlap.</text>
+</svg>

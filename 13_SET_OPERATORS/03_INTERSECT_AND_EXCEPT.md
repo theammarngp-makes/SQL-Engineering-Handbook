@@ -34,6 +34,8 @@ A company migrating from an old CRM to a new one needs to know: which customers 
 
 ## Visual Explanation
 
+![INTERSECT and EXCEPT shown as overlap and difference](./assets/03_intersect_except.svg)
+
 ```
    A = {1, 2, 3}        B = {2, 3, 4}
 

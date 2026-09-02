@@ -1,0 +1,44 @@
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .neutral{ fill:#f8fafc; stroke:#94a3b8; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:13px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+    </style>
+  </defs>
+  <rect width="800" height="360" fill="#ffffff"/>
+  <text x="30" y="34" class="title">Four Set Operators, One Shape Requirement</text>
+
+  <rect x="40" y="54" width="140" height="60" rx="8" class="neutral"/>
+  <text x="110" y="78" class="lbl" text-anchor="middle" font-size="12.5">Table A</text>
+  <text x="110" y="98" class="mono" text-anchor="middle" font-size="12">{1, 2, 3}</text>
+
+  <rect x="220" y="54" width="140" height="60" rx="8" class="neutral"/>
+  <text x="290" y="78" class="lbl" text-anchor="middle" font-size="12.5">Table B</text>
+  <text x="290" y="98" class="mono" text-anchor="middle" font-size="12">{2, 3, 4}</text>
+
+  <text x="420" y="90" class="small">same column count &amp; compatible types required</text>
+
+  <line x1="40" y1="130" x2="770" y2="130" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <rect x="40" y="150" width="720" height="46" rx="8" class="box"/>
+  <text x="60" y="178" class="mono">UNION</text>
+  <text x="180" y="178" class="small">→ {1, 2, 3, 4}  distinct rows from either side</text>
+
+  <rect x="40" y="204" width="720" height="46" rx="8" class="warn"/>
+  <text x="60" y="232" class="mono">UNION ALL</text>
+  <text x="180" y="232" class="small">→ {1, 2, 3, 2, 3, 4}  every row kept, duplicates included</text>
+
+  <rect x="40" y="258" width="720" height="46" rx="8" class="res"/>
+  <text x="60" y="286" class="mono">INTERSECT</text>
+  <text x="180" y="286" class="small">→ {2, 3}  only rows present in both</text>
+
+  <rect x="40" y="312" width="720" height="34" rx="8" class="neutral"/>
+  <text x="60" y="334" class="mono">EXCEPT (A − B)</text>
+  <text x="260" y="334" class="small">→ {1}  in A, not in B — order of operands matters</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e3a5f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="260" rx="16" fill="url(#bg)"/>
+
+  <g stroke="#334155" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="65" x2="1200" y2="65"/>
+    <line x1="0" y1="195" x2="1200" y2="195"/>
+  </g>
+
+  <!-- decorative overlapping set circles -->
+  <g opacity="0.85">
+    <circle cx="900" cy="90" r="46" fill="none" stroke="#60a5fa" stroke-width="2"/>
+    <circle cx="955" cy="90" r="46" fill="none" stroke="#5eead4" stroke-width="2"/>
+    <text x="875" y="95" font-family="Menlo, Consolas, monospace" font-size="13" fill="#93c5fd" text-anchor="middle">A</text>
+    <text x="980" y="95" font-family="Menlo, Consolas, monospace" font-size="13" fill="#99f6e4" text-anchor="middle">B</text>
+  </g>
+
+  <g opacity="0.9">
+    <rect x="1010" y="66" width="150" height="30" rx="15" fill="#1e293b" stroke="#f59e0b"/>
+    <text x="1085" y="86" font-family="Menlo, Consolas, monospace" font-size="13" fill="#fbbf24" text-anchor="middle">UNION ALL</text>
+
+    <rect x="1010" y="130" width="150" height="30" rx="15" fill="#1e293b" stroke="#64748b"/>
+    <text x="1085" y="150" font-family="Menlo, Consolas, monospace" font-size="13" fill="#cbd5e1" text-anchor="middle">EXCEPT</text>
+  </g>
+
+  <!-- Module index badge -->
+  <rect x="60" y="46" width="64" height="64" rx="12" fill="url(#accent)"/>
+  <text x="92" y="88" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#0f172a" text-anchor="middle">13</text>
+
+  <!-- Title -->
+  <text x="145" y="80" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Set Operators</text>
+  <text x="145" y="112" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">UNION, INTERSECT, EXCEPT — Combining and Reconciling Result Sets</text>
+
+  <text x="60" y="230" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#64748b">SQL Engineering Handbook</text>
+  <text x="1140" y="230" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#64748b" text-anchor="end">Beginner → Advanced · 3–3.5 hrs</text>
+</svg>

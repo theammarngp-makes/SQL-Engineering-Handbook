@@ -31,6 +31,8 @@ A retail chain's `sales_us`, `sales_emea`, and `sales_apac` tables share identic
 
 ## Visual Explanation
 
+![Fan-in integration of regional sales tables with UNION ALL](./assets/04_business_integration.svg)
+
 ```
  sales_us    ──┐
  sales_emea  ──┼── UNION ALL ──► one unified "global_sales" result

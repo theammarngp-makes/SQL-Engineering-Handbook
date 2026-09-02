@@ -1,176 +1,289 @@
-# Module 13 — Set Operators
+![Module 13 — Set Operators](./assets/banner.svg)
 
-> Combine, compare, and reconcile result sets using `UNION`, `UNION ALL`, `INTERSECT`, and `EXCEPT`/`MINUS` — the tools behind every migration audit, multi-source report, and data reconciliation pipeline.
+# 13 · Set Operators
+
+> Part of the [SQL Engineering Handbook](../README.md)
+> Difficulty: Beginner → Advanced · Estimated study time: 3–3.5 hours
+
+## Table of Contents
+
+- [Module Files](#module-files)
+- [Module Overview](#module-overview)
+- [Why Set Operators Matter](#why-set-operators-matter)
+- [Learning Objectives](#learning-objectives)
+- [Module Roadmap](#module-roadmap)
+- [Folder Structure](#folder-structure)
+- [Repository Footprint](#repository-footprint)
+- [Visual Guide](#visual-guide)
+- [SQL Operators Covered](#sql-operators-covered)
+- [Business Applications](#business-applications)
+- [Production Use Cases](#production-use-cases)
+- [Analytics Engineering Perspective](#analytics-engineering-perspective)
+- [Common Data Integration Problems](#common-data-integration-problems)
+- [Best Practices](#best-practices)
+- [Common Mistakes](#common-mistakes)
+- [Performance Notes](#performance-notes)
+- [Difficulty & Prerequisites](#difficulty--prerequisites)
+- [Interview Preparation](#interview-preparation)
+- [Career Relevance](#career-relevance)
+- [Related Modules](#related-modules)
+- [Contributor Guide](#contributor-guide)
+- [Key Takeaway](#key-takeaway)
+
+## Module Files
+
+| # | Lesson | Concept | Lines (.md) | SQL Lab |
+|---|---|---|---|---|
+| 01 | [Introduction to Set Operators](./01_INTRODUCTION_TO_SET_OPERATORS.md) | Set theory foundation, shape/type compatibility rules | 165 | [.sql](./01_INTRODUCTION_TO_SET_OPERATORS.sql) |
+| 02 | [UNION and UNION ALL](./02_UNION_AND_UNION_ALL.md) | Deduplication vs stacking, cost implications | 144 | [.sql](./02_UNION_AND_UNION_ALL.sql) |
+| 03 | [INTERSECT and EXCEPT](./03_INTERSECT_AND_EXCEPT.md) | Overlap and difference, operand order, MINUS (Oracle) | 197 | [.sql](./03_INTERSECT_AND_EXCEPT.sql) |
+| 04 | [Business Data Integration](./04_BUSINESS_DATA_INTEGRATION.md) | Multi-source fan-in with discriminator columns | 146 | [.sql](./04_BUSINESS_DATA_INTEGRATION.sql) |
+| 05 | [Data Reconciliation](./05_DATA_RECONCILIATION.md) | Proving two datasets match, locating divergence | 164 | [.sql](./05_DATA_RECONCILIATION.sql) |
+| 06 | [Performance and Optimization](./06_PERFORMANCE_AND_OPTIMIZATION.md) | Execution plans, JOIN/EXISTS rewrites, when to avoid native operators | 212 | [.sql](./06_PERFORMANCE_AND_OPTIMIZATION.sql) |
+| 07 | [Real-World Case Study](./07_REAL_WORLD_CASE_STUDY.md) | Capstone: GlobalMart × UrbanCart merger consolidation | 159 | [.sql](./07_REAL_WORLD_CASE_STUDY.sql) |
+
+## Module Overview
+
+Every query in the modules before this one answered one question against one logical result set. This module introduces a different kind of question: **how do two or more result sets relate to each other?** Set operators — `UNION`, `UNION ALL`, `INTERSECT`, and `EXCEPT` — are the answer, and they show up constantly in real analytics work: merging regional reports into one global view, proving a data migration didn't drop rows, reconciling two systems that are supposed to agree, and consolidating datasets after a company merger.
+
+This module builds from the mechanics (what each operator does, and why `UNION` and `UNION ALL` are opposites despite looking nearly identical) through to a full production-shaped capstone that uses every operator together against one continuous business scenario.
 
 ## Why Set Operators Matter
 
-Every prior module in this handbook taught you how to shape **one** result set — filtering it, aggregating it, joining it to related tables. Set operators answer a different class of question: *how do two or more result sets of the same shape relate to each other?*
-
-That question is not academic. Organizations rarely store all of one kind of data in one place. Regional offices keep regional tables. Mergers leave two HR systems running side by side. ETL pipelines produce a staging copy that must be checked against production before it's trusted. Every one of these situations is a set-operator problem, and getting the operator wrong has real consequences — silently dropped duplicate transactions, silently duplicated report rows, or a migration declared "complete" when it isn't.
-
-This module teaches set operators the way they are actually used in analytics engineering and data engineering: as reconciliation tools, integration tools, and reporting tools — not as syntax trivia.
+Choosing `UNION` when you meant `UNION ALL` — or the reverse — is one of the most common and most consequential mistakes in production SQL. Silently deduplicating real business data (like legitimately duplicate transactions) can make a revenue report wrong in a way that's hard to notice. Silently keeping duplicates when you meant to dedupe can double-count. And beyond `UNION`, `INTERSECT` and `EXCEPT` are the backbone of reconciliation work — the queries that answer "did we lose any data?" during a migration, or "do these two systems agree?" during an audit. These are not academic set-theory exercises; they are asked for by name in real data engineering tickets.
 
 ## Learning Objectives
 
-By the end of this module, you will be able to:
+By completing this module, you will be able to:
 
-- Combine result sets correctly using `UNION` and `UNION ALL`, and explain the cost and correctness difference between them
-- Use `INTERSECT` to find overlap between two populations, and `EXCEPT`/`MINUS` to find one-directional gaps
-- Simulate `INTERSECT`/`EXCEPT` with `EXISTS`/`NOT EXISTS` on engines or versions that lack native support
-- Build multi-source integration reports (cross-region, cross-year, cross-system) with a discriminator column
-- Design and run a complete data reconciliation suite: row-count check, bidirectional `EXCEPT`, and value-level comparison
-- Diagnose and avoid the most common set-operator mistakes, including the `UNION`-instead-of-`JOIN` trap
-- Reason about the performance cost of deduplication and choose between native set operators and anti-join rewrites
-- Answer set-operator interview questions from foundational to staff-engineer level
+- Explain the column-count and data-type compatibility rules that every set operator requires
+- Choose correctly between `UNION` and `UNION ALL` based on whether duplicates are meaningful data or noise
+- Use `INTERSECT` and `EXCEPT` (or `MINUS` in Oracle) to find overlap and one-sided differences between two datasets
+- Build multi-source integration queries that combine several tables into one reporting view with a source discriminator
+- Write reconciliation queries that prove two datasets match, or pinpoint exactly where they diverge
+- Read an execution plan to understand why `UNION` costs more than `UNION ALL`, and when a `JOIN`, `EXISTS`, or `NOT EXISTS` rewrite outperforms a native set operator
+- Combine every operator in this module into a single realistic data consolidation project
 
-## Repository Navigation
+## Module Roadmap
 
-| File | Covers |
-|---|---|
-| [`01_INTRODUCTION_TO_SET_OPERATORS.md`](01_INTRODUCTION_TO_SET_OPERATORS.md) / `.sql` | Set theory foundations, column/type rules, first-branch naming |
-| [`02_UNION_AND_UNION_ALL.md`](02_UNION_AND_UNION_ALL.md) / `.sql` | Deduplication vs. concatenation, choosing correctly |
-| [`03_INTERSECT_AND_EXCEPT.md`](03_INTERSECT_AND_EXCEPT.md) / `.sql` | Overlap and directional difference, `EXISTS`/`NOT EXISTS` simulation |
-| [`04_BUSINESS_DATA_INTEGRATION.md`](04_BUSINESS_DATA_INTEGRATION.md) / `.sql` | Multi-source reporting, discriminator columns |
-| [`05_DATA_RECONCILIATION.md`](05_DATA_RECONCILIATION.md) / `.sql` | Row-count checks, bidirectional `EXCEPT`, value-level joins |
-| [`06_PERFORMANCE_AND_OPTIMIZATION.md`](06_PERFORMANCE_AND_OPTIMIZATION.md) / `.sql` | Cost of dedup, `EXISTS`/anti-join rewrites, recursive `UNION ALL` |
-| `07_REAL_WORLD_CASE_STUDY.md` / `.sql` | *Pending — end-to-end case study, next in the module sequence* |
+```mermaid
+flowchart TD
+    A[01 Introduction to Set Operators<br/>set theory, shape rules] --> B[02 UNION and UNION ALL<br/>dedup vs stack]
+    B --> C[03 INTERSECT and EXCEPT<br/>overlap and difference]
+    C --> D[04 Business Data Integration<br/>multi-source fan-in]
+    D --> E[05 Data Reconciliation<br/>prove datasets match]
+    E --> F[06 Performance and Optimization<br/>execution plans, rewrites]
+    F --> G[07 Real-World Case Study<br/>merger consolidation capstone]
+```
 
 ## Folder Structure
 
-```
+```text
 13_SET_OPERATORS/
-├── README.md
-├── 01_INTRODUCTION_TO_SET_OPERATORS.md
-├── 01_INTRODUCTION_TO_SET_OPERATORS.sql
-├── 02_UNION_AND_UNION_ALL.md
-├── 02_UNION_AND_UNION_ALL.sql
-├── 03_INTERSECT_AND_EXCEPT.md
-├── 03_INTERSECT_AND_EXCEPT.sql
-├── 04_BUSINESS_DATA_INTEGRATION.md
-├── 04_BUSINESS_DATA_INTEGRATION.sql
-├── 05_DATA_RECONCILIATION.md
-├── 05_DATA_RECONCILIATION.sql
-├── 06_PERFORMANCE_AND_OPTIMIZATION.md
-├── 06_PERFORMANCE_AND_OPTIMIZATION.sql
-├── 07_REAL_WORLD_CASE_STUDY.md      (pending)
-└── 07_REAL_WORLD_CASE_STUDY.sql     (pending)
+├── README.md                                     You are here
+├── 01_INTRODUCTION_TO_SET_OPERATORS.md / .sql     Set theory foundation
+├── 02_UNION_AND_UNION_ALL.md / .sql               Dedup vs stacking
+├── 03_INTERSECT_AND_EXCEPT.md / .sql              Overlap and difference
+├── 04_BUSINESS_DATA_INTEGRATION.md / .sql         Multi-source fan-in
+├── 05_DATA_RECONCILIATION.md / .sql               Prove datasets match
+├── 06_PERFORMANCE_AND_OPTIMIZATION.md / .sql      Execution plans, rewrites
+├── 07_REAL_WORLD_CASE_STUDY.md / .sql             Merger consolidation capstone
+└── assets/                                        Banner + per-lesson SVG diagrams
+    ├── banner.svg
+    ├── 01_set_operators_overview.svg
+    ├── 02_union_vs_union_all.svg
+    ├── 03_intersect_except.svg
+    ├── 04_business_integration.svg
+    ├── 05_reconciliation_flow.svg
+    ├── 06_performance_paths.svg
+    └── 07_capstone_merger.svg
 ```
 
-## Learning Flow
+## Repository Footprint
 
-```
- 01 Introduction ──► 02 UNION / UNION ALL ──► 03 INTERSECT / EXCEPT
-                                                        │
-                                                        ▼
- 06 Performance ◄── 05 Reconciliation ◄── 04 Business Integration
-        │
-        ▼
- 07 Real-World Case Study (synthesizes 01–06)
-```
+Every file in this module, with size and length — useful for estimating study time or auditing content depth at a glance.
 
-Each file assumes everything before it. `04` and `05` in particular are where the mechanics from `01`–`03` turn into the actual production work — integration reporting and reconciliation — that most analytics and data engineers do with set operators day to day.
+| File | Type | Lines | Size |
+|---|---|---|---|
+| [01_INTRODUCTION_TO_SET_OPERATORS.md](./01_INTRODUCTION_TO_SET_OPERATORS.md) | Lesson | 165 | 12 KB |
+| [01_INTRODUCTION_TO_SET_OPERATORS.sql](./01_INTRODUCTION_TO_SET_OPERATORS.sql) | SQL Lab | 161 | 8 KB |
+| [02_UNION_AND_UNION_ALL.md](./02_UNION_AND_UNION_ALL.md) | Lesson | 144 | 12 KB |
+| [02_UNION_AND_UNION_ALL.sql](./02_UNION_AND_UNION_ALL.sql) | SQL Lab | 493 | 20 KB |
+| [03_INTERSECT_AND_EXCEPT.md](./03_INTERSECT_AND_EXCEPT.md) | Lesson | 197 | 12 KB |
+| [03_INTERSECT_AND_EXCEPT.sql](./03_INTERSECT_AND_EXCEPT.sql) | SQL Lab | 260 | 12 KB |
+| [04_BUSINESS_DATA_INTEGRATION.md](./04_BUSINESS_DATA_INTEGRATION.md) | Lesson | 146 | 12 KB |
+| [04_BUSINESS_DATA_INTEGRATION.sql](./04_BUSINESS_DATA_INTEGRATION.sql) | SQL Lab | 331 | 12 KB |
+| [05_DATA_RECONCILIATION.md](./05_DATA_RECONCILIATION.md) | Lesson | 164 | 12 KB |
+| [05_DATA_RECONCILIATION.sql](./05_DATA_RECONCILIATION.sql) | SQL Lab | 251 | 12 KB |
+| [06_PERFORMANCE_AND_OPTIMIZATION.md](./06_PERFORMANCE_AND_OPTIMIZATION.md) | Lesson | 212 | 20 KB |
+| [06_PERFORMANCE_AND_OPTIMIZATION.sql](./06_PERFORMANCE_AND_OPTIMIZATION.sql) | SQL Lab | 389 | 16 KB |
+| [07_REAL_WORLD_CASE_STUDY.md](./07_REAL_WORLD_CASE_STUDY.md) | Lesson | 159 | 12 KB |
+| [07_REAL_WORLD_CASE_STUDY.sql](./07_REAL_WORLD_CASE_STUDY.sql) | SQL Lab | 366 | 16 KB |
+| **Total** | **7 lessons + 7 labs** | **3,438** | **~176 KB** |
 
-## Engineering Mindset
+## Visual Guide
 
-Treat every set-operator query as a design decision, not a syntax shortcut:
+Each lesson has a companion diagram in [`assets/`](./assets/) built to the same visual language as the rest of the handbook — muted slate/blue/teal tones, no neon, designed to read cleanly in both light and dark GitHub themes.
 
-- **Ask what a duplicate row means** before choosing `UNION` vs. `UNION ALL` — is it noise, or a real business event?
-- **Ask which direction matters** before writing `EXCEPT`/`MINUS` — `A − B` and `B − A` answer different questions, and reconciliation requires both.
-- **Ask whether you need more rows or more columns** — this single question prevents the most common production mistake in this module: reaching for `UNION` when the actual need is a `JOIN`.
-- **Treat reconciliation as a testable assertion**, not a manual inspection — "zero rows returned" is a pass/fail condition your CI or pipeline can enforce.
+**01 — Four Operators, One Shape Requirement**
+![UNION, UNION ALL, INTERSECT, and EXCEPT compared on the same two tables](./assets/01_set_operators_overview.svg)
+All four operators require the same column count and compatible types — what differs is purely how they combine matching rows.
 
-## Business Motivation
+**02 — UNION vs UNION ALL**
+![UNION versus UNION ALL deduplication cost comparison](./assets/02_union_vs_union_all.svg)
+Same syntax, opposite cost: `UNION ALL` just concatenates; `UNION` adds a full sort/hash pass to remove every duplicate, including ones that already existed inside a single branch.
 
-Set operators exist because centralized, perfectly clean data is the exception, not the rule. Regional tables, legacy-and-new system pairs, yearly archives, and independently-built reports are the normal state of a growing business. Set operators are how a single, trustworthy report or a single, provable reconciliation gets built on top of that reality — without rearchitecting the underlying systems first.
+**03 — INTERSECT & EXCEPT**
+![INTERSECT and EXCEPT shown as overlap and difference](./assets/03_intersect_except.svg)
+`INTERSECT` finds the overlap; `EXCEPT` finds what's missing from one side — and operand order changes the answer.
 
-## Architecture Overview
+**04 — Business Data Integration**
+![Fan-in integration of regional sales tables with UNION ALL](./assets/04_business_integration.svg)
+Three regional tables fan into one `global_sales` result via `UNION ALL`, with a literal discriminator column tracing every row back to its source.
 
-This module's SQL files share one evolving schema so that concepts compound instead of resetting with every file:
+**05 — Reconciliation Flow**
+![Reconciliation flow comparing expected and received shipments](./assets/05_reconciliation_flow.svg)
+Two `EXCEPT` queries, run in both directions, turn "do these match?" into an exact, actionable list of what's missing and what's unexpected.
 
-- `employees`, `departments`, `locations` — introduced in `01`, reused throughout
-- `crm_customers`, `erp_customers` — introduced in `03` for migration/reconciliation scenarios
-- `sales_us`, `sales_emea` — introduced in `04` for cross-region integration
-- `expected_shipments`, `received_shipments`, `inventory_warehouse`, `inventory_erp` — introduced in `05` for full reconciliation suites
-- `loyalty_members`, `newsletter_subscribers` — introduced in `06` for performance comparisons
+**06 — Performance Ladder**
+![Cost ladder from UNION ALL to native EXCEPT and INTERSECT](./assets/06_performance_paths.svg)
+Every non-`ALL` operator has to answer "have I seen this row before?" — that lookup, not the syntax, is what determines the real cost.
 
-Every `CREATE TABLE` and `INSERT` block is self-contained per file, so any file can be run independently, but the *business narrative* — an org with departments, a CRM/ERP split, and a multi-region sales operation — is continuous across the module.
+**07 — Capstone: Merger Consolidation**
+![Capstone merger consolidation combining EXCEPT and UNION ALL](./assets/07_capstone_merger.svg)
+A full acquisition scenario resolved with the same four operators from Topics 01–06, applied together against a continuous business problem.
 
-## Production Applications
+## SQL Operators Covered
 
-- Cross-region and cross-year reporting (`04`)
-- ERP vs. CRM, production vs. staging, and warehouse vs. ERP reconciliation (`05`)
-- ETL migration validation gated on zero-row `EXCEPT` checks (`03`, `05`)
-- Fraud and compliance overlap analysis via `INTERSECT` (`03`, `06`)
-- Recursive `UNION ALL` for hierarchy and org-chart traversal (`06`)
-- Duplicate-detection diagnostics before a cleanup or dedup project (`02`, `06`)
+| Operator | Behavior | Dialect Notes |
+|---|---|---|
+| `UNION` | Combine rows from two+ queries, remove duplicates | ANSI standard, all major engines |
+| `UNION ALL` | Combine rows from two+ queries, keep duplicates | ANSI standard, all major engines |
+| `INTERSECT` | Return rows present in both queries | ANSI standard; not in older MySQL versions |
+| `EXCEPT` | Return rows from the first query not present in the second | ANSI standard / PostgreSQL / SQL Server |
+| `MINUS` | Same as `EXCEPT` | Oracle-specific keyword |
 
-## Performance Discussion
+## Business Applications
 
-`UNION`, `INTERSECT`, and `EXCEPT` all require duplicate detection — typically a sort or hash-based pass over the combined result. `UNION ALL` skips this entirely and is materially cheaper at scale. On large tables, `EXISTS`/`NOT EXISTS`/`LEFT JOIN ... IS NULL` rewrites of `INTERSECT`/`EXCEPT` frequently outperform the native operators, because the optimizer can plan an index-seek anti-join instead of materializing and sorting both full sets. Module `06` benchmarks these rewrites directly — always confirm with `EXPLAIN` on real data volume rather than assuming either form is universally faster.
+| Domain | Where this module applies |
+|---|---|
+| Retail / E-commerce | Merging regional sales tables into one global reporting view |
+| Finance | Reconciling two independently computed totals or ledgers |
+| HR | Comparing headcount snapshots across systems after a data migration |
+| Healthcare | Auditing that patient records migrated between systems without loss |
+| SaaS | Combining product usage events from multiple regions or environments |
+| Marketing | Deduplicating campaign or loyalty lists pulled from multiple sources |
+| Mergers & Acquisitions | Consolidating two companies' customer, sales, and loyalty data |
 
-## Common Mistakes
+## Production Use Cases
 
-- Defaulting to `UNION` out of habit and silently dropping real duplicate business events
-- Running `EXCEPT`/`MINUS` in only one direction and declaring a migration "complete"
-- Reaching for `UNION` when the actual requirement is a `JOIN` (more columns, not more rows)
-- Using `NOT IN` instead of `NOT EXISTS` against a nullable column when simulating `EXCEPT`
-- Comparing row counts alone as proof of reconciliation
-- Forgetting a discriminator column when integrating multiple sources, losing row-level provenance
+- Post-migration validation: proving row counts and specific keys match between old and new systems
+- Multi-region or multi-tenant reporting rollups with a source/region discriminator column
+- Deduplicating lead or contact lists gathered from multiple campaign channels
+- Anti-join patterns (`NOT EXISTS`) used as a performant substitute for `EXCEPT` on large indexed tables
+- Merger and acquisition data consolidation projects
+
+## Analytics Engineering Perspective
+
+Set operators are often the first tool reached for when combining "the same kind of thing from different places" — but in a mature analytics stack, that fan-in pattern usually lives in a dedicated staging or intermediate model (a dbt model, a scheduled view, a materialized table) rather than being recomputed ad hoc in every downstream query. Reconciliation queries built on `EXCEPT`/`INTERSECT` are equally valuable as scheduled data-quality checks, not just one-off investigations — the same query that answers "do these match today?" can run daily and alert when they stop matching.
+
+## Common Data Integration Problems
+
+- Column order or type mismatches between branches that produce wrong results without throwing an error
+- Using `UNION` by default out of habit, paying a needless sort cost when `UNION ALL` was correct
+- Forgetting that `ORDER BY` can only appear once, at the end of the combined statement, not per branch
+- Missing a source discriminator column, making a merged result impossible to trace back to origin
+- Running `EXCEPT` in only one direction during reconciliation and missing rows that exist only on the other side
 
 ## Best Practices
 
-- Default to `UNION ALL` in pipeline/ETL code; deduplicate explicitly and visibly when it's actually required
-- Always reconcile `EXCEPT`/`MINUS` in both directions
-- Add a discriminator column to every multi-source integration query
-- Prefer `NOT EXISTS` over `NOT IN` when simulating `EXCEPT` on nullable columns
-- Centralize integration logic behind a view or model rather than repeating it per report
-- Automate reconciliation as a CI-gated or scheduled test asserting zero rows, not a manual check
+- Default to `UNION ALL` unless you have a specific reason to deduplicate — it's cheaper and more explicit about intent
+- Always add a literal discriminator column (region, source system, branch) when fanning multiple tables into one result
+- Run reconciliation `EXCEPT` queries in both directions — `A EXCEPT B` and `B EXCEPT A` answer different questions
+- Check execution plans before assuming a native set operator is the fastest option on large tables
+- Keep column lists and aliases explicit and identical across every branch of a set operation for readability
+
+## Common Mistakes
+
+- Using `UNION` when `UNION ALL` was correct, silently and expensively removing legitimate duplicate rows
+- Assuming `INTERSECT`/`EXCEPT` are available in every MySQL version without checking (older versions lack them)
+- Applying `ORDER BY` to an individual branch instead of the final combined result
+- Trusting a single-direction `EXCEPT` as proof that two datasets fully match
+- Forgetting `EXCEPT`/`INTERSECT` de-duplicate their output just like `UNION` does
+
+## Performance Notes
+
+- `UNION ALL` never sorts or compares rows — it is always at least as fast as `UNION` on the same inputs
+- `UNION`, `INTERSECT`, and native `EXCEPT` typically require materializing and sorting or hashing both full result sets
+- On large, well-indexed tables, a `NOT EXISTS` anti-join often outperforms `EXCEPT` because it can use an index seek per row instead of materializing both sides
+- Always verify assumptions with `EXPLAIN` — the "faster" rewrite is not universal and depends on table size, indexing, and selectivity
+
+## Difficulty & Prerequisites
+
+- **Prerequisites:** comfort with `SELECT`, joins, subqueries/CTEs, and basic execution-plan reading — see [`03_Joins`](../03_Joins/README.md), [`04_Subqueries`](../04_Subqueries/README.md), and [`06_CTEs`](../06_CTEs/README.md)
+- **Difficulty curve:** Lessons 01–03 (Beginner/Intermediate — core operator mechanics) → 04–05 (Intermediate — applied integration and reconciliation) → 06 (Advanced — execution plans and rewrites) → 07 (Advanced — full capstone)
+
+If any prerequisite feels shaky, revisit the earlier modules before continuing — reconciliation and integration patterns assume you're already comfortable combining and filtering data with joins and subqueries.
 
 ## Interview Preparation
 
-Each file ends with interview questions ranging from foundational to staff-level. Together they cover:
+Expect questions like:
 
-- The mechanical difference between `UNION` and `UNION ALL`, and why it matters for correctness, not just style
-- Why `INTERSECT`/`EXCEPT` compare full rows, and how `NULL` behaves differently here than in a `WHERE` clause
-- Designing a two-directional test that proves a migration moved every row with no gain or loss
-- Diagnosing a dashboard or report that silently changed row counts after a set-operator edit
-- Recognizing when a "combine two tables" instinct should have been a `JOIN`
+- "What's the difference between `UNION` and `UNION ALL`, and when would you choose each?"
+- "How would you find records that exist in one table but not another?"
+- "Write a query to reconcile two datasets and report exactly where they differ."
+- "When would you rewrite an `EXCEPT` query as a `NOT EXISTS` anti-join, and why?"
 
-## Practice Workflow
+This module is designed so that after completing it, these questions become straightforward rather than something to memorize answers for.
 
-1. Read the `.md` file for the topic — concept, business context, and engineering considerations first.
-2. Run the paired `.sql` file scenario by scenario, reading the engineering and optimization notes alongside each query.
-3. Complete the practice problems at the end of each `.md` file before moving to the next topic.
-4. After `06`, attempt to design your own reconciliation suite against two tables of your choosing before reading `07`'s case study.
+## Career Relevance
 
-## Module Checklist
-
-- [ ] `01` — Introduction to Set Operators
-- [ ] `02` — UNION and UNION ALL
-- [ ] `03` — INTERSECT and EXCEPT
-- [ ] `04` — Business Data Integration
-- [ ] `05` — Data Reconciliation
-- [ ] `06` — Performance and Optimization
-- [ ] `07` — Real-World Case Study *(pending)*
-
-## Previous Module
-
-Module 12 — *link pending confirmation of the adjacent module's folder name in the live repository.*
-
-## Next Module
-
-Module 14 — *link pending confirmation of the adjacent module's folder name in the live repository.*
+Reconciliation and data integration work shows up constantly in Data Analyst and Analytics Engineer roles — migrations, mergers, multi-system audits, and multi-region reporting all lean on exactly the patterns in this module. Being able to write and explain a reconciliation query fluently is a concrete, interview-ready skill that maps directly onto real job responsibilities.
 
 ## Related Modules
 
-- Joins — set operators combine rows of the *same* shape; joins combine *different* tables side by side. Understanding both, and when each applies, is the single most important distinction in this module (see `06`, Scenario 4).
-- Subqueries and CTEs — `EXISTS`/`NOT EXISTS` simulations and recursive `UNION ALL` both depend on subquery and CTE fluency from earlier modules.
-- Window Functions — often used alongside set-operator results for downstream ranking or deduplication of the combined set.
+[`01_Fundamentals`](../01_Fundamentals/README.md) ·
+[`02_Aggregations`](../02_Aggregations/README.md) ·
+[`03_Joins`](../03_Joins/README.md) ·
+[`04_Subqueries`](../04_Subqueries/README.md) ·
+[`05_CASE_WHEN`](../05_CASE_WHEN/README.md) ·
+[`06_CTEs`](../06_CTEs/README.md) ·
+[`07_Window_Functions`](../07_Window_Functions/README.md) ·
+[`08_WINDOW_BUSINESS_CASES`](../08_WINDOW_BUSINESS_CASES/README.md) ·
+[`09_Date_Functions`](../09_Date_Functions/README.md) ·
+[`10_STRING_FUNCTIONS`](../10_STRING_FUNCTIONS/README.md) ·
+[`11_NULL_HANDLING_AND_DATA_CLEANING`](../11_NULL_HANDLING_AND_DATA_CLEANING/README.md) ·
+[`12_ADVANCED_AGGREGATIONS`](../12_ADVANCED_AGGREGATIONS/README.md) ·
+[`14_VIEWS`](../14_VIEWS/README.md) ·
+[`15_INDEXES`](../15_INDEXES/README.md) ·
+[`16_QUERY_OPTIMIZATION`](../16_QUERY_OPTIMIZATION/README.md) ·
+[`17_SQL_INTERVIEW_QUESTIONS`](../17_SQL_INTERVIEW_QUESTIONS/README.md) ·
+[`18_SQL_BUSINESS_CASE_STUDIES`](../18_SQL_BUSINESS_CASE_STUDIES/README.md) ·
+[`19_SQL_PROJECTS`](../19_SQL_PROJECTS/README.md) ·
+[`20_SQL_CHEATSHEET`](../20_SQL_CHEATSHEET/README.md)
+
+## Contributor Guide
+
+Contributions welcome — this module intentionally keeps every lesson to a consistent structure (Introduction → Concept Overview → Why This Exists → Business Context → Real Company Examples → Production Use Cases → Visual Explanation → SQL reference → Business Examples → Production Workflow → Performance Notes → Best Practices → Common Mistakes → Interview Questions) so new lessons stay consistent.
+
+**To add a new lesson:**
+1. Follow the existing `NN_TOPIC_NAME.md` / `.sql` naming pattern
+2. Reuse the schema and seed data already established in this module's `.sql` files rather than introducing a new schema, unless the lesson genuinely needs new tables
+3. Add a matching SVG to `assets/` in the same muted slate/blue/teal palette as the rest of the module — no neon, no oversaturated fills — and link it from the [Visual Guide](#visual-guide) section
+4. Update the [Module Files](#module-files) and [Repository Footprint](#repository-footprint) tables with the new file's line count and size
+5. Prefer a real, demonstrable production scenario over an invented one when illustrating a common mistake
+
+## Key Takeaway
+
+Set operators turn "combine or compare two result sets" from a manual, error-prone exercise into a single declarative statement — but the four operators are not interchangeable, and picking the wrong one is a common, costly mistake. The real skill in this module isn't memorizing syntax; it's recognizing which business question you're actually being asked — merge, dedupe, find overlap, or find difference — and reaching for the operator built for exactly that question.
 
 ## Further Reading
 
-- PostgreSQL Documentation — Combining Queries (`UNION`, `INTERSECT`, `EXCEPT`)
-- Microsoft Learn — Set Operators (Transact-SQL)
-- Oracle SQL Language Reference — `UNION`, `INTERSECT`, `MINUS`
-- dbt Developer Hub — data testing and reconciliation patterns
-- Snowflake Documentation — Query Syntax: Set Operators
+- [PostgreSQL: Combining Queries](https://www.postgresql.org/docs/current/queries-union.html)
+- [MySQL: UNION Syntax](https://dev.mysql.com/doc/refman/8.0/en/union.html)
+- [SQL Server: Set Operators (Transact-SQL)](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/set-operators-except-and-intersect-transact-sql)
+
+---
+
+**Previous Module:** [12 — Advanced Aggregations](../12_ADVANCED_AGGREGATIONS/README.md)
+**Next Module:** [14 — Views](../14_VIEWS/README.md)

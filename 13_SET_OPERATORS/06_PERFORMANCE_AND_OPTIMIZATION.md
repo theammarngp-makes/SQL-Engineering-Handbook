@@ -40,6 +40,8 @@ A nightly ETL job that reconciles two 50-million-row tables using `EXCEPT` and f
 
 ## Visual Explanation
 
+![Cost ladder from UNION ALL to native EXCEPT and INTERSECT](./assets/06_performance_paths.svg)
+
 ```
  UNION ALL:  [branch A] ──concat──► [branch B] ──► done
              (no sort, no comparison, cheapest possible plan)

@@ -37,6 +37,8 @@ Mergers and acquisitions are one of the most common real-world triggers for heav
 
 ## Visual Explanation
 
+![Capstone merger consolidation combining EXCEPT and UNION ALL](./assets/07_capstone_merger.svg)
+
 ```
  UrbanCart CRM ──┐                        ┌── GlobalMart CRM
                  │                        │

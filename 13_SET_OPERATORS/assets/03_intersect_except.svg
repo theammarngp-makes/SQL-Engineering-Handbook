@@ -1,0 +1,38 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box{ fill:#eff6ff; stroke:#2563eb; stroke-width:1.5; }
+      .res{ fill:#ecfdf5; stroke:#14b8a6; stroke-width:1.5; }
+      .warn{ fill:#fff7ed; stroke:#f59e0b; stroke-width:1.5; }
+      .lbl{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:14px; fill:#0f172a; font-weight:600; }
+      .small{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:12px; fill:#475569; }
+      .mono{ font-family:Menlo, Consolas, monospace; font-size:13px; fill:#334155; }
+      .title{ font-family:Segoe UI,Helvetica,Arial,sans-serif; font-size:17px; fill:#0f172a; font-weight:700; }
+    </style>
+  </defs>
+  <rect width="800" height="340" fill="#ffffff"/>
+  <text x="30" y="34" class="title">INTERSECT &amp; EXCEPT: Overlap and Difference</text>
+
+  <circle cx="330" cy="150" r="90" fill="#eff6ff" stroke="#2563eb" stroke-width="2" opacity="0.9"/>
+  <circle cx="440" cy="150" r="90" fill="#ecfdf5" stroke="#14b8a6" stroke-width="2" opacity="0.75"/>
+
+  <text x="255" y="150" class="mono" text-anchor="middle">1</text>
+  <text x="385" y="150" class="mono" text-anchor="middle" font-weight="700">2, 3</text>
+  <text x="510" y="150" class="mono" text-anchor="middle">4</text>
+
+  <text x="280" y="66" class="lbl">A = {1, 2, 3}</text>
+  <text x="470" y="66" class="lbl">B = {2, 3, 4}</text>
+
+  <rect x="560" y="70" width="210" height="46" rx="8" class="res"/>
+  <text x="580" y="98" class="mono" font-size="12.5">INTERSECT → {2, 3}</text>
+
+  <rect x="560" y="130" width="210" height="46" rx="8" class="box"/>
+  <text x="580" y="158" class="mono" font-size="12.5">A EXCEPT B → {1}</text>
+
+  <rect x="560" y="190" width="210" height="46" rx="8" class="warn"/>
+  <text x="580" y="218" class="mono" font-size="12.5">B EXCEPT A → {4}</text>
+
+  <line x1="30" y1="270" x2="770" y2="270" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="30" y="296" class="small">Order matters: A EXCEPT B is not the same query as B EXCEPT A — the base set determines what "missing" means.</text>
+  <text x="30" y="318" class="small">Oracle uses MINUS instead of EXCEPT — same semantics, different keyword.</text>
+</svg>

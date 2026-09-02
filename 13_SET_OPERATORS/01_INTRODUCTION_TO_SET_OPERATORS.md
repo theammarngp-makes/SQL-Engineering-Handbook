@@ -40,6 +40,8 @@ Businesses rarely keep all their data in one table. A national retailer has regi
 
 ## Visual Explanation
 
+![UNION, UNION ALL, INTERSECT, and EXCEPT compared on the same two tables](./assets/01_set_operators_overview.svg)
+
 ```
    Table A                Table B
  ┌─────────┐            ┌─────────┐

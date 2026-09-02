@@ -32,6 +32,8 @@ A finance team merging Q1 and Q2 transaction logs wants **every** transaction, i
 
 ## Visual Explanation
 
+![UNION versus UNION ALL — deduplication cost comparison](./assets/02_union_vs_union_all.svg)
+
 ```
  Branch A: [10, 20, 20, 30]      Branch B: [20, 40]
 
