@@ -1,0 +1,59 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .label-xs{font-family:'IBM Plex Mono',Consolas,monospace;font-size:10.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#147D7A;}
+    .fn-amber{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#B45309;}
+    .fn-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:12px;fill:#147D7A;}
+  </style>
+
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">Free Covers More Ground Than You'd Think</text>
+  <text x="40" y="66" class="cap">courses.md · five structured courses, ordered by depth</text>
+
+  <line x1="90" y1="380" x2="820" y2="120" stroke="#B8B2A2" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <rect x="70" y="350" width="220" height="56" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="82" y="372" class="fn-sm">freeCodeCamp / Khan Academy</text>
+  <text x="82" y="390" class="label-xs">Beginner · Free</text>
+
+  <rect x="340" y="270" width="220" height="56" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="352" y="292" class="fn-sm">ThoughtSpot SQL Tutorial</text>
+  <text x="352" y="310" class="label-xs">Beginner–Intermediate · Free</text>
+
+  <rect x="600" y="190" width="220" height="56" fill="#FEF3E7" stroke="#B45309" stroke-width="1.5"/>
+  <text x="612" y="212" class="fn-amber">Coursera SQL for Data Science</text>
+  <text x="612" y="230" class="label-xs">Free to audit · paid for certificate</text>
+
+  <rect x="600" y="110" width="220" height="56" fill="#FEF3E7" stroke="#B45309" stroke-width="1.5"/>
+  <text x="612" y="132" class="fn-amber">DataCamp SQL Fundamentals</text>
+  <text x="612" y="150" class="label-xs">Free tier limited · paid for full access</text>
+
+  <rect x="40" y="415" width="820" height="45" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="438" class="label-sm">No roadmap in this library requires spending money — paid options only appear when nothing free covers the same ground.</text>
+</svg>

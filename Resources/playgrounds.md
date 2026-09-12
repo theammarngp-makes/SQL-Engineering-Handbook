@@ -4,6 +4,8 @@
 
 Zero-setup, browser-based places to run a query in the next thirty seconds — useful for testing a syntax question mid-conversation, or for practicing without touching your own local database.
 
+![Zero setup, thirty seconds](assets/09_playgrounds.svg)
+
 ---
 
 | Playground | What It Is | Best For | Free / Paid |

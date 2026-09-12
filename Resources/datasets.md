@@ -4,6 +4,8 @@
 
 For practice beyond this repo's own [`datasets/`](../datasets/) folder (employee_management, ecommerce, sales, finance, healthcare, nagpurlens). Once the Handbook's own schema feels comfortable, importing one of these into a local database is the natural next step — real data is messier than curated exercise data on purpose.
 
+![Real data, not curated data](assets/08_datasets.svg)
+
 ---
 
 | Dataset Source | What It Is | Best For | Free / Paid |

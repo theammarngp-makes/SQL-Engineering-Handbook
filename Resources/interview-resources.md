@@ -4,6 +4,8 @@
 
 This is the file [`README.md`](README.md#interview-preparation-roadmap) points to for interview prep. It's structured as a staged plan, not a flat link list — a SQL interview at each level tests something specific, and the plan below is built around that, not around "here are 40 links, good luck."
 
+![A funnel, not a link dump](assets/05_interview_resources.svg)
+
 ---
 
 ## Table of Contents

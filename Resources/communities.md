@@ -4,6 +4,8 @@
 
 Where to ask a question that a search engine can't quite answer, or to see how other people are actually debugging their own queries in real time.
 
+![Four rooms, one question](assets/11_communities.svg)
+
 ---
 
 | Community | Platform | Best For | Free / Paid |

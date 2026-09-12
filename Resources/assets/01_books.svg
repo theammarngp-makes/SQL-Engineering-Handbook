@@ -1,0 +1,82 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .label-xs{font-family:'IBM Plex Mono',Consolas,monospace;font-size:10.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#147D7A;}
+    .fn-amber{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#B45309;}
+    .fn-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:12px;fill:#147D7A;}
+  </style>
+
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">Thirteen Shelves, One Ladder</text>
+  <text x="40" y="66" class="cap">books.md · why category order beats alphabetical order</text>
+
+  <text x="40" y="90" class="label-sm">13 categories, but one reading order — not a shelf to browse, a ladder to climb:</text>
+
+  <g>
+    <rect x="50" y="115" width="122" height="40" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="111.0" y="139.0" class="label-xs" text-anchor="middle">Beginner</text>
+    <line x1="172" y1="135.0" x2="180" y2="135.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="180" y="115" width="122" height="40" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="241.0" y="139.0" class="label-xs" text-anchor="middle">Intermediate</text>
+    <line x1="302" y1="135.0" x2="310" y2="135.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="310" y="115" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="371.0" y="139.0" class="label-xs" text-anchor="middle">Advanced SQL</text>
+    <line x1="432" y1="135.0" x2="440" y2="135.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="440" y="115" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="501.0" y="139.0" class="label-xs" text-anchor="middle">DB Internals</text>
+    <rect x="50" y="163" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="111.0" y="187.0" class="label-xs" text-anchor="middle">Query Optimization</text>
+    <line x1="172" y1="183.0" x2="180" y2="183.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="180" y="163" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="241.0" y="187.0" class="label-xs" text-anchor="middle">Data Warehousing</text>
+    <line x1="302" y1="183.0" x2="310" y2="183.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="310" y="163" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="371.0" y="187.0" class="label-xs" text-anchor="middle">Analytics Eng.</text>
+    <line x1="432" y1="183.0" x2="440" y2="183.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="440" y="163" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="501.0" y="187.0" class="label-xs" text-anchor="middle">Database Design</text>
+    <rect x="50" y="211" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="111.0" y="235.0" class="label-xs" text-anchor="middle">Data Modeling</text>
+    <line x1="172" y1="231.0" x2="180" y2="231.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="180" y="211" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="241.0" y="235.0" class="label-xs" text-anchor="middle">Performance Tuning</text>
+    <line x1="302" y1="231.0" x2="310" y2="231.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="310" y="211" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="371.0" y="235.0" class="label-xs" text-anchor="middle">Reference</text>
+    <line x1="432" y1="231.0" x2="440" y2="231.0" stroke="#B8B2A2" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="440" y="211" width="122" height="40" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="501.0" y="235.0" class="label-xs" text-anchor="middle">Classics</text>
+    <rect x="50" y="259" width="122" height="40" fill="#FEF3E7" stroke="#B45309" stroke-width="1.5"/>
+    <text x="111.0" y="283.0" class="label-xs" text-anchor="middle">Interview Prep</text>
+
+  </g>
+  <rect x="40" y="410" width="820" height="48" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="430" class="label-sm">The "Recommended Reading Order" line atop each section in books.md tells you the one</text>
+  <text x="56" y="448" class="label-sm">book to start with — read that ladder, don't shop the shelf.</text>
+</svg>

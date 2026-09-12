@@ -1,0 +1,64 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .label-xs{font-family:'IBM Plex Mono',Consolas,monospace;font-size:10.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#147D7A;}
+    .fn-amber{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#B45309;}
+    .fn-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:12px;fill:#147D7A;}
+  </style>
+
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">The Software Around the SQL</text>
+  <text x="40" y="66" class="cap">awesome-tools.md · clients, IDEs, ERD tools, and one linter</text>
+
+  <rect x="70" y="110" width="230" height="130" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="86" y="136" class="fn-sm">Database Client</text>
+  <text x="86" y="160" class="label-xs">DBeaver — free, universal</text>
+  <text x="86" y="180" class="label-xs">TablePlus — fast, native</text>
+  <text x="86" y="200" class="label-xs">pgAdmin — official Postgres</text>
+
+  <rect x="335" y="110" width="230" height="130" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="351" y="136" class="fn-sm">Database IDE</text>
+  <text x="351" y="160" class="label-xs">DataGrip — JetBrains, full</text>
+  <text x="351" y="180" class="label-xs">refactoring + smart</text>
+  <text x="351" y="200" class="label-xs">completion for serious work</text>
+
+  <rect x="600" y="110" width="230" height="130" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="616" y="136" class="fn-sm">ERD Tool</text>
+  <text x="616" y="160" class="label-xs">dbdiagram.io — text → ERD</text>
+  <text x="616" y="180" class="label-xs">DrawSQL — drag-and-drop,</text>
+  <text x="616" y="200" class="label-xs">schema export</text>
+
+  <rect x="335" y="270" width="230" height="100" fill="#FEF3E7" stroke="#B45309" stroke-width="1.5"/>
+  <text x="351" y="296" class="fn-amber">Formatter / Linter</text>
+  <text x="351" y="320" class="label-xs">SQLFluff — configurable,</text>
+  <text x="351" y="340" class="label-xs">multi-dialect linting</text>
+
+  <rect x="40" y="405" width="820" height="45" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="430" class="label-sm">Pick one primary client and learn its shortcuts properly — fluency beats switching between three.</text>
+</svg>

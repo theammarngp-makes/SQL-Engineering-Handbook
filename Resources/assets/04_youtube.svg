@@ -1,0 +1,75 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11.5px;fill:#1A1F2B;}
+    .label-xs{font-family:'IBM Plex Mono',Consolas,monospace;font-size:10.5px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .fn{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#147D7A;}
+    .fn-amber{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:13px;fill:#B45309;}
+    .fn-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-weight:700;font-size:12px;fill:#147D7A;}
+  </style>
+
+  <rect width="900" height="480" fill="#FAFAF7"/>
+  <rect width="900" height="480" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,464 L34,464 M16,464 L16,446"/>
+    <path d="M884,464 L866,464 M884,464 L884,446"/>
+  </g>
+  <text x="40" y="46" class="title">One Playlist, Six Stages</text>
+  <text x="40" y="66" class="cap">youtube.md · fundamentals through interview-ready, in order</text>
+
+  <line x1="70" y1="220" x2="830" y2="220" stroke="#1A1F2B" stroke-width="2"/>
+  <polygon points="830,220 816,213 816,227" fill="#1A1F2B"/>
+
+  <g>
+    <circle cx="125" cy="220" r="8" fill="#147D7A"/>
+    <rect x="70" y="150" width="110" height="52" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="125" y="172" class="label-xs" text-anchor="middle">SQL</text>
+    <text x="125" y="187" class="label-xs" text-anchor="middle">Fundamentals</text>
+    <circle cx="250" cy="220" r="8" fill="#147D7A"/>
+    <rect x="195" y="150" width="110" height="52" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="250" y="172" class="label-xs" text-anchor="middle">Advanced</text>
+    <text x="250" y="187" class="label-xs" text-anchor="middle">SQL</text>
+    <circle cx="375" cy="220" r="8" fill="#147D7A"/>
+    <rect x="320" y="150" width="110" height="52" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="375" y="172" class="label-xs" text-anchor="middle">DB Design /</text>
+    <text x="375" y="187" class="label-xs" text-anchor="middle">Analytics Eng.</text>
+    <circle cx="500" cy="220" r="8" fill="#147D7A"/>
+    <rect x="445" y="150" width="110" height="52" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="500" y="172" class="label-xs" text-anchor="middle">Perf. &amp;</text>
+    <text x="500" y="187" class="label-xs" text-anchor="middle">Query Opt.</text>
+    <circle cx="625" cy="220" r="8" fill="#147D7A"/>
+    <rect x="570" y="150" width="110" height="52" fill="#FFFFFF" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="625" y="172" class="label-xs" text-anchor="middle">System Design /</text>
+    <text x="625" y="187" class="label-xs" text-anchor="middle">Warehousing</text>
+    <circle cx="750" cy="220" r="8" fill="#B45309"/>
+    <rect x="695" y="150" width="110" height="52" fill="#FFFFFF" stroke="#B45309" stroke-width="1.5"/>
+    <text x="750" y="172" class="label-xs" text-anchor="middle">Interview</text>
+    <text x="750" y="187" class="label-xs" text-anchor="middle">Prep</text>
+
+  </g>
+  <text x="450" y="260" class="label-sm" text-anchor="middle">freeCodeCamp's full course first — start to finish — before anything else in the file</text>
+
+  <rect x="40" y="330" width="820" height="90" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="56" y="355" class="label-sm">A few entries here are complete filmed university courses, not casual watching —</text>
+  <text x="56" y="375" class="label-sm">treat those as textbook replacements. Channels were picked for a teaching track</text>
+  <text x="56" y="395" class="label-sm">record, not view count.</text>
+</svg>

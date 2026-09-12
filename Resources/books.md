@@ -7,6 +7,8 @@ Every book here cleared the bar in [How Resources Were Selected](README.md#how-r
 > [!TIP]
 > Don't buy in category order. Read the **Recommended Reading Order** line at the top of each section — it tells you which book to start with and which one to save for later.
 
+![Thirteen shelves, one reading ladder](assets/01_books.svg)
+
 ---
 
 ## Table of Contents

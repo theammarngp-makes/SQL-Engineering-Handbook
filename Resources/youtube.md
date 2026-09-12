@@ -4,6 +4,8 @@
 
 Channels here were picked for a teaching track record, not view count. A few are full university courses filmed and published for free — treat those as textbook replacements, not casual watching.
 
+![One playlist, six stages](assets/04_youtube.svg)
+
 ---
 
 ## Table of Contents

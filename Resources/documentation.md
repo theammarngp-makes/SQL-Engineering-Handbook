@@ -7,6 +7,8 @@ This is the one file in the library where "why is this here" barely needs an ans
 > [!NOTE]
 > Root documentation URLs are about as stable as links get — vendors rarely move their main docs domain. If one of these has moved by the time you're reading this, it's a fast PR: see [Contribution Guidelines](README.md#contribution-guidelines).
 
+![One hub, four platform families](assets/03_documentation.svg)
+
 ---
 
 ## Table of Contents

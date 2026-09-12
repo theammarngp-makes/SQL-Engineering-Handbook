@@ -4,6 +4,8 @@
 
 Full structured courses, as a complement to the individual books, docs, and videos elsewhere in this library. Pair with the roadmaps in [`README.md`](README.md#role-based-roadmaps) rather than working through a course in isolation.
 
+![Free covers more ground than you'd think](assets/07_courses.svg)
+
 ---
 
 | Course | Provider | Level | Best For | Free / Paid |

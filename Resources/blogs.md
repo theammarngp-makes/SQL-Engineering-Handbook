@@ -4,6 +4,8 @@
 
 Two tiers here, in order of authority: **vendor blogs** (the team that builds the database writing about the database) and **engineering blogs** (companies running these databases at a scale most of us will never personally operate at, writing about what broke and why). Both outrank generic "10 SQL Tips" content, which is why you won't find any of that here.
 
+![Two tiers of blog authority](assets/02_blogs.svg)
+
 ---
 
 ## Table of Contents

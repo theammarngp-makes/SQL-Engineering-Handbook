@@ -4,6 +4,8 @@
 
 Second-wave file — these seven files (`newsletters.md` through `awesome-tools.md`) weren't given the full documentation-team treatment in the original spec, just a one-line description each. This uses a lighter card format on purpose: a scannable table instead of a full [Resource Card Template](README.md#resource-card-template) per entry. If a specific entry needs the deeper treatment later, it can graduate to the fuller format.
 
+![Cadence before content](assets/06_newsletters.svg)
+
 ---
 
 | Newsletter | What It Is | Best For | Free / Paid |

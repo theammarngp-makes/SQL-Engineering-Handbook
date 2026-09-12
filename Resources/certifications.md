@@ -4,6 +4,8 @@
 
 Certifications don't replace a portfolio — the projects in [`projects/`](../projects/) do more for a job application than a badge does. But a recognized certification is a fast, external signal of a specific skill, and worth it once the underlying skill is already real.
 
+![A signal, not a substitute](assets/10_certifications.svg)
+
 ---
 
 | Certification | Issuer | Best For | Free / Paid |

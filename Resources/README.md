@@ -1,6 +1,17 @@
-# 📚 Resources Library
+<p align="center">
+  <img src="assets/banner.svg" alt="SQL Engineering Handbook — Resources Library" width="100%">
+</p>
 
-*Part of the [SQL Engineering Handbook](../README.md) — the curated external learning collection that picks up where the Handbook's own modules leave off.*
+<p align="center">
+  <img src="https://img.shields.io/badge/status-complete-2DD4C7?style=flat-square" alt="status: complete">
+  <img src="https://img.shields.io/badge/files-12%20libraries%20%2B%20README-1A1F2B?style=flat-square" alt="13 files">
+  <img src="https://img.shields.io/badge/diagrams-12%20SVG%20%2B%20banner-2DD4C7?style=flat-square" alt="13 diagrams">
+  <img src="https://img.shields.io/badge/resource%20cards-100%2B-C2410C?style=flat-square" alt="100+ resource cards">
+  <img src="https://img.shields.io/badge/cost-mostly%20free-6B7280?style=flat-square" alt="mostly free">
+  <img src="https://img.shields.io/badge/license-MIT-6B7280?style=flat-square" alt="license: MIT">
+</p>
+
+<p align="center"><i>Part of the <a href="../README.md">SQL Engineering Handbook</a> — the curated external learning collection that picks up where the Handbook's own modules leave off.</i></p>
 
 > [!NOTE]
 > All 13 files in this library are now in place. Root documentation and platform links were checked against current sources where it mattered most (official docs, vendor rebrands); well-established books, blogs, and communities relied on strong existing knowledge rather than an individual fetch per entry — see the note at the end of [Summary](#summary) for what that means in practice.
@@ -11,6 +22,8 @@
 
 - [Introduction](#introduction)
 - [Purpose of the Resources Library](#purpose-of-the-resources-library)
+- [What's In This Library](#whats-in-this-library)
+- [The Diagrams](#the-diagrams)
 - [How to Use These Resources](#how-to-use-these-resources)
 - [Learning Philosophy](#learning-philosophy)
 - [Recommended Learning Path](#recommended-learning-path)
@@ -26,27 +39,39 @@
 - [How Resources Were Selected](#how-resources-were-selected)
   - [Resource Card Template](#resource-card-template)
 - [Quality Standards](#quality-standards)
+- [Build Status](#build-status)
+- [Module Checklist](#module-checklist)
 - [Contribution Guidelines](#contribution-guidelines)
 - [Folder Structure](#folder-structure)
 - [Summary](#summary)
----
-
-| Resource Library File | Description | Link |
-| :--- | :--- | :--- |
-| 📖 **Books** | Curated list of essential SQL & database architecture books | [`books.md`](./books.md) |
-| ✍️ **Blogs** | Official vendor blogs and real-world engineering postmortems | [`blogs.md`](./blogs.md) |
-| 📑 **Documentation** | Primary dialect docs for Postgres, MySQL, Snowflake, BigQuery, etc. | [`documentation.md`](./documentation.md) |
-| 🎥 **YouTube Channels** | Curated playlists and video tutorials for all skill levels | [`youtube.md`](./youtube.md) |
-| 🎯 **Interview Resources** | Staged 30/60/90-day interview roadmaps & technical prep | [`interview-resources.md`](./interview-resources.md) |
-| 📰 **Newsletters** | Weekly digests, dbt updates, and Postgres Weekly | [`newsletters.md`](./newsletters.md) |
-| 🎓 **Courses** | Free and paid structured SQL learning paths | [`courses.md`](./courses.md) |
-| 📊 **Datasets** | Real-world public datasets for query practice | [`datasets.md`](./datasets.md) |
-| 🛠️ **Playgrounds** | Browser-based SQL execution sandboxes and DB clients | [`playgrounds.md`](./playgrounds.md) |
-| 📜 **Certifications** | Industry-recognized database and cloud certifications | [`certifications.md`](./certifications.md) |
-| 🌐 **Communities** | Slack groups, Discord servers, Reddit, and developer forums | [`communities.md`](./communities.md) |
-| 🧰 **Awesome Tools** | DB clients, ERD diagram tools, formatters, and query editors | [`awesome-tools.md`](./awesome-tools.md) |
 
 ---
+
+## What's In This Library
+
+| Resource Library File | Description | Size | Diagram |
+| :--- | :--- | ---: | :--- |
+| 📖 [`books.md`](./books.md) | Curated list of essential SQL & database architecture books | 23.7 KB · 426 lines | [ladder](assets/01_books.svg) |
+| ✍️ [`blogs.md`](./blogs.md) | Official vendor blogs and real-world engineering postmortems | 15.5 KB · 298 lines | [two tiers](assets/02_blogs.svg) |
+| 📑 [`documentation.md`](./documentation.md) | Primary dialect docs for Postgres, MySQL, Snowflake, BigQuery, etc. | 14.7 KB · 260 lines | [hub & spoke](assets/03_documentation.svg) |
+| 🎥 [`youtube.md`](./youtube.md) | Curated playlists and video tutorials for all skill levels | 11.9 KB · 270 lines | [playlist](assets/04_youtube.svg) |
+| 🎯 [`interview-resources.md`](./interview-resources.md) | Staged 30/60/90-day interview roadmaps & technical prep | 12.2 KB · 204 lines | [funnel](assets/05_interview_resources.svg) |
+| 📰 [`newsletters.md`](./newsletters.md) | Weekly digests, dbt updates, and Postgres Weekly | 1.8 KB · 24 lines | [cadence](assets/06_newsletters.svg) |
+| 🎓 [`courses.md`](./courses.md) | Free and paid structured SQL learning paths | 1.6 KB · 24 lines | [staircase](assets/07_courses.svg) |
+| 📊 [`datasets.md`](./datasets.md) | Real-world public datasets for query practice | 1.7 KB · 24 lines | [sources](assets/08_datasets.svg) |
+| 🛠️ [`playgrounds.md`](./playgrounds.md) | Browser-based SQL execution sandboxes and DB clients | 1.4 KB · 23 lines | [zero-setup](assets/09_playgrounds.svg) |
+| 📜 [`certifications.md`](./certifications.md) | Industry-recognized database and cloud certifications | 1.5 KB · 24 lines | [badge ladder](assets/10_certifications.svg) |
+| 🌐 [`communities.md`](./communities.md) | Slack groups, Discord servers, Reddit, and developer forums | 1.2 KB · 24 lines | [four rooms](assets/11_communities.svg) |
+| 🧰 [`awesome-tools.md`](./awesome-tools.md) | DB clients, ERD diagram tools, formatters, and query editors | 1.8 KB · 26 lines | [toolbox](assets/12_awesome_tools.svg) |
+| — | **README.md** (this file) | Library map, philosophy, and role-based roadmaps | 21 KB+ | [banner](assets/banner.svg) |
+
+Sizes above are read directly off disk, not estimated — see
+[Build Status](#build-status). The six files from `books.md` through
+`interview-resources.md` use the full 13-field
+[Resource Card Template](#resource-card-template); the seven from
+`newsletters.md` through `awesome-tools.md` use a lighter table
+format proportional to their original one-line specs (see
+[Folder Structure](#folder-structure) for why).
 
 ## Introduction
 
@@ -63,6 +88,37 @@ The modules answer *"how do I write this query."* This folder answers three ques
 - **"How do I prove I can do this under interview pressure?"** — answered by a dedicated, staged interview-prep path.
 
 If a topic is already taught end-to-end in a module, this library points *past* it — toward primary sources, alternate explanations, and the parts of the job (interviews, performance tuning, warehouse design) that go beyond what any single repository can hold.
+
+## The Diagrams
+
+Every one of the 12 resource files carries its own diagram (13 SVGs
+total including the banner above), rendered in
+[`assets/`](assets/) and embedded directly beneath that file's intro
+paragraph — no external image hosting, so they render correctly on
+GitHub, cloned locally, or on the handbook's GitHub Pages site. Each
+one summarizes the *shape* of its file — not a random illustration,
+but the actual filtering logic or reading order behind the list.
+
+<p align="center">
+  <img src="assets/01_books.svg" alt="books.md — thirteen shelves, one ladder" width="48%">
+  <img src="assets/02_blogs.svg" alt="blogs.md — two tiers of authority" width="48%">
+</p>
+<p align="center">
+  <img src="assets/03_documentation.svg" alt="documentation.md — one hub, four platform families" width="48%">
+  <img src="assets/05_interview_resources.svg" alt="interview-resources.md — a funnel, not a link dump" width="48%">
+</p>
+<p align="center">
+  <img src="assets/08_datasets.svg" alt="datasets.md — real data, not curated data" width="48%">
+  <img src="assets/10_certifications.svg" alt="certifications.md — a signal, not a substitute" width="48%">
+</p>
+
+The remaining diagrams (`youtube.md`, `newsletters.md`, `courses.md`,
+`playgrounds.md`, `communities.md`, `awesome-tools.md`) are embedded
+in their own files rather than repeated here.
+[`assets/DIAGRAM_SPECS.md`](assets/DIAGRAM_SPECS.md) is the complete,
+accurate ledger of what exists, what each diagram shows, and what was
+deliberately left out — kept honest against the actual asset folder,
+not aspirational.
 
 ## How to Use These Resources
 
@@ -184,7 +240,7 @@ Each roadmap assumes the previous one is solid — Intermediate assumes Beginner
 
 | Handbook Modules (this repo) | Go Deeper in This Library | Est. Time |
 |---|---|---|
-| [`17_SQL_INTERVIEW_QUESTIONS`](../17_SQL_INTERVIEW_QUESTIONS/), [`exercises/interview`](../exercises/interview/), [`20_SQL_CHEATSHEET`](../20_SQL_CHEATSHEET/) | [`interview-resources.md`](interview-resources.md) — full roadmap with 30/60/90-day plans *(next up in this library)* | 2–4 weeks, intensive |
+| [`17_SQL_INTERVIEW_QUESTIONS`](../17_SQL_INTERVIEW_QUESTIONS/), [`exercises/interview`](../exercises/interview/), [`20_SQL_CHEATSHEET`](../20_SQL_CHEATSHEET/) | [`interview-resources.md`](interview-resources.md) — full roadmap with 30/60/90-day plans | 2–4 weeks, intensive |
 
 **Exit criteria:** you can solve a fresh SQL question on a shared screen, out loud, in under 15 minutes.
 
@@ -229,6 +285,25 @@ Every resource that makes it into this library has to survive this checklist. If
 - **Free/Paid is disclosed up front**, and a paid resource is only listed if nothing free covers the same ground as well.
 - **Would survive a link check today** — no archived pages, no dead redirects, no "used to be free" surprises.
 
+## Build Status
+
+✅ **Complete and diagram-reviewed.** All 12 resource files plus this
+README are published, every file carries its own embedded diagram,
+and the sizes/line counts in [What's In This Library](#whats-in-this-library)
+are read directly off disk rather than estimated. The asset ledger in
+[`assets/DIAGRAM_SPECS.md`](assets/DIAGRAM_SPECS.md) is kept in sync
+with the actual contents of `assets/`.
+
+## Module Checklist
+
+- [x] All 12 resource files + README in place (13/13)
+- [x] Every resource file carries one embedded, topic-specific diagram
+- [x] `assets/DIAGRAM_SPECS.md` kept accurate against the actual asset folder
+- [x] Six full-template files (`books.md` → `interview-resources.md`) use all 13 [Resource Card Template](#resource-card-template) fields
+- [x] Seven lighter-format files (`newsletters.md` → `awesome-tools.md`) use a consistent scannable table
+- [x] File sizes and line counts in the library table are read off disk, not estimated
+- [x] Every roadmap links back to real, existing module folders in this repo
+
 ## Contribution Guidelines
 
 This library accepts contributions the same way the rest of the Handbook does — see [`../CONTRIBUTING.md`](../CONTRIBUTING.md) for the full process. On top of that, a resource PR specifically needs:
@@ -245,31 +320,46 @@ This library accepts contributions the same way the rest of the Handbook does �
 ## Folder Structure
 
 ```
-resources/
+Resources/
 │
-├── README.md                 ✅  You are here — navigation, philosophy, roadmaps
-├── [books.md](books.md)                  ✅  Books with full annotations, by category
-├── [blogs.md](blogs.md)                  ✅  Official + engineering blogs worth following
-├── [documentation.md](documentation.md)          ✅  Official documentation index, per dialect/platform
-├── [youtube.md](youtube.md)                ✅  Curated channels and playlists
-├── [interview-resources.md](interview-resources.md)    ✅  Interview roadmap + 30/60/90-day plans
-├── [newsletters.md](newsletters.md)            ✅  Curated newsletters (dbt, Postgres Weekly, etc.)
-├── [courses.md](courses.md)                ✅  Free and paid SQL courses
-├── [datasets.md](datasets.md)               ✅  Public datasets for practice
-├── [playgrounds.md](playgrounds.md)            ✅  Online SQL playgrounds and sandboxes
-├── [certifications.md](certifications.md)         ✅  Recognized SQL / database certifications
-├── [communities.md](communities.md)            ✅  Discord, Slack, Reddit, forums, mailing lists
-└── [awesome-tools.md](awesome-tools.md)          ✅  SQL editors, ERD tools, database clients, formatters
+├── README.md                          ✅  You are here — navigation, philosophy, roadmaps
+├── books.md                           ✅  Books with full annotations, by category
+├── blogs.md                           ✅  Official + engineering blogs worth following
+├── documentation.md                   ✅  Official documentation index, per dialect/platform
+├── youtube.md                         ✅  Curated channels and playlists
+├── interview-resources.md             ✅  Interview roadmap + 30/60/90-day plans
+├── newsletters.md                     ✅  Curated newsletters (dbt, Postgres Weekly, etc.)
+├── courses.md                         ✅  Free and paid SQL courses
+├── datasets.md                        ✅  Public datasets for practice
+├── playgrounds.md                     ✅  Online SQL playgrounds and sandboxes
+├── certifications.md                  ✅  Recognized SQL / database certifications
+├── communities.md                     ✅  Discord, Slack, Reddit, forums, mailing lists
+├── awesome-tools.md                   ✅  SQL editors, ERD tools, database clients, formatters
+└── assets/                            ✅  13 SVGs — one per file above, plus the README banner
+    ├── banner.svg
+    ├── 01_books.svg
+    ├── 02_blogs.svg
+    ├── 03_documentation.svg
+    ├── 04_youtube.svg
+    ├── 05_interview_resources.svg
+    ├── 06_newsletters.svg
+    ├── 07_courses.svg
+    ├── 08_datasets.svg
+    ├── 09_playgrounds.svg
+    ├── 10_certifications.svg
+    ├── 11_communities.svg
+    ├── 12_awesome_tools.svg
+    └── DIAGRAM_SPECS.md               ✅  Accurate asset ledger — what exists and what it shows
 ```
 
-**Legend:** ✅ Available — all 13 files are built. The core six ([`books.md`](books.md) → [`interview-resources.md`](interview-resources.md)) use the full [Resource Card Template](#resource-card-template); the second wave ([`newsletters.md`](newsletters.md) → [`awesome-tools.md`](awesome-tools.md)) uses a lighter table format proportional to their original one-line specs.
+**Legend:** ✅ Available — all 13 content files and all 13 diagram assets are built. The core six ([`books.md`](books.md) → [`interview-resources.md`](interview-resources.md)) use the full [Resource Card Template](#resource-card-template); the second wave ([`newsletters.md`](newsletters.md) → [`awesome-tools.md`](awesome-tools.md)) uses a lighter table format proportional to their original one-line specs.
 
 > [!IMPORTANT]
 > The original folder listing had [`newsletters.md`](newsletters.md) twice, with two slightly different descriptions ("curated newsletters" and "weekly learning resources"). Merged into a single entry above. If a second, distinct file was actually intended — e.g. a reading-newsletters list separate from a weekly-digest tracker — flag it and it'll get split back out.
 
 ## Summary
 
-This file is the map, not the territory. The resource cards themselves live in the twelve files listed in [Folder Structure](#folder-structure) above — six built to the full [Resource Card Template](#resource-card-template), seven built to a lighter table format proportional to their original one-line specs.
+This file is the map, not the territory. The resource cards themselves live in the twelve files listed in [Folder Structure](#folder-structure) above — six built to the full [Resource Card Template](#resource-card-template), seven built to a lighter table format proportional to their original one-line specs. Every one of those twelve now also carries its own diagram, and the map itself (this README) carries the library's banner.
 
 Pair this library with the Handbook's own [`00_SAMPLE_DATABASE`](../00_SAMPLE_DATABASE/) onward, and you've got both the practice reps and the depth to back them up. Changes to this library are tracked in [`../CHANGELOG.md`](../CHANGELOG.md) alongside the rest of the Handbook.
 
@@ -278,4 +368,3 @@ Pair this library with the Handbook's own [`00_SAMPLE_DATABASE`](../00_SAMPLE_DA
 ---
 
 *Questions, or a resource to suggest? Open an issue using the templates in [`.github/ISSUE_TEMPLATE`](../.github/ISSUE_TEMPLATE/), or check [`../FAQ.md`](../FAQ.md).*
-

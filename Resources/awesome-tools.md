@@ -4,6 +4,8 @@
 
 Editors, clients, ERD tools, and formatters — the software around the SQL, not the SQL itself.
 
+![The software around the SQL](assets/12_awesome_tools.svg)
+
 ---
 
 | Tool | Category | What It's For | Free / Paid |
