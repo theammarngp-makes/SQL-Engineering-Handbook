@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-updatability-check.svg" alt="Is this view updatable? A structural test, plus WITH CHECK OPTION" width="85%">
+</p>
+
 ## Learning Objectives
 
 - Determine, from a View's definition alone, whether it's updatable

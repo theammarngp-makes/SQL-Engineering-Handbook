@@ -1,0 +1,54 @@
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="380" fill="#FAFAF7"/>
+  <rect width="900" height="380" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,364 L34,364 M16,364 L16,346"/>
+    <path d="M884,364 L866,364 M884,364 L884,346"/>
+  </g>
+  <text x="40" y="46" class="title">A View Is a Stored Query, Not Stored Data</text>
+  <text x="40" y="66" class="cap">01 — Introduction to Views · every query against a View re-runs its defining SELECT, live</text>
+
+  <rect x="60" y="110" width="190" height="60" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="155" y="135" class="label" text-anchor="middle" font-weight="700">Query Issued</text>
+  <text x="155" y="155" class="label-sm" text-anchor="middle" fill="#6B7280">SELECT * FROM vw_x</text>
+
+  <path d="M250,140 L305,140" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="305" y="100" width="280" height="80" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="445" y="122" class="label-sm" text-anchor="middle" fill="#147D7A" font-weight="700">View Definition</text>
+  <text x="445" y="140" class="label-sm" text-anchor="middle">stored in information_schema.VIEWS</text>
+  <text x="445" y="158" class="label-sm" text-anchor="middle" fill="#6B7280">the SELECT text only — zero rows</text>
+
+  <path d="M445,180 L445,220" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="470" y="205" class="label-sm" fill="#6B7280">optimizer: MERGE or TEMPTABLE</text>
+
+  <rect x="305" y="220" width="280" height="60" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="445" y="245" class="label" text-anchor="middle" font-weight="700">Base Table(s)</text>
+  <text x="445" y="263" class="label-sm" text-anchor="middle" fill="#6B7280">rows read live, every single time</text>
+
+  <path d="M585,250 L640,250" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="640" y="220" width="180" height="60" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="730" y="245" class="label" text-anchor="middle" fill="#F5F3EC">Result Set</text>
+  <text x="730" y="263" class="label-sm" text-anchor="middle" fill="#CFEDEA">returned to caller</text>
+
+  <rect x="40" y="310" width="820" height="50" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="332" class="label-sm" fill="#147D7A">■ Nothing is cached — a View is never stale, because it never stored data to begin with.</text>
+  <text x="60" y="350" class="label-sm">   A View built on a slow query is a slow View; it never makes a query faster on its own.</text>
+</svg>

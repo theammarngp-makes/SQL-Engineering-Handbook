@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-merge-temptable.svg" alt="MERGE vs TEMPTABLE: same view, two execution paths" width="85%">
+</p>
+
 ## Learning Objectives
 
 - Explain `ALGORITHM = MERGE` vs `ALGORITHM = TEMPTABLE` and what disqualifies merge

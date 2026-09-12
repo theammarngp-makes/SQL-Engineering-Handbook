@@ -1,0 +1,61 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="420" fill="#FAFAF7"/>
+  <rect width="900" height="420" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,404 L34,404 M16,404 L16,386"/>
+    <path d="M884,404 L866,404 M884,404 L884,386"/>
+  </g>
+  <text x="40" y="46" class="title">Is This View Updatable? A Structural Test</text>
+  <text x="40" y="66" class="cap">03 — Updatable Views · MySQL derives updatability from the SELECT shape — you don't configure it</text>
+
+  <!-- updatable side -->
+  <rect x="60" y="95" width="380" height="110" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="80" y="118" class="label" fill="#147D7A" font-weight="700">✓ UPDATABLE</text>
+  <text x="80" y="140" class="label-sm">SELECT col1, col2</text>
+  <text x="80" y="156" class="label-sm">FROM one_table</text>
+  <text x="80" y="172" class="label-sm">WHERE condition</text>
+  <text x="80" y="192" class="label-sm" fill="#6B7280">single table, no aggregation</text>
+
+  <!-- non updatable side -->
+  <rect x="460" y="95" width="380" height="200" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5"/>
+  <text x="480" y="118" class="label" fill="#B45309" font-weight="700">✗ NOT UPDATABLE</text>
+  <text x="480" y="140" class="label-sm">... FROM table_a JOIN table_b</text>
+  <text x="480" y="158" class="label-sm">..., SUM(x) FROM t GROUP BY ...</text>
+  <text x="480" y="176" class="label-sm">SELECT DISTINCT ... FROM t</text>
+  <text x="480" y="194" class="label-sm">... FROM t1 UNION SELECT ... t2</text>
+  <text x="480" y="212" class="label-sm">SELECT (SELECT x FROM t2) FROM t1</text>
+  <text x="480" y="234" class="label-sm" fill="#6B7280">joins · aggregates · DISTINCT ·</text>
+  <text x="480" y="250" class="label-sm" fill="#6B7280">UNION · subquery in SELECT list</text>
+
+  <!-- WITH CHECK OPTION scenario -->
+  <text x="60" y="235" class="cap" font-weight="700" fill="#1A1F2B">WITH CHECK OPTION guards the write:</text>
+
+  <rect x="60" y="250" width="380" height="120" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="80" y="272" class="label-sm">vw_pending_orders: WHERE status='PENDING'</text>
+  <path d="M80,282 L400,282" stroke="#D4CFC2"/>
+  <text x="80" y="300" class="label-sm">UPDATE ... SET status='COMPLETED'</text>
+  <text x="80" y="318" class="label-sm" fill="#6B7280">row no longer matches WHERE →</text>
+  <text x="80" y="336" class="label-sm" fill="#B45309">no CHECK OPTION: row silently vanishes</text>
+  <text x="80" y="354" class="label-sm" fill="#147D7A">WITH CHECK OPTION: write rejected</text>
+
+  <rect x="460" y="315" width="380" height="80" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="480" y="337" class="label-sm" fill="#147D7A">■ LOCAL checks only this View's own WHERE.</text>
+  <text x="480" y="357" class="label-sm">□ CASCADED (default) also checks every View</text>
+  <text x="480" y="373" class="label-sm">   this one is layered on top of.</text>
+</svg>

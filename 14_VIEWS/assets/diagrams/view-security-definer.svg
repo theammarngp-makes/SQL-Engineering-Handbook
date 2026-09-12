@@ -1,0 +1,59 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#147D7A"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="400" fill="#FAFAF7"/>
+  <rect width="900" height="400" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,384 L34,384 M16,384 L16,366"/>
+    <path d="M884,384 L866,384 M884,384 L884,366"/>
+  </g>
+  <text x="40" y="46" class="title">A View as an Access-Control Boundary</text>
+  <text x="40" y="66" class="cap">04 — View Security · SQL SECURITY DEFINER lets a low-privilege role query data it has no direct grant on</text>
+
+  <rect x="60" y="120" width="180" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="150" y="145" class="label" text-anchor="middle" font-weight="700">regional_manager</text>
+  <text x="150" y="163" class="label-sm" text-anchor="middle" fill="#6B7280">low-privilege role</text>
+
+  <path d="M240,148 L310,148" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="275" y="138" class="label-sm" text-anchor="middle" fill="#6B7280">GRANT SELECT</text>
+
+  <rect x="310" y="110" width="260" height="76" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="440" y="134" class="label-sm" text-anchor="middle" fill="#F5F3EC" font-weight="700">vw_salary_bands</text>
+  <text x="440" y="152" class="label-sm" text-anchor="middle" fill="#CFEDEA">SQL SECURITY DEFINER</text>
+  <text x="440" y="170" class="label-sm" text-anchor="middle" fill="#CFEDEA">exposes MIN/MAX/AVG only</text>
+
+  <path d="M570,148 L640,148" stroke="#147D7A" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+  <text x="605" y="138" class="label-sm" text-anchor="middle" fill="#147D7A">runs as DEFINER</text>
+
+  <rect x="640" y="120" width="200" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="740" y="145" class="label" text-anchor="middle" font-weight="700">hr_employees</text>
+  <text x="740" y="163" class="label-sm" text-anchor="middle" fill="#6B7280">annual_salary column</text>
+
+  <!-- no direct grant path -->
+  <path d="M150,176 C150,240 740,240 740,176" stroke="#B45309" stroke-width="1.5" stroke-dasharray="5 3" fill="none" marker-end="url(#arrow)"/>
+  <rect x="330" y="220" width="240" height="30" fill="#FEF0E6" stroke="#B45309" stroke-width="1"/>
+  <text x="450" y="240" class="label-sm" text-anchor="middle" fill="#B45309" font-weight="700">NO direct GRANT — ever</text>
+
+  <rect x="40" y="290" width="820" height="90" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="312" class="label-sm" fill="#147D7A">■ DEFINER — the View runs with the privileges of whoever created it, not the querying account.</text>
+  <text x="60" y="332" class="label-sm">   This is what lets regional_manager read aggregated salary data with zero access to hr_employees.</text>
+  <text x="60" y="354" class="label-sm">□ Risk: if the DEFINER account is disabled or loses privileges, the View breaks for every consumer</text>
+  <text x="60" y="372" class="label-sm">   at once — always define security Views under a dedicated service account, not a personal one.</text>
+</svg>

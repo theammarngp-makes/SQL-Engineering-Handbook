@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-dependency-breakage.svg" alt="One dropped column, a dozen broken dashboards" width="85%">
+</p>
+
 ## Learning Objectives
 
 - List the hard structural limitations of MySQL Views

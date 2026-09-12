@@ -1,0 +1,61 @@
+<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="340" fill="#FAFAF7"/>
+  <rect width="900" height="340" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,324 L34,324 M16,324 L16,306"/>
+    <path d="M884,324 L866,324 M884,324 L884,306"/>
+  </g>
+  <text x="40" y="46" class="title">A Difficulty Ladder, Not a Grab Bag</text>
+  <text x="40" y="66" class="cap">10 — Practice Problems · each rung requires the skill from the rung below it</text>
+
+  <!-- ascending bars -->
+  <g>
+    <rect x="80" y="230" width="140" height="60" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+    <text x="150" y="255" text-anchor="middle" class="label-sm" font-weight="700">EASY</text>
+    <text x="150" y="273" text-anchor="middle" class="label-sm" fill="#6B7280">define, query</text>
+
+    <path d="M220,260 L260,260" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="260" y="190" width="140" height="100" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="330" y="215" text-anchor="middle" class="label-sm" font-weight="700" fill="#147D7A">MEDIUM</text>
+    <text x="330" y="233" text-anchor="middle" class="label-sm">joins, updatability,</text>
+    <text x="330" y="249" text-anchor="middle" class="label-sm">WITH CHECK OPTION</text>
+
+    <path d="M400,240 L440,240" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="440" y="130" width="160" height="160" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+    <text x="520" y="158" text-anchor="middle" class="label-sm" font-weight="700" fill="#F5F3EC">HARD</text>
+    <text x="520" y="178" text-anchor="middle" class="label-sm" fill="#CFEDEA">layered View stacks,</text>
+    <text x="520" y="194" text-anchor="middle" class="label-sm" fill="#CFEDEA">MERGE vs. TEMPTABLE</text>
+    <text x="520" y="210" text-anchor="middle" class="label-sm" fill="#CFEDEA">reasoning, security</text>
+    <text x="520" y="226" text-anchor="middle" class="label-sm" fill="#CFEDEA">DEFINER design</text>
+
+    <path d="M600,210 L640,210" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="640" y="80" width="180" height="210" fill="#FFFFFF" stroke="#B45309" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="730" y="108" text-anchor="middle" class="label-sm" font-weight="700" fill="#B45309">CAPSTONE</text>
+    <text x="730" y="128" text-anchor="middle" class="label-sm">Solutions in</text>
+    <text x="730" y="144" text-anchor="middle" class="label-sm">11_SOLUTIONS.sql</text>
+    <text x="730" y="168" text-anchor="middle" class="label-sm" fill="#6B7280">graded, commented,</text>
+    <text x="730" y="184" text-anchor="middle" class="label-sm" fill="#6B7280">production-style</text>
+    <text x="730" y="200" text-anchor="middle" class="label-sm" fill="#6B7280">answers — check your</text>
+    <text x="730" y="216" text-anchor="middle" class="label-sm" fill="#6B7280">own work against it,</text>
+    <text x="730" y="232" text-anchor="middle" class="label-sm" fill="#6B7280">don't read it first</text>
+  </g>
+</svg>

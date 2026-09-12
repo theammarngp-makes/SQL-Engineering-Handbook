@@ -71,7 +71,7 @@ No new syntax in this file — this is a composition and architecture exercise u
 
 ## Visual Explanation
 
-![View Dependencies](assets/view-dependencies.svg)
+![A production view stack, end to end: raw events, daily rollup, tenant-scoped view, customer API](assets/diagrams/view-production-stack.svg)
 
 ## Step-by-Step Walkthrough — Designing a Layered View Architecture
 

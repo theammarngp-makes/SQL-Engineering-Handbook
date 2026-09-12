@@ -1,0 +1,73 @@
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .step{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:11px;fill:#6B7280;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="380" fill="#FAFAF7"/>
+  <rect width="900" height="380" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,364 L34,364 M16,364 L16,346"/>
+    <path d="M884,364 L866,364 M884,364 L884,346"/>
+  </g>
+  <text x="40" y="46" class="title">Views as a Semantic Layer</text>
+  <text x="40" y="66" class="cap">05 — Business Reporting Views · one governed layer between raw tables and every dashboard</text>
+
+  <text x="60" y="98" class="step">RAW</text>
+  <rect x="60" y="106" width="160" height="140" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="140" y="132" class="label-sm" text-anchor="middle">sales_customers</text>
+  <text x="140" y="156" class="label-sm" text-anchor="middle">sales_orders</text>
+  <text x="140" y="180" class="label-sm" text-anchor="middle">sales_order_items</text>
+  <text x="140" y="216" class="label-sm" text-anchor="middle" fill="#6B7280">never queried</text>
+  <text x="140" y="232" class="label-sm" text-anchor="middle" fill="#6B7280">directly by BI</text>
+
+  <path d="M220,176 L270,176" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="270" y="98" class="step">STAGING</text>
+  <rect x="270" y="140" width="180" height="72" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="360" y="164" class="label-sm" text-anchor="middle" fill="#147D7A" font-weight="700">vw_monthly_revenue_trend</text>
+  <text x="360" y="184" class="label-sm" text-anchor="middle">joins + window functions</text>
+  <text x="360" y="200" class="label-sm" text-anchor="middle" fill="#6B7280">one governed definition</text>
+
+  <path d="M450,176 L500,140" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M450,176 L500,212" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="500" y="98" class="step">REPORTING</text>
+  <rect x="500" y="108" width="180" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="590" y="132" class="label-sm" text-anchor="middle" font-weight="700">vw_growth_finance</text>
+  <text x="590" y="150" class="label-sm" text-anchor="middle" fill="#6B7280">Finance's rules</text>
+
+  <rect x="500" y="184" width="180" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="590" y="208" class="label-sm" text-anchor="middle" font-weight="700">vw_growth_product</text>
+  <text x="590" y="226" class="label-sm" text-anchor="middle" fill="#6B7280">Product's rules</text>
+
+  <path d="M680,136 L730,136" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M680,212 L730,212" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="730" y="98" class="step">BI</text>
+  <rect x="730" y="108" width="120" height="56" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="790" y="140" class="label-sm" text-anchor="middle" fill="#F5F3EC">Finance</text>
+  <text x="790" y="156" class="label-sm" text-anchor="middle" fill="#CFEDEA">dashboard</text>
+
+  <rect x="730" y="184" width="120" height="56" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="790" y="216" class="label-sm" text-anchor="middle" fill="#F5F3EC">Product</text>
+  <text x="790" y="232" class="label-sm" text-anchor="middle" fill="#CFEDEA">dashboard</text>
+
+  <rect x="40" y="270" width="820" height="90" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="292" class="label-sm" fill="#147D7A">■ Every column in a reporting View must be usable by someone who has never seen the schema —</text>
+  <text x="60" y="310" class="label-sm">   that's the design contract a View makes the moment a BI tool is pointed at it.</text>
+  <text x="60" y="332" class="label-sm">□ BI tools query only the reporting layer — never raw tables — so business logic never diverges</text>
+  <text x="60" y="350" class="label-sm">   between the two dashboards above, even though each team's definition of "growth" differs.</text>
+</svg>

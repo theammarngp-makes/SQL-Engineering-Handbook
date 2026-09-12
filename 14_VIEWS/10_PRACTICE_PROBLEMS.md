@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-practice-ladder.svg" alt="A difficulty ladder: easy, medium, hard, capstone" width="85%">
+</p>
+
 Attempt every problem closed-book against the schema built in `01_INTRODUCTION_TO_VIEWS.sql` and `08_REAL_WORLD_CASE_STUDIES.sql` before checking `11_SOLUTIONS.sql`. Problems are ordered by difficulty within each section.
 
 ## Section A — Foundational (Difficulty: Easy)

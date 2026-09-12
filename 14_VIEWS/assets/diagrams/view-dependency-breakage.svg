@@ -1,0 +1,68 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+    <marker id="arrow-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+  </style>
+  <rect width="900" height="400" fill="#FAFAF7"/>
+  <rect width="900" height="400" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,384 L34,384 M16,384 L16,366"/>
+    <path d="M884,384 L866,384 M884,384 L884,366"/>
+  </g>
+  <text x="40" y="46" class="title">One Dropped Column, a Dozen Broken Dashboards</text>
+  <text x="40" y="66" class="cap">06 — View Limitations · dependency breakage is invisible to the table, visible only at query time</text>
+
+  <rect x="60" y="110" width="180" height="56" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="150" y="132" class="label" text-anchor="middle" font-weight="700">sales_orders</text>
+  <text x="150" y="150" class="label-sm" text-anchor="middle" fill="#B45309">ALTER TABLE ... DROP COLUMN</text>
+
+  <path d="M240,138 L290,90" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow-warn)"/>
+  <path d="M240,138 L290,138" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow-warn)"/>
+  <path d="M240,138 L290,186" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow-warn)"/>
+
+  <rect x="290" y="65" width="180" height="46" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5"/>
+  <text x="380" y="93" class="label-sm" text-anchor="middle" fill="#B45309">vw_orders_v1</text>
+
+  <rect x="290" y="115" width="180" height="46" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5"/>
+  <text x="380" y="143" class="label-sm" text-anchor="middle" fill="#B45309">vw_orders_v2</text>
+
+  <rect x="290" y="165" width="180" height="46" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5"/>
+  <text x="380" y="193" class="label-sm" text-anchor="middle" fill="#B45309">vw_orders_v3</text>
+
+  <text x="380" y="235" class="label-sm" text-anchor="middle" fill="#6B7280">... every View defined with SELECT *</text>
+
+  <path d="M470,88 L520,88" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow-warn)"/>
+  <path d="M470,138 L520,138" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow-warn)"/>
+  <path d="M470,188 L520,188" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow-warn)"/>
+
+  <rect x="520" y="60" width="200" height="150" fill="#123A38" stroke="#B45309" stroke-width="1.5"/>
+  <text x="620" y="86" class="label-sm" text-anchor="middle" fill="#F5F3EC" font-weight="700">Dashboards</text>
+  <text x="620" y="110" class="label-sm" text-anchor="middle" fill="#FEE1C2">error at query time —</text>
+  <text x="620" y="128" class="label-sm" text-anchor="middle" fill="#FEE1C2">not at ALTER TABLE time</text>
+  <text x="620" y="150" class="label-sm" text-anchor="middle" fill="#FEE1C2">metadata mismatch,</text>
+  <text x="620" y="168" class="label-sm" text-anchor="middle" fill="#FEE1C2">discovered only when</text>
+  <text x="620" y="186" class="label-sm" text-anchor="middle" fill="#FEE1C2">someone opens the report</text>
+
+  <rect x="40" y="240" width="820" height="130" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="262" class="label-sm" fill="#147D7A">■ ALTER TABLE never checks dependent Views — MySQL Views are not stored procedures with</text>
+  <text x="60" y="280" class="label-sm">   dependency validation; the break is silent until someone actually runs the affected query.</text>
+  <text x="60" y="302" class="label-sm">□ Query information_schema.VIEWS before any base-table change to find every dependent —</text>
+  <text x="60" y="320" class="label-sm">   there is no built-in CASCADE for View dependencies the way there is for foreign keys.</text>
+  <text x="60" y="342" class="label-sm">□ Views also cannot be indexed directly, and cannot accept parameters — both are structural</text>
+  <text x="60" y="360" class="label-sm">   limits, not bugs; see Module 15 for indexing the base tables a View reads from instead.</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#22303F" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2DD4C7"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:42px;fill:#F5F3EC;}
+    .subtitle{font-family:'IBM Plex Mono',Consolas,monospace;font-size:15px;fill:#9FB2C4;}
+    .tag{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#2DD4C7;letter-spacing:2px;}
+    .node{fill:#0F1B26;stroke:#2DD4C7;stroke-width:1.5;}
+    .lbl{font-family:'IBM Plex Mono',Consolas,monospace;font-size:10px;fill:#9FB2C4;}
+  </style>
+  <rect width="1200" height="300" fill="#0B1420"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+
+  <!-- faint view stack: base table -> view definition -> consumers -->
+  <g opacity="0.95">
+    <rect x="900" y="185" width="150" height="40" rx="4" class="node"/>
+    <text x="975" y="210" text-anchor="middle" class="lbl" fill="#2DD4C7">base_table</text>
+
+    <path d="M975,185 L975,150" stroke="#2DD4C7" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)"/>
+
+    <rect x="880" y="105" width="190" height="46" rx="4" fill="#123A38" stroke="#2DD4C7" stroke-width="1.5"/>
+    <text x="975" y="124" text-anchor="middle" class="lbl" fill="#F5F3EC">CREATE VIEW vw_x AS</text>
+    <text x="975" y="140" text-anchor="middle" class="lbl" fill="#F5F3EC">SELECT ... (no data stored)</text>
+
+    <path d="M975,105 L900,70" stroke="#2DD4C7" stroke-width="1.2" fill="none" opacity="0.7" marker-end="url(#arrow-teal)"/>
+    <path d="M975,105 L1050,70" stroke="#2DD4C7" stroke-width="1.2" fill="none" opacity="0.7" marker-end="url(#arrow-teal)"/>
+
+    <rect x="820" y="35" width="150" height="34" rx="4" class="node"/>
+    <text x="895" y="57" text-anchor="middle" class="lbl" fill="#2DD4C7">BI Dashboard</text>
+
+    <rect x="990" y="35" width="150" height="34" rx="4" class="node"/>
+    <text x="1065" y="57" text-anchor="middle" class="lbl" fill="#2DD4C7">Analyst Query</text>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#3A4A5A" stroke-width="1.5">
+    <path d="M24,24 L46,24 M24,24 L24,46"/>
+    <path d="M1176,24 L1154,24 M1176,24 L1176,46"/>
+    <path d="M24,276 L46,276 M24,276 L24,254"/>
+    <path d="M1176,276 L1154,276 M1176,276 L1176,254"/>
+  </g>
+
+  <text x="60" y="90" class="tag">SQL ENGINEERING HANDBOOK · MODULE 14</text>
+  <text x="60" y="150" class="title">Views</text>
+  <text x="60" y="184" class="subtitle">Stored queries, not stored data — the database's abstraction layer.</text>
+  <text x="60" y="210" class="subtitle">Definition · Updatability · Security · Reporting · Performance · Architecture</text>
+</svg>

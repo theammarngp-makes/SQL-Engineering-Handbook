@@ -1,0 +1,52 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .step{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:11px;fill:#6B7280;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="400" fill="#FAFAF7"/>
+  <rect width="900" height="400" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,384 L34,384 M16,384 L16,366"/>
+    <path d="M884,384 L866,384 M884,384 L884,366"/>
+  </g>
+  <text x="40" y="46" class="title">Two Ways to Redeploy a View</text>
+  <text x="40" y="66" class="cap">02 — Creating Views · one is atomic, one has a window where dependents fail</text>
+
+  <!-- Path A: DROP + CREATE -->
+  <text x="60" y="100" class="step">✗ DROP VIEW then CREATE VIEW</text>
+  <rect x="60" y="108" width="140" height="44" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5"/>
+  <text x="130" y="134" class="label-sm" text-anchor="middle">DROP VIEW</text>
+  <path d="M200,130 L250,130" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="250" y="108" width="160" height="44" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <text x="330" y="126" class="label-sm" text-anchor="middle" fill="#B45309" font-weight="700">View absent</text>
+  <text x="330" y="142" class="label-sm" text-anchor="middle" fill="#B45309">dependents error</text>
+  <path d="M410,130 L460,130" stroke="#B45309" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="460" y="108" width="150" height="44" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="535" y="134" class="label-sm" text-anchor="middle">CREATE VIEW</text>
+  <text x="640" y="134" class="label-sm" fill="#B45309">← GRANTs on the old</text>
+  <text x="640" y="150" class="label-sm" fill="#B45309">   View object are lost</text>
+
+  <!-- Path B: CREATE OR REPLACE -->
+  <text x="60" y="210" class="step">✓ CREATE OR REPLACE VIEW</text>
+  <rect x="60" y="218" width="700" height="44" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="410" y="238" class="label-sm" text-anchor="middle" fill="#147D7A" font-weight="700">CREATE OR REPLACE VIEW vw_x AS SELECT ...</text>
+  <text x="410" y="254" class="label-sm" text-anchor="middle">single atomic statement — View is never absent, GRANTs stay intact</text>
+
+  <rect x="40" y="300" width="820" height="80" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="322" class="label-sm" fill="#147D7A">■ CREATE OR REPLACE is the standard production/CI-CD pattern — idempotent, safe to re-run,</text>
+  <text x="60" y="340" class="label-sm">   and avoids the exact race condition shown above when two deploy jobs run concurrently.</text>
+  <text x="60" y="362" class="label-sm">□ ALTER VIEW fully redefines the SELECT too — it is a full replacement, never an incremental change.</text>
+</svg>

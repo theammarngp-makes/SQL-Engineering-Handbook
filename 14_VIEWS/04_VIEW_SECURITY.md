@@ -64,7 +64,7 @@ REVOKE SELECT ON view_name FROM 'role_or_user';
 
 ## Visual Explanation
 
-![Security Layer](assets/security-layer.svg)
+![A view as an access-control boundary using SQL SECURITY DEFINER](assets/diagrams/view-security-definer.svg)
 
 ```
 regional_manager ──SELECT──► vw_salary_bands ──(runs as DEFINER)──► hr_employees

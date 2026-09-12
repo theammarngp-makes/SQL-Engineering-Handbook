@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-semantic-layer.svg" alt="Views as a semantic layer between raw tables and BI dashboards" width="85%">
+</p>
+
 ## Learning Objectives
 
 - Design Views intended to sit directly behind BI tools (Tableau, Looker, Power BI)

@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-lifecycle.svg" alt="A view is a stored query, not stored data" width="85%">
+</p>
+
 ## Learning Objectives
 
 - Define a View at the SQL-standard level and at the MySQL storage-engine level

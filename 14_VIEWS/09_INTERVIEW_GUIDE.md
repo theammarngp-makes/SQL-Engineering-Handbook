@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-interview-tiers.svg" alt="Three tiers of view interview questions" width="85%">
+</p>
+
 This guide is structured in three tiers, matching how Views actually get tested: conceptual fluency (any Data Analyst interview), design/architecture (Analytics Engineering interviews), and "spot the bug" (both, and the most revealing tier).
 
 ## Tier 1 — Conceptual Fluency

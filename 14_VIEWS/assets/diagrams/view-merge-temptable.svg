@@ -1,0 +1,61 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1F2B"/>
+    </marker>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .step{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:11px;fill:#6B7280;letter-spacing:1px;}
+  </style>
+  <rect width="900" height="420" fill="#FAFAF7"/>
+  <rect width="900" height="420" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,404 L34,404 M16,404 L16,386"/>
+    <path d="M884,404 L866,404 M884,404 L884,386"/>
+  </g>
+  <text x="40" y="46" class="title">MERGE vs. TEMPTABLE: Same View, Two Execution Paths</text>
+  <text x="40" y="66" class="cap">07 — View Performance · the optimizer picks, based on the View's SQL shape — not configurable at query time</text>
+
+  <!-- MERGE path -->
+  <text x="60" y="98" class="step">✓ ALGORITHM = MERGE</text>
+  <rect x="60" y="106" width="160" height="46" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="140" y="134" class="label-sm" text-anchor="middle">Outer query</text>
+  <path d="M220,129 L270,129" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="270" y="106" width="220" height="46" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="380" y="127" class="label-sm" text-anchor="middle" fill="#147D7A" font-weight="700">View folded inline</text>
+  <text x="380" y="143" class="label-sm" text-anchor="middle">as if you wrote the JOIN yourself</text>
+  <path d="M490,129 L540,129" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="540" y="106" width="220" height="46" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="650" y="127" class="label-sm" text-anchor="middle" fill="#F5F3EC">Base table indexes</text>
+  <text x="650" y="143" class="label-sm" text-anchor="middle" fill="#CFEDEA">used normally — fast</text>
+
+  <!-- TEMPTABLE path -->
+  <text x="60" y="200" class="step">✗ ALGORITHM = TEMPTABLE</text>
+  <rect x="60" y="208" width="160" height="46" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="140" y="236" class="label-sm" text-anchor="middle">Outer query</text>
+  <path d="M220,231 L270,231" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="270" y="208" width="220" height="46" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5"/>
+  <text x="380" y="229" class="label-sm" text-anchor="middle" fill="#B45309" font-weight="700">View executed first</text>
+  <text x="380" y="245" class="label-sm" text-anchor="middle">materialized into temp table</text>
+  <path d="M490,231 L540,231" stroke="#1A1F2B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="540" y="208" width="220" height="46" fill="#FEF0E6" stroke="#B45309" stroke-width="1.5"/>
+  <text x="650" y="229" class="label-sm" text-anchor="middle" fill="#B45309" font-weight="700">Unindexed temp table</text>
+  <text x="650" y="245" class="label-sm" text-anchor="middle" fill="#B45309">outer WHERE can't use base indexes</text>
+
+  <text x="60" y="290" class="label-sm" fill="#6B7280">Disqualifiers that force TEMPTABLE: GROUP BY · DISTINCT · aggregate functions ·</text>
+  <text x="60" y="308" class="label-sm" fill="#6B7280">UNION · a subquery in the SELECT list · window functions</text>
+
+  <rect x="40" y="330" width="820" height="70" fill="#FFFFFF" stroke="#D4CFC2"/>
+  <text x="60" y="352" class="label-sm" fill="#147D7A">■ Nesting a TEMPTABLE-forcing View inside another View compounds the cost at every layer —</text>
+  <text x="60" y="370" class="label-sm">   this is the "nested View" trap that turns a 400ms query into a 40-second one under real load.</text>
+  <text x="60" y="390" class="label-sm">□ Check EXPLAIN's Extra column for "Using temporary" to see which path actually ran.</text>
+</svg>

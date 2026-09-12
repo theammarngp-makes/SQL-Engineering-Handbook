@@ -1,0 +1,52 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E8E4D9" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .label{font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;fill:#1A1F2B;}
+    .label-sm{font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;fill:#1A1F2B;}
+    .title{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:19px;fill:#1A1F2B;}
+    .cap{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-size:12px;fill:#6B7280;}
+    .tier{font-family:'IBM Plex Sans',Segoe UI,sans-serif;font-weight:700;font-size:13px;}
+  </style>
+  <rect width="900" height="400" fill="#FAFAF7"/>
+  <rect width="900" height="400" fill="url(#grid)"/>
+  <g stroke="#B8B2A2" stroke-width="1.5">
+    <path d="M16,16 L34,16 M16,16 L16,34"/>
+    <path d="M884,16 L866,16 M884,16 L884,34"/>
+    <path d="M16,384 L34,384 M16,384 L16,366"/>
+    <path d="M884,384 L866,384 M884,384 L884,366"/>
+  </g>
+  <text x="40" y="46" class="title">Three Tiers of View Interview Questions</text>
+  <text x="40" y="66" class="cap">09 — Interview Guide · junior candidates stop at Tier 1; senior candidates are expected through Tier 3</text>
+
+  <!-- pyramid tiers -->
+  <polygon points="450,100 620,190 280,190" fill="#123A38" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="450" y="155" text-anchor="middle" class="tier" fill="#F5F3EC">TIER 3</text>
+  <text x="450" y="175" text-anchor="middle" class="label-sm" fill="#CFEDEA">System design</text>
+
+  <polygon points="280,190 620,190 680,270 220,270" fill="#EAF6F5" stroke="#147D7A" stroke-width="1.5"/>
+  <text x="450" y="225" text-anchor="middle" class="tier" fill="#147D7A">TIER 2</text>
+  <text x="450" y="248" text-anchor="middle" class="label-sm">Debugging &amp; performance</text>
+
+  <polygon points="220,270 680,270 740,350 160,350" fill="#FFFFFF" stroke="#1A1F2B" stroke-width="1.5"/>
+  <text x="450" y="305" text-anchor="middle" class="tier">TIER 1</text>
+  <text x="450" y="328" text-anchor="middle" class="label-sm">Concept &amp; syntax</text>
+
+  <!-- side annotations -->
+  <text x="720" y="130" class="label-sm" fill="#6B7280">"Design the reporting</text>
+  <text x="720" y="146" class="label-sm" fill="#6B7280">layer for a multi-tenant</text>
+  <text x="720" y="162" class="label-sm" fill="#6B7280">SaaS product."</text>
+
+  <text x="20" y="220" class="label-sm" fill="#6B7280" text-anchor="end">"This View got</text>
+  <text x="20" y="236" class="label-sm" fill="#6B7280" text-anchor="end">slow overnight —</text>
+  <text x="20" y="252" class="label-sm" fill="#6B7280" text-anchor="end">why?"</text>
+
+  <text x="720" y="300" class="label-sm" fill="#6B7280">"View vs.</text>
+  <text x="720" y="316" class="label-sm" fill="#6B7280">materialized</text>
+  <text x="720" y="332" class="label-sm" fill="#6B7280">view?"</text>
+
+  <rect x="40" y="360" width="0" height="0"/>
+</svg>

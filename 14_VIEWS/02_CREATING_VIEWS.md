@@ -5,6 +5,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/diagrams/view-create-replace.svg" alt="CREATE OR REPLACE VIEW vs DROP then CREATE" width="85%">
+</p>
+
 ## Learning Objectives
 
 - Use full `CREATE VIEW` syntax including options MySQL exposes
