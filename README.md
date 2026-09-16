@@ -42,8 +42,6 @@
 
 If you're an aspiring or practicing **Data Analyst** or **Analytics Engineer** who wants a structured path from SQL fundamentals to real business analytics — not another disconnected list of `.sql` files — this handbook is built for you.
 
-> **Honest status:** Modules **00–09** (Foundations → Date Functions) are complete and stable today. Modules **10–20**, plus `datasets/`, `projects/`, `exercises/`, and `cheatsheets/`, are actively being built module by module. Live status always lives in [`ROADMAP.md`](ROADMAP.md) — this README won't claim more than what's actually shipped.
-
 ---
 ## 🗂️ Module Guide
 
