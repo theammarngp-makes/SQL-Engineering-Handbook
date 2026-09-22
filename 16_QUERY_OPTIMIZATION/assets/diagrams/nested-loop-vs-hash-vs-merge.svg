@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="420" fill="#ffffff"/>
+  <text x="500" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Join Algorithms: Nested Loop vs. Hash Join vs. Merge Join</text>
+
+  <!-- Column 1: Nested Loop -->
+  <rect x="25" y="55" width="300" height="335" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+  <text x="175" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Nested Loop</text>
+  <rect x="55" y="100" width="240" height="40" rx="6" fill="#e2e8f0"/>
+  <text x="175" y="125" text-anchor="middle" font-size="11">outer: departments (small)</text>
+  <g>
+    <path d="M 90 140 Q 175 175 90 210" stroke="#334155" fill="none" stroke-width="1.3" marker-end="url(#arrow5)"/>
+    <path d="M 260 140 Q 175 175 260 210" stroke="#334155" fill="none" stroke-width="1.3" marker-end="url(#arrow5)"/>
+  </g>
+  <rect x="55" y="210" width="240" height="40" rx="6" fill="#e2e8f0"/>
+  <text x="175" y="235" text-anchor="middle" font-size="11">inner: employes (indexed lookup)</text>
+  <text x="175" y="280" text-anchor="middle" font-size="10.5" fill="#475569">for each outer row,</text>
+  <text x="175" y="297" text-anchor="middle" font-size="10.5" fill="#475569">index-probe the inner table</text>
+  <text x="175" y="325" text-anchor="middle" font-size="10.5" font-weight="700" fill="#334155">Best when: outer is small,</text>
+  <text x="175" y="342" text-anchor="middle" font-size="10.5" font-weight="700" fill="#334155">inner has a usable index</text>
+
+  <!-- Column 2: Hash Join -->
+  <rect x="350" y="55" width="300" height="335" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+  <text x="500" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Hash Join</text>
+  <rect x="380" y="100" width="240" height="40" rx="6" fill="#e2e8f0"/>
+  <text x="500" y="125" text-anchor="middle" font-size="11">1. build hash table (smaller side)</text>
+  <line x1="500" y1="140" x2="500" y2="176" stroke="#334155" stroke-width="1.3" marker-end="url(#arrow5)"/>
+  <rect x="380" y="180" width="240" height="40" rx="6" fill="#fde68a"/>
+  <text x="500" y="205" text-anchor="middle" font-size="11" fill="#78350f">hash table in memory</text>
+  <line x1="500" y1="220" x2="500" y2="256" stroke="#334155" stroke-width="1.3" marker-end="url(#arrow5)"/>
+  <rect x="380" y="260" width="240" height="40" rx="6" fill="#e2e8f0"/>
+  <text x="500" y="285" text-anchor="middle" font-size="11">2. probe with larger side</text>
+  <text x="500" y="325" text-anchor="middle" font-size="10.5" font-weight="700" fill="#334155">Best when: no useful index,</text>
+  <text x="500" y="342" text-anchor="middle" font-size="10.5" font-weight="700" fill="#334155">two large unsorted tables</text>
+
+  <!-- Column 3: Merge Join -->
+  <rect x="675" y="55" width="300" height="335" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+  <text x="825" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Merge Join</text>
+  <rect x="705" y="105" width="240" height="34" rx="6" fill="#e2e8f0"/>
+  <text x="825" y="127" text-anchor="middle" font-size="10.5">sorted input A →</text>
+  <rect x="705" y="150" width="240" height="34" rx="6" fill="#e2e8f0"/>
+  <text x="825" y="172" text-anchor="middle" font-size="10.5">sorted input B →</text>
+  <path d="M 825 184 L 825 210" stroke="#334155" stroke-width="1.3" marker-end="url(#arrow5)"/>
+  <rect x="705" y="214" width="240" height="40" rx="6" fill="#e2e8f0"/>
+  <text x="825" y="239" text-anchor="middle" font-size="11">walk both lists together</text>
+  <text x="825" y="280" text-anchor="middle" font-size="10.5" fill="#475569">like merging two sorted lists</text>
+  <text x="825" y="325" text-anchor="middle" font-size="10.5" font-weight="700" fill="#334155">Best when: both sides already</text>
+  <text x="825" y="342" text-anchor="middle" font-size="10.5" font-weight="700" fill="#334155">sorted/indexed on join key</text>
+</svg>

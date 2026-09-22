@@ -1,0 +1,55 @@
+<svg viewBox="0 0 960 260" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .suggestion { fill: #1e293b; stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 5,4; }
+      .step { fill: #1e293b; stroke: #4ade80; stroke-width: 1.5; }
+      .fail { fill: #450a0a; stroke: #f87171; stroke-width: 1.5; }
+      .text { fill: #f1f5f9; font-size: 11.5px; }
+      .header { fill: #f8fafc; font-size: 15px; font-weight: 700; }
+      .arrow { stroke: #94a3b8; stroke-width: 1.5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8" />
+    </marker>
+  </defs>
+  <rect class="bg" width="960" height="260" />
+  <text x="30" y="30" class="header">AI Suggestion → Mandatory Validation Pipeline</text>
+
+  <rect class="suggestion" x="20" y="90" width="140" height="60" rx="6" />
+  <text x="35" y="115" class="text">AI-suggested</text>
+  <text x="35" y="130" class="text">index / rewrite</text>
+  <text x="35" y="145" class="text">(unverified)</text>
+
+  <line x1="160" y1="120" x2="200" y2="120" class="arrow" />
+
+  <rect class="step" x="200" y="90" width="140" height="60" rx="6" />
+  <text x="212" y="112" class="text">EXPLAIN re-run</text>
+  <text x="212" y="127" class="text">on real schema</text>
+  <text x="212" y="142" class="text">(human-executed)</text>
+
+  <line x1="340" y1="120" x2="380" y2="120" class="arrow" />
+
+  <rect class="step" x="380" y="90" width="140" height="60" rx="6" />
+  <text x="392" y="112" class="text">Result-set diff</text>
+  <text x="392" y="127" class="text">(correctness</text>
+  <text x="392" y="142" class="text">preserved?)</text>
+
+  <line x1="520" y1="120" x2="560" y2="120" class="arrow" />
+
+  <rect class="step" x="560" y="90" width="150" height="60" rx="6" />
+  <text x="572" y="112" class="text">Smell catalog</text>
+  <text x="572" y="127" class="text">cross-check</text>
+  <text x="572" y="142" class="text">(Mod 16 / 18)</text>
+
+  <line x1="710" y1="120" x2="750" y2="120" class="arrow" />
+
+  <rect class="step" x="750" y="90" width="190" height="60" rx="6" />
+  <text x="762" y="112" class="text">Lesson 11 CI</text>
+  <text x="762" y="127" class="text">benchmark gate +</text>
+  <text x="762" y="142" class="text">human sign-off</text>
+
+  <line x1="90" y1="150" x2="90" y2="200" class="arrow" />
+  <rect class="fail" x="20" y="200" width="220" height="40" rx="6" />
+  <text x="35" y="225" class="text">Any step fails → suggestion rejected, not "fixed" and re-tried blindly</text>
+</svg>

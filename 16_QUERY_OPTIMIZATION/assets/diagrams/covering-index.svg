@@ -1,0 +1,36 @@
+<svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="800" height="350" fill="#ffffff"/>
+  <text x="400" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Covering Index: Skipping the Table Lookup</text>
+  <text x="400" y="45" text-anchor="middle" font-size="10" font-style="italic" fill="#94a3b8">"Index Scan"/"Index Only Scan" are PostgreSQL EXPLAIN terms — MySQL: type ref/range, Extra: Using index</text>
+
+  <!-- Panel 1: without covering index -->
+  <text x="200" y="60" text-anchor="middle" font-size="12.5" font-weight="700" fill="#7f1d1d">Without covering index</text>
+  <rect x="90" y="80" width="220" height="50" rx="7" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="200" y="110" text-anchor="middle" font-size="12" font-weight="600">Index: (dept_id)</text>
+  <rect x="90" y="200" width="220" height="50" rx="7" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="200" y="230" text-anchor="middle" font-size="12" font-weight="600" fill="#7f1d1d">Table heap lookup</text>
+  <line x1="200" y1="130" x2="200" y2="196" stroke="#b91c1c" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <text x="200" y="167" text-anchor="middle" font-size="10.5" fill="#b91c1c">extra I/O per row</text>
+  <text x="200" y="275" text-anchor="middle" font-size="11" fill="#7f1d1d">emp_name, hire_date not in index</text>
+  <text x="200" y="292" text-anchor="middle" font-size="11" font-weight="700" fill="#7f1d1d">→ Index Scan + table fetch</text>
+
+  <!-- divider -->
+  <line x1="410" y1="50" x2="410" y2="320" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Panel 2: with covering index -->
+  <text x="600" y="60" text-anchor="middle" font-size="12.5" font-weight="700" fill="#14532d">With covering index</text>
+  <rect x="490" y="80" width="220" height="90" rx="7" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="600" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Index:</text>
+  <text x="600" y="128" text-anchor="middle" font-size="11" font-family="monospace" fill="#14532d">(dept_id, emp_name,</text>
+  <text x="600" y="145" text-anchor="middle" font-size="11" font-family="monospace" fill="#14532d">          hire_date)</text>
+
+  <text x="600" y="230" text-anchor="middle" font-size="11" fill="#166534">all needed columns present</text>
+  <text x="600" y="248" text-anchor="middle" font-size="11" fill="#166534">in the index itself</text>
+  <text x="600" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">→ Index Only Scan</text>
+  <text x="600" y="292" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">no table visit needed</text>
+</svg>

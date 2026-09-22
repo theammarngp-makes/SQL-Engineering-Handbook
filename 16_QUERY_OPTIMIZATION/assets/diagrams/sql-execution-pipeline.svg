@@ -1,0 +1,46 @@
+<svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="220" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">SQL Query Execution Lifecycle</text>
+
+  <!-- 5 stage boxes -->
+  <g font-size="13" font-weight="600" fill="#0f172a">
+    <!-- Parsing -->
+    <rect x="20" y="70" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+    <text x="95" y="96" text-anchor="middle">Parsing</text>
+    <text x="95" y="114" text-anchor="middle" font-size="10" font-weight="400" fill="#475569">syntax → parse tree</text>
+
+    <!-- Binding -->
+    <rect x="210" y="70" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+    <text x="285" y="96" text-anchor="middle">Binding</text>
+    <text x="285" y="114" text-anchor="middle" font-size="10" font-weight="400" fill="#475569">resolve names/types</text>
+
+    <!-- Optimization -->
+    <rect x="400" y="65" width="160" height="70" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+    <text x="480" y="93" text-anchor="middle" fill="#78350f">Optimization</text>
+    <text x="480" y="111" text-anchor="middle" font-size="10" font-weight="400" fill="#92400e">cost-based plan choice</text>
+
+    <!-- Execution -->
+    <rect x="600" y="70" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+    <text x="675" y="96" text-anchor="middle">Execution</text>
+    <text x="675" y="114" text-anchor="middle" font-size="10" font-weight="400" fill="#475569">plan carried out</text>
+
+    <!-- Fetch -->
+    <rect x="790" y="70" width="90" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+    <text x="835" y="96" text-anchor="middle">Fetch</text>
+    <text x="835" y="114" text-anchor="middle" font-size="9.5" font-weight="400" fill="#475569">rows stream</text>
+  </g>
+
+  <!-- arrows -->
+  <line x1="170" y1="100" x2="206" y2="100" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="360" y1="100" x2="396" y2="100" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="560" y1="100" x2="596" y2="100" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="750" y1="100" x2="786" y2="100" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+  <text x="450" y="168" text-anchor="middle" font-size="11.5" fill="#334155">You control stages 1–2 by writing correct SQL. The optimizer (stage 3) decides HOW it physically runs.</text>
+  <text x="450" y="190" text-anchor="middle" font-size="11" fill="#64748b">Logical order (FROM → WHERE → GROUP BY → ...) ≠ physical execution order chosen here.</text>
+</svg>

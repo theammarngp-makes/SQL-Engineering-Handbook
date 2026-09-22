@@ -1,0 +1,58 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', 'Courier New', monospace">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f17"/>
+      <stop offset="100%" stop-color="#121826"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <radialGradient id="glow" cx="20%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f2b84b" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#f2b84b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="300" fill="url(#bgGrad)"/>
+  <rect width="1200" height="300" fill="url(#grid)"/>
+  <rect width="1200" height="300" fill="url(#glow)"/>
+
+  <!-- module tag -->
+  <g>
+    <circle cx="60" cy="46" r="4" fill="#59c9a5"/>
+    <text x="76" y="51" font-size="13" fill="#8b96ab" letter-spacing="1.5">MODULE 16 · SQL ENGINEERING HANDBOOK</text>
+  </g>
+
+  <!-- terminal window -->
+  <g transform="translate(60,74)">
+    <rect x="0" y="0" width="900" height="176" rx="10" fill="#121826" stroke="#253148" stroke-width="1.5"/>
+    <!-- titlebar -->
+    <rect x="0" y="0" width="900" height="34" rx="10" fill="#171f30"/>
+    <rect x="0" y="24" width="900" height="10" fill="#171f30"/>
+    <circle cx="20" cy="17" r="5" fill="#374357"/>
+    <circle cx="38" cy="17" r="5" fill="#374357"/>
+    <circle cx="56" cy="17" r="5" fill="#374357"/>
+    <text x="80" y="21" font-size="11" fill="#64748b">query_optimization.sql</text>
+
+    <!-- code body -->
+    <g font-size="26">
+      <text x="34" y="82"><tspan fill="#f2b84b" font-weight="700">SELECT</tspan><tspan fill="#e7ecf5"> query_speed</tspan></text>
+      <text x="34" y="118"><tspan fill="#f2b84b" font-weight="700">FROM</tspan><tspan fill="#e7ecf5"> production_systems</tspan></text>
+      <text x="34" y="154"><tspan fill="#f2b84b" font-weight="700">WHERE</tspan><tspan fill="#e7ecf5"> understanding </tspan><tspan fill="#59c9a5">&gt;</tspan><tspan fill="#e7ecf5"> memorization;</tspan></text>
+    </g>
+  </g>
+
+  <!-- right side: title + subtitle -->
+  <g transform="translate(1000,0)">
+  </g>
+
+  <text x="1140" y="115" text-anchor="end" font-size="30" font-weight="700" fill="#e7ecf5" font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif">Query</text>
+  <text x="1140" y="150" text-anchor="end" font-size="30" font-weight="700" fill="#f2b84b" font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif">Optimization</text>
+  <text x="1140" y="182" text-anchor="end" font-size="13" fill="#8b96ab" font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif">EXPLAIN · SARGability · Joins · Tuning</text>
+
+  <!-- bottom divider strip -->
+  <rect x="0" y="270" width="1200" height="1" fill="#253148"/>
+  <text x="60" y="292" font-size="11" fill="#5c6b85" font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif">github.com/theammarngp-makes/SQL-Engineering-Handbook</text>
+  <text x="1140" y="292" text-anchor="end" font-size="11" fill="#5c6b85" font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif">Production-grade · Open Source · MIT</text>
+</svg>

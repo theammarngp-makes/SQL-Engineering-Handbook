@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "description": "Committed performance baseline for Module 16 regression detection",
+    "updated": "2026-09-19T15:38:56Z",
+    "mysql_version": "8.0.46",
+    "dataset": "00_Schema.sql sample data (~5000 employees, ~300000 transactions)",
+    "iterations": 50,
+    "measurement": "Wall-clock p50 including mysql client overhead",
+    "notes": "Update deliberately via: run_benchmark.sh --update-baseline"
+  },
+  "p50_ms": 41,
+  "regression_tolerance_pct": 20
+}

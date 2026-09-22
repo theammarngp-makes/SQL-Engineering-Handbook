@@ -1,0 +1,16 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# CI-generated artifacts (committed baselines are intentional exceptions;
+# this ignores ad-hoc local benchmark output only)
+ci/*.local.json
+
+# Local database dumps / scratch SQL output
+*.sql.bak
+*.log

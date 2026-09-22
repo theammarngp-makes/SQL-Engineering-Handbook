@@ -1,0 +1,79 @@
+name: SQL Performance Gate
+
+# =============================================================================
+# PR Validation: Compares benchmark results against the committed baseline.
+# The committed ci/baseline.json file is the source of truth.
+#
+# Baseline Update: To update the baseline after intentional schema changes,
+# run locally: cd ci && ./run_benchmark.sh --update-baseline
+# Then commit the updated ci/baseline.json.
+# =============================================================================
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "**/*.sql"
+      - "**/migrations/**"
+
+  # Allow baseline to be saved on merge to main
+  push:
+    branches: [main]
+    paths:
+      - "**/*.sql"
+      - "**/migrations/**"
+
+jobs:
+  perf-gate:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0.46
+        env:
+          MYSQL_ROOT_PASSWORD: ci_root_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install client tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq mysql-client jq bc python3
+
+      - name: Verify committed baseline exists
+        run: |
+          if [ ! -f ci/baseline.json ]; then
+            echo "::error::ci/baseline.json not found in repository."
+            echo "A committed baseline is required for regression detection."
+            echo "Run: cd ci && ./run_benchmark.sh --update-baseline"
+            echo "Then commit ci/baseline.json to the repository."
+            exit 1
+          fi
+          echo "Committed baseline found:"
+          cat ci/baseline.json
+
+      - name: Run performance gate
+        working-directory: ci
+        env:
+          DB_HOST: 127.0.0.1
+          DB_USER: root
+          MYSQL_PWD: ci_root_password
+          ITERATIONS: 100
+          P50_REGRESSION_TOLERANCE_PCT: 20
+        run: |
+          chmod +x run_benchmark.sh
+          ./run_benchmark.sh
+
+      - name: Upload benchmark artifact for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-gate-results
+          path: ci/baseline.json

@@ -1,0 +1,62 @@
+<svg viewBox="0 0 920 520" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .diamond { fill: #78350f; stroke: #f59e0b; stroke-width: 1.5; }
+      .automate { fill: #14532d; stroke: #4ade80; stroke-width: 1.5; }
+      .manual { fill: #1e293b; stroke: #64748b; stroke-width: 1.5; }
+      .text { fill: #f1f5f9; font-size: 12px; }
+      .header { fill: #f8fafc; font-size: 15px; font-weight: 700; }
+      .edge { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
+      .edgelabel { fill: #cbd5e1; font-size: 11px; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8" />
+    </marker>
+  </defs>
+  <rect class="bg" width="920" height="520" />
+  <text x="30" y="30" class="header">Automate vs. Manual Tuning — Decision Tree</text>
+
+  <!-- Start -->
+  <rect class="manual" x="360" y="50" width="200" height="45" rx="6" />
+  <text x="380" y="77" class="text">New / changed query</text>
+
+  <!-- Diamond 1 -->
+  <polygon class="diamond" points="460,110 620,150 460,190 300,150" />
+  <text x="345" y="146" class="text">Hot path (checkout,</text>
+  <text x="345" y="160" class="text">auth, dashboard)?</text>
+
+  <line x1="460" y1="190" x2="460" y2="230" class="edge" marker-end="url(#arrow)" />
+  <text x="330" y="215" class="edgelabel">yes</text>
+  <rect class="manual" x="20" y="130" width="230" height="45" rx="6" />
+  <text x="35" y="157" class="text">No — manual EXPLAIN review at PR time</text>
+  <line x1="300" y1="150" x2="250" y2="150" class="edge" marker-end="url(#arrow)" />
+
+  <!-- Diamond 2 -->
+  <polygon class="diamond" points="460,230 660,275 460,320 260,275" />
+  <text x="290" y="270" class="text">Affected by future schema /</text>
+  <text x="290" y="285" class="text">data changes outside this PR?</text>
+
+  <rect class="manual" x="20" y="252" width="220" height="45" rx="6" />
+  <text x="35" y="280" class="text">No — stable, manual review OK</text>
+  <line x1="260" y1="275" x2="240" y2="275" class="edge" marker-end="url(#arrow)" />
+  <text x="245" y="265" class="edgelabel">no</text>
+
+  <line x1="460" y1="320" x2="460" y2="360" class="edge" marker-end="url(#arrow)" />
+  <text x="470" y="345" class="edgelabel">yes</text>
+
+  <!-- Diamond 3 -->
+  <polygon class="diamond" points="460,360 700,410 460,460 220,410" />
+  <text x="255" y="400" class="text">Expressible as a concrete budget —</text>
+  <text x="255" y="415" class="text">p95, plan-node type, rows examined?</text>
+
+  <rect class="manual" x="670" y="388" width="230" height="45" rx="6" />
+  <text x="685" y="416" class="text">No — senior manual review, recurring</text>
+  <line x1="700" y1="410" x2="670" y2="410" class="edge" marker-end="url(#arrow)" />
+  <text x="700" y="400" class="edgelabel">no</text>
+
+  <line x1="460" y1="460" x2="460" y2="490" class="edge" marker-end="url(#arrow)" />
+  <text x="470" y="480" class="edgelabel">yes</text>
+  <rect class="automate" x="330" y="490" width="260" height="26" rx="6" />
+  <text x="345" y="508" class="text">Automate: commit budget + wire into CI gate</text>
+</svg>

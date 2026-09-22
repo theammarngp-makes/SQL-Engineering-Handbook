@@ -1,0 +1,55 @@
+stages:
+  - perf-gate
+
+# =============================================================================
+# PR Validation: Compares benchmark results against the committed baseline.
+# The committed ci/baseline.json file is the source of truth.
+#
+# Baseline Update: To update the baseline after intentional schema changes,
+# run locally: cd ci && ./run_benchmark.sh --update-baseline
+# Then commit the updated ci/baseline.json.
+# =============================================================================
+
+sql-perf-gate:
+  stage: perf-gate
+  image: ubuntu:24.04
+
+  services:
+    - name: mysql:8.0.46
+      alias: mysql
+
+  variables:
+    MYSQL_ROOT_PASSWORD: "ci_root_password"
+    DB_HOST: "mysql"
+    DB_USER: "root"
+    MYSQL_PWD: "ci_root_password"
+    ITERATIONS: "100"
+    P50_REGRESSION_TOLERANCE_PCT: "20"
+
+  rules:
+    - changes:
+        - "**/*.sql"
+        - "**/migrations/**"
+
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq mysql-client jq bc python3
+
+  script:
+    # Verify committed baseline exists before running benchmarks
+    - |
+      if [ ! -f ci/baseline.json ]; then
+        echo "ERROR: ci/baseline.json not found in repository."
+        echo "A committed baseline is required for regression detection."
+        echo "Run: cd ci && ./run_benchmark.sh --update-baseline"
+        echo "Then commit ci/baseline.json to the repository."
+        exit 1
+      fi
+    - cd ci
+    - chmod +x run_benchmark.sh
+    - ./run_benchmark.sh
+
+  artifacts:
+    when: always
+    paths:
+      - ci/baseline.json
+    expire_in: 30 days

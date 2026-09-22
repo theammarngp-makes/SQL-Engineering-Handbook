@@ -1,0 +1,49 @@
+<svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="700" height="700" fill="#ffffff"/>
+  <text x="350" y="36" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Query Tuning Workflow</text>
+
+  <!-- circular arrangement of 5 nodes around center -->
+  <!-- 1 Measure (top) -->
+  <circle cx="350" cy="140" r="70" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="350" y="134" text-anchor="middle" font-size="12.5" font-weight="700">1. Measure</text>
+  <text x="350" y="152" text-anchor="middle" font-size="9.5" fill="#475569">EXPLAIN ANALYZE</text>
+  <text x="350" y="166" text-anchor="middle" font-size="9.5" fill="#475569">baseline</text>
+
+  <!-- 2 Read the Plan (right upper) -->
+  <circle cx="560" cy="300" r="70" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="560" y="294" text-anchor="middle" font-size="12.5" font-weight="700">2. Read the</text>
+  <text x="560" y="312" text-anchor="middle" font-size="12.5" font-weight="700">Plan</text>
+  <text x="560" y="330" text-anchor="middle" font-size="9.5" fill="#475569">find expensive node</text>
+
+  <!-- 3 Form Hypothesis (right lower) -->
+  <circle cx="480" cy="520" r="70" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <text x="480" y="510" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">3. Form a</text>
+  <text x="480" y="528" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Hypothesis</text>
+  <text x="480" y="545" text-anchor="middle" font-size="9.5" fill="#92400e">match to a cause</text>
+
+  <!-- 4 Change One Thing (left lower) -->
+  <circle cx="220" cy="520" r="70" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="220" y="514" text-anchor="middle" font-size="12" font-weight="700">4. Change</text>
+  <text x="220" y="532" text-anchor="middle" font-size="12" font-weight="700">One Thing</text>
+  <text x="220" y="549" text-anchor="middle" font-size="9.5" fill="#475569">exactly one fix</text>
+
+  <!-- 5 Verify Impact (left upper) -->
+  <circle cx="140" cy="300" r="70" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="140" y="294" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">5. Verify</text>
+  <text x="140" y="312" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Impact</text>
+  <text x="140" y="330" text-anchor="middle" font-size="9.5" fill="#166534">re-measure, compare</text>
+
+  <!-- connecting arc arrows (approx, curved paths) -->
+  <path d="M 405 165 Q 500 210 528 245" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow7)"/>
+  <path d="M 545 368 Q 520 440 508 458" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow7)"/>
+  <path d="M 412 535 Q 350 555 288 535" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow7)"/>
+  <path d="M 168 462 Q 145 400 142 372" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow7)"/>
+  <path d="M 175 248 Q 250 190 297 168" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow7)"/>
+
+  <text x="350" y="650" text-anchor="middle" font-size="11.5" fill="#334155">If a change doesn't help, revert and return to Step 3 — never stack unproven changes.</text>
+</svg>
