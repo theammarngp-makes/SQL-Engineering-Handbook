@@ -11,39 +11,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Expanded Window Business Cases module with additional chapters and diagrams (HR Analytics chapter and visual assets). (e015ecc — 2026-08-12)
-- Expanded NULL Handling & Data Cleaning module with visual explanation of three-valued logic and validation guidance. (aed8596 — 2026-08-11)
-- Substantially expanded the CTEs module with engineering patterns, diagrams, runnable examples and interview tips. (ffe7ff2 — 2026-08-06)
-- Added CASE_WHEN sample schema and seed data (shared schema used across lessons). (4de05c6 — 2026-08-07)
-- Added/expanded Aggregations content and assets (new banner image, analytics patterns and examples). (5c11c6a, 88a9ef — 2026-08-07–08)
-- Expanded Window Functions lessons (ROW_NUMBER, navigation improvements, diagrams). (24b8a9e — 2026-08-08)
-- Resource library: improved Resources/README table and links to curated files (books, certifications, communities, tools). (6ef3561, f346550 — 2026-08-06)
-- Added several module assets and diagrams to support lessons (CTE flow, row-number diagrams, HR leaderboard visuals). (ffe7ff2, 24b8a9e, e015ecc — Aug 6–12, 2026)
+- Added the Query Optimization module with execution-plan analysis, indexing guidance, query rewrites, benchmarking examples, CI support, and practical performance workflows. (2c510a0 — 2026-09-22)
+- Added comprehensive learning resources for books, blogs, documentation, videos, interview preparation, newsletters, courses, datasets, playgrounds, certifications, communities, and SQL tools, with topic-specific diagrams and an asset specification ledger. (9ae87ae — 2026-09-12)
+- Added extensive Views lessons covering view fundamentals, lifecycle, security, maintainability, performance, and practical examples. (daf26d0 — 2026-09-12)
+- Added extensive Set Operators lessons covering UNION, UNION ALL, INTERSECT, EXCEPT, comparison patterns, and practical examples. (b108c42 — 2026-09-02)
+- Added expanded Advanced Aggregations lessons with navigation, diagrams, and additional business-oriented examples. (d9b0b6b — 2026-09-01)
+- Added expanded String Functions lessons with module navigation, diagrams, examples, and reference material. (33267a1 — 2026-08-27)
 
 ### Changed
 
-- Multiple README updates across the repo: added live GH Pages link, adjusted banners, badges, and navigation for improved presentation and module discoverability. (fcd6556, 259918a, fd0ca21, f346550 — 2026-08-06–11)
-- Replaced SVG banner for Aggregations with PNG and updated module README references. (c9ab3ca, 1fc3d69 — 2026-08-07–08)
-- Standardized some module README headings and corrected internal links/navigation (various README edits to align module naming and paths). (7679a2d, 9436e62, 56dc371 — 2026-08-06–10)
-- Updated .gitignore to include common macOS artifacts (.DS_Store) and minor housekeeping changes. (5c11c6a — 2026-08-07)
+- Improved the Resources library README with a complete library map, build status, module checklist, file metrics, diagrams, roadmaps, and corrected folder structure documentation. (9ae87ae — 2026-09-12)
+- Enhanced the Views module with new visual explanations and substantially expanded lesson content. (daf26d0 — 2026-09-12)
+- Enhanced the Set Operators module with visual comparisons and substantially expanded lesson content. (b108c42 — 2026-09-02)
+- Enhanced the Advanced Aggregations module with lesson navigation, diagrams, and expanded explanations. (d9b0b6b — 2026-09-01)
+- Enhanced the String Functions module with lesson navigation, diagrams, and expanded explanations. (33267a1 — 2026-08-27)
+- Updated the project author profile and official portfolio information in the README, including the official resource citation. (420f4a9 — 2026-08-30)
 
 ### Removed
 
-- Removed or simplified some decorative badges and redundant README snippets to reduce clutter and improve readability. (4a3f4a0, fd0ca21 — 2026-08-06)
-- Clean-up of temporary/legacy file references in Resources and module READMEs (small pruning across commits). (f346550, 6ef3561 — 2026-08-06)
+- Removed module status information from the root README to keep progress claims centralized in the roadmap. (db7fad0, ff30e92 — 2026-09-16)
+- Removed module badges from the String Functions README to reduce visual clutter. (550821e6 — 2026-09-01)
 
 ### Fixed
 
-- README formatting and avatar/style adjustments (rounding/corrected attributes) and other small presentation fixes. (c83ff6b, c99c601, fb92943 — 2026-08-07–08)
-- Corrected module file references and naming inconsistencies introduced during expansion (e.g., module link paths, consistent module folder names). (7679a2d, 4de05c6 — 2026-08-07–10)
-- Incorporated minor query / example corrections that surfaced while expanding lessons (small fixes within lesson files). (multiple commits Aug 6–12, 2026)
+- Corrected and synchronized Resources documentation, links, naming, folder casing, asset references, and library status details while expanding the resource collection. (9ae87ae — 2026-09-12)
+- Updated README presentation and contact information to use the current official portfolio URL and Data Analyst title. (420f4a9 — 2026-08-30)
 
 ### Documentation
 
-- Added 00_Sample_Schema.sql (shared sample schema + seed data) to support hands-on lessons and reproducible examples. (4de05c6 — 2026-08-07)
-- Added diagrams and assets referenced by new lessons (CTE flow diagrams, ROW_NUMBER visuals, HR leaderboard). (ffe7ff2, 24b8a9e, e015ecc — Aug 6–12, 2026)
-- Updated Resources/README to include a structured table of resource files (books, certifications, communities, tools). (6ef3561, f346550 — 2026-08-06)
-- Continued README and handbook navigation refinements to make module progression clearer for learners and contributors. (fcd6556, 259918a — 2026-08-06–11)
+- Documented the new Query Optimization module and its supporting local-ignore and CI conventions. (2c510a0 — 2026-09-22)
+- Added diagrams and navigation links throughout the Advanced Aggregations, String Functions, Set Operators, and Views modules. (d9b0b6b, 33267a1, b108c42, daf26d0 — 2026-08-27–2026-09-12)
+- Expanded the Resources library documentation with 12 resource files, 13 SVG assets, reading roadmaps, quality standards, and contribution guidance. (9ae87ae — 2026-09-12)
 
 ---
 
