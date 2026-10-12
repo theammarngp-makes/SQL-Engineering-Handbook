@@ -1,0 +1,50 @@
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="700" height="300" fill="#f8fafc"/>
+  <text x="350" y="30" text-anchor="middle" font-family="monospace" font-size="18" fill="#0f172a" font-weight="bold">ACID — Four Independent Guarantees</text>
+
+  <g>
+    <rect x="20" y="60" width="150" height="180" rx="6" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+    <text x="95" y="90" text-anchor="middle" font-family="monospace" font-size="16" fill="#0f172a" font-weight="bold">A</text>
+    <text x="95" y="110" text-anchor="middle" font-family="monospace" font-size="12" fill="#334155">Atomicity</text>
+    <text x="95" y="140" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">Changes commit or</text>
+    <text x="95" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">roll back as</text>
+    <text x="95" y="170" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">one unit</text>
+    <rect x="35" y="195" width="120" height="30" rx="4" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="95" y="214" text-anchor="middle" font-family="monospace" font-size="9" fill="#b91c1c">no partial commit</text>
+  </g>
+
+  <g>
+    <rect x="190" y="60" width="150" height="180" rx="6" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+    <text x="265" y="90" text-anchor="middle" font-family="monospace" font-size="16" fill="#0f172a" font-weight="bold">C</text>
+    <text x="265" y="110" text-anchor="middle" font-family="monospace" font-size="12" fill="#334155">Consistency</text>
+    <text x="265" y="140" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">Valid state to</text>
+    <text x="265" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">valid state, per</text>
+    <text x="265" y="170" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">declared constraints</text>
+    <rect x="205" y="195" width="120" height="30" rx="4" fill="#dcfce7" stroke="#15803d"/>
+    <text x="265" y="214" text-anchor="middle" font-family="monospace" font-size="8" fill="#15803d">enforced by FKs/CHECKs</text>
+  </g>
+
+  <g>
+    <rect x="360" y="60" width="150" height="180" rx="6" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+    <text x="435" y="90" text-anchor="middle" font-family="monospace" font-size="16" fill="#0f172a" font-weight="bold">I</text>
+    <text x="435" y="110" text-anchor="middle" font-family="monospace" font-size="12" fill="#334155">Isolation</text>
+    <text x="435" y="140" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">Concurrent txns</text>
+    <text x="435" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">don't corrupt each</text>
+    <text x="435" y="170" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">other's view</text>
+    <rect x="375" y="195" width="120" height="30" rx="4" fill="#fef3c7" stroke="#b45309"/>
+    <text x="435" y="214" text-anchor="middle" font-family="monospace" font-size="9" fill="#b45309">set by level (L2)</text>
+  </g>
+
+  <g>
+    <rect x="530" y="60" width="150" height="180" rx="6" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+    <text x="605" y="90" text-anchor="middle" font-family="monospace" font-size="16" fill="#0f172a" font-weight="bold">D</text>
+    <text x="605" y="110" text-anchor="middle" font-family="monospace" font-size="12" fill="#334155">Durability</text>
+    <text x="605" y="140" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">A commit survives</text>
+    <text x="605" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">a crash the instant</text>
+    <text x="605" y="170" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">after it returns</text>
+    <rect x="545" y="195" width="120" height="30" rx="4" fill="#dcfce7" stroke="#15803d"/>
+    <text x="605" y="214" text-anchor="middle" font-family="monospace" font-size="9" fill="#15803d">via InnoDB redo log</text>
+  </g>
+
+  <text x="350" y="270" text-anchor="middle" font-family="monospace" font-size="11" fill="#475569">Four separate guarantees — a transaction can satisfy one and violate another</text>
+</svg>

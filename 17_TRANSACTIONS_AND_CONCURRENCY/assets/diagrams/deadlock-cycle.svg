@@ -1,0 +1,32 @@
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="560" height="300" fill="#f8fafc"/>
+  <text x="280" y="28" text-anchor="middle" font-family="monospace" font-size="16" fill="#0f172a" font-weight="bold">Deadlock: a Cyclic Wait</text>
+
+  <rect x="40" y="70" width="160" height="60" rx="6" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="120" y="95" text-anchor="middle" font-family="monospace" font-size="12" fill="#0f172a" font-weight="bold">Txn A</text>
+  <text x="120" y="112" text-anchor="middle" font-family="monospace" font-size="10" fill="#334155">holds lock on dept 4</text>
+
+  <rect x="360" y="70" width="160" height="60" rx="6" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="440" y="95" text-anchor="middle" font-family="monospace" font-size="12" fill="#0f172a" font-weight="bold">Txn B</text>
+  <text x="440" y="112" text-anchor="middle" font-family="monospace" font-size="10" fill="#334155">holds lock on dept 7</text>
+
+  <!-- A wants dept 7 (held by B) -->
+  <line x1="200" y1="85" x2="360" y2="85" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="280" y="75" text-anchor="middle" font-family="monospace" font-size="10" fill="#b91c1c">A wants dept 7 (waits)</text>
+
+  <!-- B wants dept 4 (held by A) -->
+  <line x1="360" y1="115" x2="200" y2="115" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="280" y="135" text-anchor="middle" font-family="monospace" font-size="10" fill="#b91c1c">B wants dept 4 (waits)</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+
+  <rect x="100" y="190" width="360" height="50" rx="6" fill="#fef3c7" stroke="#b45309"/>
+  <text x="280" y="212" text-anchor="middle" font-family="monospace" font-size="11" fill="#b45309">Neither can proceed — cycle</text>
+  <text x="280" y="228" text-anchor="middle" font-family="monospace" font-size="11" fill="#b45309">InnoDB detects it and rolls back ONE transaction</text>
+
+  <text x="280" y="270" text-anchor="middle" font-family="monospace" font-size="10" fill="#475569">Fix: always acquire locks in the same order (e.g. always lower dept_id first)</text>
+</svg>

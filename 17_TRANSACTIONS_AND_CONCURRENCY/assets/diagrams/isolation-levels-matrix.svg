@@ -1,0 +1,56 @@
+<svg viewBox="0 0 660 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="660" height="260" fill="#f8fafc"/>
+  <text x="330" y="28" text-anchor="middle" font-family="monospace" font-size="16" fill="#0f172a" font-weight="bold">Isolation Levels vs. Read Phenomena</text>
+
+  <!-- header row -->
+  <rect x="20" y="50" width="180" height="34" fill="#1e293b"/>
+  <text x="110" y="72" text-anchor="middle" font-family="monospace" font-size="11" fill="#f1f5f9">Isolation Level</text>
+  <rect x="200" y="50" width="140" height="34" fill="#1e293b"/>
+  <text x="270" y="72" text-anchor="middle" font-family="monospace" font-size="11" fill="#f1f5f9">Dirty Read</text>
+  <rect x="340" y="50" width="150" height="34" fill="#1e293b"/>
+  <text x="415" y="72" text-anchor="middle" font-family="monospace" font-size="11" fill="#f1f5f9">Non-Repeatable</text>
+  <rect x="490" y="50" width="150" height="34" fill="#1e293b"/>
+  <text x="565" y="72" text-anchor="middle" font-family="monospace" font-size="11" fill="#f1f5f9">Phantom Read</text>
+
+  <!-- READ UNCOMMITTED -->
+  <rect x="20" y="84" width="180" height="40" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="30" y="108" font-family="monospace" font-size="11" fill="#334155">READ UNCOMMITTED</text>
+  <rect x="200" y="84" width="140" height="40" fill="#fee2e2" stroke="#cbd5e1"/>
+  <text x="270" y="108" text-anchor="middle" font-family="monospace" font-size="10" fill="#b91c1c">possible</text>
+  <rect x="340" y="84" width="150" height="40" fill="#fee2e2" stroke="#cbd5e1"/>
+  <text x="415" y="108" text-anchor="middle" font-family="monospace" font-size="10" fill="#b91c1c">possible</text>
+  <rect x="490" y="84" width="150" height="40" fill="#fee2e2" stroke="#cbd5e1"/>
+  <text x="565" y="108" text-anchor="middle" font-family="monospace" font-size="10" fill="#b91c1c">possible</text>
+
+  <!-- READ COMMITTED -->
+  <rect x="20" y="124" width="180" height="40" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="30" y="148" font-family="monospace" font-size="11" fill="#334155">READ COMMITTED</text>
+  <rect x="200" y="124" width="140" height="40" fill="#dcfce7" stroke="#cbd5e1"/>
+  <text x="270" y="148" text-anchor="middle" font-family="monospace" font-size="10" fill="#15803d">prevented</text>
+  <rect x="340" y="124" width="150" height="40" fill="#fee2e2" stroke="#cbd5e1"/>
+  <text x="415" y="148" text-anchor="middle" font-family="monospace" font-size="10" fill="#b91c1c">possible</text>
+  <rect x="490" y="124" width="150" height="40" fill="#fee2e2" stroke="#cbd5e1"/>
+  <text x="565" y="148" text-anchor="middle" font-family="monospace" font-size="10" fill="#b91c1c">possible</text>
+
+  <!-- REPEATABLE READ (MySQL default) -->
+  <rect x="20" y="164" width="180" height="40" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="30" y="182" font-family="monospace" font-size="11" fill="#0f172a" font-weight="bold">REPEATABLE READ</text>
+  <text x="30" y="197" font-family="monospace" font-size="9" fill="#64748b">(MySQL default)</text>
+  <rect x="200" y="164" width="140" height="40" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+  <text x="270" y="188" text-anchor="middle" font-family="monospace" font-size="10" fill="#15803d">prevented</text>
+  <rect x="340" y="164" width="150" height="40" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+  <text x="415" y="188" text-anchor="middle" font-family="monospace" font-size="10" fill="#15803d">prevented</text>
+  <rect x="490" y="164" width="150" height="40" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+  <text x="565" y="183" text-anchor="middle" font-family="monospace" font-size="10" fill="#15803d">prevented*</text>
+  <text x="565" y="196" text-anchor="middle" font-family="monospace" font-size="8" fill="#64748b">(*plain reads, via MVCC)</text>
+
+  <!-- SERIALIZABLE -->
+  <rect x="20" y="204" width="180" height="40" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="30" y="228" font-family="monospace" font-size="11" fill="#334155">SERIALIZABLE</text>
+  <rect x="200" y="204" width="140" height="40" fill="#dcfce7" stroke="#cbd5e1"/>
+  <text x="270" y="228" text-anchor="middle" font-family="monospace" font-size="10" fill="#15803d">prevented</text>
+  <rect x="340" y="204" width="150" height="40" fill="#dcfce7" stroke="#cbd5e1"/>
+  <text x="415" y="228" text-anchor="middle" font-family="monospace" font-size="10" fill="#15803d">prevented</text>
+  <rect x="490" y="204" width="150" height="40" fill="#dcfce7" stroke="#cbd5e1"/>
+  <text x="565" y="228" text-anchor="middle" font-family="monospace" font-size="10" fill="#15803d">prevented</text>
+</svg>

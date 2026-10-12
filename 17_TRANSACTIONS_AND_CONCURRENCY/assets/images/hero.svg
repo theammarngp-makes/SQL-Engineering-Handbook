@@ -1,0 +1,18 @@
+<svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="220" rx="10" fill="#0b0f17"/>
+  <rect x="0" y="0" width="900" height="36" rx="10" fill="#121826"/>
+  <circle cx="22" cy="18" r="6" fill="#ef4444"/>
+  <circle cx="44" cy="18" r="6" fill="#eab308"/>
+  <circle cx="66" cy="18" r="6" fill="#22c55e"/>
+  <text x="450" y="23" text-anchor="middle" font-family="monospace" font-size="12" fill="#64748b">module_17.sql</text>
+
+  <text x="40" y="80" font-family="monospace" font-size="22" fill="#f1f5f9" font-weight="bold">Module 17 — Transactions &amp; Concurrency Control</text>
+  <text x="40" y="108" font-family="monospace" font-size="13" fill="#94a3b8">ACID · Isolation Levels · Locking · Deadlocks · MVCC · Anti-Patterns · Design Workflow</text>
+
+  <g font-family="monospace" font-size="13" xml:space="preserve">
+    <text x="40" y="145"><tspan fill="#f472b6">START TRANSACTION</tspan><tspan fill="#e2e8f0">;</tspan></text>
+    <text x="40" y="165"><tspan fill="#60a5fa">UPDATE</tspan><tspan fill="#e2e8f0"> employes </tspan><tspan fill="#f472b6">SET</tspan><tspan fill="#e2e8f0"> salary = salary + 5000</tspan></text>
+    <text x="40" y="185"><tspan fill="#e2e8f0">  </tspan><tspan fill="#f472b6">WHERE</tspan><tspan fill="#e2e8f0"> emp_id = 12;</tspan></text>
+    <text x="40" y="205"><tspan fill="#f472b6">COMMIT</tspan><tspan fill="#e2e8f0">;  </tspan><tspan fill="#4ade80">-- all-or-nothing, as one unit</tspan></text>
+  </g>
+</svg>
