@@ -1,0 +1,33 @@
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrowI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="260" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Interview Assessment Workflow</text>
+  <g font-size="11.5" font-weight="700" fill="#0f172a">
+    <rect x="20" y="60" width="130" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.3"/>
+    <text x="85" y="86" text-anchor="middle">Pick a track</text>
+    <text x="85" y="102" text-anchor="middle" font-size="9.5" font-weight="400" fill="#475569">PRACTICE_TRACKS.md</text>
+    <rect x="180" y="60" width="130" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.3"/>
+    <text x="245" y="86" text-anchor="middle">State scenario,</text>
+    <text x="245" y="102" text-anchor="middle" font-size="9.5" font-weight="400" fill="#475569">let candidate ask Qs</text>
+    <rect x="340" y="60" width="130" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.3"/>
+    <text x="405" y="86" text-anchor="middle">Candidate solves,</text>
+    <text x="405" y="102" text-anchor="middle" font-size="9.5" font-weight="400" fill="#475569">narrates approach</text>
+    <rect x="500" y="60" width="150" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.3"/>
+    <text x="575" y="86" text-anchor="middle" fill="#78350f">Interviewer</text>
+    <text x="575" y="102" text-anchor="middle" font-size="9.5" font-weight="400" fill="#92400e">Follow-Up question</text>
+    <rect x="680" y="60" width="150" height="60" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.3"/>
+    <text x="755" y="86" text-anchor="middle" fill="#14532d">Score per</text>
+    <text x="755" y="102" text-anchor="middle" font-size="9.5" font-weight="400" fill="#166534">SCORING_RUBRIC.md</text>
+  </g>
+  <line x1="150" y1="90" x2="176" y2="90" stroke="#334155" stroke-width="1.4" marker-end="url(#arrowI)"/>
+  <line x1="310" y1="90" x2="336" y2="90" stroke="#334155" stroke-width="1.4" marker-end="url(#arrowI)"/>
+  <line x1="470" y1="90" x2="496" y2="90" stroke="#334155" stroke-width="1.4" marker-end="url(#arrowI)"/>
+  <line x1="650" y1="90" x2="676" y2="90" stroke="#334155" stroke-width="1.4" marker-end="url(#arrowI)"/>
+  <path d="M 755 120 L 755 160 L 245 160 L 245 124" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrowI)"/>
+  <text x="500" y="178" text-anchor="middle" font-size="10" fill="#64748b">Solved quickly? → go to Senior-Level Extension instead of a new question</text>
+  <text x="450" y="220" text-anchor="middle" font-size="11" fill="#334155">Full methodology, probing technique, and red/strong signals: INTERVIEWER_GUIDE.md</text>
+</svg>
