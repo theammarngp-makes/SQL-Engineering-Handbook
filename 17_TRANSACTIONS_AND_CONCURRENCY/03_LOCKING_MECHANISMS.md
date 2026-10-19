@@ -37,12 +37,11 @@ that does.
 
 Consider decrementing inventory when an order is placed:
 `SELECT quantity FROM inventory WHERE product_id = 55`, check it's
-`> 0` in application code, then `UPDATE inventory SET quantity =
-quantity - 1 ...`. Two concurrent orders can both read `quantity = 1`,
+`> 0` in application code, then `UPDATE inventory SET quantity = quantity - 1 ...`. Two concurrent orders can both read `quantity = 1`,
 both decide "in stock," and both decrement — selling the same unit of
 inventory twice. `SELECT ... FOR UPDATE` on the read closes this
 exact race by taking an exclusive lock at read time, forcing the
-second transaction to wait until the first commits (and sees the now-updated quantity) before it can proceed. (The `inventory` table is illustrative and not part of `00_Schema`; the companion `.sql` uses `employes.salary` as a stand-in numeric column.)
+second transaction to wait until the first commits (and sees the now-updated quantity) before it can proceed. (The `inventory` table is illustrative and not part of `00_Schema`; the companion `.sq[...]
 
 ## 5. Shared vs. Exclusive Locks
 
@@ -125,14 +124,17 @@ statements in that same transaction remain pending, uncommitted.
 ## 8. Engineering Notes
 
 - `SELECT ... FOR UPDATE` is the correct tool for read-then-write
-  races; a plain `SELECT` followed by an `UPDATE` is not equivalent,
-  regardless of isolation level, because the plain `SELECT` takes no
-  lock at all.
+  races when you need a locking read. In InnoDB a typical plain
+  (non-locking) consistent `SELECT` reads from a snapshot and generally does not acquire row-level locks; however, behavior can differ under `SERIALIZABLE` or engine-specific settings that cause reads to take locks. Distinguish ordinary consistent snapshot reads from locking reads (`SELECT ... FOR UPDATE`, `SELECT ... FOR SHARE`) and from locking statements (`UPDATE`, `DELETE`), which do acquire locks and participate in lock contention.
 - Where the logic allows it, prefer a single atomic statement —
   `UPDATE inventory SET quantity = quantity - 1 WHERE product_id = 55
-  AND quantity > 0` — over a separate locking read plus a write. One
-  statement is inherently race-free; two statements, even with
-  `FOR UPDATE`, require correct transaction boundaries to stay safe.
+  AND quantity > 0` — over a separate locking read plus a write. A
+  single, properly-constructed SQL statement can make that specific
+  check-and-update atomic at the storage-engine level and often avoids a
+  separate read-then-write race. However, that atomicity applies only to
+  the expressed check-and-update; it does not automatically enforce
+  broader multi-row or multi-statement business invariants, which still
+  require careful transactional design or explicit locking.
 - Lock rows in a **consistent order** across all code paths that touch
   more than one row (e.g., always lock the lower `emp_id` first).
   Inconsistent ordering across concurrent transactions is the single
@@ -238,7 +240,9 @@ scenarios are not DuckDB's primary use case.
 1. **"Why doesn't a plain SELECT followed by an UPDATE safely handle
    a read-then-write race, even under REPEATABLE READ?"** — Tests
    understanding that isolation level governs visibility, not
-   locking; a plain SELECT takes no lock at all.
+   locking; a plain SELECT typically reads a snapshot and therefore
+   does not acquire an exclusive lock unless the engine or isolation
+   mode causes it to.
 2. **"What is a gap lock, and why does InnoDB need it even though the
    SQL standard doesn't mention 'gaps' anywhere?"** — Tests whether
    the candidate understands gap locks as InnoDB's specific mechanism
