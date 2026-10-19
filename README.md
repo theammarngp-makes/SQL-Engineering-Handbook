@@ -5,11 +5,11 @@
 <h1 align="center">SQL Engineering Handbook</h1>
 
 <p align="center">
-  <b>A production-style SQL curriculum — from your first SELECT to analytics engineering, interview prep, and real business case studies.</b>
+  <b>A production-style curriculum in structure and examples — progressive modules from fundamentals to analytics engineering, interview prep, and real-world scenarios. See each module README for current verification status and execution notes.</b>
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=22&duration=3000&pause=1000&center=true&vCenter=true&width=850&lines=21+Structured+SQL+Modules;Real+Datasets+%2B+Projects+%2B+Interview+Prep;Built+in+Public%2C+Documented+Like+Production+Code" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=22&duration=3000&pause=1000&center=true&vCenter=true&width=850&lines=21+Structured+SQL+Modules;Real+Datasets+%2B+Projects+%2B+[...]">
 </p>
 
 <p align="center">
@@ -17,7 +17,6 @@
   <img src="https://img.shields.io/github/forks/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&color=2563eb" />
   <img src="https://img.shields.io/github/last-commit/theammarngp-makes/SQL-Engineering-Handbook?style=for-the-badge&color=0f172a" />
   <img src="https://img.shields.io/badge/status-actively--building-orange?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/modules-9%20of%2021%20complete-2563eb?style=for-the-badge" />
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
 </p>
@@ -40,7 +39,7 @@
 ---
 ## Who This Is For
 
-If you're an aspiring or practicing **Data Analyst** or **Analytics Engineer** who wants a structured path from SQL fundamentals to real business analytics — not another disconnected list of `.sql` files — this handbook is built for you.
+If you're an aspiring or practicing **Data Analyst** or **Analytics Engineer** who wants a structured path from SQL fundamentals to real business analytics — not another disconnected list of `.s[...]`
 
 ---
 ## 🗂️ Module Guide
@@ -67,14 +66,14 @@ This is the part most handbooks . Every module below links straight to its folde
 | 14 | [Views](14_VIEWS/) | Views, security, updatable views, performance | ✅ |
 | 15 | [Indexes](15_INDEXES/) | B-Tree, composite, covering indexes, reading `EXPLAIN` | ✅ |
 | 16 | [Query Optimization](16_QUERY_OPTIMIZATION/) | Execution plans, rewrite patterns, anti-patterns | ✅ |
-| 17 | [SQL Interview Questions](17_SQL_INTERVIEW_QUESTIONS/) | Curated question bank with worked answers | 📋 |
-| 18 | [SQL Business Case Studies](18_SQL_BUSINESS_CASE_STUDIES/) | End-to-end analytics scenarios across domains | 📋 |
+| 17 | [Transactions & Concurrency Control](17_TRANSACTIONS_AND_CONCURRENCY/) | ACID, isolation, locking, MVCC and runnable demos | ✅ (content present — see module README for verification notes) |
+| 18 | [SQL Interview Questions](18_SQL_INTERVIEW_QUESTIONS/) | Curated question bank with worked answers and a structural validator | ✅ (content present; see module README & FINAL_VALIDATION_REPORT.md) |
 | 19 | [SQL Projects](19_SQL_PROJECTS/) | Portfolio-ready guided projects | 📋 |
 | 20 | [SQL Cheatsheet](20_SQL_CHEATSHEET/) | One-page syntax and pattern reference | 📋 |
 
 Legend: ✅ Complete · 🔄 In Progress · 📋 Planned — live tracking always in [`ROADMAP.md`](ROADMAP.md).
 
-Each module folder itself contains a `README.md` (concept + business context), one or more paired `.sql` files, and where relevant an audit or troubleshooting doc — click into any module above to see its own contents list.
+Each module folder itself contains a `README.md` (concept + business context), one or more paired `.sql` files, and where relevant an audit or troubleshooting doc — click into any module above t[...]
 
 ---
 
@@ -110,7 +109,7 @@ Practice is built around real-world-style datasets (HR, e-commerce, sales, finan
 <td width="33%" valign="top">
 
 ### 🎯 Interview Ready
-`17_SQL_INTERVIEW_QUESTIONS/` and `exercises/interview/` target the questions that come up most. Until they ship, `08_WINDOW_BUSINESS_CASES/` is the closest match.
+`18_SQL_INTERVIEW_QUESTIONS/` and `exercises/interview/` target the questions that come up most; see Module 18 README and FINAL_VALIDATION_REPORT.md for validation notes.
 
 </td>
 </tr>
@@ -162,8 +161,8 @@ flowchart LR
     K --> L[14-16 Views, Indexes, Query Optimization]
     end
     subgraph Career_Ready[Career Ready]
-    L --> M[17 Interview Questions]
-    M --> N[18 Business Case Studies]
+    L --> M[17 Transactions & Concurrency Control]
+    M --> N[18 SQL Interview Questions]
     N --> O[19 Projects]
     O --> P[20 Cheatsheet]
     end
@@ -185,15 +184,15 @@ flowchart LR
 | 07 | Window Functions | ✅ Complete |
 | 08 | Window Function Business Cases | ✅ Complete |
 | 09 | Date Functions | ✅ Complete |
-| 10 | String Functions | ✅ Complete |
-| 11 | NULL Handling & Data Cleaning | ✅️ Complete |
-| 12 | Advanced Aggregations | ✅️ Complete |
-| 13 | Set Operators | ✅️ Complete |
+| 10 | String Functions | ✅️ In progress |
+| 11 | NULL Handling & Data Cleaning | ✅️ In progress |
+| 12 | Advanced Aggregations | ✅️ In progress |
+| 13 | Set Operators | ✅️ In progress |
 | 14 | Views | ✅️  In Progress |
 | 15 | Indexes | ✅️ In Progress |
 | 16 | Query Optimization | ✅️ In Progress |
-| 17 | SQL Interview Questions | 🔄 In Progress |
-| 18 | SQL Business Case Studies | 🔄 In Progress |
+| 17 | Transactions & Concurrency Control | ✅️ Complete (see module README for verification notes) |
+| 18 | SQL Interview Questions | ✅️ Complete (see module README & FINAL_VALIDATION_REPORT.md) |
 | 19 | SQL Projects | 🔄 In Progress |
 | 20 | SQL Cheatsheet | 🔄 In Progress |
 
@@ -286,13 +285,13 @@ SQL-Engineering-Handbook/
 ├── 14_VIEWS/                           ✅️ In progress
 ├── 15_INDEXES/                         ✅️ In progress
 ├── 16_QUERY_OPTIMIZATION/              ✅️ In progress
-├── 17_SQL_INTERVIEW_QUESTIONS/         🔄 In progress
-├── 18_SQL_BUSINESS_CASE_STUDIES/       🔄 In progress
+├── 17_TRANSACTIONS_AND_CONCURRENCY/    ✅️ Complete (see module README for verification notes)
+├── 18_SQL_INTERVIEW_QUESTIONS/         ✅️ Complete (see module README & FINAL_VALIDATION_REPORT.md)
 ├── 19_SQL_PROJECTS/                    🔄 In progress
 └── 20_SQL_CHEATSHEET/                  🔄 In progress
 ```
 
-Every numbered module is self-contained: read its own README, run its queries against the relevant dataset, then attempt the practice challenge at the end. See [`ARCHITECTURE.md`](ARCHITECTURE.md) for the reasoning behind this layout.
+Every numbered module is self-contained: read its own README, run its queries against the relevant dataset, then attempt the practice challenge at the end. See [`ARCHITECTURE.md`](ARCHITECTURE.md[...]
 
 ---
 
@@ -327,7 +326,7 @@ Work straight through `00_SAMPLE_DATABASE` → `09_DATE_FUNCTIONS` (currently co
 <summary><b>🎯 Interview sprint</b> — targeted prep</summary>
 <br>
 
-Once live, `17_SQL_INTERVIEW_QUESTIONS/` and `exercises/interview/` will be the fastest path. Until then, `07_WINDOW_FUNCTIONS/` and `08_WINDOW_BUSINESS_CASES/` cover the most commonly tested interview topic.
+Module 18 (SQL Interview Questions) is published and provides a fast path for interview practice; see its README and FINAL_VALIDATION_REPORT.md for validation notes. Meanwhile, `07_WINDOW_FUNCTIONS/` and `08_WINDOW_BUSINESS_CASES/` cover commonly tested interview material.
 </details>
 
 <details>
@@ -370,7 +369,7 @@ Every completed module follows this format: business context → SQL solution �
 | [`SECURITY.md`](SECURITY.md) | How to report security concerns |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community standards |
 
-**GitHub features:** [Issues](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/issues) for bugs and requests · [Discussions](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/discussions) for questions about a specific query or module.
+**GitHub features:** [Issues](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/issues) for bugs and requests · [Discussions](https://github.com/theammarngp-makes/SQL-Engineering-Han[...]
 
 ---
 
@@ -394,16 +393,16 @@ Full standards live in [`CONTRIBUTING.md`](CONTRIBUTING.md). Please review the [
 ## FAQ
 
 **Is this finished?**
-No — and it says so on purpose. Modules 00–09 are complete and stable. 10–20, plus datasets, exercises, projects, and cheatsheets, are actively being built. Check [`ROADMAP.md`](ROADMAP.md) for live status.
+No — and it says so on purpose. Modules 00–09 are complete and stable. 10–20, plus datasets, exercises, projects, and cheatsheets, are actively being built. Check [`ROADMAP.md`](ROADMAP.md)[...]
 
 **Do I need MySQL specifically?**
 Queries are ANSI-standard where possible, with MySQL-specific notes called out. Most run on PostgreSQL with minor syntax changes.
 
 **Is this beginner-friendly?**
-Yes — start at `01_FUNDAMENTALS/`. It assumes no prior SQL knowledge.
+Yes — start at `01_Fundamentals/`. It assumes no prior SQL knowledge.
 
 **Can I use this for interview prep only?**
-That's the goal of `17_SQL_INTERVIEW_QUESTIONS/` and `exercises/interview/` once live; until then, `08_WINDOW_BUSINESS_CASES/` is the closest match.
+Module 18 (SQL Interview Questions) is published and intended for interview prep. See its README and FINAL_VALIDATION_REPORT.md for the current coverage and validation status.
 
 More in [`FAQ.md`](FAQ.md).
 
@@ -421,7 +420,7 @@ Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 <tr>
 <td width="90"><img src="https://avatars.githubusercontent.com/u/224389032?v=4" width="70" style="border-radius:50%"/></td>
 <td>
-<b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analyst, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineering-Handbook">SQL Engineering Handbook</a> (20+ modules). Based in Nagpur, India.
+<b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analyst, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineer[...]">
 </td>
 </tr>
 </table>
@@ -435,7 +434,7 @@ Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 ---
 
 <p align="center">
-  This handbook is built in public and updated regularly. If it's useful to you, starring the repo helps more learners find it — and following along tracks its progress from here to a full 21-module release.
+  This handbook is built in public and updated regularly. If it's useful to you, starring the repo helps more learners find it — and following along tracks its progress from here to a full 21-m[...]
 </p>
 
 ### Official Resource Citation
