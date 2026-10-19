@@ -5,7 +5,7 @@
 <h1 align="center">SQL Engineering Handbook</h1>
 
 <p align="center">
-  <b>A production-style curriculum in structure and examples — progressive modules from fundamentals to analytics engineering, interview prep, and real-world scenarios. See each module README for current verification status and execution notes.</b>
+  <b>A production-style curriculum in structure and examples — progressive modules from fundamentals to analytics engineering, interview prep, and real-world scenarios. See each module README for[...]</b>
 </p>
 
 <p align="center">
@@ -66,8 +66,8 @@ This is the part most handbooks . Every module below links straight to its folde
 | 14 | [Views](14_VIEWS/) | Views, security, updatable views, performance | ✅ |
 | 15 | [Indexes](15_INDEXES/) | B-Tree, composite, covering indexes, reading `EXPLAIN` | ✅ |
 | 16 | [Query Optimization](16_QUERY_OPTIMIZATION/) | Execution plans, rewrite patterns, anti-patterns | ✅ |
-| 17 | [Transactions & Concurrency Control](17_TRANSACTIONS_AND_CONCURRENCY/) | ACID, isolation, locking, MVCC and runnable demos | ✅ (content present — see module README for verification notes) |
-| 18 | [SQL Interview Questions](18_SQL_INTERVIEW_QUESTIONS/) | Curated question bank with worked answers and a structural validator | ✅ (content present; see module README & FINAL_VALIDATION_REPORT.md) |
+| 17 | [Transactions & Concurrency Control](17_TRANSACTIONS_AND_CONCURRENCY/) | ACID, isolation, locking, MVCC and runnable demos | ✅ (content present — see module README for verification note[...]
+| 18 | [SQL Interview Questions](18_SQL_INTERVIEW_QUESTIONS/) | Curated question bank with worked answers and a structural validator | ✅ (content present; see module README & FINAL_VALIDATION_RE[...]
 | 19 | [SQL Projects](19_SQL_PROJECTS/) | Portfolio-ready guided projects | 📋 |
 | 20 | [SQL Cheatsheet](20_SQL_CHEATSHEET/) | One-page syntax and pattern reference | 📋 |
 
@@ -147,8 +147,8 @@ flowchart LR
     C --> D[03 Joins]
     end
     subgraph Core_SQL[Core SQL]
-    D --> E[04 CASE WHEN]
-    E --> F[05 Subqueries]
+    D --> E[04 Subqueries]
+    E --> F[05 CASE WHEN]
     F --> G[06 CTEs]
     end
     subgraph Analytical_SQL[Analytical SQL]
@@ -196,7 +196,7 @@ flowchart LR
 | 19 | SQL Projects | 🔄 In Progress |
 | 20 | SQL Cheatsheet | 🔄 In Progress |
 
-**Legend:** ✅ Complete &nbsp;·&nbsp; 🔄 In Progress &nbsp;·&nbsp; 📋 Planned
+**Legend:** ✅ Complete · 🔄 In Progress · 📋 Planned
 
 Live tracking always in [`ROADMAP.md`](ROADMAP.md).
 </details>
@@ -238,7 +238,7 @@ SQL-Engineering-Handbook/
 │   ├── sales/
 │   ├── finance/
 │   ├── healthcare/
-│   └── nagpurlens/
+���   └── nagpurlens/
 │
 ├── resources/                         Curated external learning material
 │   ├── books.md
@@ -268,16 +268,16 @@ SQL-Engineering-Handbook/
 │   ├── olist/
 │   └── nagpurlens/
 │
-├── 00_SAMPLE_DATABASE/                 ✅ Practice schema + seed data
-├── 01_FUNDAMENTALS/                    ✅ SELECT, WHERE, ORDER BY, LIMIT
-├── 02_AGGREGATIONS/                    ✅ GROUP BY, HAVING, aggregate functions
-├── 03_JOINS/                           ✅ Inner, Left, Right, Full, Cross
-├── 04_CASE_WHEN/                       ✅ Conditional logic & transforms
-├── 05_SUBQUERIES/                      ✅ Scalar, inline, correlated
+├── 00_Schema/                          ✅ Practice schema + seed data
+├── 01_Fundamentals/                    ✅ SELECT, WHERE, ORDER BY, LIMIT
+├── 02_Aggregations/                    ✅ GROUP BY, HAVING, aggregate functions
+├── 03_Joins/                           ✅ Inner, Left, Right, Full, Cross
+├── 04_Subqueries/                      ✅ Scalar, inline, correlated
+├── 05_CASE_WHEN/                       ✅ Conditional logic & transforms
 ├── 06_CTEs/                            ✅ Common Table Expressions & recursion
-├── 07_WINDOW_FUNCTIONS/                ✅ ROW_NUMBER, RANK, LAG/LEAD
+├── 07_Window_Functions/                ✅ ROW_NUMBER, RANK, LAG/LEAD
 ├── 08_WINDOW_BUSINESS_CASES/           ✅ Applied window function scenarios
-├── 09_DATE_FUNCTIONS/                  ✅ Date arithmetic, formatting, ranges
+├── 09_Date_Functions/                  ✅ Date arithmetic, formatting, ranges
 ├── 10_STRING_FUNCTIONS/                ✅️ In progress
 ├── 11_NULL_HANDLING_AND_DATA_CLEANING/ ✅️ In progress
 ├── 12_ADVANCED_AGGREGATIONS/           ✅️ In progress
@@ -287,8 +287,6 @@ SQL-Engineering-Handbook/
 ├── 16_QUERY_OPTIMIZATION/              ✅️ In progress
 ├── 17_TRANSACTIONS_AND_CONCURRENCY/    ✅️ Complete (see module README for verification notes)
 ├── 18_SQL_INTERVIEW_QUESTIONS/         ✅️ Complete (see module README & FINAL_VALIDATION_REPORT.md)
-├── 19_SQL_PROJECTS/                    🔄 In progress
-└── 20_SQL_CHEATSHEET/                  🔄 In progress
 ```
 
 Every numbered module is self-contained: read its own README, run its queries against the relevant dataset, then attempt the practice challenge at the end. See [`ARCHITECTURE.md`](ARCHITECTURE.md[...]
@@ -303,10 +301,10 @@ git clone https://github.com/theammarngp-makes/SQL-Engineering-Handbook.git
 cd SQL-Engineering-Handbook
 
 # 2. Load a practice dataset (start with the core sample database)
-mysql -u root -p < 00_SAMPLE_DATABASE/schema.sql
+mysql -u root -p < 00_Schema/01_CREATE_TABLES.sql
 
 # 3. Start with Fundamentals, or jump to any completed module
-cd 01_FUNDAMENTALS
+cd 01_Fundamentals
 ```
 
 **Database:** MySQL 8.0+. Queries are ANSI-standard where possible, with MySQL-specific notes called out — most run on PostgreSQL with minor syntax changes.
@@ -319,7 +317,7 @@ cd 01_FUNDAMENTALS
 <summary><b>📘 Sequential learner</b> — go module by module</summary>
 <br>
 
-Work straight through `00_SAMPLE_DATABASE` → `09_DATE_FUNCTIONS` (currently complete), then continue into `10`–`20` as they release. No prior SQL knowledge assumed.
+Work straight through `00_Schema` → `09_DATE_FUNCTIONS` (currently complete), then continue into `10`–`20` as they release. No prior SQL knowledge assumed.
 </details>
 
 <details>
@@ -369,7 +367,7 @@ Every completed module follows this format: business context → SQL solution �
 | [`SECURITY.md`](SECURITY.md) | How to report security concerns |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community standards |
 
-**GitHub features:** [Issues](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/issues) for bugs and requests · [Discussions](https://github.com/theammarngp-makes/SQL-Engineering-Han[...]
+**GitHub features:** [Issues](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/issues) for bugs and requests · [Discussions](https://github.com/theammarngp-makes/SQL-Engineering-Handbook/discussions) for general conversation.
 
 ---
 
@@ -420,16 +418,11 @@ Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 <tr>
 <td width="90"><img src="https://avatars.githubusercontent.com/u/224389032?v=4" width="70" style="border-radius:50%"/></td>
 <td>
-<b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analyst, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineer[...]">
+<b>Mohammad Ammar</b> — Co-Founder @ <a href="https://github.com/Apex-Analyticx-group">Apex Analyticx</a>, Data Analyst, author of the <a href="https://github.com/theammarngp-makes/SQL-Engineer[...]">[...]</a>
 </td>
 </tr>
 </table>
 
-[![Website](https://img.shields.io/badge/Website-theammarngp--makes.loveable.app-2563EB?style=for-the-badge&logo=googlechrome&logoColor=white)](https://theammarngp.lovable.app)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-mohammad--ammar--ngp-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammad-ammar-ngp/)
-[![X](https://img.shields.io/badge/X-@theammarngp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/theammarngp)
-[![Gmail](https://img.shields.io/badge/Email-theammarngp@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:theammarngp@gmail.com)
- 
 ---
 ---
 
