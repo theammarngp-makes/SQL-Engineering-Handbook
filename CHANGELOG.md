@@ -9,10 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added (2026-10-19)
+- Published Module 17 — Transactions & Concurrency Control: 7 lessons (ACID, isolation levels, locking mechanisms, deadlocks, MVCC, anti-patterns, transaction design workflow), diagrams, practice problems, and SQL demo scripts. Present in `17_TRANSACTIONS_AND_CONCURRENCY/`. Module README documents which demo steps were reproduced and which steps require owner-side verification.
+- Published Module 18 — SQL Interview Questions: 92-question bank across competency levels 0–9, taxonomy, question index, and a structural validator script. Present in `18_SQL_INTERVIEW_QUESTIONS/`. `FINAL_VALIDATION_REPORT.md` documents module-level structural validation; full cross-module link verification and live SQL execution were not performed as part of this change.
+
 ### Added
 
-- Added the Query Optimization module with execution-plan analysis, indexing guidance, query rewrites, benchmarking examples, CI support, and practical performance workflows. (2c510a0 — 2026-09-22)
-- Added comprehensive learning resources for books, blogs, documentation, videos, interview preparation, newsletters, courses, datasets, playgrounds, certifications, communities, and SQL tools, with topic-specific diagrams and an asset specification ledger. (9ae87ae — 2026-09-12)
+- Added the Query Optimization module with execution-plan analysis, indexing guidance, query rewrites, benchmarking examples, CI support, and practical performance workflows. (2c510a0 — 2026-09-[...]
+- Added comprehensive learning resources for books, blogs, documentation, videos, interview preparation, newsletters, courses, datasets, playgrounds, certifications, communities, and SQL tools, wi[...]
 - Added extensive Views lessons covering view fundamentals, lifecycle, security, maintainability, performance, and practical examples. (daf26d0 — 2026-09-12)
 - Added extensive Set Operators lessons covering UNION, UNION ALL, INTERSECT, EXCEPT, comparison patterns, and practical examples. (b108c42 — 2026-09-02)
 - Added expanded Advanced Aggregations lessons with navigation, diagrams, and additional business-oriented examples. (d9b0b6b — 2026-09-01)
@@ -20,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Improved the Resources library README with a complete library map, build status, module checklist, file metrics, diagrams, roadmaps, and corrected folder structure documentation. (9ae87ae — 2026-09-12)
+- Improved the Resources library README with a complete library map, build status, module checklist, file metrics, diagrams, roadmaps, and corrected folder structure documentation. (9ae87ae — 20[...]
 - Enhanced the Views module with new visual explanations and substantially expanded lesson content. (daf26d0 — 2026-09-12)
 - Enhanced the Set Operators module with visual comparisons and substantially expanded lesson content. (b108c42 — 2026-09-02)
 - Enhanced the Advanced Aggregations module with lesson navigation, diagrams, and expanded explanations. (d9b0b6b — 2026-09-01)
