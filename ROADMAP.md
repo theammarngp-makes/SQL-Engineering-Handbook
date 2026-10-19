@@ -1,265 +1,83 @@
 # 🗺️ SQL Engineering Handbook Roadmap
 
-This document outlines the current status and future direction of the SQL Engineering Handbook project.
+This document outlines the current status and future direction of the SQL Engineering Handbook project. It is a living roadmap: module READMEs contain the most up-to-date verification notes for each module.
 
 ---
 
-## 📊 Project Overview
+## 📊 Project overview
 
-The SQL Engineering Handbook is a **production-ready learning resource** for aspiring and practicing Data Analysts. We're building a comprehensive collection of 100+ real-world SQL queries with business context, optimization tips, and interview preparation.
+The SQL Engineering Handbook is an evolving curriculum and documentation project that provides structured SQL learning material, worked examples, and a question bank for interview preparation. Some modules and resources are published in this repository; others are under active development.
 
-**Current Status:** `v1.0.0` - Core modules complete and stable
+This roadmap groups work into three pragmatic categories:
 
----
-
-## ✅ Completed Modules
-
-### Phase 1: Foundation (COMPLETE)
-- ✅ **Module 1: Fundamentals** (5 topics) - Basic SQL queries
-  - SELECT, WHERE, ORDER BY, LIMIT, ALIAS
-  - examples 
-  
-- ✅ **Module 2: Aggregations** (6 topics) - Data summarization
-  - COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING
-  - examples 
-  
-- ✅ **Module 3: Joins** ( join types) - Multi-table queries
-  - INNER, LEFT, RIGHT, FULL OUTER, CROSS
-  -  examples with join
-
-### Phase 2: Intermediate (COMPLETE)
-- ✅ **Module 4: Subqueries** (patterns) - simple,
-- complex subqueries with examples
-
-  
-- ✅ **Module 5: CASE WHEN** (patterns) - Conditional logic
-  - Simple CASE, Complex CASE , buisness 
-  - examples
-  
-- ✅ **Module 6: CTEs** ( patterns) - Query organization
-  - Basic, Multiple CTEs, JOIN CTEs , 
-  - Buisness Related examples
-
-### Phase 3: Advanced (IN PROGRESS)
-- 🔄 **Module 7: Window Functions** (6 topics) - Analytical queries
-  - ROW_NUMBER, RANK, DENSE_RANK, LAG/LEAD, Running Totals, PARTITION BY
-  - Status: 80% complete, 25+ examples ready
-  - Target: v1.0.1 (July 2026)
+- Published & available in the repo — modules and resources you can open and use immediately (see module READMEs for verification details).
+- Current maintenance & quality work — link validation, validator improvements, documentation synchronization, and targeted verification runs.
+- Future enhancements — features that remain planned but are not yet implemented in the repository (video content, interactive sandboxes, broader engine-specific variants).
 
 ---
 
-## 🚀 Upcoming Releases
+## ✅ Published / available
 
-### v1.0.1 (July 2026) — Window Functions Completion
-**Focus:** Complete Window Functions module with advanced patterns
+The following modules and documentation are present in this repository. For per-module verification details (what has been executed, what was reproduced, and what remains to be checked) consult each module's README.
 
-**Deliverables:**
-- ✅ Complete all 6 window function topics
-- ✅ Add real-world analytics examples
-- ✅ Include performance tuning tips
-- ✅ Interview question bank for window functions
-- ✅ Practice challenges and solutions
-
-**Timeline:** July 2026
+- Core foundation modules (00–09): sample schema and fundamentals through date functions — published and stable.
+- Mid-level modules (10–16): ongoing work; many lessons present in the repo but under active expansion.
+- Transactions & Concurrency Control (Module 17): published at `17_TRANSACTIONS_AND_CONCURRENCY/` — ACID, isolation levels, locking, MVCC, deadlocks, anti-patterns, and runnable demos. See `17_TRANSACTIONS_AND_CONCURRENCY/README.md` for verification notes about which demo steps were reproduced and which steps require an owner-run validation.
+- SQL Interview Questions (Module 18): published at `18_SQL_INTERVIEW_QUESTIONS/` — a 92-question bank with taxonomy, index, and a structural validator. See `18_SQL_INTERVIEW_QUESTIONS/FINAL_VALIDATION_REPORT.md` for the module's validation summary and owner-required verification steps.
 
 ---
 
-### v1.1.0 (August 2026) — Query Optimization & Performance
+## 🔧 Current maintenance and quality improvements
 
-**New Modules:**
-- 📋 **Module 8: Query Optimization** (6 topics)
-  - EXPLAIN/ANALYZE plans
-  - Index strategies
-  - Query refactoring patterns
-  - Common performance pitfalls
-  - Benchmark techniques
-  - before/after optimization examples
+These are the repository-level, non-content tasks that are being tracked and updated as needed:
 
-**Focus Areas:**
-- Index selection and impact
-- Query rewriting for performance
-- Understanding execution plans
-- Avoiding N+1 queries
-- Batch processing vs. row-by-row
-
-**Timeline:** August 2026
-**Estimated Content:** 15-20 hours of learning material
+- Link validation: run module-level validators and repository-wide link checks to ensure cross-module references resolve.
+- Validator improvements: refine the Module 18 structural validator so it distinguishes same-module links (checked) from cross-module links (checked when sibling modules exist) to avoid false positives for standalone copies.
+- Documentation synchronization: keep top-level README, ROADMAP and CHANGELOG consistent with the files that actually exist in the repo.
+- Module verification work (owner action): run the Module 18 validator from the repository root to verify cross-module links; optionally run targeted SQL demos in Module 17 on a MySQL 8.x instance to reproduce two-session concurrency behaviors.
 
 ---
 
-### v1.2.0 (September-October 2026) — Business Analytics Fundamentals
+## 🔮 Future enhancements (aspirational)
 
-**New Modules:**
-- 📊 **Module 9: Business Case Studies** (End-to-end projects)
-  - Customer Segmentation Analysis
-  - Revenue & Sales Analytics
-  - Customer Lifetime Value (CLV) Calculation
-  - Retention & Churn Analysis
-  - Cohort Analysis
-  - Marketing Attribution Models
+These items remain useful goals for the project; they are not presented here as committed release dates.
 
-**Focus Areas:**
-- Real-world business problems
-- Multi-query solutions with CTEs and subqueries
-- Dashboard metric calculations
-- KPI definitions and formulas
-- Segment-by-segment analysis
-
-**Timeline:** September-October 2026
-**Estimated Content:** 20-25 hours of learning material with real datasets
+- Expand interview question coverage and answer rationales.
+- Add optional MySQL/Postgres variants where engine differences materially affect examples.
+- Improve performance and query-optimization content with additional worked examples and benchmarking guidance.
+- Explore optional interactive practice sandboxes and video walkthroughs.
 
 ---
 
-### v1.3.0 (November 2026) — Interview Mastery
+## 📌 Current priorities (example short list — no fixed dates)
 
-**New Module:**
-- 🎯 **Module 10: SQL Interview Questions** (Expanded)
-  - 50+ real interview questions from top companies
-  - Multiple solution approaches
-  - Difficulty levels: Easy, Medium, Hard
-  - Company-specific patterns (Meta, Google, Amazon, etc.)
-  - Follow-up questions and variations
-
-**Focus Areas:**
-- Pattern recognition for interview problems
-- Trade-offs between solutions
-- Communication best practices
-- Whiteboarding tips
-- Time management during interviews
-
-**Timeline:** November 2026
+| Priority | Task |
+|----------|------|
+| High | Finish link-validation across the repository (owner: maintainer) |
+| High | Improve Module 18 validator messaging for cross-module link checks |
+| Medium | Continue expanding Query Optimization material |
+| Low | Add engine-specific examples (Postgres) as community contributions |
 
 ---
 
-## 🔮 Future Vision (v2.0+)
+## 🤝 How to help
 
-### v2.0.0 (Q1 2027) — Advanced SQL & Database Design
-- PostgreSQL-specific features (JSON, Arrays, Window functions extensions)
-- Advanced indexing (B-tree, Hash, GiST, GIN)
-- Query tuning with `pg_stat_statements`
-- Transaction management and concurrency control
-- Materialized Views and incremental refreshes
-- Database design best practices
-
-### v2.1.0 (Q2 2027) — Real-World Data Engineering
-- ETL/ELT patterns with SQL
-- Data quality checks and validation
-- Slowly Changing Dimensions (SCD) Type 1, 2, 3
-- Fact and Dimension table design
-- Slowly Changing Dimensions implementations
-- Data warehousing concepts
-
-### v2.2.0 (Q3 2027) — Analytics Engineering Specialization
-- dbt integration patterns
-- Metric definitions (semantic layer)
-- Data lineage and documentation
-- Testing SQL transformations
-- Monitoring and alerting
-- Cost optimization for cloud data warehouses
-
----
-
-## 📌 Current Priorities (Next 90 Days)
-
-| Priority | Task | Owner | ETA | Status |
-|----------|------|-------|-----|--------|
-| 🔴 High | Complete Window Functions module | @theammarngp-makes | July 15 | In Progress |
-| 🔴 High | Add 50+ interview questions | Community | July 31 | Not Started |
-| 🟡 Medium | Create video tutorials | TBD | August 15 | Not Started |
-| 🟡 Medium | Add PostgreSQL examples | Community | August 31 | Not Started |
-| 🟢 Low | Performance optimization section | TBD | September 30 | Planning |
-
----
-
-## 🎯 Key Goals
-
-### By End of 2026
-- ✅ 100+ production-ready SQL queries
-- ✅ 8+ comprehensive modules
-- ✅ 50+ interview questions
-- ✅ 10+ real-world case studies
-- ✅ 1,000+ stars on GitHub
-- ✅ Active community of 100+ contributors
-
-### By End of 2027
-- ✅ 200+ SQL queries covering intermediate to advanced topics
-- ✅ PostgreSQL and MySQL variants for all queries
-- ✅ Video tutorial series
-- ✅ Interactive practice platform integration
-- ✅ Community-driven solutions and variations
-- ✅ 5,000+ stars on GitHub
-
----
-
-## 🤝 How to Contribute to the Roadmap
-
-### Propose New Content
-1. Open a GitHub issue with the label `roadmap`
-2. Describe the topic and why it's valuable
-3. Suggest 3-5 example queries or use cases
-4. Tag relevant stakeholders
-
-### Volunteer for Modules
-- Pick a module from the roadmap
-- Comment on the issue or discussion
-- Follow the contribution guidelines
-- Work with maintainers for review
-
-### Feedback & Suggestions
-- Use discussions for feature requests
-- Star the repo if you find it valuable
-- Share with your network
-- Contribute solutions and variations
-
----
-
-## 📚 Contribution Guidelines
-
-All contributions should:
-- Follow the existing structure and format
-- Include business context and real-world examples
-- Add explanations, common mistakes, and interview tips
-- Follow SQL best practices and style guides
-- Include both .md (explanations) and .sql (runnable) files
-- Be tested against actual databases (MySQL, PostgreSQL, SQLite)
-
----
-
-## 🐛 Known Limitations & Future Improvements
-
-### Current Limitations
-- ⚠️ Primarily MySQL-focused (PostgreSQL support coming in v1.1)
-- ⚠️ Limited performance tuning content (planned for v1.1)
-- ⚠️ No interactive practice platform yet
-- ⚠️ Limited video content (planned for v2.0)
-
-### Planned Improvements
-- 📱 Mobile-friendly learning experience
-- 🎥 Video walkthroughs for complex concepts
-- 🧪 Interactive SQL sandbox with auto-validation
-- 🔄 Spaced repetition for interview prep
-- 📊 Progress tracking and personalized learning paths
-- 🌍 Multi-language support
+- Propose content via issues and label them `roadmap`.
+- Volunteer for module work by commenting on roadmap issues.
+- Run the module-level validators and report failures with the full command output.
 
 ---
 
 ## 📞 Questions or Suggestions?
 
-- 💬 Open a discussion in the GitHub repo
-- 🐛 Report issues on the issues tab
-- 📧 Contact the maintainer [@theammarngp-makes](https://github.com/theammarngp-makes)
-- ⭐ Star the repo to show your support
-
----
-
-## 📋 Changelog
-
-For detailed version history and feature releases, see [CHANGELOG.md](CHANGELOG.md).
+- Open a discussion in the GitHub repo
+- Report issues on the issues tab
+- Contact the maintainer [@theammarngp-makes](https://github.com/theammarngp-makes)
 
 ---
 
 <p align="center">
-  <strong>Last Updated:</strong> July 3, 2026
+  <strong>Last Updated:</strong> 2026-10-19
 </p>
 
 <p align="center">
