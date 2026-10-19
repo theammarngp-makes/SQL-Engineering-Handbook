@@ -27,14 +27,16 @@ because "isolation" without a level attached is an incomplete claim.
 
 ## 3. Why This Exists
 
-Full serializability — transactions behaving as if run one at a time,
-with zero concurrent overlap — is the safest option, but it's also the
-most restrictive: it forces the database to serialize access more
-aggressively, at a real throughput cost as concurrency grows. Weaker
-isolation levels trade some of these guarantees for more concurrent
-throughput. Isolation levels exist to let you pick a real point on
-that tradeoff deliberately, rather than accepting whatever a default
-gives you without understanding what it does or doesn't protect.
+Full serializability requires that the observed results of concurrent
+transactions be equivalent to the results produced by some serial
+ordering of those transactions; it does not require that transactions
+never overlap in time. In practice, database engines may execute
+transactions concurrently while ensuring their effects match a particular
+serial schedule. Serializability is therefore a correctness property
+about the outcome (equivalence to a serial order), not a prohibition on
+temporal overlap. Different engines implement serializability using
+different mechanisms (strict locking, optimistic / SSI techniques,
+etc.), and their performance and retry behaviour under contention vary.
 
 ## 4. Business Motivation
 
@@ -227,7 +229,7 @@ identically to either.
 ## 12. Scalability Considerations
 
 Isolation level choice interacts directly with lock duration and
-contention (Lesson 03) — `SERIALIZABLE` under MySQL — when autocommit is disabled — implicitly turns plain `SELECT`s into `SELECT ... FOR SHARE`, taking shared locks on the rows it reads (with autocommit on, a plain `SELECT` is its own transaction and a nonlocking consistent read), which can measurably increase
+contention (Lesson 03) — `SERIALIZABLE` under MySQL — when autocommit is disabled — implicitly turns plain `SELECT`s into `SELECT ... FOR SHARE`, taking shared locks on the rows it reads (w[...]
 lock contention under concurrent load compared to `REPEATABLE READ`'s
 MVCC-based reads that don't block writers. This is a structural
 tradeoff to weigh against correctness needs, not a reason to avoid
