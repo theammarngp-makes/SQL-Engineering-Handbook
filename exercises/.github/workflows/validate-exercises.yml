@@ -1,0 +1,66 @@
+name: Validate exercises
+
+on:
+  push:
+    paths:
+      - 'exercises/**'
+      - 'datasets/**'
+      - 'scripts/validate_exercises.py'
+      - '.github/workflows/validate-exercises.yml'
+  pull_request:
+    paths:
+      - 'exercises/**'
+      - 'datasets/**'
+      - 'scripts/validate_exercises.py'
+      - '.github/workflows/validate-exercises.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-exercises-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install MySQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq mysql-client
+
+      - name: Wait for MySQL to accept connections
+        run: |
+          for i in $(seq 1 30); do
+            mysqladmin ping -h 127.0.0.1 -P 3306 -u root --silent && exit 0
+            sleep 2
+          done
+          echo "MySQL did not become ready in time" >&2
+          exit 1
+
+      - name: Run exercise validator
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_PORT: 3306
+          MYSQL_USER: root
+        run: python3 scripts/validate_exercises.py
